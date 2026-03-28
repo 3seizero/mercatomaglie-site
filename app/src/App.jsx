@@ -1075,7 +1075,7 @@ const S={
   hdrSub:{fontSize:9,color:ocraL,letterSpacing:4,textTransform:"uppercase",fontWeight:500},
   hdrPage:{fontSize:10,color:ocraL,letterSpacing:0.5,fontWeight:500,fontStyle:"italic"},
   main:{flex:1,overflowY:"auto",paddingBottom:72},
-  nav:{position:"fixed",bottom:0,left:0,right:0,width:"100%",background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200},
+  nav:{position:"fixed",bottom:0,left:0,right:0,width:"100%",background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200,paddingBottom:"calc(20px + env(safe-area-inset-bottom))"},
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
   navAct:{background:"rgba(232,160,69,0.07)"},
   navLbl:{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700},
