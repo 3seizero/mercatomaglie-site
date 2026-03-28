@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Area Mercatale di Maglie — Il Mercato del Sabato</title>
+  <meta name="description" content="L'area mercatale più grande del Salento. Ogni sabato a Maglie, centinaia di espositori, sapori, artigianato e cultura."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --terra:   #3d2b1a;
+      --ocra:    #c8862a;
+      --ocraL:   #e8a045;
+      --sand:    #f5f0e8;
+      --sandD:   #e8dfc8;
+      --white:   #ffffff;
+      --text:    #2c1d0e;
+      --textM:   #6b5040;
+      --textL:   #9a8070;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--terra);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(61,43,26,0.95) 0%, transparent 100%);
+      transition: background 0.4s;
+    }
+    nav.solid { background: rgba(61,43,26,0.98); backdrop-filter: blur(12px); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon { width: 38px; height: 38px; }
+    .nav-logo-text { font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--white); line-height: 1.3; }
+    .nav-logo-sub { font-size: 8px; color: var(--ocraL); letter-spacing: 5px; font-weight: 500; }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ocraL); }
+    .nav-cta {
+      background: var(--ocra); color: var(--white) !important;
+      padding: 10px 22px; border-radius: 24px;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--ocraL) !important; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('img/hero-01.webp');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.05);
+      animation: heroZoom 12s ease-out forwards;
+    }
+    @keyframes heroZoom { to { transform: scale(1); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(61,43,26,0.97) 0%,
+        rgba(61,43,26,0.6) 40%,
+        rgba(61,43,26,0.15) 70%,
+        transparent 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 80px 80px;
+      max-width: 860px;
+      animation: fadeUp 1s 0.3s both;
+    }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+    }
+    .hero-eyebrow-line { width: 48px; height: 1px; background: var(--ocra); }
+    .hero-eyebrow-text { font-size: 10px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; color: var(--ocraL); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 300; line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-title em { font-style: italic; color: var(--ocraL); }
+    .hero-title strong { font-weight: 700; display: block; }
+    .hero-sub {
+      font-size: clamp(14px, 2vw, 18px); font-weight: 300;
+      color: rgba(255,255,255,0.7); line-height: 1.7;
+      max-width: 520px; margin: 28px 0 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ocra); color: var(--white);
+      padding: 16px 32px; border-radius: 32px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: all 0.25s;
+      box-shadow: 0 8px 32px rgba(200,134,42,0.4);
+    }
+    .btn-primary:hover { background: var(--ocraL); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,134,42,0.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid rgba(255,255,255,0.4); color: var(--white);
+      padding: 16px 32px; border-radius: 32px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--ocraL); color: var(--ocraL); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 32px; right: 80px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      animation: fadeUp 1s 1s both;
+    }
+    .hero-scroll span { font-size: 8px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); writing-mode: vertical-rl; }
+    .hero-scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--ocra), transparent); animation: scrollLine 2s infinite; }
+    @keyframes scrollLine { 0%,100%{opacity:1;transform:scaleY(1) translateY(0)} 50%{opacity:0.3;transform:scaleY(0.5) translateY(10px)} }
+
+    /* ─── NUMBERS ─── */
+    .numbers {
+      background: var(--ocra);
+      padding: 32px 80px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .number-item { text-align: center; }
+    .number-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 700; line-height: 1;
+      color: var(--white);
+    }
+    .number-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 4px; }
+    .number-div { width: 1px; height: 48px; background: rgba(255,255,255,0.25); }
+
+    /* ─── SECTION BASE ─── */
+    section { position: relative; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+    }
+    .section-eyebrow-line { width: 36px; height: 1px; background: var(--ocra); }
+    .section-eyebrow-text { font-size: 9px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--ocra); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--ocraL); }
+
+    /* ─── ABOUT ─── */
+    .about { background: var(--sand); padding: 120px 0; color: var(--text); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text .section-title { margin-bottom: 28px; }
+    .about-text p { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--textM); margin-bottom: 20px; }
+    .about-text p strong { font-weight: 700; color: var(--text); }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 4px;
+      box-shadow: 32px 32px 80px rgba(61,43,26,0.25);
+    }
+    .about-img-badge {
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--ocra); color: var(--white);
+      padding: 20px 28px; border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(200,134,42,0.4);
+    }
+    .about-img-badge-val { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; line-height: 1; }
+    .about-img-badge-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; opacity: 0.85; }
+
+    /* ─── FULLSCREEN IMAGE ─── */
+    .fullimg {
+      height: 70vh; min-height: 480px;
+      position: relative; overflow: hidden;
+    }
+    .fullimg-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.1s linear;
+    }
+    .fullimg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(61,43,26,0.7) 0%, rgba(61,43,26,0.2) 100%);
+    }
+    .fullimg-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 40px;
+    }
+    .fullimg-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 54px); font-weight: 300; font-style: italic;
+      color: var(--white); line-height: 1.3; max-width: 800px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .fullimg-attr { margin-top: 24px; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--ocraL); }
+
+    /* ─── APP SECTION ─── */
+    .app-section { background: var(--terra); padding: 120px 0; }
+    .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .app-phone-wrap { position: relative; display: flex; justify-content: center; }
+    .app-phone {
+      width: 260px; aspect-ratio: 9/19;
+      background: #1a1208; border-radius: 36px;
+      border: 2px solid rgba(200,134,42,0.3);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+      overflow: hidden; position: relative;
+    }
+    .app-phone-screen {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #3d2b1a 0%, #2c1d0e 50%, #1a0f06 100%);
+      display: flex; flex-direction: column;
+    }
+    .app-phone-header {
+      background: rgba(61,43,26,0.9); padding: 14px 16px 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .app-phone-header-logo { width: 22px; height: 22px; }
+    .app-phone-header-text { font-size: 7px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+    .app-phone-map {
+      flex: 1; position: relative;
+      background: #f0ece4;
+      overflow: hidden;
+    }
+    .app-phone-map-grid {
+      position: absolute; inset: 0;
+      display: grid; grid-template-columns: repeat(8,1fr); grid-template-rows: repeat(12,1fr);
+      gap: 2px; padding: 8px;
+    }
+    .app-phone-stall {
+      border-radius: 2px;
+      animation: stallPulse 3s infinite;
+    }
+    @keyframes stallPulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+    .stall-green { background: #3daa70; }
+    .stall-red   { background: rgba(210,40,40,0.5); }
+    .stall-grey  { background: #d8d0c4; }
+    .app-phone-nav {
+      background: rgba(61,43,26,0.95); padding: 8px 0 12px;
+      display: flex; justify-content: space-around; align-items: center;
+    }
+    .app-phone-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .app-phone-nav-dot { width: 16px; height: 2px; border-radius: 1px; background: rgba(255,255,255,0.2); }
+    .app-phone-nav-dot.active { background: var(--ocraL); }
+    .app-phone-glow {
+      position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(ellipse, rgba(200,134,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .app-text .section-title { color: var(--white); margin-bottom: 28px; }
+    .app-features { display: flex; flex-direction: column; gap: 24px; margin: 36px 0 44px; }
+    .app-feature { display: flex; gap: 20px; align-items: flex-start; }
+    .app-feature-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(200,134,42,0.15); border: 1px solid rgba(200,134,42,0.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-feature-icon svg { width: 20px; height: 20px; stroke: var(--ocraL); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .app-feature-body h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+    .app-feature-body p { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* ─── GALLERY ─── */
+    .gallery { background: var(--sand); padding: 120px 0; }
+    .gallery .section-title { color: var(--text); margin-bottom: 60px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 12px;
+    }
+    .gallery-item { overflow: hidden; border-radius: 4px; position: relative; }
+    .gallery-item:first-child { grid-row: 1 / 3; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(61,43,26,0.6) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    /* ─── ESPOSITORI PREVIEW ─── */
+    .espositori { background: var(--terra); padding: 120px 0; }
+    .espositori .section-title { color: var(--white); margin-bottom: 16px; }
+    .espositori-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); margin-bottom: 56px; max-width: 480px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+    .cat-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(200,134,42,0.2);
+      border-radius: 16px; padding: 28px 20px; text-align: center;
+      transition: all 0.3s; cursor: default;
+    }
+    .cat-card:hover { background: rgba(200,134,42,0.1); border-color: rgba(200,134,42,0.5); transform: translateY(-4px); }
+    .cat-card-icon { font-size: 32px; margin-bottom: 14px; }
+    .cat-card-name { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--white); margin-bottom: 6px; }
+    .cat-card-count { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+    /* ─── EVENTS ─── */
+    .events { background: var(--sand); padding: 120px 0; }
+    .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .event-card {
+      background: var(--white); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(61,43,26,0.08);
+      transition: all 0.3s;
+    }
+    .event-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(61,43,26,0.16); }
+    .event-card-img { height: 200px; overflow: hidden; }
+    .event-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .event-card:hover .event-card-img img { transform: scale(1.08); }
+    .event-card-body { padding: 24px; }
+    .event-card-date { font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--ocra); margin-bottom: 10px; }
+    .event-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
+    .event-card-desc { font-size: 12px; font-weight: 300; color: var(--textM); line-height: 1.7; }
+
+    /* ─── INSTALL ─── */
+    .install {
+      background: var(--terra); padding: 140px 0;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .install::before {
+      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(ellipse, rgba(200,134,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .install-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 6vw, 80px); font-weight: 300; line-height: 1.1;
+      color: var(--white); margin-bottom: 24px;
+    }
+    .install-title em { font-style: italic; color: var(--ocraL); }
+    .install-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.55); margin-bottom: 56px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .install-steps { display: flex; justify-content: center; gap: 0; margin-bottom: 64px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    .install-step { flex: 1; text-align: center; position: relative; }
+    .install-step::after {
+      content: ''; position: absolute; top: 20px; left: 60%;
+      width: 80%; height: 1px; background: rgba(200,134,42,0.3);
+    }
+    .install-step:last-child::after { display: none; }
+    .install-step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(200,134,42,0.15); border: 1px solid rgba(200,134,42,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: var(--ocraL);
+      margin: 0 auto 16px;
+    }
+    .install-step-text { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); line-height: 1.5; padding: 0 8px; }
+    .install-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── MAP ─── */
+    .mapinfo { background: var(--sand); padding: 120px 0; }
+    .mapinfo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .mapinfo-text .section-title { color: var(--text); margin-bottom: 28px; }
+    .mapinfo-details { display: flex; flex-direction: column; gap: 20px; margin-top: 36px; }
+    .mapinfo-detail { display: flex; gap: 16px; align-items: flex-start; }
+    .mapinfo-detail-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(200,134,42,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .mapinfo-detail-icon svg { width: 18px; height: 18px; stroke: var(--ocra); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .mapinfo-detail h4 { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .mapinfo-detail p { font-size: 12px; font-weight: 400; color: var(--textM); }
+    .mapinfo-map-wrap {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 24px 80px rgba(61,43,26,0.2);
+      aspect-ratio: 4/3;
+      background: #e8e2d8;
+    }
+    .mapinfo-map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1a0f06; padding: 64px 80px 40px;
+    }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.8; margin-top: 16px; max-width: 320px; }
+    .footer-col h5 { font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--ocra); margin-bottom: 20px; }
+    .footer-col a { display: block; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--ocraL); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.25); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .footer-social a:hover { border-color: var(--ocra); background: rgba(200,134,42,0.1); }
+    .footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 0 24px 60px; }
+      .numbers { padding: 24px; justify-content: center; gap: 32px; }
+      .number-div { display: none; }
+      .section-inner { padding: 0 24px; }
+      .about-grid, .app-grid, .mapinfo-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-wrap { order: -1; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: auto; grid-column: 1 / 3; }
+      .cat-grid { grid-template-columns: repeat(2,1fr); }
+      .events-grid { grid-template-columns: 1fr; }
+      .install-steps { flex-direction: column; gap: 24px; }
+      .install-step::after { display: none; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      footer { padding: 48px 24px 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="30" fill="rgba(200,134,42,0.15)"/>
+      <path d="M30 14 C30 14 16 22 16 32 C16 39 22 44 30 44 C38 44 44 39 44 32 C44 22 30 14 30 14Z" fill="none" stroke="#e8a045" stroke-width="1.5"/>
+      <path d="M22 30 L30 20 L38 30" fill="none" stroke="#e8a045" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M18 34 Q30 28 42 34" fill="none" stroke="#e8a045" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="30" cy="38" r="3" fill="#e8a045" opacity="0.6"/>
+    </svg>
+    <div>
+      <div class="nav-logo-text">Area Mercatale</div>
+      <div class="nav-logo-sub">Maglie</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#about">Il Mercato</a>
+    <a href="#app">La App</a>
+    <a href="#eventi">Eventi</a>
+    <a href="#dove">Come Arrivare</a>
+    <a href="#app" class="nav-cta">Apri la Mappa →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">Maglie · Lecce · Puglia</div>
+    </div>
+    <h1 class="hero-title">
+      Il mercato<br>
+      <em>più amato</em><br>
+      <strong>del Salento.</strong>
+    </h1>
+    <p class="hero-sub">Ogni sabato, centinaia di espositori, sapori autentici, artigianato e cultura si danno appuntamento nel cuore del Salento.</p>
+    <div class="hero-actions">
+      <a href="#app" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        Apri la Mappa Live
+      </a>
+      <a href="#about" class="btn-secondary">Scopri di più ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scorri</span>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="number-item reveal">
+    <div class="number-val">251</div>
+    <div class="number-label">Postazioni</div>
+  </div>
+  <div class="number-div"></div>
+  <div class="number-item reveal reveal-delay-1">
+    <div class="number-val">30+</div>
+    <div class="number-label">Categorie merceologiche</div>
+  </div>
+  <div class="number-div"></div>
+  <div class="number-item reveal reveal-delay-2">
+    <div class="number-val">1</div>
+    <div class="number-label">Sabato al mese</div>
+  </div>
+  <div class="number-div"></div>
+  <div class="number-item reveal reveal-delay-3">
+    <div class="number-val">∞</div>
+    <div class="number-label">Motivi per venire</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <div class="section-eyebrow-text">Il Mercato</div>
+        </div>
+        <h2 class="section-title">Un luogo dove <em>la tradizione</em> incontra la vita.</h2>
+        <p>L'Area Mercatale di Maglie è uno dei mercati all'aperto più grandi e vivaci del Salento. Ogni sabato, centinaia di espositori trasformano il piazzale in un vibrante palcoscenico di colori, profumi e incontri.</p>
+        <p>Dall'abbigliamento all'alimentare tipico, dai fiori all'artigianato locale: <strong>qui si trova tutto</strong>, ma soprattutto si respira quell'aria autentica che solo i mercati rionali sanno regalare.</p>
+        <p>Un appuntamento fisso per migliaia di famiglie salentine, un rituale settimanale che sa di casa.</p>
+      </div>
+      <div class="about-img-wrap reveal reveal-delay-2">
+        <img class="about-img"
+          src="img/about-01.webp"
+          alt="Mercato colorato con frutta e verdura fresca"/>
+        <div class="about-img-badge">
+          <div class="about-img-badge-val">'89</div>
+          <div class="about-img-badge-label">Dal 1989</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULLSCREEN IMAGE 1 -->
+<div class="fullimg">
+  <div class="fullimg-bg" style="background-image:url('img/quote-01.webp');"></div>
+  <div class="fullimg-overlay"></div>
+  <div class="fullimg-content">
+    <p class="fullimg-quote reveal">"Il mercato non è solo un luogo di scambio — è un luogo dove la comunità si riconosce."</p>
+    <div class="fullimg-attr reveal reveal-delay-1">— Mercato del Sabato · Maglie</div>
+  </div>
+</div>
+
+<!-- APP SECTION -->
+<section class="app-section" id="app">
+  <div class="section-inner">
+    <div class="app-grid">
+      <div class="app-phone-wrap reveal">
+        <div class="app-phone-glow"></div>
+        <div class="app-phone">
+          <div class="app-phone-screen">
+            <div class="app-phone-header">
+              <svg class="app-phone-header-logo" viewBox="0 0 60 60" fill="none">
+                <path d="M30 10 C30 10 18 18 18 27 C18 33 23 37 30 37 C37 37 42 33 42 27 C42 18 30 10 30 10Z" fill="none" stroke="#e8a045" stroke-width="2"/>
+                <path d="M24 25 L30 17 L36 25" fill="none" stroke="#e8a045" stroke-width="2" stroke-linecap="round"/>
+                <path d="M20 29 Q30 24 40 29" fill="none" stroke="#e8a045" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div class="app-phone-header-text">Mercato Aperto</div>
+            </div>
+            <div class="app-phone-map">
+              <div class="app-phone-map-grid" id="stallGrid"></div>
+            </div>
+            <div class="app-phone-nav">
+              <div class="app-phone-nav-item"><div class="app-phone-nav-dot active"></div></div>
+              <div class="app-phone-nav-item"><div class="app-phone-nav-dot"></div></div>
+              <div class="app-phone-nav-item"><div class="app-phone-nav-dot"></div></div>
+              <div class="app-phone-nav-item"><div class="app-phone-nav-dot"></div></div>
+              <div class="app-phone-nav-item"><div class="app-phone-nav-dot"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-text reveal reveal-delay-1">
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line" style="background:var(--ocra)"></div>
+          <div class="section-eyebrow-text">La App Ufficiale</div>
+        </div>
+        <h2 class="section-title" style="color:var(--white)">La mappa <em>interattiva</em> del mercato.</h2>
+        <div class="app-features">
+          <div class="app-feature">
+            <div class="app-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="app-feature-body">
+              <h4>Mappa in tempo reale</h4>
+              <p>Scopri quali espositori sono presenti oggi, dove si trovano e cosa vendono.</p>
+            </div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <div class="app-feature-body">
+              <h4>Cerca per categoria</h4>
+              <p>Filtra per alimentare, abbigliamento, artigianato e tutte le altre categorie.</p>
+            </div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            </div>
+            <div class="app-feature-body">
+              <h4>Navigazione verso la postazione</h4>
+              <p>Apri Google Maps e raggiungi direttamente la postazione che cerchi.</p>
+            </div>
+          </div>
+          <div class="app-feature">
+            <div class="app-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="app-feature-body">
+              <h4>Contatta direttamente</h4>
+              <p>WhatsApp diretto con ogni espositore, un tap e sei in contatto.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn-primary">
+          Apri la Mappa →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">
+      <div class="section-eyebrow-line"></div>
+      <div class="section-eyebrow-text">Atmosfera</div>
+    </div>
+    <h2 class="section-title reveal" style="color:var(--text); margin-bottom:60px;">Ogni sabato, <em>una festa.</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="img/gallery-01.webp" alt="Mercato animato"/>
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="img/gallery-02.webp" alt="Frutta fresca al mercato"/>
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="img/gallery-03.webp" alt="Persone al mercato"/>
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="img/gallery-04.webp" alt="Spezie colorate"/>
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="img/gallery-05.webp" alt="Artigianato locale"/>
+        <div class="gallery-item-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPOSITORI CATEGORIE -->
+<section class="espositori">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">
+      <div class="section-eyebrow-line"></div>
+      <div class="section-eyebrow-text">Espositori</div>
+    </div>
+    <h2 class="section-title reveal" style="color:var(--white);">Tutto quello che <em>cerchi.</em></h2>
+    <p class="espositori-sub reveal">251 postazioni organizzate per categoria. Trova subito quello che ti serve sulla mappa interattiva.</p>
+    <div class="cat-grid">
+      <div class="cat-card reveal"><div class="cat-card-icon">🌿</div><div class="cat-card-name">Alimentare</div><div class="cat-card-count">Frutta, formaggi, spezie e molto altro</div></div>
+      <div class="cat-card reveal reveal-delay-1"><div class="cat-card-icon">👗</div><div class="cat-card-name">Abbigliamento</div><div class="cat-card-count">Moda, tessuti, calzature</div></div>
+      <div class="cat-card reveal reveal-delay-2"><div class="cat-card-icon">🏺</div><div class="cat-card-name">Artigianato</div><div class="cat-card-count">Ceramiche, bijoux, pelletteria</div></div>
+      <div class="cat-card reveal reveal-delay-3"><div class="cat-card-icon">🌸</div><div class="cat-card-name">Floricoltura</div><div class="cat-card-count">Fiori, piante e composizioni</div></div>
+      <div class="cat-card reveal"><div class="cat-card-icon">📱</div><div class="cat-card-name">Elettronica</div><div class="cat-card-count">Gadget, accessori tech</div></div>
+      <div class="cat-card reveal reveal-delay-1"><div class="cat-card-icon">🍷</div><div class="cat-card-name">Vini & Liquori</div><div class="cat-card-count">Prodotti tipici salentini</div></div>
+      <div class="cat-card reveal reveal-delay-2"><div class="cat-card-icon">📚</div><div class="cat-card-name">Editoria</div><div class="cat-card-count">Libri, giornali, fumetti</div></div>
+      <div class="cat-card reveal reveal-delay-3"><div class="cat-card-icon">🏠</div><div class="cat-card-name">Casalinghi</div><div class="cat-card-count">Tutto per la casa</div></div>
+    </div>
+    <div style="text-align:center">
+      <a href="#" class="btn-primary reveal">Vedi tutti sulla mappa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FULLSCREEN IMAGE 2 -->
+<div class="fullimg">
+  <div class="fullimg-bg" style="background-image:url('img/quote-02.webp'); background-position: center 40%;"></div>
+  <div class="fullimg-overlay" style="background:linear-gradient(135deg,rgba(61,43,26,0.8) 0%,rgba(61,43,26,0.3) 100%)"></div>
+  <div class="fullimg-content">
+    <p class="fullimg-quote reveal">Persone, sapori, sorrisi.<br>Il sabato a Maglie è così.</p>
+  </div>
+</div>
+
+<!-- EVENTI -->
+<section class="events" id="eventi">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">
+      <div class="section-eyebrow-line"></div>
+      <div class="section-eyebrow-text">Calendario</div>
+    </div>
+    <h2 class="section-title reveal" style="color:var(--text);">Prossimi <em>eventi.</em></h2>
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <div class="event-card-img">
+          <img src="img/eventi-01.webp" alt="Sagra gastronomica"/>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">Aprile 2026 · Gastronomia</div>
+          <div class="event-card-title">Festa dei Sapori Salentini</div>
+          <div class="event-card-desc">Un viaggio tra i profumi e i gusti della tradizione pugliese, con degustazioni gratuite e produttori locali.</div>
+        </div>
+      </div>
+      <div class="event-card reveal reveal-delay-1">
+        <div class="event-card-img">
+          <img src="img/eventi-02.webp" alt="Mercato speciale di primavera"/>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">Maggio 2026 · Speciale</div>
+          <div class="event-card-title">Mercato di Primavera</div>
+          <div class="event-card-desc">Edizione straordinaria con espositori da tutta la Puglia, musica dal vivo e intrattenimento per le famiglie.</div>
+        </div>
+      </div>
+      <div class="event-card reveal reveal-delay-2">
+        <div class="event-card-img">
+          <img src="img/eventi-03.webp" alt="Artigianato"/>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-date">Giugno 2026 · Artigianato</div>
+          <div class="event-card-title">Mostra dell'Artigianato Locale</div>
+          <div class="event-card-desc">Ceramiche, ricami, pizzi e manufatti unici realizzati a mano dagli artigiani del Salento in mostra e in vendita.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLA APP -->
+<section class="install" id="installa">
+  <div class="section-inner" style="position:relative;z-index:1">
+    <h2 class="install-title reveal">Porta il mercato<br><em>nel tuo telefono.</em></h2>
+    <p class="install-sub reveal">La mappa interattiva si installa direttamente sul tuo smartphone. Niente App Store, zero abbonamenti.</p>
+    <div class="install-steps">
+      <div class="install-step reveal">
+        <div class="install-step-num">1</div>
+        <div class="install-step-text">Apri il link in Safari o Chrome</div>
+      </div>
+      <div class="install-step reveal reveal-delay-1">
+        <div class="install-step-num">2</div>
+        <div class="install-step-text">Tocca "Condividi" o i tre puntini</div>
+      </div>
+      <div class="install-step reveal reveal-delay-2">
+        <div class="install-step-num">3</div>
+        <div class="install-step-text">Aggiungi a schermata Home</div>
+      </div>
+    </div>
+    <div class="install-actions">
+      <a href="#" class="btn-primary reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Apri la Mappa Live
+      </a>
+      <a href="#dove" class="btn-secondary reveal reveal-delay-1">Come arrivare →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOVE SIAMO -->
+<section class="mapinfo" id="dove">
+  <div class="section-inner">
+    <div class="mapinfo-grid">
+      <div class="mapinfo-text reveal">
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <div class="section-eyebrow-text">Come Arrivare</div>
+        </div>
+        <h2 class="section-title">Siamo a <em>Maglie,</em><br>nel cuore del Salento.</h2>
+        <div class="mapinfo-details">
+          <div class="mapinfo-detail">
+            <div class="mapinfo-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Indirizzo</h4>
+              <p>Via F.S. Portaluri — Area Mercatale, 73024 Maglie (LE)</p>
+            </div>
+          </div>
+          <div class="mapinfo-detail">
+            <div class="mapinfo-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Orari</h4>
+              <p>Ogni sabato mattina · dalle ore 6:00 alle 14:00</p>
+            </div>
+          </div>
+          <div class="mapinfo-detail">
+            <div class="mapinfo-detail-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div>
+              <h4>Parcheggio</h4>
+              <p>Ampi parcheggi gratuiti all'interno dell'area mercatale</p>
+            </div>
+          </div>
+          <div class="mapinfo-detail">
+            <div class="mapinfo-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Informazioni</h4>
+              <p>Comune di Maglie · Ufficio Attività Produttive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mapinfo-map-wrap reveal reveal-delay-2">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d18.3091!3d40.1169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDA3JzAwLjgiTiAxOMKwMTgnMzIuOSJF!5e1!3m2!1sit!2sit!4v1700000000000"
+          allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:0">
+        <svg class="nav-logo-icon" viewBox="0 0 60 60" fill="none">
+          <rect width="60" height="60" rx="30" fill="rgba(200,134,42,0.15)"/>
+          <path d="M30 14 C30 14 16 22 16 32 C16 39 22 44 30 44 C38 44 44 39 44 32 C44 22 30 14 30 14Z" fill="none" stroke="#e8a045" stroke-width="1.5"/>
+          <path d="M22 30 L30 20 L38 30" fill="none" stroke="#e8a045" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18 34 Q30 28 42 34" fill="none" stroke="#e8a045" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="30" cy="38" r="3" fill="#e8a045" opacity="0.6"/>
+        </svg>
+        <div>
+          <div class="nav-logo-text">Area Mercatale</div>
+          <div class="nav-logo-sub">Maglie · Lecce · Puglia</div>
+        </div>
+      </a>
+      <p>Il mercato del sabato più amato del Salento. Ogni settimana, centinaia di espositori, prodotti freschi e artigianato locale in un'unica grande piazza.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Naviga</h5>
+      <a href="#about">Il Mercato</a>
+      <a href="#app">La Mappa Live</a>
+      <a href="#eventi">Eventi</a>
+      <a href="#dove">Come Arrivare</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contatti</h5>
+      <a href="#">Comune di Maglie</a>
+      <a href="#">Ufficio Mercato</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Area Mercatale di Maglie · Tutti i diritti riservati</p>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav solid on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 80);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Genera griglia postazioni nel mockup telefono
+  const grid = document.getElementById('stallGrid');
+  const colors = ['stall-green','stall-green','stall-green','stall-red','stall-grey','stall-grey'];
+  for(let i=0; i<96; i++){
+    const d = document.createElement('div');
+    d.className = 'app-phone-stall ' + colors[Math.floor(Math.random()*colors.length)];
+    d.style.animationDelay = (Math.random()*3)+'s';
+    grid.appendChild(d);
+  }
+</script>
+
+</body>
+</html>
