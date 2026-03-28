@@ -410,9 +410,36 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
 
     /* ─── MOBILE ─── */
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px; padding: 0; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
-      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; align-items: center; gap: 0;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(61,43,26,0.98); backdrop-filter: blur(12px);
+        padding-top: 100px; z-index: 150;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        font-size: 14px; letter-spacing: 3px; padding: 20px 0;
+        color: rgba(255,255,255,0.8);
+      }
+      .nav-links a:hover { color: var(--ocraL); }
+      .nav-links .nav-cta { margin-top: 20px; }
       .hero-content { padding: 0 24px 60px; }
       .numbers { padding: 24px; justify-content: center; gap: 32px; }
       .number-div { display: none; }
@@ -455,6 +482,9 @@
     <a href="#dove">Come Arrivare</a>
     <a href="#app" class="nav-cta">Apri la Mappa →</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -873,6 +903,24 @@
 </footer>
 
 <script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
   // Nav solid on scroll
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
