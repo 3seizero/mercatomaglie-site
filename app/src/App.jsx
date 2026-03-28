@@ -1067,7 +1067,7 @@ const T=["#3d2b1a","#c8862a","#e8a045","#f5f0e8","#e8dfc8","#fff","#3daa70","#2c
 const [terra,ocra,ocraL,sand,sandD,white,green,text,textM,textL,border]=T;
 
 const S={
-  app:{fontFamily:"'Montserrat',sans-serif",background:sand,minHeight:"100dvh",display:"flex",flexDirection:"column",maxWidth:480,margin:"0 auto"},
+  app:{fontFamily:"'Montserrat',sans-serif",background:sand,minHeight:"100dvh",display:"flex",flexDirection:"column",width:"100%",margin:"0 auto"},
   hdr:{background:terra,color:white,padding:"10px 16px",position:"sticky",top:0,zIndex:100,boxShadow:"0 2px 16px rgba(0,0,0,0.28)"},
   hdrIn:{display:"flex",alignItems:"center",justifyContent:"space-between"},
   hdrLogo:{display:"flex",alignItems:"center",gap:10},
@@ -1075,7 +1075,7 @@ const S={
   hdrSub:{fontSize:9,color:ocraL,letterSpacing:4,textTransform:"uppercase",fontWeight:500},
   hdrPage:{fontSize:10,color:ocraL,letterSpacing:0.5,fontWeight:500,fontStyle:"italic"},
   main:{flex:1,overflowY:"auto",paddingBottom:72},
-  nav:{position:"fixed",bottom:0,left:"50%",transform:"translateX(-50%)",width:"100%",maxWidth:480,background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200},
+  nav:{position:"fixed",bottom:0,left:0,right:0,width:"100%",background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200},
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
   navAct:{background:"rgba(232,160,69,0.07)"},
   navLbl:{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700},
@@ -1093,7 +1093,7 @@ const S={
   naviBtn:{display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"#2595ff",color:white,padding:"13px 18px",borderRadius:14,textDecoration:"none",fontSize:14,fontWeight:700,flex:1,boxShadow:"0 4px 16px rgba(37,149,255,0.3)"},
   waBtnCard:{display:"flex",alignItems:"center",justifyContent:"center",gap:6,background:"#22c55e",color:white,padding:"10px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700,flex:1},
   overlay:{position:"fixed",inset:0,background:"rgba(20,10,4,0.55)",zIndex:300,display:"flex",alignItems:"flex-end"},
-  sheet:{background:white,borderRadius:"20px 20px 0 0",padding:"8px 20px 28px",width:"100%",maxWidth:480,margin:"0 auto",boxShadow:"0 -8px 40px rgba(0,0,0,0.22)",position:"relative"},
+  sheet:{background:white,borderRadius:"20px 20px 0 0",padding:"8px 20px 28px",width:"100%",margin:"0 auto",boxShadow:"0 -8px 40px rgba(0,0,0,0.22)",position:"relative"},
   handle:{width:36,height:4,background:border,borderRadius:2,margin:"0 auto 14px"},
   closeBtn:{position:"absolute",top:14,right:14,background:"none",border:"none",cursor:"pointer",display:"flex",padding:4},
   sheetHead:{display:"flex",alignItems:"flex-start",gap:12,marginBottom:12},
