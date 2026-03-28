@@ -404,6 +404,12 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
     lastX:0, lastY:0, lastTime:0,
     pinching:false, pinchDist0:0, pinchScale0:1,
   });
+  const espRef = useRef(espositori);
+  espRef.current = espositori;
+  const popupRef = useRef(popup);
+  popupRef.current = popup;
+  const catFilterRef = useRef(catFilter);
+  catFilterRef.current = catFilter;
 
   function applyTransform(){
     if(!layerRef.current) return;
@@ -500,8 +506,25 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
         r.dragging=false; startInertia();
         if(!wasDrag&&e.changedTouches&&e.changedTouches[0]){
           const t=e.changedTouches[0];
-          const target=document.elementFromPoint(t.clientX,t.clientY);
-          if(target) target.dispatchEvent(new MouseEvent("click",{bubbles:true,clientX:t.clientX,clientY:t.clientY}));
+          const rect=el.getBoundingClientRect();
+          const px=t.clientX-rect.left, py=t.clientY-rect.top;
+          const svgX=(px-r.offX)/r.scale, svgY=(py-r.offY)/r.scale;
+          const cf=catFilterRef.current;
+          const hit=espRef.current.find(ep=>{
+            const dimmed=cf!=="Tutte"&&ep.categoria!==cf;
+            if(dimmed) return false;
+            if(ep.shape==="poly"){
+              const pts=ep.points.trim().split(/[\s,]+/).map(Number);
+              let inside=false;
+              for(let i=0,j=pts.length-2;i<pts.length;j=i,i+=2){
+                const xi=pts[i],yi=pts[i+1],xj=pts[j],yj=pts[j+1];
+                if(((yi>svgY)!==(yj>svgY))&&(svgX<(xj-xi)*(svgY-yi)/(yj-yi)+xi)) inside=!inside;
+              }
+              return inside;
+            }
+            return svgX>=ep.svgX&&svgX<=ep.svgX+ep.svgW&&svgY>=ep.svgY&&svgY<=ep.svgY+ep.svgH;
+          });
+          if(hit) setPopup(popupRef.current===hit.id?null:hit.id);
         }
       }
     };
