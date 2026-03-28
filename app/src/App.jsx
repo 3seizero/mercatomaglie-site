@@ -1227,7 +1227,7 @@ function Splash({onEnter}){
     desc:{color:"rgba(255,255,255,0.65)",fontSize:13,lineHeight:1.8,textAlign:"center",fontWeight:300,marginBottom:22,maxWidth:320},
     pills:{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center",marginBottom:34},
     pill:{background:"rgba(232,160,69,0.14)",border:"1px solid rgba(232,160,69,0.32)",color:"#e8a045",fontSize:9,padding:"5px 13px",borderRadius:20,fontWeight:700,letterSpacing:1,textTransform:"uppercase"},
-    cta:{width:"100%",padding:"16px 24px",background:"#e8a045",color:"#3d2b1a",border:"none",borderRadius:14,fontSize:14,fontWeight:800,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 8px 28px rgba(232,160,69,0.38)"},
+    cta:{padding:"16px 32px",background:"#e8a045",color:"#3d2b1a",border:"none",borderRadius:14,fontSize:14,fontWeight:800,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 8px 28px rgba(232,160,69,0.38)"},
     footer:{color:"rgba(255,255,255,0.25)",fontSize:9,letterSpacing:2.5,textTransform:"uppercase",marginTop:26},
   };
   return(
@@ -1253,7 +1253,7 @@ function Splash({onEnter}){
             <span key={f} style={ss.pill}>{f}</span>
           ))}
         </div>
-        <div style={{animation:on?"fadeUp 0.5s 0.82s both":"none",width:"100%"}}>
+        <div style={{animation:on?"fadeUp 0.5s 0.82s both":"none",textAlign:"center"}}>
           <button style={ss.cta} onClick={onEnter}>
             Entra nell'Area Mercatale
             <Icon name="chevron" size={20} color="#3d2b1a" sw={2.5}/>
