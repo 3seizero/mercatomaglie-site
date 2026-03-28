@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/projects/maglie/areamercatale/app/sw.js', { scope: '/projects/maglie/areamercatale/app/' })})}
