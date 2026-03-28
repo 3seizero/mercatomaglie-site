@@ -495,7 +495,15 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
     };
     const onTouchEnd=(e)=>{
       if(e.touches.length<2) r.pinching=false;
-      if(e.touches.length===0){ r.dragging=false; startInertia(); }
+      if(e.touches.length===0){
+        const wasDrag=r.didDrag;
+        r.dragging=false; startInertia();
+        if(!wasDrag&&e.changedTouches&&e.changedTouches[0]){
+          const t=e.changedTouches[0];
+          const target=document.elementFromPoint(t.clientX,t.clientY);
+          if(target) target.dispatchEvent(new MouseEvent("click",{bubbles:true,clientX:t.clientX,clientY:t.clientY}));
+        }
+      }
     };
     const onWheel=(e)=>{
       e.preventDefault();
