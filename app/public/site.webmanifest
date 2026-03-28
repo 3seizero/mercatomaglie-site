@@ -2,12 +2,25 @@
   "name": "Area Mercatale Maglie",
   "short_name": "Mercato Maglie",
   "description": "La mappa interattiva del mercato del sabato di Maglie",
+  "id": "/projects/maglie/areamercatale/app/",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "web-app-manifest-512x512.png",
