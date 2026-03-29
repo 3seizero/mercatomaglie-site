@@ -54,6 +54,20 @@ body {
   margin: 0;
 }
 
+/* Landscape lock overlay — mobile only */
+@media (orientation: landscape) and (max-height: 500px) {
+  #root { display: none !important; }
+  body::after {
+    content: "Ruota il dispositivo in verticale";
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #3d2b1a; color: #fff;
+    font: 600 20px/1.4 system-ui, sans-serif;
+    text-align: center; padding: 2rem;
+    z-index: 99999;
+  }
+}
+
 #root {
   width: 1126px;
   max-width: 100%;

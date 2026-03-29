@@ -1310,6 +1310,11 @@ const store={
 const DATA_VERSION = "v11-shapes";
 
 export default function App(){
+  // Lock portrait orientation (works for installed PWA & fullscreen)
+  useEffect(()=>{
+    screen.orientation?.lock?.("portrait").catch(()=>{});
+  },[]);
+
   const [splash,setSplash]=useState(!store.get("visited",false));
   const [page,setPage]=useState("mappa");
 
