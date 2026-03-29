@@ -1197,6 +1197,9 @@ const GCss=`
   nav button{background:transparent!important;color:inherit;}
   nav a{color:inherit;text-decoration:none;}
   @keyframes spin{to{transform:rotate(360deg);}}
+  @media screen and (orientation:landscape){
+    body{transform:rotate(-90deg);transform-origin:left top;width:100vh;height:100vw;position:absolute;top:100%;left:0;}
+  }
 `;
 
 // ============================================================
@@ -1332,6 +1335,8 @@ export default function App(){
   const [adminLogged,setAdminLogged]=useState(false);
   const [popup,setPopup]=useState(null);
   const [catFilter,setCatFilter]=useState("Tutte");
+
+  useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
 
   // Salva solo la mappa presenza {id: true/false} — i dati anagrafici vengono sempre da ESPOSITORI_INIT
   useEffect(()=>{
