@@ -1197,9 +1197,6 @@ const GCss=`
   nav button{background:transparent!important;color:inherit;}
   nav a{color:inherit;text-decoration:none;}
   @keyframes spin{to{transform:rotate(360deg);}}
-  @media screen and (orientation:landscape){
-    body{transform:rotate(-90deg);transform-origin:left top;width:100vh;height:100vw;position:absolute;top:100%;left:0;}
-  }
 `;
 
 // ============================================================
@@ -1242,6 +1239,31 @@ const EV_COL = {
   Gastronomia:"#b87320", Cultura:"#5a3e8a",
   "Evento Speciale":"#a02030", Formazione:"#1a5a8a", Fiera:"#1e7a50"
 };
+
+// ============================================================
+// LANDSCAPE OVERLAY — invita a ruotare in verticale
+// ============================================================
+function LandscapeOverlay(){
+  const [landscape,setLandscape]=useState(false);
+  useEffect(()=>{
+    const check=()=>setLandscape(window.innerWidth>window.innerHeight);
+    check();
+    window.addEventListener("resize",check);
+    window.addEventListener("orientationchange",()=>setTimeout(check,100));
+    return()=>{window.removeEventListener("resize",check);};
+  },[]);
+  if(!landscape) return null;
+  return(
+    <div style={{position:"fixed",inset:0,zIndex:9999,background:"#3d2b1a",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'Montserrat',sans-serif",gap:20}}>
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e8a045" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="2"/>
+        <path d="M12 18h.01"/>
+      </svg>
+      <div style={{color:"#fff",fontSize:16,fontWeight:700,textAlign:"center",letterSpacing:1}}>Ruota il telefono</div>
+      <div style={{color:"rgba(255,255,255,0.5)",fontSize:12,textAlign:"center",maxWidth:240,lineHeight:1.6}}>Questa app funziona solo in modalità verticale</div>
+    </div>
+  );
+}
 
 // ============================================================
 // INSTALL BANNER — invita ad aggiungere alla schermata home
@@ -1411,6 +1433,7 @@ export default function App(){
   return(
     <div style={S.app}>
       <style>{GCss}</style>
+      <LandscapeOverlay/>
       <InstallBanner/>
       {/* HEADER */}
       <header style={S.hdr}>
