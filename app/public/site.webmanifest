@@ -32,6 +32,7 @@
   "theme_color": "#3d2b1a",
   "background_color": "#3d2b1a",
   "display": "standalone",
+  "orientation": "portrait",
   "start_url": "/projects/maglie/areamercatale/app/",
   "scope": "/projects/maglie/areamercatale/app/"
 }
