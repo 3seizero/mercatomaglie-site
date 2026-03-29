@@ -1313,7 +1313,7 @@ const store={
 const DATA_VERSION = "v11-shapes";
 
 export default function App(){
-  const [splash,setSplash]=useState(!store.get("visited",false));
+  const [splash,setSplash]=useState(true);
   const [page,setPage]=useState("mappa");
 
   // Carica sempre i dati freschi da ESPOSITORI_INIT come base,
@@ -1348,7 +1348,9 @@ export default function App(){
 
   const updPresenza=(id,p)=>setEspositori(prev=>prev.map(e=>e.id===id?{...e,presente:p}:e));
 
-  if(splash) return <Splash onEnter={()=>{store.set("visited",true);setSplash(false);}}/>;
+  const [splashReady,setSplashReady]=useState(false);
+  useEffect(()=>{const t=setTimeout(()=>setSplashReady(true),2000);return()=>clearTimeout(t);},[]);
+  if(splash) return <Splash onEnter={()=>{if(splashReady) setSplash(false);}}/>;
 
   const NAV=[
     {id:"mappa",icon:"map",label:"Mappa"},
