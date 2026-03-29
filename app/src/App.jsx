@@ -1244,6 +1244,53 @@ const EV_COL = {
 };
 
 // ============================================================
+// INSTALL BANNER — invita ad aggiungere alla schermata home
+// ============================================================
+function InstallBanner(){
+  const [prompt,setPrompt]=useState(null);
+  const [show,setShow]=useState(false);
+  const isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
+  const isStandalone=window.matchMedia('(display-mode:standalone)').matches||navigator.standalone;
+
+  useEffect(()=>{
+    if(isStandalone) return;
+    const dismissed=store.get("install_dismissed",0);
+    if(dismissed&&Date.now()-dismissed<7*24*60*60*1000) return;
+    const handler=(e)=>{e.preventDefault();setPrompt(e);setShow(true);};
+    window.addEventListener("beforeinstallprompt",handler);
+    if(isIos) setShow(true);
+    return()=>window.removeEventListener("beforeinstallprompt",handler);
+  },[]);
+
+  const dismiss=()=>{store.set("install_dismissed",Date.now());setShow(false);};
+  const install=async()=>{if(prompt){await prompt.prompt();dismiss();}};
+
+  if(!show||isStandalone) return null;
+  const s={
+    wrap:{position:"fixed",bottom:80,left:12,right:12,zIndex:300,background:"#3d2b1a",border:"1.5px solid rgba(200,134,42,0.4)",borderRadius:16,padding:"16px 18px",display:"flex",alignItems:"center",gap:14,boxShadow:"0 8px 32px rgba(0,0,0,0.4)",fontFamily:"'Montserrat',sans-serif"},
+    icon:{width:40,height:40,borderRadius:10,background:"rgba(200,134,42,0.15)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
+    txt:{flex:1,color:"#fff",fontSize:12,lineHeight:1.5},
+    bold:{fontWeight:700,color:"#e8a045"},
+    btn:{background:"#c8862a",color:"#fff",border:"none",borderRadius:10,padding:"10px 18px",fontSize:11,fontWeight:800,cursor:"pointer",letterSpacing:0.5,whiteSpace:"nowrap"},
+    close:{position:"absolute",top:8,right:10,background:"none",border:"none",color:"rgba(255,255,255,0.5)",fontSize:18,cursor:"pointer",lineHeight:1},
+  };
+  return(
+    <div style={s.wrap}>
+      <div style={s.icon}><Icon name="home" size={22} color="#e8a045"/></div>
+      <div style={s.txt}>
+        {isIos?(
+          <>Tocca <span style={s.bold}>Condividi</span> poi <span style={s.bold}>Aggiungi a schermata Home</span></>
+        ):(
+          <>Installa l'app per un'esperienza migliore</>
+        )}
+      </div>
+      {prompt&&<button style={s.btn} onClick={install}>Installa</button>}
+      <button style={s.close} onClick={dismiss}>×</button>
+    </div>
+  );
+}
+
+// ============================================================
 // SPLASH SCREEN
 // ============================================================
 function Splash({onEnter}){
@@ -1364,6 +1411,7 @@ export default function App(){
   return(
     <div style={S.app}>
       <style>{GCss}</style>
+      <InstallBanner/>
       {/* HEADER */}
       <header style={S.hdr}>
         <div style={S.hdrIn}>
