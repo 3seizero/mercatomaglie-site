@@ -942,6 +942,7 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
   const [targa,setTarga]=useState("");
   const [msg,setMsg]=useState(null);
   const [addE,setAddE]=useState(false);
+  const [addErr,setAddErr]=useState("");
   const [addEv,setAddEv]=useState(false);
   const [nE,setNE]=useState({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:"",targa:""});
   const [nEv,setNEv]=useState({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});
@@ -995,7 +996,6 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
         <div>
           <div style={S.secLbl}>Simulatore Targa</div>
           <div style={S.targaCard}>
-            <div style={S.targaDsp}>{targa||"· · · · · · ·"}</div>
             <input style={S.targaIn} type="text" placeholder="es. LE456AB" value={targa}
               onChange={e=>setTarga(e.target.value.toUpperCase())} onKeyDown={e=>e.key==="Enter"&&simTarga()} maxLength={8}/>
             <button style={S.sbarraBtn} onClick={simTarga}><Icon name="car" size={18} color="#fff" sw={1.8}/> Verifica Accesso</button>
@@ -1005,7 +1005,7 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
           </div>}
           <div style={S.secLbl}>Presenza Espositori</div>
           <div style={S.col}>
-            {espositori.map(e=>(
+            {espositori.filter(e=>e.nome).map(e=>(
               <div key={e.id} style={S.presRow}>
                 <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?"#3daa70":"#c0b0a0",flexShrink:0,display:"inline-block"}}/>
                 <div style={{flex:1}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.postazione} · {e.targa}</div></div>
@@ -1023,29 +1023,40 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
         <div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
             <div style={S.secLbl}>Espositori</div>
-            <button style={S.addBtn} onClick={()=>setAddE(true)}><Icon name="plus" size={15} color="#fff" sw={2}/> Aggiungi</button>
+            <button style={S.addBtn} onClick={()=>{setAddE(true);setAddErr("");}}><Icon name="plus" size={15} color="#fff" sw={2}/> Aggiungi</button>
           </div>
           {addE&&(
             <div style={S.formCard}>
-              <div style={S.formH}>Nuovo Espositore</div>
-              {[["nome","Nome attività *"],["titolare","Titolare"],["whatsapp","WhatsApp"],["postazione","Codice postazione *"],["targa","Targa"]].map(([k,pl])=>(
+              <div style={S.formH}>Assegna postazione</div>
+              {[["nome","Nome attività *"],["titolare","Titolare"],["whatsapp","WhatsApp"],["postazione","Codice postazione libera (es. P051) *"],["targa","Targa"]].map(([k,pl])=>(
                 <input key={k} style={S.input} placeholder={pl} value={nE[k]} onChange={e=>setNE(p=>({...p,[k]:e.target.value}))}/>
               ))}
               <select style={S.select} value={nE.categoria} onChange={e=>setNE(p=>({...p,categoria:e.target.value}))}>
                 {["Alimentare","Abbigliamento","Calzature","Cosmetica","Tessuti","Elettronica","Bigiotteria","Casalinghi","Floricoltura","Giocattoli","Pelletteria","Artigianato","Ristorazione","Editoria","Sport","Erboristeria","Sartoria"].map(c=><option key={c}>{c}</option>)}
               </select>
+              {addErr&&<div style={S.errMsg}>{addErr}</div>}
               <div style={{display:"flex",gap:8}}>
-                <button style={S.saveBtn} onClick={()=>{if(!nE.nome||!nE.postazione)return;const id=Math.max(...espositori.map(e=>e.id))+1;setEspositori(p=>[...p,{...nE,id,presente:false,x:8+((id-1)%6)*14,y:8+((id-1)%4)*12}]);setAddE(false);setNE({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:"",targa:""});}}>Salva</button>
-                <button style={S.cancelBtn} onClick={()=>setAddE(false)}>Annulla</button>
+                <button style={S.saveBtn} onClick={()=>{
+                  setAddErr("");
+                  if(!nE.nome.trim()||!nE.postazione.trim()){setAddErr("Nome attività e codice postazione sono obbligatori");return;}
+                  const code=nE.postazione.trim().toUpperCase();
+                  const target=espositori.find(x=>x.postazione.toUpperCase()===code);
+                  if(!target){setAddErr(`Postazione ${code} inesistente (usa un codice da P001 a P251)`);return;}
+                  if(target.nome){setAddErr(`${code} è già assegnata a "${target.nome}"`);return;}
+                  setEspositori(p=>p.map(x=>x.id===target.id?{...x,nome:nE.nome.trim(),titolare:nE.titolare.trim(),categoria:nE.categoria,whatsapp:nE.whatsapp.trim(),targa:nE.targa.trim().toUpperCase()}:x));
+                  setAddE(false);setAddErr("");
+                  setNE({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:"",targa:""});
+                }}>Salva</button>
+                <button style={S.cancelBtn} onClick={()=>{setAddE(false);setAddErr("");}}>Annulla</button>
               </div>
             </div>
           )}
           <div style={S.col}>
-            {espositori.map(e=>(
+            {espositori.filter(e=>e.nome).map(e=>(
               <div key={e.id} style={S.aRow}>
                 <span style={{fontSize:11,fontWeight:800,color:e.presente?"#3daa70":"#9a8070",minWidth:36}}>{e.postazione}</span>
                 <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.titolare} · {e.targa}</div></div>
-                <button style={S.delBtn} onClick={()=>setEspositori(p=>p.filter(x=>x.id!==e.id))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
+                <button style={S.delBtn} title="Libera postazione" onClick={()=>setEspositori(p=>p.map(x=>x.id===e.id?{...x,nome:"",titolare:"",categoria:"",whatsapp:"",targa:"",presente:false}:x))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
               </div>
             ))}
           </div>
@@ -1170,7 +1181,6 @@ const S={
   aTabAct:{background:terra,color:white,borderColor:terra},
   secLbl:{fontSize:9,fontWeight:700,color:textL,letterSpacing:2,textTransform:"uppercase",marginBottom:8,marginTop:2},
   targaCard:{background:white,borderRadius:14,padding:16,border:`1px solid ${border}`,marginBottom:10,textAlign:"center"},
-  targaDsp:{fontFamily:"'Courier New',monospace",fontSize:24,fontWeight:800,color:terra,letterSpacing:6,background:"#fffde8",padding:"9px 14px",borderRadius:8,border:"2px solid #d4b000",marginBottom:10,display:"inline-block",minWidth:150},
   targaIn:{width:"100%",padding:"11px",borderRadius:10,border:`1.5px solid ${border}`,fontSize:18,textAlign:"center",letterSpacing:5,background:sand,color:terra,outline:"none",boxSizing:"border-box",marginBottom:10,textTransform:"uppercase",fontFamily:"'Courier New',monospace",fontWeight:800},
   sbarraBtn:{width:"100%",padding:"12px 0",background:ocra,color:white,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center",gap:8,fontFamily:"'Montserrat',sans-serif"},
   targaMsg:{padding:"11px 12px",borderRadius:10,fontSize:11,fontWeight:600,marginBottom:12,display:"flex",alignItems:"center",gap:8,border:"1.5px solid"},
@@ -1246,7 +1256,19 @@ const EV_COL = {
 function LandscapeOverlay(){
   const [landscape,setLandscape]=useState(false);
   useEffect(()=>{
-    const check=()=>setLandscape(window.innerWidth>window.innerHeight);
+    const check=()=>{
+      // NON usare innerWidth>innerHeight: su Android la tastiera virtuale
+      // riduce innerHeight e farebbe comparire l'overlay mentre si digita,
+      // rubando il focus al campo. screen.orientation riflette l'orientamento
+      // FISICO del dispositivo e non cambia all'apertura della tastiera.
+      const ae=document.activeElement;
+      if(ae&&(ae.tagName==="INPUT"||ae.tagName==="TEXTAREA"||ae.tagName==="SELECT")) return;
+      const ot=screen.orientation&&screen.orientation.type;
+      const isLandscape = ot
+        ? ot.startsWith("landscape")
+        : window.matchMedia("(orientation: landscape)").matches;
+      setLandscape(isLandscape);
+    };
     check();
     window.addEventListener("resize",check);
     window.addEventListener("orientationchange",()=>setTimeout(check,100));
@@ -1379,14 +1401,15 @@ const store={
 };
 
 // Versione dati — cambia per forzare reset cache
-const DATA_VERSION = "v11-shapes";
+const DATA_VERSION = "v12-overrides";
 
 export default function App(){
   const [splash,setSplash]=useState(true);
   const [page,setPage]=useState("mappa");
 
-  // Carica sempre i dati freschi da ESPOSITORI_INIT come base,
-  // poi applica sopra solo le modifiche di presenza salvate in cache
+  // Geometria e codici postazione vengono SEMPRE da ESPOSITORI_INIT (base);
+  // da localStorage si recuperano solo i campi modificabili (presenza +
+  // anagrafica) salvati come override per id.
   const [espositori,setEspositori]=useState(()=>{
     if(store.get("data_version","")!==DATA_VERSION){
       // Cancella tutto il localStorage e riparte da zero
@@ -1394,9 +1417,10 @@ export default function App(){
       store.set("data_version",DATA_VERSION);
       return ESPOSITORI_INIT;
     }
-    const presenza = store.get("esp_presenza",{});
+    const overrides = store.get("esp_overrides",null);
+    if(!overrides) return ESPOSITORI_INIT;
     return ESPOSITORI_INIT.map(e=>
-      presenza[e.id]!==undefined ? {...e,presente:presenza[e.id]} : e
+      overrides[e.id] ? {...e,...overrides[e.id]} : e
     );
   });
 
@@ -1407,11 +1431,14 @@ export default function App(){
 
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
 
-  // Salva solo la mappa presenza {id: true/false} — i dati anagrafici vengono sempre da ESPOSITORI_INIT
+  // Salva gli override modificabili per id (presenza + anagrafica).
+  // Geometria, shape e codici restano in ESPOSITORI_INIT e non vengono salvati.
   useEffect(()=>{
-    const presenza = {};
-    espositori.forEach(e=>{ presenza[e.id]=e.presente; });
-    store.set("esp_presenza",presenza);
+    const overrides = {};
+    espositori.forEach(e=>{
+      overrides[e.id] = {nome:e.nome,titolare:e.titolare,categoria:e.categoria,whatsapp:e.whatsapp,targa:e.targa,presente:e.presente};
+    });
+    store.set("esp_overrides",overrides);
   },[espositori]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 

@@ -5,6 +5,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/projects/maglie/areamercatale/app/',
+  // Sorgenti in app-src/ (sviluppo), build pubblicata in ../app (produzione, committata)
+  build: {
+    outDir: '../app',
+    emptyOutDir: true,
+  },
   plugins: [
     react(),
     VitePWA({
