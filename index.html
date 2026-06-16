@@ -145,6 +145,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 52px; font-weight: 700; line-height: 1;
       color: var(--white);
+      margin-bottom: 15px;
     }
     .number-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 4px; }
     .number-div { width: 1px; height: 48px; background: rgba(255,255,255,0.25); }
@@ -181,7 +182,7 @@
       padding: 20px 28px; border-radius: 4px;
       box-shadow: 0 8px 32px rgba(200,134,42,0.4);
     }
-    .about-img-badge-val { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; line-height: 1; }
+    .about-img-badge-val { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 15px; }
     .about-img-badge-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; opacity: 0.85; }
 
     /* ─── FULLSCREEN IMAGE ─── */
@@ -441,7 +442,8 @@
       .nav-links a:hover { color: var(--ocraL); }
       .nav-links .nav-cta { margin-top: 20px; padding: 12px 32px; }
       .hero-content { padding: 0 24px 60px; }
-      .numbers { padding: 24px; justify-content: center; gap: 32px; }
+      .numbers { display: grid; grid-template-columns: 1fr 1fr; padding: 32px 24px; gap: 36px 16px; place-items: center; }
+      .number-item { width: 100%; }
       .number-div { display: none; }
       .section-inner { padding: 0 24px; }
       .about-grid, .app-grid, .mapinfo-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -524,18 +526,18 @@
   </div>
   <div class="number-div"></div>
   <div class="number-item reveal reveal-delay-1">
-    <div class="number-val">30+</div>
+    <div class="number-val">20+</div>
     <div class="number-label">Categorie merceologiche</div>
   </div>
   <div class="number-div"></div>
   <div class="number-item reveal reveal-delay-2">
-    <div class="number-val">1</div>
-    <div class="number-label">Sabato al mese</div>
+    <div class="number-val">52</div>
+    <div class="number-label">Sabati l'anno</div>
   </div>
   <div class="number-div"></div>
   <div class="number-item reveal reveal-delay-3">
-    <div class="number-val">∞</div>
-    <div class="number-label">Motivi per venire</div>
+    <div class="number-val">100%</div>
+    <div class="number-label">Made in Salento</div>
   </div>
 </div>
 
