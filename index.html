@@ -482,7 +482,7 @@
     <a href="#app">App</a>
     <a href="#eventi">Eventi</a>
     <a href="#dove">Come Arrivare</a>
-    <a href="#app" class="nav-cta">Apri la Mappa →</a>
+    <a href="app/" class="nav-cta">Apri la Mappa →</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -505,7 +505,7 @@
     </h1>
     <p class="hero-sub">Ogni sabato, centinaia di espositori, sapori autentici, artigianato e cultura si danno appuntamento nel cuore del Salento.</p>
     <div class="hero-actions">
-      <a href="#app" class="btn-primary">
+      <a href="app/" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
         Apri la Mappa Live
       </a>
@@ -560,8 +560,8 @@
           src="img/about-01.webp"
           alt="Mercato colorato con frutta e verdura fresca"/>
         <div class="about-img-badge">
-          <div class="about-img-badge-val">'89</div>
-          <div class="about-img-badge-label">Dal 1989</div>
+          <div class="about-img-badge-val" id="anniTradizione">37</div>
+          <div class="about-img-badge-label">Anni di tradizione</div>
         </div>
       </div>
     </div>
@@ -651,7 +651,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="btn-primary">
+        <a href="app/" class="btn-primary">
           Apri la Mappa →
         </a>
       </div>
@@ -712,7 +712,7 @@
       <div class="cat-card reveal reveal-delay-3"><div class="cat-card-icon">🏠</div><div class="cat-card-name">Casalinghi</div><div class="cat-card-count">Tutto per la casa</div></div>
     </div>
     <div style="text-align:center">
-      <a href="#" class="btn-primary reveal">Vedi tutti sulla mappa →</a>
+      <a href="app/" class="btn-primary reveal">Vedi tutti sulla mappa →</a>
     </div>
   </div>
 </section>
@@ -789,7 +789,7 @@
       </div>
     </div>
     <div class="install-actions">
-      <a href="#" class="btn-primary reveal">
+      <a href="app/" class="btn-primary reveal">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         Apri la Mappa Live
       </a>
@@ -879,7 +879,7 @@
     <div class="footer-col">
       <h5>Naviga</h5>
       <a href="#about">Mercato</a>
-      <a href="#app">La Mappa Live</a>
+      <a href="app/">La Mappa Live</a>
       <a href="#eventi">Eventi</a>
       <a href="#dove">Come Arrivare</a>
     </div>
@@ -935,6 +935,10 @@
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
+
+  // Anni di tradizione auto-calcolati dal 1989
+  const anniEl = document.getElementById('anniTradizione');
+  if (anniEl) anniEl.textContent = new Date().getFullYear() - 1989;
 
   // Genera griglia postazioni nel mockup telefono
   const grid = document.getElementById('stallGrid');
