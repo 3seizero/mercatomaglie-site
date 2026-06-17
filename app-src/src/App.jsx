@@ -466,7 +466,34 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
       r.lastX=e.clientX; r.lastY=e.clientY; r.lastTime=Date.now();
       applyTransform();
     };
-    const onUp=()=>{ r.dragging=false; startInertia(); };
+    const onUp=(e)=>{
+      const wasDrag=r.didDrag;
+      r.dragging=false; startInertia();
+      // Click desktop (mouse/pen): setPointerCapture dirotta i 'click' sul
+      // contenitore, quindi i <g> delle postazioni non li ricevono. Replichiamo
+      // qui lo stesso hit-test usato per il touch (onTouchEnd).
+      if(e&&e.type==="pointerup"&&e.pointerType!=="touch"&&!wasDrag){
+        const rect=el.getBoundingClientRect();
+        const px=e.clientX-rect.left, py=e.clientY-rect.top;
+        const svgX=(px-r.offX)/r.scale, svgY=(py-r.offY)/r.scale;
+        const cf=catFilterRef.current;
+        const hit=espRef.current.find(ep=>{
+          const dimmed=cf!=="Tutte"&&ep.categoria!==cf;
+          if(dimmed) return false;
+          if(ep.shape==="poly"){
+            const pts=ep.points.trim().split(/[\s,]+/).map(Number);
+            let inside=false;
+            for(let i=0,j=pts.length-2;i<pts.length;j=i,i+=2){
+              const xi=pts[i],yi=pts[i+1],xj=pts[j],yj=pts[j+1];
+              if(((yi>svgY)!==(yj>svgY))&&(svgX<(xj-xi)*(svgY-yi)/(yj-yi)+xi)) inside=!inside;
+            }
+            return inside;
+          }
+          return svgX>=ep.svgX&&svgX<=ep.svgX+ep.svgW&&svgY>=ep.svgY&&svgY<=ep.svgY+ep.svgH;
+        });
+        if(hit) setPopup(popupRef.current===hit.id?null:hit.id);
+      }
+    };
 
     const onTouchStart=(e)=>{
       if(e.touches.length===1){
@@ -651,11 +678,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
             const dotX = isPoly ? e.cx + 8 : e.svgX + e.svgW - 3.5;
             const dotY = isPoly ? e.cy - 6 : e.svgY + 3.5;
             return(
-              <g key={e.id} style={{cursor: dimmed?"default":"pointer"}}
-                onClick={ev=>{
-                  ev.stopPropagation();
-                  if(!stateRef.current.didDrag && !dimmed) setPopup(popup===e.id?null:e.id);
-                }}>
+              <g key={e.id} style={{cursor: dimmed?"default":"pointer"}}>
                 {isPoly
                   ? <polygon points={e.points}
                       fill={fillCol} stroke={strokeCol} strokeWidth={strokeW}/>
