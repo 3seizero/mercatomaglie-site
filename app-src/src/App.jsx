@@ -478,6 +478,12 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
     const onUp=()=>{ r.dragging=false; startInertia(); };
 
     const onTouchStart=(e)=>{
+      // Se il tocco parte da un bottone (zoom/home/localizza/categoria, tutti
+      // figli del contenitore mappa) non gestiamo pan/pinch/hit-test: deve
+      // agire solo il bottone. Altrimenti l'hit-test aprirebbe il popup della
+      // postazione che sta sotto il bottone.
+      r.touchOnBtn = !!(e.target.closest && e.target.closest("button"));
+      if(r.touchOnBtn) return;
       if(e.touches.length===1){
         r.dragging=true; r.didDrag=false;
         r.velX=0; r.velY=0; cancelAnimationFrame(r.rafId);
@@ -488,6 +494,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
       }
     };
     const onTouchMove=(e)=>{
+      if(r.touchOnBtn) return;
       e.preventDefault();
       if(r.pinching&&e.touches.length===2){
         const dist=pdist(e.touches);
@@ -509,6 +516,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
       }
     };
     const onTouchEnd=(e)=>{
+      if(r.touchOnBtn){ if(e.touches.length===0) r.touchOnBtn=false; return; }
       if(e.touches.length<2) r.pinching=false;
       if(e.touches.length===0){
         const wasDrag=r.didDrag;
