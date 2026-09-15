@@ -1,0 +1,5744 @@
+{
+ "_meta": {
+  "fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026",
+  "generato": "scripts/import-suap.py"
+ },
+ "posteggi": [
+  {
+   "id": "A-86",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "1",
+   "numero": "86",
+   "etichetta": "Settore A · fila 1 · n. 86",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "migliaccio-massimo",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "A-87",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "1",
+   "numero": "87",
+   "etichetta": "Settore A · fila 1 · n. 87",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "13x5",
+    "w": 13.0,
+    "h": 5.0,
+    "mq": 65.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "A-88",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "1",
+   "numero": "88",
+   "etichetta": "Settore A · fila 1 · n. 88",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "laghezza-michele",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "A-89",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "2",
+   "numero": "89",
+   "etichetta": "Settore A · fila 2 · n. 89",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "fiorentino-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "A-90",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "2",
+   "numero": "90",
+   "etichetta": "Settore A · fila 2 · n. 90",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": "fiorentino-claudio",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "A-91",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "2",
+   "numero": "91",
+   "etichetta": "Settore A · fila 2 · n. 91",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "A-90bis",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "2",
+   "numero": "90bis",
+   "etichetta": "Settore A · fila 2 · n. 90bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "A-92",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "3",
+   "numero": "92",
+   "etichetta": "Settore A · fila 3 · n. 92",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "A-93",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "3",
+   "numero": "93",
+   "etichetta": "Settore A · fila 3 · n. 93",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "A-94",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "3",
+   "numero": "94",
+   "etichetta": "Settore A · fila 3 · n. 94",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "notaro-cesario-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "A-93bis",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "3",
+   "numero": "93bis",
+   "etichetta": "Settore A · fila 3 · n. 93bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 11,
+   "mapId": null
+  },
+  {
+   "id": "A-29",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "4",
+   "numero": "29",
+   "etichetta": "Settore A · fila 4 · n. 29",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "verardi-massimo",
+   "stato": "assegnato",
+   "ordineElenco": 12,
+   "mapId": null
+  },
+  {
+   "id": "A-95",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "4",
+   "numero": "95",
+   "etichetta": "Settore A · fila 4 · n. 95",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "de-pascali-fabrizio",
+   "stato": "assegnato",
+   "ordineElenco": 13,
+   "mapId": null
+  },
+  {
+   "id": "A-96",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "4",
+   "numero": "96",
+   "etichetta": "Settore A · fila 4 · n. 96",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "de-matteis-claudio",
+   "stato": "assegnato",
+   "ordineElenco": 14,
+   "mapId": null
+  },
+  {
+   "id": "A-97",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "4",
+   "numero": "97",
+   "etichetta": "Settore A · fila 4 · n. 97",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "14x5",
+    "w": 14.0,
+    "h": 5.0,
+    "mq": 70.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 15,
+   "mapId": null
+  },
+  {
+   "id": "A-24",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "24",
+   "etichetta": "Settore A · fila 5 · n. 24",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x7",
+    "w": 10.0,
+    "h": 7.0,
+    "mq": 70.0
+   },
+   "espositoreId": "tedesco-vincenzo",
+   "stato": "assegnato",
+   "ordineElenco": 16,
+   "mapId": null
+  },
+  {
+   "id": "A-25",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "25",
+   "etichetta": "Settore A · fila 5 · n. 25",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "nico-tonio",
+   "stato": "assegnato",
+   "ordineElenco": 17,
+   "mapId": null
+  },
+  {
+   "id": "A-26",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "26",
+   "etichetta": "Settore A · fila 5 · n. 26",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "matricoti-dario",
+   "stato": "assegnato",
+   "ordineElenco": 18,
+   "mapId": null
+  },
+  {
+   "id": "A-27",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "27",
+   "etichetta": "Settore A · fila 5 · n. 27",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "de-matteis-claudio",
+   "stato": "assegnato",
+   "ordineElenco": 19,
+   "mapId": null
+  },
+  {
+   "id": "A-28",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "28",
+   "etichetta": "Settore A · fila 5 · n. 28",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "cavaliere-luca",
+   "stato": "assegnato",
+   "ordineElenco": 20,
+   "mapId": null
+  },
+  {
+   "id": "A-98",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "98",
+   "etichetta": "Settore A · fila 5 · n. 98",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "giannone-biagio",
+   "stato": "assegnato",
+   "ordineElenco": 21,
+   "mapId": null
+  },
+  {
+   "id": "A-99",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "99",
+   "etichetta": "Settore A · fila 5 · n. 99",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 22,
+   "mapId": null
+  },
+  {
+   "id": "A-100",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "100",
+   "etichetta": "Settore A · fila 5 · n. 100",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "za-giampaolo",
+   "stato": "assegnato",
+   "ordineElenco": 23,
+   "mapId": null
+  },
+  {
+   "id": "A-99bis",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "5",
+   "numero": "99bis",
+   "etichetta": "Settore A · fila 5 · n. 99bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 24,
+   "mapId": null
+  },
+  {
+   "id": "A-30",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "30",
+   "etichetta": "Settore A · fila 6 · n. 30",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "micello-massimo",
+   "stato": "assegnato",
+   "ordineElenco": 25,
+   "mapId": null
+  },
+  {
+   "id": "A-31",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "31",
+   "etichetta": "Settore A · fila 6 · n. 31",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "13x5",
+    "w": 13.0,
+    "h": 5.0,
+    "mq": 65.0
+   },
+   "espositoreId": "fitto-francesco",
+   "stato": "assegnato",
+   "ordineElenco": 26,
+   "mapId": null
+  },
+  {
+   "id": "A-32",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "32",
+   "etichetta": "Settore A · fila 6 · n. 32",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x5",
+    "w": 5.0,
+    "h": 5.0,
+    "mq": 25.0
+   },
+   "espositoreId": "spagnolo-sebastiano",
+   "stato": "assegnato",
+   "ordineElenco": 27,
+   "mapId": null
+  },
+  {
+   "id": "A-33",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "33",
+   "etichetta": "Settore A · fila 6 · n. 33",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "caputo-pasquale",
+   "stato": "assegnato",
+   "ordineElenco": 28,
+   "mapId": null
+  },
+  {
+   "id": "A-34",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "34",
+   "etichetta": "Settore A · fila 6 · n. 34",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "marcuccio-sebastiano",
+   "stato": "assegnato",
+   "ordineElenco": 29,
+   "mapId": null
+  },
+  {
+   "id": "A-35",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "35",
+   "etichetta": "Settore A · fila 6 · n. 35",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "blonda-luciano",
+   "stato": "assegnato",
+   "ordineElenco": 30,
+   "mapId": null
+  },
+  {
+   "id": "A-36",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "36",
+   "etichetta": "Settore A · fila 6 · n. 36",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "cafaro-cesario",
+   "stato": "assegnato",
+   "ordineElenco": 31,
+   "mapId": null
+  },
+  {
+   "id": "A-101",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "101",
+   "etichetta": "Settore A · fila 6 · n. 101",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "inglese-gianni",
+   "stato": "assegnato",
+   "ordineElenco": 32,
+   "mapId": null
+  },
+  {
+   "id": "A-102",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "102",
+   "etichetta": "Settore A · fila 6 · n. 102",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 33,
+   "mapId": null
+  },
+  {
+   "id": "A-103",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "103",
+   "etichetta": "Settore A · fila 6 · n. 103",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 34,
+   "mapId": null
+  },
+  {
+   "id": "A-104",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "6",
+   "numero": "104",
+   "etichetta": "Settore A · fila 6 · n. 104",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "poso-roberto",
+   "stato": "assegnato",
+   "ordineElenco": 35,
+   "mapId": null
+  },
+  {
+   "id": "A-37",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "37",
+   "etichetta": "Settore A · fila 7 · n. 37",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "papa-roberto",
+   "stato": "assegnato",
+   "ordineElenco": 36,
+   "mapId": null
+  },
+  {
+   "id": "A-38",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "38",
+   "etichetta": "Settore A · fila 7 · n. 38",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 37,
+   "mapId": null
+  },
+  {
+   "id": "A-39",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "39",
+   "etichetta": "Settore A · fila 7 · n. 39",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 38,
+   "mapId": null
+  },
+  {
+   "id": "A-40",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "40",
+   "etichetta": "Settore A · fila 7 · n. 40",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 39,
+   "mapId": null
+  },
+  {
+   "id": "A-41",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "41",
+   "etichetta": "Settore A · fila 7 · n. 41",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "ettaqy-m-hamed",
+   "stato": "assegnato",
+   "ordineElenco": 40,
+   "mapId": null
+  },
+  {
+   "id": "A-42",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "42",
+   "etichetta": "Settore A · fila 7 · n. 42",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "beccarisi-claudio",
+   "stato": "assegnato",
+   "ordineElenco": 41,
+   "mapId": null
+  },
+  {
+   "id": "A-43",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "43",
+   "etichetta": "Settore A · fila 7 · n. 43",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "de-pascali-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 42,
+   "mapId": null
+  },
+  {
+   "id": "A-105",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "105",
+   "etichetta": "Settore A · fila 7 · n. 105",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "ramundo-cosimo",
+   "stato": "assegnato",
+   "ordineElenco": 43,
+   "mapId": null
+  },
+  {
+   "id": "A-106",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "106",
+   "etichetta": "Settore A · fila 7 · n. 106",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "venneri-mauro",
+   "stato": "assegnato",
+   "ordineElenco": 44,
+   "mapId": null
+  },
+  {
+   "id": "A-107",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "107",
+   "etichetta": "Settore A · fila 7 · n. 107",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 45,
+   "mapId": null
+  },
+  {
+   "id": "A-108",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "108",
+   "etichetta": "Settore A · fila 7 · n. 108",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x5",
+    "w": 5.0,
+    "h": 5.0,
+    "mq": 25.0
+   },
+   "espositoreId": "maruccia-ivano",
+   "stato": "assegnato",
+   "ordineElenco": 46,
+   "mapId": null
+  },
+  {
+   "id": "A-107bis",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "7",
+   "numero": "107bis",
+   "etichetta": "Settore A · fila 7 · n. 107bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 47,
+   "mapId": null
+  },
+  {
+   "id": "A-44",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "44",
+   "etichetta": "Settore A · fila 8 · n. 44",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "levanto-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 48,
+   "mapId": null
+  },
+  {
+   "id": "A-45",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "45",
+   "etichetta": "Settore A · fila 8 · n. 45",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "morrone-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 49,
+   "mapId": null
+  },
+  {
+   "id": "A-46",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "46",
+   "etichetta": "Settore A · fila 8 · n. 46",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 50,
+   "mapId": null
+  },
+  {
+   "id": "A-48",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "48",
+   "etichetta": "Settore A · fila 8 · n. 48",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "tundo-sergio",
+   "stato": "assegnato",
+   "ordineElenco": 51,
+   "mapId": null
+  },
+  {
+   "id": "A-49",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "49",
+   "etichetta": "Settore A · fila 8 · n. 49",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 52,
+   "mapId": null
+  },
+  {
+   "id": "A-50",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "50",
+   "etichetta": "Settore A · fila 8 · n. 50",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "conte-cosimo",
+   "stato": "assegnato",
+   "ordineElenco": 53,
+   "mapId": null
+  },
+  {
+   "id": "A-109",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "109",
+   "etichetta": "Settore A · fila 8 · n. 109",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "maggio-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 54,
+   "mapId": null
+  },
+  {
+   "id": "A-110",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "110",
+   "etichetta": "Settore A · fila 8 · n. 110",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 55,
+   "mapId": null
+  },
+  {
+   "id": "A-111",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "111",
+   "etichetta": "Settore A · fila 8 · n. 111",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 56,
+   "mapId": null
+  },
+  {
+   "id": "A-112",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "112",
+   "etichetta": "Settore A · fila 8 · n. 112",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 57,
+   "mapId": null
+  },
+  {
+   "id": "A-1",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "1",
+   "etichetta": "Settore A · fila 9 · n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "perrotta-gianpiero-davide",
+   "stato": "assegnato",
+   "ordineElenco": 58,
+   "mapId": null
+  },
+  {
+   "id": "A-2",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "2",
+   "etichetta": "Settore A · fila 9 · n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "perrotta-gianpiero-davide",
+   "stato": "assegnato",
+   "ordineElenco": 59,
+   "mapId": null
+  },
+  {
+   "id": "A-3",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "3",
+   "etichetta": "Settore A · fila 9 · n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "biondino-roberta",
+   "stato": "assegnato",
+   "ordineElenco": 60,
+   "mapId": null
+  },
+  {
+   "id": "A-4",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "4",
+   "etichetta": "Settore A · fila 9 · n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x5",
+    "w": 5.0,
+    "h": 5.0,
+    "mq": 25.0
+   },
+   "espositoreId": "de-tommaso-maurizio",
+   "stato": "assegnato",
+   "ordineElenco": 61,
+   "mapId": null
+  },
+  {
+   "id": "A-5",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "5",
+   "etichetta": "Settore A · fila 9 · n. 5",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "accogli-raffaele",
+   "stato": "assegnato",
+   "ordineElenco": 62,
+   "mapId": null
+  },
+  {
+   "id": "A-6",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "6",
+   "etichetta": "Settore A · fila 9 · n. 6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "stefanelli-marco",
+   "stato": "assegnato",
+   "ordineElenco": 63,
+   "mapId": null
+  },
+  {
+   "id": "A-7",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "7",
+   "etichetta": "Settore A · fila 9 · n. 7",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "terragno-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 64,
+   "mapId": null
+  },
+  {
+   "id": "A-51",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "51",
+   "etichetta": "Settore A · fila 9 · n. 51",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "forlano-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 65,
+   "mapId": null
+  },
+  {
+   "id": "A-52",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "52",
+   "etichetta": "Settore A · fila 9 · n. 52",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "forlano-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 66,
+   "mapId": null
+  },
+  {
+   "id": "A-53",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "53",
+   "etichetta": "Settore A · fila 9 · n. 53",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 67,
+   "mapId": null
+  },
+  {
+   "id": "A-54",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "54",
+   "etichetta": "Settore A · fila 9 · n. 54",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 68,
+   "mapId": null
+  },
+  {
+   "id": "A-55/56",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "55/56",
+   "etichetta": "Settore A · fila 9 · n. 55/56",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 69,
+   "mapId": null
+  },
+  {
+   "id": "A-57",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "57",
+   "etichetta": "Settore A · fila 9 · n. 57",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 70,
+   "mapId": null
+  },
+  {
+   "id": "A-58",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "58",
+   "etichetta": "Settore A · fila 9 · n. 58",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "settimo-gianni",
+   "stato": "assegnato",
+   "ordineElenco": 71,
+   "mapId": null
+  },
+  {
+   "id": "A-113",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "113",
+   "etichetta": "Settore A · fila 9 · n. 113",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 72,
+   "mapId": null
+  },
+  {
+   "id": "A-114",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "114",
+   "etichetta": "Settore A · fila 9 · n. 114",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 73,
+   "mapId": null
+  },
+  {
+   "id": "A-115",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "115",
+   "etichetta": "Settore A · fila 9 · n. 115",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 74,
+   "mapId": null
+  },
+  {
+   "id": "A-116",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "9",
+   "numero": "116",
+   "etichetta": "Settore A · fila 9 · n. 116",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 75,
+   "mapId": null
+  },
+  {
+   "id": "A-8",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "8",
+   "etichetta": "Settore A · fila 10 · n. 8",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "resta-vincenzo",
+   "stato": "assegnato",
+   "ordineElenco": 76,
+   "mapId": null
+  },
+  {
+   "id": "A-9",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "9",
+   "etichetta": "Settore A · fila 10 · n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "paglialonga-alberto",
+   "stato": "assegnato",
+   "ordineElenco": 77,
+   "mapId": null
+  },
+  {
+   "id": "A-10",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "10",
+   "etichetta": "Settore A · fila 10 · n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 78,
+   "mapId": null
+  },
+  {
+   "id": "A-11",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "11",
+   "etichetta": "Settore A · fila 10 · n. 11",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": "riccardo-vito-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 79,
+   "mapId": null
+  },
+  {
+   "id": "A-12",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "12",
+   "etichetta": "Settore A · fila 10 · n. 12",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "za-giampaolo-2",
+   "stato": "assegnato",
+   "ordineElenco": 80,
+   "mapId": null
+  },
+  {
+   "id": "A-13",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "13",
+   "etichetta": "Settore A · fila 10 · n. 13",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "scrascia-adriano",
+   "stato": "assegnato",
+   "ordineElenco": 81,
+   "mapId": null
+  },
+  {
+   "id": "A-59",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "59",
+   "etichetta": "Settore A · fila 10 · n. 59",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "antonaci-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 82,
+   "mapId": null
+  },
+  {
+   "id": "A-60",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "60",
+   "etichetta": "Settore A · fila 10 · n. 60",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 83,
+   "mapId": null
+  },
+  {
+   "id": "A-61",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "61",
+   "etichetta": "Settore A · fila 10 · n. 61",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 84,
+   "mapId": null
+  },
+  {
+   "id": "A-62",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "62",
+   "etichetta": "Settore A · fila 10 · n. 62",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "macri-emanuele-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 85,
+   "mapId": null
+  },
+  {
+   "id": "A-63",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "63",
+   "etichetta": "Settore A · fila 10 · n. 63",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 86,
+   "mapId": null
+  },
+  {
+   "id": "A-64",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "64",
+   "etichetta": "Settore A · fila 10 · n. 64",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "monte-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 87,
+   "mapId": null
+  },
+  {
+   "id": "A-65",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "65",
+   "etichetta": "Settore A · fila 10 · n. 65",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": "congedo-domenico",
+   "stato": "assegnato",
+   "ordineElenco": 88,
+   "mapId": null
+  },
+  {
+   "id": "A-117",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "117",
+   "etichetta": "Settore A · fila 10 · n. 117",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "carlino-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 89,
+   "mapId": null
+  },
+  {
+   "id": "A-118",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "118",
+   "etichetta": "Settore A · fila 10 · n. 118",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 90,
+   "mapId": null
+  },
+  {
+   "id": "A-118bis",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "118bis",
+   "etichetta": "Settore A · fila 10 · n. 118bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": "ghazi-abes",
+   "stato": "assegnato",
+   "ordineElenco": 91,
+   "mapId": null
+  },
+  {
+   "id": "A-14",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "14",
+   "etichetta": "Settore A · fila 11 · n. 14",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 92,
+   "mapId": null
+  },
+  {
+   "id": "A-15",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "15",
+   "etichetta": "Settore A · fila 11 · n. 15",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 93,
+   "mapId": null
+  },
+  {
+   "id": "A-16",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "16",
+   "etichetta": "Settore A · fila 11 · n. 16",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 94,
+   "mapId": null
+  },
+  {
+   "id": "A-17",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "17",
+   "etichetta": "Settore A · fila 11 · n. 17",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 95,
+   "mapId": null
+  },
+  {
+   "id": "A-18",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "18",
+   "etichetta": "Settore A · fila 11 · n. 18",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": "scrimieri-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 96,
+   "mapId": null
+  },
+  {
+   "id": "A-66",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "66",
+   "etichetta": "Settore A · fila 11 · n. 66",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "nuzzo-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 97,
+   "mapId": null
+  },
+  {
+   "id": "A-67",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "67",
+   "etichetta": "Settore A · fila 11 · n. 67",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 98,
+   "mapId": null
+  },
+  {
+   "id": "A-68",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "68",
+   "etichetta": "Settore A · fila 11 · n. 68",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "scrascia-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 99,
+   "mapId": null
+  },
+  {
+   "id": "A-69",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "69",
+   "etichetta": "Settore A · fila 11 · n. 69",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 100,
+   "mapId": null
+  },
+  {
+   "id": "A-70",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "70",
+   "etichetta": "Settore A · fila 11 · n. 70",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 101,
+   "mapId": null
+  },
+  {
+   "id": "A-71",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "71",
+   "etichetta": "Settore A · fila 11 · n. 71",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 102,
+   "mapId": null
+  },
+  {
+   "id": "A-72",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "72",
+   "etichetta": "Settore A · fila 11 · n. 72",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 103,
+   "mapId": null
+  },
+  {
+   "id": "A-120",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "120",
+   "etichetta": "Settore A · fila 11 · n. 120",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "milanese-piero",
+   "stato": "assegnato",
+   "ordineElenco": 104,
+   "mapId": null
+  },
+  {
+   "id": "A-121",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "121",
+   "etichetta": "Settore A · fila 11 · n. 121",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 105,
+   "mapId": null
+  },
+  {
+   "id": "A-123",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "11",
+   "numero": "123",
+   "etichetta": "Settore A · fila 11 · n. 123",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 106,
+   "mapId": null
+  },
+  {
+   "id": "A-19",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "19",
+   "etichetta": "Settore A · fila 12 · n. 19",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "caiulo-marco",
+   "stato": "assegnato",
+   "ordineElenco": 107,
+   "mapId": null
+  },
+  {
+   "id": "A-20",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "20",
+   "etichetta": "Settore A · fila 12 · n. 20",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 108,
+   "mapId": null
+  },
+  {
+   "id": "A-21",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "21",
+   "etichetta": "Settore A · fila 12 · n. 21",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 109,
+   "mapId": null
+  },
+  {
+   "id": "A-22",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "22",
+   "etichetta": "Settore A · fila 12 · n. 22",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "viceconte-francesko",
+   "stato": "assegnato",
+   "ordineElenco": 110,
+   "mapId": null
+  },
+  {
+   "id": "A-23",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "23",
+   "etichetta": "Settore A · fila 12 · n. 23",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "miccoli-massimiliano",
+   "stato": "assegnato",
+   "ordineElenco": 111,
+   "mapId": null
+  },
+  {
+   "id": "A-73",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "73",
+   "etichetta": "Settore A · fila 12 · n. 73",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "levanto-nicola",
+   "stato": "assegnato",
+   "ordineElenco": 112,
+   "mapId": null
+  },
+  {
+   "id": "A-74",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "74",
+   "etichetta": "Settore A · fila 12 · n. 74",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "polimeno-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 113,
+   "mapId": null
+  },
+  {
+   "id": "A-75",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "75",
+   "etichetta": "Settore A · fila 12 · n. 75",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 114,
+   "mapId": null
+  },
+  {
+   "id": "A-76",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "76",
+   "etichetta": "Settore A · fila 12 · n. 76",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "4x6",
+    "w": 4.0,
+    "h": 6.0,
+    "mq": 24.0
+   },
+   "espositoreId": "fall-moustapha",
+   "stato": "assegnato",
+   "ordineElenco": 115,
+   "mapId": null
+  },
+  {
+   "id": "A-77",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "77",
+   "etichetta": "Settore A · fila 12 · n. 77",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x6",
+    "w": 7.0,
+    "h": 6.0,
+    "mq": 42.0
+   },
+   "espositoreId": "luzio-enrico",
+   "stato": "assegnato",
+   "ordineElenco": 116,
+   "mapId": null
+  },
+  {
+   "id": "A-78",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "78",
+   "etichetta": "Settore A · fila 12 · n. 78",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "sponziello-fernando",
+   "stato": "assegnato",
+   "ordineElenco": 117,
+   "mapId": null
+  },
+  {
+   "id": "A-79",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "79",
+   "etichetta": "Settore A · fila 12 · n. 79",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": "carrozzini-sergio",
+   "stato": "assegnato",
+   "ordineElenco": 118,
+   "mapId": null
+  },
+  {
+   "id": "A-124",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "124",
+   "etichetta": "Settore A · fila 12 · n. 124",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "presicce-claudio",
+   "stato": "assegnato",
+   "ordineElenco": 119,
+   "mapId": null
+  },
+  {
+   "id": "A-125",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "12",
+   "numero": "125",
+   "etichetta": "Settore A · fila 12 · n. 125",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 120,
+   "mapId": null
+  },
+  {
+   "id": "A-143",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "143",
+   "etichetta": "Settore A · fila 13 · n. 143",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "de-pascali-settimio",
+   "stato": "assegnato",
+   "ordineElenco": 121,
+   "mapId": null
+  },
+  {
+   "id": "A-144",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "144",
+   "etichetta": "Settore A · fila 13 · n. 144",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "paglialonga-walter",
+   "stato": "assegnato",
+   "ordineElenco": 122,
+   "mapId": null
+  },
+  {
+   "id": "A-145",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "145",
+   "etichetta": "Settore A · fila 13 · n. 145",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "paglialonga-walter",
+   "stato": "assegnato",
+   "ordineElenco": 123,
+   "mapId": null
+  },
+  {
+   "id": "A-146",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "146",
+   "etichetta": "Settore A · fila 13 · n. 146",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 124,
+   "mapId": null
+  },
+  {
+   "id": "A-147",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "147",
+   "etichetta": "Settore A · fila 13 · n. 147",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x6",
+    "w": 5.0,
+    "h": 6.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 125,
+   "mapId": null
+  },
+  {
+   "id": "A-148",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "13",
+   "numero": "148",
+   "etichetta": "Settore A · fila 13 · n. 148",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 126,
+   "mapId": null
+  },
+  {
+   "id": "A-149",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "14",
+   "numero": "149",
+   "etichetta": "Settore A · fila 14 · n. 149",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": "frassante-fernando",
+   "stato": "assegnato",
+   "ordineElenco": 127,
+   "mapId": null
+  },
+  {
+   "id": "A-150",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "14",
+   "numero": "150",
+   "etichetta": "Settore A · fila 14 · n. 150",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 128,
+   "mapId": null
+  },
+  {
+   "id": "A-151",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "14",
+   "numero": "151",
+   "etichetta": "Settore A · fila 14 · n. 151",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 129,
+   "mapId": null
+  },
+  {
+   "id": "A-152",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "14",
+   "numero": "152",
+   "etichetta": "Settore A · fila 14 · n. 152",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 130,
+   "mapId": null
+  },
+  {
+   "id": "A-153",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "14",
+   "numero": "153",
+   "etichetta": "Settore A · fila 14 · n. 153",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 131,
+   "mapId": null
+  },
+  {
+   "id": "A-80",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "80",
+   "etichetta": "Settore A · fila 23 · n. 80",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "de-santis-pantaleo",
+   "stato": "assegnato",
+   "ordineElenco": 132,
+   "mapId": null
+  },
+  {
+   "id": "A-81",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "81",
+   "etichetta": "Settore A · fila 23 · n. 81",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "4x5",
+    "w": 4.0,
+    "h": 5.0,
+    "mq": 20.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 133,
+   "mapId": null
+  },
+  {
+   "id": "A-82",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "82",
+   "etichetta": "Settore A · fila 23 · n. 82",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "carcagni-francesco",
+   "stato": "assegnato",
+   "ordineElenco": 134,
+   "mapId": null
+  },
+  {
+   "id": "A-83",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "83",
+   "etichetta": "Settore A · fila 23 · n. 83",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": "antonaci-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 135,
+   "mapId": null
+  },
+  {
+   "id": "A-84",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "84",
+   "etichetta": "Settore A · fila 23 · n. 84",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "resta-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 136,
+   "mapId": null
+  },
+  {
+   "id": "A-85",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "23",
+   "numero": "85",
+   "etichetta": "Settore A · fila 23 · n. 85",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8X5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "pisanello-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 137,
+   "mapId": null
+  },
+  {
+   "id": "A-131",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "24",
+   "numero": "131",
+   "etichetta": "Settore A · fila 24 · n. 131",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "cannazza-adriano",
+   "stato": "assegnato",
+   "ordineElenco": 138,
+   "mapId": null
+  },
+  {
+   "id": "A-132",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "24",
+   "numero": "132",
+   "etichetta": "Settore A · fila 24 · n. 132",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "epifani-massimo-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 139,
+   "mapId": null
+  },
+  {
+   "id": "A-134",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "24",
+   "numero": "134",
+   "etichetta": "Settore A · fila 24 · n. 134",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "de-marco-silvia",
+   "stato": "assegnato",
+   "ordineElenco": 140,
+   "mapId": null
+  },
+  {
+   "id": "A-158",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "24",
+   "numero": "158",
+   "etichetta": "Settore A · fila 24 · n. 158",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x5",
+    "w": 7.0,
+    "h": 5.0,
+    "mq": 35.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 141,
+   "mapId": null
+  },
+  {
+   "id": "A-133",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25",
+   "numero": "133",
+   "etichetta": "Settore A · fila 25 · n. 133",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x4",
+    "w": 9.0,
+    "h": 4.0,
+    "mq": 36.0
+   },
+   "espositoreId": "doniselli-deborah",
+   "stato": "assegnato",
+   "ordineElenco": 142,
+   "mapId": null
+  },
+  {
+   "id": "A-137",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25",
+   "numero": "137",
+   "etichetta": "Settore A · fila 25 · n. 137",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x4",
+    "w": 9.0,
+    "h": 4.0,
+    "mq": 36.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 143,
+   "mapId": null
+  },
+  {
+   "id": "A-160",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25",
+   "numero": "160",
+   "etichetta": "Settore A · fila 25 · n. 160",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 144,
+   "mapId": null
+  },
+  {
+   "id": "A-161",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25",
+   "numero": "161",
+   "etichetta": "Settore A · fila 25 · n. 161",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 145,
+   "mapId": null
+  },
+  {
+   "id": "A-136",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26",
+   "numero": "136",
+   "etichetta": "Settore A · fila 26 · n. 136",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x4",
+    "w": 12.0,
+    "h": 4.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 146,
+   "mapId": null
+  },
+  {
+   "id": "A-138",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26",
+   "numero": "138",
+   "etichetta": "Settore A · fila 26 · n. 138",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 147,
+   "mapId": null
+  },
+  {
+   "id": "A-163",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26",
+   "numero": "163",
+   "etichetta": "Settore A · fila 26 · n. 163",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 148,
+   "mapId": null
+  },
+  {
+   "id": "A-164",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26",
+   "numero": "164",
+   "etichetta": "Settore A · fila 26 · n. 164",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 149,
+   "mapId": null
+  },
+  {
+   "id": "A-142",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "27",
+   "numero": "142",
+   "etichetta": "Settore A · fila 27 · n. 142",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x6",
+    "w": 5.0,
+    "h": 6.0,
+    "mq": 30.0
+   },
+   "espositoreId": "sraidi-mohamed",
+   "stato": "assegnato",
+   "ordineElenco": 150,
+   "mapId": null
+  },
+  {
+   "id": "A-165",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "27",
+   "numero": "165",
+   "etichetta": "Settore A · fila 27 · n. 165",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 151,
+   "mapId": null
+  },
+  {
+   "id": "A-126",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "33",
+   "numero": "126",
+   "etichetta": "Settore A · fila 33 · n. 126",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 152,
+   "mapId": null
+  },
+  {
+   "id": "A-127",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "33",
+   "numero": "127",
+   "etichetta": "Settore A · fila 33 · n. 127",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 153,
+   "mapId": null
+  },
+  {
+   "id": "A-128",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "33",
+   "numero": "128",
+   "etichetta": "Settore A · fila 33 · n. 128",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 154,
+   "mapId": null
+  },
+  {
+   "id": "A-129",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "33",
+   "numero": "129",
+   "etichetta": "Settore A · fila 33 · n. 129",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 155,
+   "mapId": null
+  },
+  {
+   "id": "A-130",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "33",
+   "numero": "130",
+   "etichetta": "Settore A · fila 33 · n. 130",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "duca-massimo",
+   "stato": "assegnato",
+   "ordineElenco": 156,
+   "mapId": null
+  },
+  {
+   "id": "A-154",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "34",
+   "numero": "154",
+   "etichetta": "Settore A · fila 34 · n. 154",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "4,5x5",
+    "w": 4.5,
+    "h": 5.0,
+    "mq": 22.5
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 157,
+   "mapId": null
+  },
+  {
+   "id": "A-155",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "34",
+   "numero": "155",
+   "etichetta": "Settore A · fila 34 · n. 155",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 158,
+   "mapId": null
+  },
+  {
+   "id": "A-156",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "34",
+   "numero": "156",
+   "etichetta": "Settore A · fila 34 · n. 156",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 159,
+   "mapId": null
+  },
+  {
+   "id": "A-157",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "34",
+   "numero": "157",
+   "etichetta": "Settore A · fila 34 · n. 157",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 160,
+   "mapId": null
+  },
+  {
+   "id": "A-135",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25bis",
+   "numero": "135",
+   "etichetta": "Settore A · fila 25 bis · n. 135",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "morrone-vincenzo",
+   "stato": "assegnato",
+   "ordineElenco": 161,
+   "mapId": null
+  },
+  {
+   "id": "A-159",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25bis",
+   "numero": "159",
+   "etichetta": "Settore A · fila 25 bis · n. 159",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 162,
+   "mapId": null
+  },
+  {
+   "id": "A-162",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "25bis",
+   "numero": "162",
+   "etichetta": "Settore A · fila 25 bis · n. 162",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 163,
+   "mapId": null
+  },
+  {
+   "id": "A-139",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26bis",
+   "numero": "139",
+   "etichetta": "Settore A · fila 26 bis · n. 139",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 164,
+   "mapId": null
+  },
+  {
+   "id": "A-140",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "26bis",
+   "numero": "140",
+   "etichetta": "Settore A · fila 26 bis · n. 140",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x4",
+    "w": 5.0,
+    "h": 4.0,
+    "mq": 20.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 165,
+   "mapId": null
+  },
+  {
+   "id": "A-141",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "27bis",
+   "numero": "141",
+   "etichetta": "Settore A · fila 27 bis · n. 141",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 166,
+   "mapId": null
+  },
+  {
+   "id": "A-166",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "27bis",
+   "numero": "166",
+   "etichetta": "Settore A · fila 27 bis · n. 166",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x6",
+    "w": 5.0,
+    "h": 6.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 167,
+   "mapId": null
+  },
+  {
+   "id": "A-119",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "10",
+   "numero": "119",
+   "etichetta": "Settore A · fila 10 · n. 119",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 168,
+   "mapId": null
+  },
+  {
+   "id": "B-1",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "15",
+   "numero": "1",
+   "etichetta": "Settore B · fila 15 · n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": "madaghiele-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "B-2",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "15",
+   "numero": "2",
+   "etichetta": "Settore B · fila 15 · n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "provenzano-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "B-3",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "15",
+   "numero": "3",
+   "etichetta": "Settore B · fila 15 · n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": "benegiamo-oronzo",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "B-4",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "15",
+   "numero": "4",
+   "etichetta": "Settore B · fila 15 · n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": "greco-gian-marco",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "B-5",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "17",
+   "numero": "5",
+   "etichetta": "Settore B · fila 17 · n. 5",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x4",
+    "w": 12.0,
+    "h": 4.0,
+    "mq": 48.0
+   },
+   "espositoreId": "mele-marco",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "B-6",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "17",
+   "numero": "6",
+   "etichetta": "Settore B · fila 17 · n. 6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x4",
+    "w": 10.0,
+    "h": 4.0,
+    "mq": 40.0
+   },
+   "espositoreId": "rizzo-marco",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "B-7",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "18",
+   "numero": "7",
+   "etichetta": "Settore B · fila 18 · n. 7",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x4",
+    "w": 10.0,
+    "h": 4.0,
+    "mq": 40.0
+   },
+   "espositoreId": "palumbo-lorenzo",
+   "stato": "assegnato",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "B-8",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "18",
+   "numero": "8",
+   "etichetta": "Settore B · fila 18 · n. 8",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x4",
+    "w": 9.0,
+    "h": 4.0,
+    "mq": 36.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "B-9",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "19",
+   "numero": "9",
+   "etichetta": "Settore B · fila 19 · n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x3",
+    "w": 10.0,
+    "h": 3.0,
+    "mq": 30.0
+   },
+   "espositoreId": "cirfera-daniela",
+   "stato": "assegnato",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "B-10",
+   "mercato": "area-mercatale",
+   "settore": "B",
+   "fila": "20",
+   "numero": "10",
+   "etichetta": "Settore B · fila 20 · n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "paglialonga-daniele",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "C-1",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "19",
+   "numero": "1",
+   "etichetta": "Settore C · fila 19 · n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": "calo-enzo",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "C-2",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "19",
+   "numero": "2",
+   "etichetta": "Settore C · fila 19 · n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "C-4",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "19",
+   "numero": "4",
+   "etichetta": "Settore C · fila 19 · n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": "spalluto-pasquale",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "C-3",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "20",
+   "numero": "3",
+   "etichetta": "Settore C · fila 20 · n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": "mazzotta-santo",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "C-5",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "20",
+   "numero": "5",
+   "etichetta": "Settore C · fila 20 · n. 5",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": "greco-gianluca",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "C-6",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "20",
+   "numero": "6",
+   "etichetta": "Settore C · fila 20 · n. 6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": "madaro-graziano",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "C-7",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "21",
+   "numero": "7",
+   "etichetta": "Settore C · fila 21 · n. 7",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "de-nardo-rita",
+   "stato": "assegnato",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "C-8",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "21",
+   "numero": "8",
+   "etichetta": "Settore C · fila 21 · n. 8",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x3",
+    "w": 8.0,
+    "h": 3.0,
+    "mq": 24.0
+   },
+   "espositoreId": "russo-franco",
+   "stato": "assegnato",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "C-9",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "21",
+   "numero": "9",
+   "etichetta": "Settore C · fila 21 · n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "trianni-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "C-10",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "22",
+   "numero": "10",
+   "etichetta": "Settore C · fila 22 · n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "pellegrino-vincenzo",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "C-11",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "22",
+   "numero": "11",
+   "etichetta": "Settore C · fila 22 · n. 11",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 11,
+   "mapId": null
+  },
+  {
+   "id": "C-12",
+   "mercato": "area-mercatale",
+   "settore": "C",
+   "fila": "22",
+   "numero": "12",
+   "etichetta": "Settore C · fila 22 · n. 12",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "cataldi-simone",
+   "stato": "assegnato",
+   "ordineElenco": 12,
+   "mapId": null
+  },
+  {
+   "id": "D-1",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "1",
+   "etichetta": "Settore D · fila 1 · n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "palama-daniele",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "D-2",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "2",
+   "etichetta": "Settore D · fila 1 · n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "petracca-angelo-quintino",
+   "stato": "assegnato",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "D-3",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "3",
+   "etichetta": "Settore D · fila 1 · n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "vitale-lucio-james",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "D-4",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "4",
+   "etichetta": "Settore D · fila 1 · n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "vitale-lucio-james",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "D-5",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "5",
+   "etichetta": "Settore D · fila 1 · n. 5",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": "dollorenzo-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "D-6",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "1",
+   "numero": "6",
+   "etichetta": "Settore D · fila 1 · n. 6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": "russo-pasquale-lillino",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "D-7",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "7",
+   "etichetta": "Settore D · fila 2 · n. 7",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "marrocco-raffaele",
+   "stato": "assegnato",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "D-8",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "8",
+   "etichetta": "Settore D · fila 2 · n. 8",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "maruccia-fernando",
+   "stato": "assegnato",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "D-9",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "9",
+   "etichetta": "Settore D · fila 2 · n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "de-magistri-marco",
+   "stato": "assegnato",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "D-10",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "10",
+   "etichetta": "Settore D · fila 2 · n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "luzio-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "D-11",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "11",
+   "etichetta": "Settore D · fila 2 · n. 11",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": "fari-mino",
+   "stato": "assegnato",
+   "ordineElenco": 11,
+   "mapId": null
+  },
+  {
+   "id": "D-12",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "2",
+   "numero": "12",
+   "etichetta": "Settore D · fila 2 · n. 12",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "bruno-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 12,
+   "mapId": null
+  },
+  {
+   "id": "D-15",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "15",
+   "etichetta": "Settore D · fila 3 · n. 15",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 13,
+   "mapId": null
+  },
+  {
+   "id": "D-16",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "16",
+   "etichetta": "Settore D · fila 3 · n. 16",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 14,
+   "mapId": null
+  },
+  {
+   "id": "D-17",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "17",
+   "etichetta": "Settore D · fila 3 · n. 17",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "tavola-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 15,
+   "mapId": null
+  },
+  {
+   "id": "D-18",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "18",
+   "etichetta": "Settore D · fila 3 · n. 18",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": "russo-simone",
+   "stato": "assegnato",
+   "ordineElenco": 16,
+   "mapId": null
+  },
+  {
+   "id": "D-19",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "19",
+   "etichetta": "Settore D · fila 3 · n. 19",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "russo-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 17,
+   "mapId": null
+  },
+  {
+   "id": "D-13/14",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "3",
+   "numero": "13/14",
+   "etichetta": "Settore D · fila 3 · n. 13/14",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "singh-harpreet",
+   "stato": "assegnato",
+   "ordineElenco": 18,
+   "mapId": null
+  },
+  {
+   "id": "D-20",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "20",
+   "etichetta": "Settore D · fila 4 · n. 20",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "agrimi-rosanna",
+   "stato": "assegnato",
+   "ordineElenco": 19,
+   "mapId": null
+  },
+  {
+   "id": "D-21",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "21",
+   "etichetta": "Settore D · fila 4 · n. 21",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": "gagliardi-cesare",
+   "stato": "assegnato",
+   "ordineElenco": 20,
+   "mapId": null
+  },
+  {
+   "id": "D-22",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "22",
+   "etichetta": "Settore D · fila 4 · n. 22",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 21,
+   "mapId": null
+  },
+  {
+   "id": "D-23",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "23",
+   "etichetta": "Settore D · fila 4 · n. 23",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "giannotta-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 22,
+   "mapId": null
+  },
+  {
+   "id": "D-24",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "24",
+   "etichetta": "Settore D · fila 4 · n. 24",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "giagnotti-valeria",
+   "stato": "assegnato",
+   "ordineElenco": 23,
+   "mapId": null
+  },
+  {
+   "id": "D-25",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "4",
+   "numero": "25",
+   "etichetta": "Settore D · fila 4 · n. 25",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "luceri-gianpiero",
+   "stato": "assegnato",
+   "ordineElenco": 24,
+   "mapId": null
+  },
+  {
+   "id": "D-26",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "5",
+   "numero": "26",
+   "etichetta": "Settore D · fila 5 · n. 26",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "candido-fabio",
+   "stato": "assegnato",
+   "ordineElenco": 25,
+   "mapId": null
+  },
+  {
+   "id": "D-29",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "5",
+   "numero": "29",
+   "etichetta": "Settore D · fila 5 · n. 29",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "fuso-alessandro-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 26,
+   "mapId": null
+  },
+  {
+   "id": "D-30",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "5",
+   "numero": "30",
+   "etichetta": "Settore D · fila 5 · n. 30",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "fuso-alessandro-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 27,
+   "mapId": null
+  },
+  {
+   "id": "D-31",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "5",
+   "numero": "31",
+   "etichetta": "Settore D · fila 5 · n. 31",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x6",
+    "w": 12.0,
+    "h": 6.0,
+    "mq": 72.0
+   },
+   "espositoreId": "gabellone-angelo-pasquale",
+   "stato": "assegnato",
+   "ordineElenco": 28,
+   "mapId": null
+  },
+  {
+   "id": "D-27/28",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "5",
+   "numero": "27/28",
+   "etichetta": "Settore D · fila 5 · n. 27/28",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": "marrocco-mirco-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 29,
+   "mapId": null
+  },
+  {
+   "id": "D-32",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "6",
+   "numero": "32",
+   "etichetta": "Settore D · fila 6 · n. 32",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "lorenzo-gianni",
+   "stato": "assegnato",
+   "ordineElenco": 30,
+   "mapId": null
+  },
+  {
+   "id": "D-33",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "6",
+   "numero": "33",
+   "etichetta": "Settore D · fila 6 · n. 33",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 31,
+   "mapId": null
+  },
+  {
+   "id": "D-34",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "6",
+   "numero": "34",
+   "etichetta": "Settore D · fila 6 · n. 34",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x6",
+    "w": 11.0,
+    "h": 6.0,
+    "mq": 66.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 32,
+   "mapId": null
+  },
+  {
+   "id": "D-35",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "6",
+   "numero": "35",
+   "etichetta": "Settore D · fila 6 · n. 35",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 33,
+   "mapId": null
+  },
+  {
+   "id": "D-36",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "6",
+   "numero": "36",
+   "etichetta": "Settore D · fila 6 · n. 36",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "antonucci-vito",
+   "stato": "assegnato",
+   "ordineElenco": 34,
+   "mapId": null
+  },
+  {
+   "id": "D-38",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "7",
+   "numero": "38",
+   "etichetta": "Settore D · fila 7 · n. 38",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "14x6",
+    "w": 14.0,
+    "h": 6.0,
+    "mq": 84.0
+   },
+   "espositoreId": "panico-salvatore-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 35,
+   "mapId": null
+  },
+  {
+   "id": "D-39",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "7",
+   "numero": "39",
+   "etichetta": "Settore D · fila 7 · n. 39",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "panico-dario-palmiro",
+   "stato": "assegnato",
+   "ordineElenco": 36,
+   "mapId": null
+  },
+  {
+   "id": "D-40",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "7",
+   "numero": "40",
+   "etichetta": "Settore D · fila 7 · n. 40",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": "ahmed-rana-sajjad",
+   "stato": "assegnato",
+   "ordineElenco": 37,
+   "mapId": null
+  },
+  {
+   "id": "D-41",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "7",
+   "numero": "41",
+   "etichetta": "Settore D · fila 7 · n. 41",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "4x6",
+    "w": 4.0,
+    "h": 6.0,
+    "mq": 24.0
+   },
+   "espositoreId": "diouf-khadim",
+   "stato": "assegnato",
+   "ordineElenco": 38,
+   "mapId": null
+  },
+  {
+   "id": "D-42",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "7",
+   "numero": "42",
+   "etichetta": "Settore D · fila 7 · n. 42",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 39,
+   "mapId": null
+  },
+  {
+   "id": "D-43",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "8",
+   "numero": "43",
+   "etichetta": "Settore D · fila 8 · n. 43",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": "majdi-youness",
+   "stato": "assegnato",
+   "ordineElenco": 40,
+   "mapId": null
+  },
+  {
+   "id": "D-44",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "8",
+   "numero": "44",
+   "etichetta": "Settore D · fila 8 · n. 44",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "nocera-giancarlo",
+   "stato": "assegnato",
+   "ordineElenco": 41,
+   "mapId": null
+  },
+  {
+   "id": "D-45",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "8",
+   "numero": "45",
+   "etichetta": "Settore D · fila 8 · n. 45",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x5",
+    "w": 8.0,
+    "h": 5.0,
+    "mq": 40.0
+   },
+   "espositoreId": "rana-muhammad-ahmed-shahzad",
+   "stato": "assegnato",
+   "ordineElenco": 42,
+   "mapId": null
+  },
+  {
+   "id": "D-46",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "8",
+   "numero": "46",
+   "etichetta": "Settore D · fila 8 · n. 46",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "raza-rana-ali",
+   "stato": "assegnato",
+   "ordineElenco": 43,
+   "mapId": null
+  },
+  {
+   "id": "D-47",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "8",
+   "numero": "47",
+   "etichetta": "Settore D · fila 8 · n. 47",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x5",
+    "w": 9.0,
+    "h": 5.0,
+    "mq": 45.0
+   },
+   "espositoreId": "pranzo-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 44,
+   "mapId": null
+  },
+  {
+   "id": "D-37",
+   "mercato": "area-mercatale",
+   "settore": "D",
+   "fila": "VERT",
+   "numero": "37",
+   "etichetta": "Settore D · fila VERT · n. 37",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "12x5",
+    "w": 12.0,
+    "h": 5.0,
+    "mq": 60.0
+   },
+   "espositoreId": "raza-rana-asif",
+   "stato": "assegnato",
+   "ordineElenco": 45,
+   "mapId": null
+  },
+  {
+   "id": "E-1",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "13",
+   "numero": "1",
+   "etichetta": "Settore E · fila 13 · n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "E-2",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "13",
+   "numero": "2",
+   "etichetta": "Settore E · fila 13 · n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x6",
+    "w": 5.0,
+    "h": 6.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "E-3",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "13",
+   "numero": "3",
+   "etichetta": "Settore E · fila 13 · n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "14x6",
+    "w": 14.0,
+    "h": 6.0,
+    "mq": 84.0
+   },
+   "espositoreId": "petracca-dario",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "E-2bis",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "13",
+   "numero": "2bis",
+   "etichetta": "Settore E · fila 13 · n. 2 bis",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "E-4",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "14",
+   "numero": "4",
+   "etichetta": "Settore E · fila 14 · n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "E-5/6",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "14",
+   "numero": "5/6",
+   "etichetta": "Settore E · fila 14 · n. 5/6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "E-7",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "14",
+   "numero": "7",
+   "etichetta": "Settore E · fila 14 · n. 7",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x4",
+    "w": 9.0,
+    "h": 4.0,
+    "mq": 36.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "E-8",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "14",
+   "numero": "8",
+   "etichetta": "Settore E · fila 14 · n. 8",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x4",
+    "w": 10.0,
+    "h": 4.0,
+    "mq": 40.0
+   },
+   "espositoreId": "miccoli-angelo",
+   "stato": "assegnato",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "E-9",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "15",
+   "numero": "9",
+   "etichetta": "Settore E · fila 15 · n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "miccoli-antonio-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "E-10",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "15",
+   "numero": "10",
+   "etichetta": "Settore E · fila 15 · n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "11x5",
+    "w": 11.0,
+    "h": 5.0,
+    "mq": 55.0
+   },
+   "espositoreId": "duma-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "E-11",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "15",
+   "numero": "11",
+   "etichetta": "Settore E · fila 15 · n. 11",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 11,
+   "mapId": null
+  },
+  {
+   "id": "E-12",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "16",
+   "numero": "12",
+   "etichetta": "Settore E · fila 16 · n. 12",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": "cimino-tommaso",
+   "stato": "assegnato",
+   "ordineElenco": 12,
+   "mapId": null
+  },
+  {
+   "id": "E-13",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "16",
+   "numero": "13",
+   "etichetta": "Settore E · fila 16 · n. 13",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 13,
+   "mapId": null
+  },
+  {
+   "id": "E-14",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "16",
+   "numero": "14",
+   "etichetta": "Settore E · fila 16 · n. 14",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 14,
+   "mapId": null
+  },
+  {
+   "id": "E-15",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "16",
+   "numero": "15",
+   "etichetta": "Settore E · fila 16 · n. 15",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x5",
+    "w": 10.0,
+    "h": 5.0,
+    "mq": 50.0
+   },
+   "espositoreId": "maniglia-francesco",
+   "stato": "assegnato",
+   "ordineElenco": 15,
+   "mapId": null
+  },
+  {
+   "id": "E-16",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "17",
+   "numero": "16",
+   "etichetta": "Settore E · fila 17 · n. 16",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x4",
+    "w": 10.0,
+    "h": 4.0,
+    "mq": 40.0
+   },
+   "espositoreId": "miccoli-giusto",
+   "stato": "assegnato",
+   "ordineElenco": 16,
+   "mapId": null
+  },
+  {
+   "id": "E-17",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "17",
+   "numero": "17",
+   "etichetta": "Settore E · fila 17 · n. 17",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 17,
+   "mapId": null
+  },
+  {
+   "id": "E-18",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "17",
+   "numero": "18",
+   "etichetta": "Settore E · fila 17 · n. 18",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "espositoreId": "serra-gianluigi",
+   "stato": "assegnato",
+   "ordineElenco": 18,
+   "mapId": null
+  },
+  {
+   "id": "E-19",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "17",
+   "numero": "19",
+   "etichetta": "Settore E · fila 17 · n. 19",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "espositoreId": "levanto-giampiero",
+   "stato": "assegnato",
+   "ordineElenco": 19,
+   "mapId": null
+  },
+  {
+   "id": "E-20",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "18",
+   "numero": "20",
+   "etichetta": "Settore E · fila 18 · n. 20",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x6",
+    "w": 10.0,
+    "h": 6.0,
+    "mq": 60.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 20,
+   "mapId": null
+  },
+  {
+   "id": "E-21",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "18",
+   "numero": "21",
+   "etichetta": "Settore E · fila 18 · n. 21",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x6",
+    "w": 8.0,
+    "h": 6.0,
+    "mq": 48.0
+   },
+   "espositoreId": "falcone-romualdo",
+   "stato": "assegnato",
+   "ordineElenco": 21,
+   "mapId": null
+  },
+  {
+   "id": "E-22",
+   "mercato": "area-mercatale",
+   "settore": "E",
+   "fila": "18",
+   "numero": "22",
+   "etichetta": "Settore E · fila 18 · n. 22",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "9x6",
+    "w": 9.0,
+    "h": 6.0,
+    "mq": 54.0
+   },
+   "espositoreId": "miccoli-damiano-donato",
+   "stato": "assegnato",
+   "ordineElenco": 22,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-14",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "14",
+   "etichetta": "Box n. 14",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": "Prodotti ittici",
+   "espositoreId": "de-luca-biagio",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-15",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "15",
+   "etichetta": "Box n. 15",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": "Prodotti ittici",
+   "espositoreId": "fersini-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-16",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "16",
+   "etichetta": "Box n. 16",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": "Prodotti ittici",
+   "espositoreId": "fersini-cristiana",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-17",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "17",
+   "etichetta": "Box n. 17",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": "VENDITA SETTIMANALE CARNE",
+   "espositoreId": "operatori-vari-vendita-settimanale-carni",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-18",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "18",
+   "etichetta": "Box n. 18",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-19",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "19",
+   "etichetta": "Box n. 19",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-20",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "20",
+   "etichetta": "Box n. 20",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "COP-BOX-21",
+   "mercato": "coperto",
+   "settore": "box",
+   "fila": null,
+   "numero": "21",
+   "etichetta": "Box n. 21",
+   "tipo": "box",
+   "superficie": {
+    "raw": "4x3",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0
+   },
+   "articolo": "Prodotti ittici",
+   "espositoreId": "esposito-alessandro",
+   "stato": "assegnato",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-1",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "1",
+   "etichetta": "Panca n. 1",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "vincenti-nicola",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-2",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "2",
+   "etichetta": "Panca n. 2",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "scarpa-raffaele",
+   "stato": "assegnato",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-3",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "3",
+   "etichetta": "Panca n. 3",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "vincenti-marco",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-4",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "4",
+   "etichetta": "Panca n. 4",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-5",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "5",
+   "etichetta": "Panca n. 5",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "lazoi-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-6",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "6",
+   "etichetta": "Panca n. 6",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "marra-tommaso",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-7",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "7",
+   "etichetta": "Panca n. 7",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-8",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "8",
+   "etichetta": "Panca n. 8",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "verardi-valter",
+   "stato": "assegnato",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-9",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "9",
+   "etichetta": "Panca n. 9",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "COP-PANCA-10",
+   "mercato": "coperto",
+   "settore": "panche",
+   "fila": null,
+   "numero": "10",
+   "etichetta": "Panca n. 10",
+   "tipo": "panca",
+   "superficie": null,
+   "articolo": "Prodotti agricoli",
+   "espositoreId": "perfetto-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-1",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "1",
+   "etichetta": "Box n. 1",
+   "tipo": "box",
+   "bancoVendita": null,
+   "superficie": {
+    "raw": "6x6",
+    "w": 6.0,
+    "h": 6.0,
+    "mq": 36.0
+   },
+   "articolo": null,
+   "espositoreId": "sticchi-roberto",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-2",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "2",
+   "etichetta": "Box n. 2",
+   "tipo": "box",
+   "bancoVendita": null,
+   "superficie": {
+    "raw": "22",
+    "w": null,
+    "h": null,
+    "mq": 22.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-4",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "4",
+   "etichetta": "Box n. 4",
+   "tipo": "box",
+   "bancoVendita": null,
+   "superficie": {
+    "raw": "6x6",
+    "w": 6.0,
+    "h": 6.0,
+    "mq": 36.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-5",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "5",
+   "etichetta": "Box n. 5",
+   "tipo": "box",
+   "bancoVendita": null,
+   "superficie": {
+    "raw": "22",
+    "w": null,
+    "h": null,
+    "mq": 22.0
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-3",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "3",
+   "etichetta": "Box n. 3 + banco vendita n. 1",
+   "tipo": "box",
+   "bancoVendita": "1",
+   "superficie": {
+    "raw": "4x3 + banco",
+    "w": 4.0,
+    "h": 3.0,
+    "mq": 12.0,
+    "banco": true
+   },
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-6",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": "6",
+   "etichetta": "Box deposito n. 6 + banco vendita n. 2",
+   "tipo": "box-deposito",
+   "bancoVendita": "2",
+   "superficie": {
+    "raw": "13 + banco",
+    "w": null,
+    "h": null,
+    "mq": 13.0,
+    "banco": true
+   },
+   "articolo": null,
+   "espositoreId": "sticchi-luigi",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "IMM-BOX-riga7",
+   "mercato": "ortofrutticolo",
+   "settore": "box",
+   "fila": null,
+   "numero": null,
+   "etichetta": "(senza box, riga 7)",
+   "tipo": "box",
+   "bancoVendita": null,
+   "superficie": null,
+   "articolo": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "IMM-1",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "1",
+   "etichetta": "Posteggio n. 1",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x3",
+    "w": 8.0,
+    "h": 3.0,
+    "mq": 24.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "presicce-marco",
+   "stato": "assegnato",
+   "ordineElenco": 1,
+   "mapId": null
+  },
+  {
+   "id": "IMM-2",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "2",
+   "etichetta": "Posteggio n. 2",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "cisotta-antonio",
+   "stato": "assegnato",
+   "ordineElenco": 2,
+   "mapId": null
+  },
+  {
+   "id": "IMM-3",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "3",
+   "etichetta": "Posteggio n. 3",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x2",
+    "w": 5.0,
+    "h": 2.0,
+    "mq": 10.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "rizzo-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 3,
+   "mapId": null
+  },
+  {
+   "id": "IMM-4",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "4",
+   "etichetta": "Posteggio n. 4",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x2",
+    "w": 10.0,
+    "h": 2.0,
+    "mq": 20.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "rizzo-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 4,
+   "mapId": null
+  },
+  {
+   "id": "IMM-5",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "5",
+   "etichetta": "Posteggio n. 5",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x2",
+    "w": 7.0,
+    "h": 2.0,
+    "mq": 14.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "misciali-sebastiano",
+   "stato": "assegnato",
+   "ordineElenco": 5,
+   "mapId": null
+  },
+  {
+   "id": "IMM-6",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "6",
+   "etichetta": "Posteggio n. 6",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x2",
+    "w": 8.0,
+    "h": 2.0,
+    "mq": 16.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "notaro-marco",
+   "stato": "assegnato",
+   "ordineElenco": 6,
+   "mapId": null
+  },
+  {
+   "id": "IMM-9",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "9",
+   "etichetta": "Posteggio n. 9",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "15x2",
+    "w": 15.0,
+    "h": 2.0,
+    "mq": 30.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "cenere-giovanni",
+   "stato": "assegnato",
+   "ordineElenco": 7,
+   "mapId": null
+  },
+  {
+   "id": "IMM-10",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "10",
+   "etichetta": "Posteggio n. 10",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "articolo": null,
+   "note": "riservato agli agricoltori",
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 8,
+   "mapId": null
+  },
+  {
+   "id": "IMM-11",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "11",
+   "etichetta": "Posteggio n. 11",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x4",
+    "w": 10.0,
+    "h": 4.0,
+    "mq": 40.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "gatto-giuseppe",
+   "stato": "assegnato",
+   "ordineElenco": 9,
+   "mapId": null
+  },
+  {
+   "id": "IMM-13",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "13",
+   "etichetta": "Posteggio n. 13",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "10x3",
+    "w": 10.0,
+    "h": 3.0,
+    "mq": 30.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 10,
+   "mapId": null
+  },
+  {
+   "id": "IMM-15",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "15",
+   "etichetta": "Posteggio n. 15",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "3x2",
+    "w": 3.0,
+    "h": 2.0,
+    "mq": 6.0
+   },
+   "articolo": null,
+   "note": "riservato agli agricoltori",
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 11,
+   "mapId": null
+  },
+  {
+   "id": "IMM-22",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "22",
+   "etichetta": "Posteggio n. 22",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x1",
+    "w": 6.0,
+    "h": 1.0,
+    "mq": 6.0
+   },
+   "articolo": "fiori",
+   "note": null,
+   "espositoreId": "scrimieri-salvatore",
+   "stato": "assegnato",
+   "ordineElenco": 12,
+   "mapId": null
+  },
+  {
+   "id": "IMM-23",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "23",
+   "etichetta": "Posteggio n. 23",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "articolo": "ortofrutta",
+   "note": null,
+   "espositoreId": "papaleo-pasquale",
+   "stato": "assegnato",
+   "ordineElenco": 13,
+   "mapId": null
+  },
+  {
+   "id": "IMM-24",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "24",
+   "etichetta": "Posteggio n. 24",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "calo-francesco",
+   "stato": "assegnato",
+   "ordineElenco": 14,
+   "mapId": null
+  },
+  {
+   "id": "IMM-25",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "25",
+   "etichetta": "Posteggio n. 25",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "calo-francesco",
+   "stato": "assegnato",
+   "ordineElenco": 15,
+   "mapId": null
+  },
+  {
+   "id": "IMM-26",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "26",
+   "etichetta": "Posteggio n. 26",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "biasco-rocco",
+   "stato": "assegnato",
+   "ordineElenco": 16,
+   "mapId": null
+  },
+  {
+   "id": "IMM-27",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "27",
+   "etichetta": "Posteggio n. 27",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "8x4",
+    "w": 8.0,
+    "h": 4.0,
+    "mq": 32.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": 17,
+   "mapId": null
+  },
+  {
+   "id": "IMM-28",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "28",
+   "etichetta": "Posteggio n. 28",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "6x4",
+    "w": 6.0,
+    "h": 4.0,
+    "mq": 24.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "stefanizzi-donato-lorenzo",
+   "stato": "assegnato",
+   "ordineElenco": 18,
+   "mapId": null
+  },
+  {
+   "id": "IMM-30",
+   "mercato": "ortofrutticolo",
+   "settore": "settimanale",
+   "fila": null,
+   "numero": "30",
+   "etichetta": "Posteggio n. 30",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "7x4",
+    "w": 7.0,
+    "h": 4.0,
+    "mq": 28.0
+   },
+   "articolo": "frutta e verdura",
+   "note": null,
+   "espositoreId": "notaro-marco",
+   "stato": "assegnato",
+   "ordineElenco": 19,
+   "mapId": null
+  }
+ ]
+}

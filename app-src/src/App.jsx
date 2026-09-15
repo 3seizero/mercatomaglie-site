@@ -26,7 +26,6 @@ const Icon = ({ name, size = 24, color = "currentColor", sw = 1.6 }) => {
     trash:    <><path {...p} d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path {...p} d="M10 11v6M14 11v6"/></>,
     logout:   <><path {...p} d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></>,
     lock:     <><rect {...p} x="3" y="11" width="18" height="11" rx="2"/><path {...p} d="M7 11V7a5 5 0 0110 0v4"/><circle fill={color} stroke="none" cx="12" cy="16" r="1.5"/></>,
-    car:      <><path {...p} d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle {...p} cx="7" cy="17" r="2"/><circle {...p} cx="17" cy="17" r="2"/><path {...p} d="M5 12h14"/></>,
     checkCircle: <><circle {...p} cx="12" cy="12" r="10"/><path {...p} d="M8 12l3 3 5-6"/></>,
     xCircle:  <><circle {...p} cx="12" cy="12" r="10"/><path {...p} d="M15 9l-6 6M9 9l6 6"/></>,
     chevron:  <><path {...p} d="M9 18l6-6-6-6"/></>,
@@ -74,56 +73,56 @@ const LogoMark = ({ size = 44, light = false }) => {
 // ============================================================
 const ESPOSITORI_INIT = (()=>{
   const filled = [
-  {id:1,postazione:"P001",shape:"rect",svgX:664.64,svgY:486.31,svgW:20.93,svgH:42.79,cx:675.10,cy:507.70,nome:"Frutta & Sapori",titolare:"Giovanni Marzo",categoria:"Alimentare",whatsapp:"393331234567",targa:"BA123XY",presente:true},
-  {id:2,postazione:"P002",shape:"rect",svgX:687.25,svgY:486.31,svgW:20.93,svgH:42.79,cx:697.71,cy:507.70,nome:"Abbigliamento Sole",titolare:"Maria Greco",categoria:"Abbigliamento",whatsapp:"393337654321",targa:"LE456AB",presente:true},
-  {id:3,postazione:"P003",shape:"rect",svgX:722.19,svgY:486.31,svgW:20.93,svgH:42.79,cx:732.65,cy:507.70,nome:"Calzature DeLux",titolare:"Antonio Rizzo",categoria:"Calzature",whatsapp:"393339876543",targa:"BR789CD",presente:true},
-  {id:4,postazione:"P004",shape:"rect",svgX:744.80,svgY:486.31,svgW:20.93,svgH:42.79,cx:755.26,cy:507.70,nome:"Profumi & Bellezza",titolare:"Lucia Toma",categoria:"Cosmetica",whatsapp:"393332345678",targa:"LE321EF",presente:true},
-  {id:5,postazione:"P005",shape:"rect",svgX:779.74,svgY:486.31,svgW:20.93,svgH:42.79,cx:790.20,cy:507.70,nome:"Spezie del Salento",titolare:"Francesco Bello",categoria:"Alimentare",whatsapp:"393335678901",targa:"TA654GH",presente:true},
-  {id:6,postazione:"P006",shape:"rect",svgX:802.35,svgY:486.31,svgW:20.93,svgH:42.79,cx:812.81,cy:507.70,nome:"Tessuti Preziosi",titolare:"Rosa Manno",categoria:"Tessuti",whatsapp:"393338901234",targa:"BR987IJ",presente:true},
-  {id:7,postazione:"P007",shape:"rect",svgX:837.29,svgY:486.31,svgW:20.93,svgH:42.79,cx:847.75,cy:507.70,nome:"Elettronica Viva",titolare:"Marco Fusco",categoria:"Elettronica",whatsapp:"393331122334",targa:"LE147KL",presente:true},
-  {id:8,postazione:"P008",shape:"rect",svgX:859.90,svgY:486.31,svgW:20.93,svgH:42.79,cx:870.36,cy:507.70,nome:"Bigiotteria Arte",titolare:"Carmen Liso",categoria:"Bigiotteria",whatsapp:"393334455667",targa:"BA258MN",presente:true},
-  {id:9,postazione:"P009",shape:"rect",svgX:894.84,svgY:486.31,svgW:20.93,svgH:42.79,cx:905.30,cy:507.70,nome:"Casalinghi & Co.",titolare:"Salvatore Urso",categoria:"Casalinghi",whatsapp:"393337788990",targa:"LE369OP",presente:true},
-  {id:10,postazione:"P010",shape:"rect",svgX:917.45,svgY:486.31,svgW:20.93,svgH:42.79,cx:927.91,cy:507.70,nome:"Formaggi Pugliesi",titolare:"Grazia Conte",categoria:"Alimentare",whatsapp:"393330011223",targa:"TA741QR",presente:true},
-  {id:11,postazione:"P011",shape:"rect",svgX:952.39,svgY:486.31,svgW:20.93,svgH:42.79,cx:962.85,cy:507.70,nome:"Fiori & Piante",titolare:"Vito Palmieri",categoria:"Floricoltura",whatsapp:"393333344556",targa:"BR852ST",presente:true},
-  {id:12,postazione:"P012",shape:"poly",points:"995.924 529.096 974.999 529.096 974.999 486.309 985.461 486.309 995.924 500.899 995.924 529.096",cx:987.21,cy:510.13,nome:"Olii Extravergine",titolare:"Donato Suma",categoria:"Alimentare",whatsapp:"393339900112",targa:"TA159WX",presente:true},
-  {id:13,postazione:"P013",shape:"poly",points:"1055.763 563.353 1012.229 563.353 1012.229 517.411 1033.996 540.382 1055.763 563.353",cx:1034.00,cy:549.57,nome:"Borse Artigianali",titolare:"Miriam Greco",categoria:"Pelletteria",whatsapp:"393332233445",targa:"BA357YZ",presente:true},
-  {id:14,postazione:"P014",shape:"rect",svgX:664.64,svgY:531.12,svgW:20.93,svgH:42.79,cx:675.10,cy:552.51,nome:"Vini Salentini",titolare:"Cosimo Resta",categoria:"Alimentare",whatsapp:"393335566778",targa:"LE468AA",presente:true},
-  {id:15,postazione:"P015",shape:"rect",svgX:687.25,svgY:531.12,svgW:20.93,svgH:42.79,cx:697.71,cy:552.51,nome:"Ceramiche Arte",titolare:"Angela Nuzzo",categoria:"Artigianato",whatsapp:"393338899001",targa:"BR579BB",presente:true},
-  {id:16,postazione:"P016",shape:"rect",svgX:722.19,svgY:531.12,svgW:20.93,svgH:42.79,cx:732.65,cy:552.51,nome:"Street Food Sud",titolare:"Luigi Stomeo",categoria:"Ristorazione",whatsapp:"393331234000",targa:"LE680CC",presente:true},
-  {id:17,postazione:"P017",shape:"rect",svgX:744.80,svgY:531.12,svgW:20.93,svgH:42.79,cx:755.26,cy:552.51,nome:"Pasticceria Dolce",titolare:"Teresa Colì",categoria:"Alimentare",whatsapp:"393334567890",targa:"TA791DD",presente:true},
-  {id:18,postazione:"P018",shape:"rect",svgX:779.74,svgY:531.12,svgW:20.93,svgH:42.79,cx:790.20,cy:552.51,nome:"Libri & Cultura",titolare:"Pietro Cataldi",categoria:"Editoria",whatsapp:"393337890123",targa:"BA802EE",presente:true},
-  {id:19,postazione:"P019",shape:"rect",svgX:802.35,svgY:531.12,svgW:20.93,svgH:42.79,cx:812.81,cy:552.51,nome:"Sport & Outdoor",titolare:"Rocco Longo",categoria:"Sport",whatsapp:"393330123456",targa:"LE913FF",presente:true},
-  {id:20,postazione:"P020",shape:"rect",svgX:837.29,svgY:531.12,svgW:20.93,svgH:42.79,cx:847.75,cy:552.51,nome:"Erbe Salentine",titolare:"Nunzia Cazzato",categoria:"Erboristeria",whatsapp:"393333210987",targa:"BR024GG",presente:true},
-  {id:21,postazione:"P021",shape:"rect",svgX:859.90,svgY:531.12,svgW:20.93,svgH:42.79,cx:870.36,cy:552.51,nome:"Abbigliamento Moda Sud",titolare:"Carmela Ingrosso",categoria:"Abbigliamento",whatsapp:"393331112233",targa:"LE221AA",presente:true},
-  {id:22,postazione:"P022",shape:"rect",svgX:894.84,svgY:531.12,svgW:20.93,svgH:42.79,cx:905.30,cy:552.51,nome:"Delizie Salentine",titolare:"Oronzo De Marco",categoria:"Alimentare",whatsapp:"393332223344",targa:"BA332BB",presente:true},
-  {id:23,postazione:"P023",shape:"rect",svgX:917.45,svgY:531.12,svgW:20.93,svgH:42.79,cx:927.91,cy:552.51,nome:"Pelletteria Artigiana",titolare:"Filomena Greco",categoria:"Pelletteria",whatsapp:"393333334455",targa:"TA443CC",presente:true},
-  {id:24,postazione:"P024",shape:"rect",svgX:952.39,svgY:531.12,svgW:20.93,svgH:42.79,cx:962.85,cy:552.51,nome:"Tecnologia Facile",titolare:"Massimo Erroi",categoria:"Elettronica",whatsapp:"393334445566",targa:"LE554DD",presente:true},
-  {id:25,postazione:"P025",shape:"rect",svgX:975.00,svgY:531.12,svgW:20.93,svgH:42.79,cx:985.46,cy:552.51,nome:"Intimo & Lingerie",titolare:"Rossella Ciardo",categoria:"Abbigliamento",whatsapp:"393335556677",targa:"BR665EE",presente:true},
-  {id:26,postazione:"P026",shape:"rect",svgX:1012.23,svgY:564.72,svgW:20.93,svgH:42.75,cx:1022.69,cy:586.10,nome:"Sapori di Puglia",titolare:"Donato Coppola",categoria:"Alimentare",whatsapp:"393336667788",targa:"LE776FF",presente:true},
-  {id:27,postazione:"P027",shape:"rect",svgX:1034.84,svgY:564.72,svgW:20.93,svgH:42.75,cx:1045.30,cy:586.10,nome:"Ottica Moderna",titolare:"Luigi Stomeo",categoria:"Ottica",whatsapp:"393337778899",targa:"BA887GG",presente:true},
-  {id:28,postazione:"P028",shape:"rect",svgX:664.64,svgY:575.92,svgW:20.93,svgH:32.92,cx:675.10,cy:592.38,nome:"Giochi & Giocattoli",titolare:"Maria Paola Urso",categoria:"Giocattoli",whatsapp:"393338889900",targa:"TA998HH",presente:true},
-  {id:29,postazione:"P029",shape:"rect",svgX:687.25,svgY:575.92,svgW:20.93,svgH:32.92,cx:697.71,cy:592.38,nome:"Ceramiche Salentine",titolare:"Vincenzo Raho",categoria:"Artigianato",whatsapp:"393339990011",targa:"LE109II",presente:true},
-  {id:30,postazione:"P030",shape:"rect",svgX:722.19,svgY:575.92,svgW:20.93,svgH:32.92,cx:732.65,cy:592.38,nome:"Orologi & Bijoux",titolare:"Grazia Manno",categoria:"Bigiotteria",whatsapp:"393330001122",targa:"BR210JJ",presente:true},
-  {id:31,postazione:"P031",shape:"rect",svgX:744.80,svgY:575.92,svgW:20.93,svgH:32.92,cx:755.26,cy:592.38,nome:"Tessuti & Tendaggi",titolare:"Salvatore Prete",categoria:"Tessuti",whatsapp:"393331113344",targa:"LE321KK",presente:true},
-  {id:32,postazione:"P032",shape:"rect",svgX:779.74,svgY:575.92,svgW:20.93,svgH:32.92,cx:790.20,cy:592.38,nome:"Pane & Dolci",titolare:"Antonia Vergine",categoria:"Alimentare",whatsapp:"393332224455",targa:"BA432LL",presente:true},
-  {id:33,postazione:"P033",shape:"rect",svgX:802.35,svgY:575.92,svgW:20.93,svgH:32.92,cx:812.81,cy:592.38,nome:"Coltelleria Artigiana",titolare:"Pietro Liso",categoria:"Artigianato",whatsapp:"393333335566",targa:"TA543MM",presente:true},
-  {id:34,postazione:"P034",shape:"rect",svgX:837.29,svgY:575.92,svgW:20.93,svgH:32.92,cx:847.75,cy:592.38,nome:"Erboristeria Natura",titolare:"Nunzia Palma",categoria:"Erboristeria",whatsapp:"393334446677",targa:"LE654NN",presente:true},
-  {id:35,postazione:"P035",shape:"rect",svgX:859.90,svgY:575.92,svgW:20.93,svgH:32.92,cx:870.36,cy:592.38,nome:"Calzature Comfort",titolare:"Antonio De Giorgi",categoria:"Calzature",whatsapp:"393335557788",targa:"BR765OO",presente:true},
-  {id:36,postazione:"P036",shape:"rect",svgX:894.84,svgY:575.92,svgW:20.93,svgH:32.92,cx:905.30,cy:592.38,nome:"Profumeria Esclusiva",titolare:"Rosa Cataldi",categoria:"Cosmetica",whatsapp:"393336668899",targa:"LE876PP",presente:true},
-  {id:37,postazione:"P037",shape:"rect",svgX:917.45,svgY:575.92,svgW:20.93,svgH:32.92,cx:927.91,cy:592.38,nome:"Fiori & Composizioni",titolare:"Vito Pastore",categoria:"Floricoltura",whatsapp:"393337779900",targa:"BA987QQ",presente:false},
-  {id:38,postazione:"P038",shape:"rect",svgX:952.39,svgY:575.92,svgW:20.93,svgH:32.92,cx:962.85,cy:592.38,nome:"Sport & Fitness",titolare:"Marco Resta",categoria:"Sport",whatsapp:"393338880011",targa:"TA098RR",presente:false},
-  {id:39,postazione:"P039",shape:"rect",svgX:975.00,svgY:575.92,svgW:20.93,svgH:32.92,cx:985.46,cy:592.38,nome:"Casa & Cucina",titolare:"Angela Ciullo",categoria:"Casalinghi",whatsapp:"393339991122",targa:"LE109SS",presente:false},
-  {id:40,postazione:"P040",shape:"rect",svgX:664.64,svgY:610.87,svgW:20.93,svgH:32.92,cx:675.10,cy:627.33,nome:"Vini & Liquori",titolare:"Cosimo Palmieri",categoria:"Alimentare",whatsapp:"393330002233",targa:"BR210TT",presente:false},
-  {id:41,postazione:"P041",shape:"rect",svgX:687.25,svgY:610.87,svgW:20.93,svgH:32.92,cx:697.71,cy:627.33,nome:"Borse & Valigie",titolare:"Miriam Fersino",categoria:"Pelletteria",whatsapp:"393331113355",targa:"LE321UU",presente:false},
-  {id:42,postazione:"P042",shape:"rect",svgX:722.19,svgY:610.87,svgW:20.93,svgH:32.92,cx:732.65,cy:627.33,nome:"Giornali & Libri",titolare:"Pietro Erroi",categoria:"Editoria",whatsapp:"393332224466",targa:"BA432VV",presente:false},
-  {id:43,postazione:"P043",shape:"rect",svgX:744.80,svgY:610.87,svgW:20.93,svgH:32.92,cx:755.26,cy:627.33,nome:"Articoli Religiosi",titolare:"Teresa Mancarella",categoria:"Artigianato",whatsapp:"393333335577",targa:"TA543WW",presente:false},
-  {id:44,postazione:"P044",shape:"rect",svgX:779.74,svgY:610.87,svgW:20.93,svgH:32.92,cx:790.20,cy:627.33,nome:"Casalinghi Premium",titolare:"Eugenia Coppola",categoria:"Casalinghi",whatsapp:"393334446688",targa:"LE654XX",presente:false},
-  {id:45,postazione:"P045",shape:"rect",svgX:802.35,svgY:610.87,svgW:20.93,svgH:32.92,cx:812.81,cy:627.33,nome:"Abbigliamento Bimbi",titolare:"Lucia Panese",categoria:"Abbigliamento",whatsapp:"393335557799",targa:"BR765YY",presente:false},
-  {id:46,postazione:"P046",shape:"rect",svgX:837.29,svgY:610.87,svgW:20.93,svgH:32.92,cx:847.75,cy:627.33,nome:"Miele & Prodotti Bio",titolare:"Francesco Erroi",categoria:"Alimentare",whatsapp:"393336668800",targa:"LE876ZZ",presente:false},
-  {id:47,postazione:"P047",shape:"rect",svgX:859.90,svgY:610.87,svgW:20.93,svgH:32.92,cx:870.36,cy:627.33,nome:"Elettrodomestici",titolare:"Rocco Ingrosso",categoria:"Elettronica",whatsapp:"393337779911",targa:"BA987AA",presente:false},
-  {id:48,postazione:"P048",shape:"rect",svgX:894.84,svgY:610.87,svgW:20.93,svgH:32.92,cx:905.30,cy:627.33,nome:"Maglieria Artigiana",titolare:"Carmen Ciardo",categoria:"Tessuti",whatsapp:"393338880022",targa:"TA098BB",presente:false},
-  {id:49,postazione:"P049",shape:"rect",svgX:917.45,svgY:610.87,svgW:20.93,svgH:32.92,cx:927.91,cy:627.33,nome:"Spezie & Aromi",titolare:"Giovanni Fersino",categoria:"Alimentare",whatsapp:"393339991133",targa:"LE109CC",presente:false},
-  {id:50,postazione:"P050",shape:"rect",svgX:952.39,svgY:610.87,svgW:20.93,svgH:32.92,cx:962.85,cy:627.33,nome:"Ottica & Fotografia",titolare:"Silvana Palmieri",categoria:"Ottica",whatsapp:"393330002244",targa:"BR210DD",presente:false}
+  {id:1,postazione:"P001",shape:"rect",svgX:664.64,svgY:486.31,svgW:20.93,svgH:42.79,cx:675.10,cy:507.70,nome:"Frutta & Sapori",titolare:"Giovanni Marzo",categoria:"Alimentare",whatsapp:"393331234567",presente:true},
+  {id:2,postazione:"P002",shape:"rect",svgX:687.25,svgY:486.31,svgW:20.93,svgH:42.79,cx:697.71,cy:507.70,nome:"Abbigliamento Sole",titolare:"Maria Greco",categoria:"Abbigliamento",whatsapp:"393337654321",presente:true},
+  {id:3,postazione:"P003",shape:"rect",svgX:722.19,svgY:486.31,svgW:20.93,svgH:42.79,cx:732.65,cy:507.70,nome:"Calzature DeLux",titolare:"Antonio Rizzo",categoria:"Calzature",whatsapp:"393339876543",presente:true},
+  {id:4,postazione:"P004",shape:"rect",svgX:744.80,svgY:486.31,svgW:20.93,svgH:42.79,cx:755.26,cy:507.70,nome:"Profumi & Bellezza",titolare:"Lucia Toma",categoria:"Cosmetica",whatsapp:"393332345678",presente:true},
+  {id:5,postazione:"P005",shape:"rect",svgX:779.74,svgY:486.31,svgW:20.93,svgH:42.79,cx:790.20,cy:507.70,nome:"Spezie del Salento",titolare:"Francesco Bello",categoria:"Alimentare",whatsapp:"393335678901",presente:true},
+  {id:6,postazione:"P006",shape:"rect",svgX:802.35,svgY:486.31,svgW:20.93,svgH:42.79,cx:812.81,cy:507.70,nome:"Tessuti Preziosi",titolare:"Rosa Manno",categoria:"Tessuti",whatsapp:"393338901234",presente:true},
+  {id:7,postazione:"P007",shape:"rect",svgX:837.29,svgY:486.31,svgW:20.93,svgH:42.79,cx:847.75,cy:507.70,nome:"Elettronica Viva",titolare:"Marco Fusco",categoria:"Elettronica",whatsapp:"393331122334",presente:true},
+  {id:8,postazione:"P008",shape:"rect",svgX:859.90,svgY:486.31,svgW:20.93,svgH:42.79,cx:870.36,cy:507.70,nome:"Bigiotteria Arte",titolare:"Carmen Liso",categoria:"Bigiotteria",whatsapp:"393334455667",presente:true},
+  {id:9,postazione:"P009",shape:"rect",svgX:894.84,svgY:486.31,svgW:20.93,svgH:42.79,cx:905.30,cy:507.70,nome:"Casalinghi & Co.",titolare:"Salvatore Urso",categoria:"Casalinghi",whatsapp:"393337788990",presente:true},
+  {id:10,postazione:"P010",shape:"rect",svgX:917.45,svgY:486.31,svgW:20.93,svgH:42.79,cx:927.91,cy:507.70,nome:"Formaggi Pugliesi",titolare:"Grazia Conte",categoria:"Alimentare",whatsapp:"393330011223",presente:true},
+  {id:11,postazione:"P011",shape:"rect",svgX:952.39,svgY:486.31,svgW:20.93,svgH:42.79,cx:962.85,cy:507.70,nome:"Fiori & Piante",titolare:"Vito Palmieri",categoria:"Floricoltura",whatsapp:"393333344556",presente:true},
+  {id:12,postazione:"P012",shape:"poly",points:"995.924 529.096 974.999 529.096 974.999 486.309 985.461 486.309 995.924 500.899 995.924 529.096",cx:987.21,cy:510.13,nome:"Olii Extravergine",titolare:"Donato Suma",categoria:"Alimentare",whatsapp:"393339900112",presente:true},
+  {id:13,postazione:"P013",shape:"poly",points:"1055.763 563.353 1012.229 563.353 1012.229 517.411 1033.996 540.382 1055.763 563.353",cx:1034.00,cy:549.57,nome:"Borse Artigianali",titolare:"Miriam Greco",categoria:"Pelletteria",whatsapp:"393332233445",presente:true},
+  {id:14,postazione:"P014",shape:"rect",svgX:664.64,svgY:531.12,svgW:20.93,svgH:42.79,cx:675.10,cy:552.51,nome:"Vini Salentini",titolare:"Cosimo Resta",categoria:"Alimentare",whatsapp:"393335566778",presente:true},
+  {id:15,postazione:"P015",shape:"rect",svgX:687.25,svgY:531.12,svgW:20.93,svgH:42.79,cx:697.71,cy:552.51,nome:"Ceramiche Arte",titolare:"Angela Nuzzo",categoria:"Artigianato",whatsapp:"393338899001",presente:true},
+  {id:16,postazione:"P016",shape:"rect",svgX:722.19,svgY:531.12,svgW:20.93,svgH:42.79,cx:732.65,cy:552.51,nome:"Street Food Sud",titolare:"Luigi Stomeo",categoria:"Ristorazione",whatsapp:"393331234000",presente:true},
+  {id:17,postazione:"P017",shape:"rect",svgX:744.80,svgY:531.12,svgW:20.93,svgH:42.79,cx:755.26,cy:552.51,nome:"Pasticceria Dolce",titolare:"Teresa Colì",categoria:"Alimentare",whatsapp:"393334567890",presente:true},
+  {id:18,postazione:"P018",shape:"rect",svgX:779.74,svgY:531.12,svgW:20.93,svgH:42.79,cx:790.20,cy:552.51,nome:"Libri & Cultura",titolare:"Pietro Cataldi",categoria:"Editoria",whatsapp:"393337890123",presente:true},
+  {id:19,postazione:"P019",shape:"rect",svgX:802.35,svgY:531.12,svgW:20.93,svgH:42.79,cx:812.81,cy:552.51,nome:"Sport & Outdoor",titolare:"Rocco Longo",categoria:"Sport",whatsapp:"393330123456",presente:true},
+  {id:20,postazione:"P020",shape:"rect",svgX:837.29,svgY:531.12,svgW:20.93,svgH:42.79,cx:847.75,cy:552.51,nome:"Erbe Salentine",titolare:"Nunzia Cazzato",categoria:"Erboristeria",whatsapp:"393333210987",presente:true},
+  {id:21,postazione:"P021",shape:"rect",svgX:859.90,svgY:531.12,svgW:20.93,svgH:42.79,cx:870.36,cy:552.51,nome:"Abbigliamento Moda Sud",titolare:"Carmela Ingrosso",categoria:"Abbigliamento",whatsapp:"393331112233",presente:true},
+  {id:22,postazione:"P022",shape:"rect",svgX:894.84,svgY:531.12,svgW:20.93,svgH:42.79,cx:905.30,cy:552.51,nome:"Delizie Salentine",titolare:"Oronzo De Marco",categoria:"Alimentare",whatsapp:"393332223344",presente:true},
+  {id:23,postazione:"P023",shape:"rect",svgX:917.45,svgY:531.12,svgW:20.93,svgH:42.79,cx:927.91,cy:552.51,nome:"Pelletteria Artigiana",titolare:"Filomena Greco",categoria:"Pelletteria",whatsapp:"393333334455",presente:true},
+  {id:24,postazione:"P024",shape:"rect",svgX:952.39,svgY:531.12,svgW:20.93,svgH:42.79,cx:962.85,cy:552.51,nome:"Tecnologia Facile",titolare:"Massimo Erroi",categoria:"Elettronica",whatsapp:"393334445566",presente:true},
+  {id:25,postazione:"P025",shape:"rect",svgX:975.00,svgY:531.12,svgW:20.93,svgH:42.79,cx:985.46,cy:552.51,nome:"Intimo & Lingerie",titolare:"Rossella Ciardo",categoria:"Abbigliamento",whatsapp:"393335556677",presente:true},
+  {id:26,postazione:"P026",shape:"rect",svgX:1012.23,svgY:564.72,svgW:20.93,svgH:42.75,cx:1022.69,cy:586.10,nome:"Sapori di Puglia",titolare:"Donato Coppola",categoria:"Alimentare",whatsapp:"393336667788",presente:true},
+  {id:27,postazione:"P027",shape:"rect",svgX:1034.84,svgY:564.72,svgW:20.93,svgH:42.75,cx:1045.30,cy:586.10,nome:"Ottica Moderna",titolare:"Luigi Stomeo",categoria:"Ottica",whatsapp:"393337778899",presente:true},
+  {id:28,postazione:"P028",shape:"rect",svgX:664.64,svgY:575.92,svgW:20.93,svgH:32.92,cx:675.10,cy:592.38,nome:"Giochi & Giocattoli",titolare:"Maria Paola Urso",categoria:"Giocattoli",whatsapp:"393338889900",presente:true},
+  {id:29,postazione:"P029",shape:"rect",svgX:687.25,svgY:575.92,svgW:20.93,svgH:32.92,cx:697.71,cy:592.38,nome:"Ceramiche Salentine",titolare:"Vincenzo Raho",categoria:"Artigianato",whatsapp:"393339990011",presente:true},
+  {id:30,postazione:"P030",shape:"rect",svgX:722.19,svgY:575.92,svgW:20.93,svgH:32.92,cx:732.65,cy:592.38,nome:"Orologi & Bijoux",titolare:"Grazia Manno",categoria:"Bigiotteria",whatsapp:"393330001122",presente:true},
+  {id:31,postazione:"P031",shape:"rect",svgX:744.80,svgY:575.92,svgW:20.93,svgH:32.92,cx:755.26,cy:592.38,nome:"Tessuti & Tendaggi",titolare:"Salvatore Prete",categoria:"Tessuti",whatsapp:"393331113344",presente:true},
+  {id:32,postazione:"P032",shape:"rect",svgX:779.74,svgY:575.92,svgW:20.93,svgH:32.92,cx:790.20,cy:592.38,nome:"Pane & Dolci",titolare:"Antonia Vergine",categoria:"Alimentare",whatsapp:"393332224455",presente:true},
+  {id:33,postazione:"P033",shape:"rect",svgX:802.35,svgY:575.92,svgW:20.93,svgH:32.92,cx:812.81,cy:592.38,nome:"Coltelleria Artigiana",titolare:"Pietro Liso",categoria:"Artigianato",whatsapp:"393333335566",presente:true},
+  {id:34,postazione:"P034",shape:"rect",svgX:837.29,svgY:575.92,svgW:20.93,svgH:32.92,cx:847.75,cy:592.38,nome:"Erboristeria Natura",titolare:"Nunzia Palma",categoria:"Erboristeria",whatsapp:"393334446677",presente:true},
+  {id:35,postazione:"P035",shape:"rect",svgX:859.90,svgY:575.92,svgW:20.93,svgH:32.92,cx:870.36,cy:592.38,nome:"Calzature Comfort",titolare:"Antonio De Giorgi",categoria:"Calzature",whatsapp:"393335557788",presente:true},
+  {id:36,postazione:"P036",shape:"rect",svgX:894.84,svgY:575.92,svgW:20.93,svgH:32.92,cx:905.30,cy:592.38,nome:"Profumeria Esclusiva",titolare:"Rosa Cataldi",categoria:"Cosmetica",whatsapp:"393336668899",presente:true},
+  {id:37,postazione:"P037",shape:"rect",svgX:917.45,svgY:575.92,svgW:20.93,svgH:32.92,cx:927.91,cy:592.38,nome:"Fiori & Composizioni",titolare:"Vito Pastore",categoria:"Floricoltura",whatsapp:"393337779900",presente:false},
+  {id:38,postazione:"P038",shape:"rect",svgX:952.39,svgY:575.92,svgW:20.93,svgH:32.92,cx:962.85,cy:592.38,nome:"Sport & Fitness",titolare:"Marco Resta",categoria:"Sport",whatsapp:"393338880011",presente:false},
+  {id:39,postazione:"P039",shape:"rect",svgX:975.00,svgY:575.92,svgW:20.93,svgH:32.92,cx:985.46,cy:592.38,nome:"Casa & Cucina",titolare:"Angela Ciullo",categoria:"Casalinghi",whatsapp:"393339991122",presente:false},
+  {id:40,postazione:"P040",shape:"rect",svgX:664.64,svgY:610.87,svgW:20.93,svgH:32.92,cx:675.10,cy:627.33,nome:"Vini & Liquori",titolare:"Cosimo Palmieri",categoria:"Alimentare",whatsapp:"393330002233",presente:false},
+  {id:41,postazione:"P041",shape:"rect",svgX:687.25,svgY:610.87,svgW:20.93,svgH:32.92,cx:697.71,cy:627.33,nome:"Borse & Valigie",titolare:"Miriam Fersino",categoria:"Pelletteria",whatsapp:"393331113355",presente:false},
+  {id:42,postazione:"P042",shape:"rect",svgX:722.19,svgY:610.87,svgW:20.93,svgH:32.92,cx:732.65,cy:627.33,nome:"Giornali & Libri",titolare:"Pietro Erroi",categoria:"Editoria",whatsapp:"393332224466",presente:false},
+  {id:43,postazione:"P043",shape:"rect",svgX:744.80,svgY:610.87,svgW:20.93,svgH:32.92,cx:755.26,cy:627.33,nome:"Articoli Religiosi",titolare:"Teresa Mancarella",categoria:"Artigianato",whatsapp:"393333335577",presente:false},
+  {id:44,postazione:"P044",shape:"rect",svgX:779.74,svgY:610.87,svgW:20.93,svgH:32.92,cx:790.20,cy:627.33,nome:"Casalinghi Premium",titolare:"Eugenia Coppola",categoria:"Casalinghi",whatsapp:"393334446688",presente:false},
+  {id:45,postazione:"P045",shape:"rect",svgX:802.35,svgY:610.87,svgW:20.93,svgH:32.92,cx:812.81,cy:627.33,nome:"Abbigliamento Bimbi",titolare:"Lucia Panese",categoria:"Abbigliamento",whatsapp:"393335557799",presente:false},
+  {id:46,postazione:"P046",shape:"rect",svgX:837.29,svgY:610.87,svgW:20.93,svgH:32.92,cx:847.75,cy:627.33,nome:"Miele & Prodotti Bio",titolare:"Francesco Erroi",categoria:"Alimentare",whatsapp:"393336668800",presente:false},
+  {id:47,postazione:"P047",shape:"rect",svgX:859.90,svgY:610.87,svgW:20.93,svgH:32.92,cx:870.36,cy:627.33,nome:"Elettrodomestici",titolare:"Rocco Ingrosso",categoria:"Elettronica",whatsapp:"393337779911",presente:false},
+  {id:48,postazione:"P048",shape:"rect",svgX:894.84,svgY:610.87,svgW:20.93,svgH:32.92,cx:905.30,cy:627.33,nome:"Maglieria Artigiana",titolare:"Carmen Ciardo",categoria:"Tessuti",whatsapp:"393338880022",presente:false},
+  {id:49,postazione:"P049",shape:"rect",svgX:917.45,svgY:610.87,svgW:20.93,svgH:32.92,cx:927.91,cy:627.33,nome:"Spezie & Aromi",titolare:"Giovanni Fersino",categoria:"Alimentare",whatsapp:"393339991133",presente:false},
+  {id:50,postazione:"P050",shape:"rect",svgX:952.39,svgY:610.87,svgW:20.93,svgH:32.92,cx:962.85,cy:627.33,nome:"Ottica & Fotografia",titolare:"Silvana Palmieri",categoria:"Ottica",whatsapp:"393330002244",presente:false}
   ];
   const emptyRects = [
   [51,"P051",975.00,610.87,20.93,32.92,985.46,627.33],
@@ -331,10 +330,10 @@ const ESPOSITORI_INIT = (()=>{
   [251,"P251","770.777 1262.763 749.852 1268.313 749.852 1233.063 770.777 1233.063 770.777 1262.763",762.41,1251.99]
   ];
   const fromRects = emptyRects.map(([id,postazione,svgX,svgY,svgW,svgH,cx,cy])=>
-    ({id,postazione,shape:"rect",svgX,svgY,svgW,svgH,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",targa:"",presente:false})
+    ({id,postazione,shape:"rect",svgX,svgY,svgW,svgH,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false})
   );
   const fromPolys = emptyPolys.map(([id,postazione,points,cx,cy])=>
-    ({id,postazione,shape:"poly",points,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",targa:"",presente:false})
+    ({id,postazione,shape:"poly",points,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false})
   );
   return [...filled,...fromRects,...fromPolys].sort((a,b)=>a.id-b.id);
 })();
@@ -955,13 +954,11 @@ function PageEventi({eventi}){
 function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,setEventi,updPresenza}){
   const [pwd,setPwd]=useState("");
   const [err,setErr]=useState(false);
-  const [tab,setTab]=useState("accessi");
-  const [targa,setTarga]=useState("");
-  const [msg,setMsg]=useState(null);
+  const [tab,setTab]=useState("presenze");
   const [addE,setAddE]=useState(false);
   const [addErr,setAddErr]=useState("");
   const [addEv,setAddEv]=useState(false);
-  const [nE,setNE]=useState({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:"",targa:""});
+  const [nE,setNE]=useState({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:""});
   const [nEv,setNEv]=useState({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});
 
   if(!adminLogged) return(
@@ -980,15 +977,7 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
   );
   function doLogin(){if(pwd==="admin2024"){setAdminLogged(true);setErr(false);}else setErr(true);}
 
-  function simTarga(){
-    const t=targa.trim().toUpperCase();
-    const e=espositori.find(x=>x.targa.toUpperCase()===t);
-    if(e){updPresenza(e.id,true);setMsg({ok:true,txt:`Accesso autorizzato — ${e.nome} · Postazione ${e.postazione}`});}
-    else setMsg({ok:false,txt:`Targa ${t} non riconosciuta. Accesso negato.`});
-    setTarga("");setTimeout(()=>setMsg(null),5000);
-  }
-
-  const TABS=[{id:"accessi",icon:"car",l:"Accessi"},{id:"espositori",icon:"store",l:"Espositori"},{id:"eventi",icon:"calendar",l:"Eventi"}];
+  const TABS=[{id:"presenze",icon:"checkCircle",l:"Presenze"},{id:"espositori",icon:"store",l:"Espositori"},{id:"eventi",icon:"calendar",l:"Eventi"}];
 
   return(
     <div style={S.page}>
@@ -1008,24 +997,15 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
         ))}
       </div>
 
-      {/* ACCESSI */}
-      {tab==="accessi"&&(
+      {/* PRESENZE */}
+      {tab==="presenze"&&(
         <div>
-          <div style={S.secLbl}>Simulatore Targa</div>
-          <div style={S.targaCard}>
-            <input style={S.targaIn} type="text" placeholder="es. LE456AB" value={targa}
-              onChange={e=>setTarga(e.target.value.toUpperCase())} onKeyDown={e=>e.key==="Enter"&&simTarga()} maxLength={8}/>
-            <button style={S.sbarraBtn} onClick={simTarga}><Icon name="car" size={18} color="#fff" sw={1.8}/> Verifica Accesso</button>
-          </div>
-          {msg&&<div style={{...S.targaMsg,background:msg.ok?"#eaf7f0":"#fdecea",color:msg.ok?"#2e7d52":"#a02020",borderColor:msg.ok?"#3daa70":"#e05050"}}>
-            <Icon name={msg.ok?"checkCircle":"xCircle"} size={18} color={msg.ok?"#3daa70":"#e05050"} sw={1.8}/>{msg.txt}
-          </div>}
           <div style={S.secLbl}>Presenza Espositori</div>
           <div style={S.col}>
             {espositori.filter(e=>e.nome).map(e=>(
               <div key={e.id} style={S.presRow}>
                 <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?"#3daa70":"#c0b0a0",flexShrink:0,display:"inline-block"}}/>
-                <div style={{flex:1}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.postazione} · {e.targa}</div></div>
+                <div style={{flex:1}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.postazione} · {e.categoria}</div></div>
                 <button style={{...S.togBtn,background:e.presente?"#fdecea":"#eaf7f0",color:e.presente?"#c0392b":"#3daa70"}} onClick={()=>updPresenza(e.id,!e.presente)}>
                   {e.presente?"Assente":"Presente"}
                 </button>
@@ -1045,7 +1025,7 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
           {addE&&(
             <div style={S.formCard}>
               <div style={S.formH}>Assegna postazione</div>
-              {[["nome","Nome attività *"],["titolare","Titolare"],["whatsapp","WhatsApp"],["postazione","Codice postazione libera (es. P051) *"],["targa","Targa"]].map(([k,pl])=>(
+              {[["nome","Nome attività *"],["titolare","Titolare"],["whatsapp","WhatsApp"],["postazione","Codice postazione libera (es. P051) *"]].map(([k,pl])=>(
                 <input key={k} style={S.input} placeholder={pl} value={nE[k]} onChange={e=>setNE(p=>({...p,[k]:e.target.value}))}/>
               ))}
               <select style={S.select} value={nE.categoria} onChange={e=>setNE(p=>({...p,categoria:e.target.value}))}>
@@ -1060,9 +1040,9 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
                   const target=espositori.find(x=>x.postazione.toUpperCase()===code);
                   if(!target){setAddErr(`Postazione ${code} inesistente (usa un codice da P001 a P251)`);return;}
                   if(target.nome){setAddErr(`${code} è già assegnata a "${target.nome}"`);return;}
-                  setEspositori(p=>p.map(x=>x.id===target.id?{...x,nome:nE.nome.trim(),titolare:nE.titolare.trim(),categoria:nE.categoria,whatsapp:nE.whatsapp.trim(),targa:nE.targa.trim().toUpperCase()}:x));
+                  setEspositori(p=>p.map(x=>x.id===target.id?{...x,nome:nE.nome.trim(),titolare:nE.titolare.trim(),categoria:nE.categoria,whatsapp:nE.whatsapp.trim()}:x));
                   setAddE(false);setAddErr("");
-                  setNE({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:"",targa:""});
+                  setNE({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:""});
                 }}>Salva</button>
                 <button style={S.cancelBtn} onClick={()=>{setAddE(false);setAddErr("");}}>Annulla</button>
               </div>
@@ -1072,8 +1052,8 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
             {espositori.filter(e=>e.nome).map(e=>(
               <div key={e.id} style={S.aRow}>
                 <span style={{fontSize:11,fontWeight:800,color:e.presente?"#3daa70":"#9a8070",minWidth:36}}>{e.postazione}</span>
-                <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.titolare} · {e.targa}</div></div>
-                <button style={S.delBtn} title="Libera postazione" onClick={()=>setEspositori(p=>p.map(x=>x.id===e.id?{...x,nome:"",titolare:"",categoria:"",whatsapp:"",targa:"",presente:false}:x))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
+                <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{[e.titolare,e.categoria].filter(Boolean).join(" · ")}</div></div>
+                <button style={S.delBtn} title="Libera postazione" onClick={()=>setEspositori(p=>p.map(x=>x.id===e.id?{...x,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false}:x))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
               </div>
             ))}
           </div>
@@ -1197,10 +1177,6 @@ const S={
   aTab:{flex:1,padding:"8px 4px 6px",borderWidth:"1px",borderStyle:"solid",borderColor:border,borderRadius:10,background:white,fontSize:10,cursor:"pointer",color:textM,display:"flex",flexDirection:"column",alignItems:"center",gap:3,fontFamily:"'Montserrat',sans-serif",fontWeight:700,letterSpacing:0.3},
   aTabAct:{background:terra,color:white,borderColor:terra},
   secLbl:{fontSize:9,fontWeight:700,color:textL,letterSpacing:2,textTransform:"uppercase",marginBottom:8,marginTop:2},
-  targaCard:{background:white,borderRadius:14,padding:16,border:`1px solid ${border}`,marginBottom:10,textAlign:"center"},
-  targaIn:{width:"100%",padding:"11px",borderRadius:10,border:`1.5px solid ${border}`,fontSize:18,textAlign:"center",letterSpacing:5,background:sand,color:terra,outline:"none",boxSizing:"border-box",marginBottom:10,textTransform:"uppercase",fontFamily:"'Courier New',monospace",fontWeight:800},
-  sbarraBtn:{width:"100%",padding:"12px 0",background:ocra,color:white,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center",gap:8,fontFamily:"'Montserrat',sans-serif"},
-  targaMsg:{padding:"11px 12px",borderRadius:10,fontSize:11,fontWeight:600,marginBottom:12,display:"flex",alignItems:"center",gap:8,borderWidth:"1.5px",borderStyle:"solid"},
   presRow:{background:white,borderRadius:12,padding:"10px 12px",display:"flex",alignItems:"center",gap:10,border:`1px solid ${border}`},
   togBtn:{fontSize:10,padding:"5px 10px",borderRadius:8,border:"none",cursor:"pointer",fontWeight:700,whiteSpace:"nowrap",fontFamily:"'Montserrat',sans-serif"},
   addBtn:{display:"flex",alignItems:"center",gap:5,background:ocra,color:white,border:"none",borderRadius:8,padding:"7px 13px",fontSize:11,cursor:"pointer",fontWeight:700,fontFamily:"'Montserrat',sans-serif"},
@@ -1453,7 +1429,7 @@ export default function App(){
   useEffect(()=>{
     const overrides = {};
     espositori.forEach(e=>{
-      overrides[e.id] = {nome:e.nome,titolare:e.titolare,categoria:e.categoria,whatsapp:e.whatsapp,targa:e.targa,presente:e.presente};
+      overrides[e.id] = {nome:e.nome,titolare:e.titolare,categoria:e.categoria,whatsapp:e.whatsapp,presente:e.presente};
     });
     store.set("esp_overrides",overrides);
   },[espositori]);

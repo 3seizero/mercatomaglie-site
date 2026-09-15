@@ -1,0 +1,3159 @@
+{
+ "_meta": {
+  "fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026",
+  "generato": "scripts/import-suap.py",
+  "nota": "Solo campi pubblici. CF/P.IVA/indirizzi in espositori_riservati.json (non committato)."
+ },
+ "espositori": [
+  {
+   "id": "migliaccio-massimo",
+   "denominazione": "Migliaccio Massimo",
+   "alias": null,
+   "referente": "Massimo Migliaccio",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "laghezza-michele",
+   "denominazione": "Laghezza Michele",
+   "alias": null,
+   "referente": "Michele Laghezza",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fiorentino-salvatore",
+   "denominazione": "Fiorentino Salvatore",
+   "alias": null,
+   "referente": "Salvatore Fiorentino",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fiorentino-claudio",
+   "denominazione": "Fiorentino Claudio",
+   "alias": null,
+   "referente": "Claudio Fiorentino",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "notaro-cesario-antonio",
+   "denominazione": "Notaro Cesari Antonio",
+   "alias": null,
+   "referente": "Cesario Antonio Notaro",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "verardi-massimo",
+   "denominazione": "Verardi Massimo",
+   "alias": null,
+   "referente": "Massimo Verardi",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-pascali-fabrizio",
+   "denominazione": "De Pascali Fabrizio",
+   "alias": null,
+   "referente": "Fabrizio De Pascali",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-matteis-claudio",
+   "denominazione": "De Matteis Moda di De Matteis Claudio",
+   "alias": null,
+   "referente": "Claudio De Matteis",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "tedesco-vincenzo",
+   "denominazione": "Abbigliamento e Confezioni di Tedesco Vincenzo",
+   "alias": null,
+   "referente": "Vincenzo Tedesco",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "nico-tonio",
+   "denominazione": "Nico Tessuti di Nico Tonio",
+   "alias": null,
+   "referente": "Tonio Nico",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "matricoti-dario",
+   "denominazione": "Matricoti Dario",
+   "alias": null,
+   "referente": "Dario Matricoti",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cavaliere-luca",
+   "denominazione": "Cavaliere Luca",
+   "alias": null,
+   "referente": "Luca Cavaliere",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "giannone-biagio",
+   "denominazione": "Giannone Biagio",
+   "alias": null,
+   "referente": "Biagio Giannone",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "za-giampaolo",
+   "denominazione": "Tessuti-abbigliamento-biancheria S.R.L.",
+   "alias": null,
+   "referente": "Giampaolo Za",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "micello-massimo",
+   "denominazione": "Due Emme di Micello Massimo",
+   "alias": null,
+   "referente": "Massimo Micello",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fitto-francesco",
+   "denominazione": "Fitto Francesco",
+   "alias": null,
+   "referente": "Francesco Fitto",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "spagnolo-sebastiano",
+   "denominazione": "Spagnolo Sebastiano",
+   "alias": null,
+   "referente": "Sebastiano Spagnolo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "caputo-pasquale",
+   "denominazione": "Caputo Pasquale",
+   "alias": null,
+   "referente": "Pasquale Caputo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "marcuccio-sebastiano",
+   "denominazione": "Marcuccio Sebastiano",
+   "alias": null,
+   "referente": "Sebastiano Marcuccio",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "blonda-luciano",
+   "denominazione": "Blonda Luciano",
+   "alias": null,
+   "referente": "Luciano Blonda",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cafaro-cesario",
+   "denominazione": "Cafaro Cesario",
+   "alias": null,
+   "referente": "Cesario Cafaro",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "inglese-gianni",
+   "denominazione": "Inglese Gianni",
+   "alias": null,
+   "referente": "Gianni Inglese",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "poso-roberto",
+   "denominazione": "Poso Roberto",
+   "alias": null,
+   "referente": "Roberto Poso",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "papa-roberto",
+   "denominazione": "Papa Roberto",
+   "alias": null,
+   "referente": "Roberto Papa",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "ettaqy-m-hamed",
+   "denominazione": "Ettaqy M'Hamed",
+   "alias": null,
+   "referente": "M'Hamed Ettaqy",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "beccarisi-claudio",
+   "denominazione": "Beccarisi Claudio",
+   "alias": null,
+   "referente": "Claudio Beccarisi",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-pascali-antonio",
+   "denominazione": "De Pascali Antonio",
+   "alias": null,
+   "referente": "Antonio De Pascali",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "ramundo-cosimo",
+   "denominazione": "Ramundo Cosimo",
+   "alias": null,
+   "referente": "Cosimo Ramundo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "venneri-mauro",
+   "denominazione": "Andrew S.A.S. di Venneri Mauro & C.",
+   "alias": null,
+   "referente": "Mauro Venneri",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "maruccia-ivano",
+   "denominazione": "Maruccia Ivano",
+   "alias": null,
+   "referente": "Ivano Maruccia",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "levanto-alessandro",
+   "denominazione": "Levanto Alessandro",
+   "alias": null,
+   "referente": "Alessandro Levanto",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "morrone-salvatore",
+   "denominazione": "Morrone Salvatore",
+   "alias": null,
+   "referente": "Salvatore Morrone",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "tundo-sergio",
+   "denominazione": "Tundo Sergio",
+   "alias": null,
+   "referente": "Sergio Tundo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "conte-cosimo",
+   "denominazione": "Conte S.A.S. di Cosimo Conte & C.",
+   "alias": null,
+   "referente": "Cosimo Conte",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "maggio-giuseppe",
+   "denominazione": "Maggio Giuseppe",
+   "alias": null,
+   "referente": "Giuseppe Maggio",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "perrotta-gianpiero-davide",
+   "denominazione": "Perrotta Gianpiero",
+   "alias": null,
+   "referente": "Gianpiero Davide Perrotta",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "biondino-roberta",
+   "denominazione": "Biondino Roberta",
+   "alias": null,
+   "referente": "Roberta Biondino",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-tommaso-maurizio",
+   "denominazione": "De Tommaso Maurizio",
+   "alias": null,
+   "referente": "Maurizio De Tommaso",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "accogli-raffaele",
+   "denominazione": "Accogli Raffaele",
+   "alias": null,
+   "referente": "Raffaele Accogli",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "stefanelli-marco",
+   "denominazione": "Stefanelli Marco",
+   "alias": null,
+   "referente": "Marco Stefanelli",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "terragno-antonio",
+   "denominazione": "Terragno Antonio",
+   "alias": null,
+   "referente": "Antonio Terragno",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "forlano-giuseppe",
+   "denominazione": "RDN S.R.L.",
+   "alias": null,
+   "referente": "Giuseppe Forlano",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "settimo-gianni",
+   "denominazione": "Settimo Gianni",
+   "alias": null,
+   "referente": "Gianni Settimo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "resta-vincenzo",
+   "denominazione": "Resta Vincenzo",
+   "alias": null,
+   "referente": "Vincenzo Resta",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "paglialonga-alberto",
+   "denominazione": "Paglialonga Alberto",
+   "alias": null,
+   "referente": "Alberto Paglialonga",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "riccardo-vito-giovanni",
+   "denominazione": "Riccardo Vito Giovanni",
+   "alias": null,
+   "referente": "Vito Giovanni Riccardo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "za-giampaolo-2",
+   "denominazione": "Za Giampaolo",
+   "alias": null,
+   "referente": "Giampaolo Za",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "scrascia-adriano",
+   "denominazione": "Scrascia Adriano",
+   "alias": null,
+   "referente": "Adriano Scrascia",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "antonaci-giovanni",
+   "denominazione": "Antonaci Giovanni",
+   "alias": null,
+   "referente": "Giovanni Antonaci",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "macri-emanuele-salvatore",
+   "denominazione": "Macri' Emanuele",
+   "alias": null,
+   "referente": "Emanuele Salvatore Macri'",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "monte-alessandro",
+   "denominazione": "Monte Alessandro",
+   "alias": null,
+   "referente": "Alessandro Monte",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "congedo-domenico",
+   "denominazione": "Babyland di Congedo Domenico",
+   "alias": null,
+   "referente": "Domenico Congedo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "carlino-antonio",
+   "denominazione": "Carlino Antonio",
+   "alias": null,
+   "referente": "Antonio Carlino",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "ghazi-abes",
+   "denominazione": "Ghazi Abes",
+   "alias": null,
+   "referente": "Abes Ghazi",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "scrimieri-giovanni",
+   "denominazione": "Scrimieri Giovanni",
+   "alias": null,
+   "referente": "Giovanni Scrimieri",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "nuzzo-luigi",
+   "denominazione": "Nuzzo Luigi",
+   "alias": null,
+   "referente": "Luigi Nuzzo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "scrascia-antonio",
+   "denominazione": "Scrascia Antonio",
+   "alias": null,
+   "referente": "Antonio Scrascia",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "milanese-piero",
+   "denominazione": "Milanese Piero",
+   "alias": null,
+   "referente": "Piero Milanese",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "caiulo-marco",
+   "denominazione": "Caiulo Marco",
+   "alias": null,
+   "referente": "Marco Caiulo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "viceconte-francesko",
+   "denominazione": "Viceconte Francesko",
+   "alias": null,
+   "referente": "Francesko Viceconte",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "miccoli-massimiliano",
+   "denominazione": "Miccoli Massimiliano",
+   "alias": null,
+   "referente": "Massimiliano Miccoli",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "levanto-nicola",
+   "denominazione": "Levanto Nicola",
+   "alias": null,
+   "referente": "Nicola Levanto",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "polimeno-salvatore",
+   "denominazione": "Polimeno Salvatore",
+   "alias": null,
+   "referente": "Salvatore Polimeno",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fall-moustapha",
+   "denominazione": "Fall Moustapha",
+   "alias": null,
+   "referente": "Moustapha Fall",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "luzio-enrico",
+   "denominazione": "Luzio Enrico",
+   "alias": null,
+   "referente": "Enrico Luzio",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "sponziello-fernando",
+   "denominazione": "Sponziello Fernando",
+   "alias": null,
+   "referente": "Fernando Sponziello",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "carrozzini-sergio",
+   "denominazione": "Carrozzini Sergio",
+   "alias": null,
+   "referente": "Sergio Carrozzini",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "presicce-claudio",
+   "denominazione": "Presicce Claudio",
+   "alias": null,
+   "referente": "Claudio Presicce",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-pascali-settimio",
+   "denominazione": "De Pascali Settimio",
+   "alias": null,
+   "referente": "Settimio De Pascali",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "paglialonga-walter",
+   "denominazione": "Paglialonga Walter",
+   "alias": null,
+   "referente": "Walter Paglialonga",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "frassante-fernando",
+   "denominazione": "Frassante Fernando",
+   "alias": null,
+   "referente": "Fernando Frassante",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-santis-pantaleo",
+   "denominazione": "De Santis Pantaleo",
+   "alias": null,
+   "referente": "Pantaleo De Santis",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "carcagni-francesco",
+   "denominazione": "Carcagni' Francesco",
+   "alias": null,
+   "referente": "Francesco Carcagni'",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "antonaci-luigi",
+   "denominazione": "Antonaci Luigi",
+   "alias": null,
+   "referente": "Luigi Antonaci",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "resta-salvatore",
+   "denominazione": "Resta Salvatore",
+   "alias": null,
+   "referente": "Salvatore Resta",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "pisanello-luigi",
+   "denominazione": "Pisanello Luigi",
+   "alias": null,
+   "referente": "Luigi Pisanello",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cannazza-adriano",
+   "denominazione": "Cannazza Adriano",
+   "alias": null,
+   "referente": "Adriano Cannazza",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "epifani-massimo-salvatore",
+   "denominazione": "Epifani Massimo Salvatore",
+   "alias": null,
+   "referente": "Massimo Salvatore Epifani",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-marco-silvia",
+   "denominazione": "Erede Fiorentino Giuseppe Gabriele",
+   "alias": null,
+   "referente": "Silvia De Marco",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "doniselli-deborah",
+   "denominazione": "DEDI di Doniselli Deborah",
+   "alias": null,
+   "referente": "Deborah Doniselli",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "sraidi-mohamed",
+   "denominazione": "Sraidi Mohamed",
+   "alias": null,
+   "referente": "Mohamed Sraidi",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "duca-massimo",
+   "denominazione": "Duca Massimo Antonio",
+   "alias": null,
+   "referente": "Massimo Duca",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "morrone-vincenzo",
+   "denominazione": "Morrone Vincenzo",
+   "alias": null,
+   "referente": "Vincenzo Morrone",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento / biancheria",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "A"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "madaghiele-alessandro",
+   "denominazione": "Madaghiele Alessandro",
+   "alias": null,
+   "referente": "Alessandro Madaghiele",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "provenzano-giovanni",
+   "denominazione": "Provenzano Giovanni",
+   "alias": null,
+   "referente": "Giovanni Provenzano",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "benegiamo-oronzo",
+   "denominazione": "Benegiamo Oronzo",
+   "alias": null,
+   "referente": "Oronzo Benegiamo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "greco-gian-marco",
+   "denominazione": "Greco Servizi Ambientali S.R.L.",
+   "alias": null,
+   "referente": "Gian Marco Greco",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "mele-marco",
+   "denominazione": "Mele Marco",
+   "alias": null,
+   "referente": "Marco Mele",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "rizzo-marco",
+   "denominazione": "Rizzo Marco",
+   "alias": null,
+   "referente": "Marco Rizzo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "palumbo-lorenzo",
+   "denominazione": "Palumbo Lorenzo",
+   "alias": null,
+   "referente": "Lorenzo Palumbo",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cirfera-daniela",
+   "denominazione": "Cirfera Daniela",
+   "alias": null,
+   "referente": "Daniela Cirfera",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "paglialonga-daniele",
+   "denominazione": "Paglialonga Daniele",
+   "alias": null,
+   "referente": "Daniele Paglialonga",
+   "tipo": "concessionario",
+   "categoria": "Abbigliamento usato",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "B"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "calo-enzo",
+   "denominazione": "Calo' Enzo",
+   "alias": null,
+   "referente": "Enzo Calo'",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "spalluto-pasquale",
+   "denominazione": "Spalluto Pasquale",
+   "alias": null,
+   "referente": "Pasquale Spalluto",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "mazzotta-santo",
+   "denominazione": "Mazzotta Santo",
+   "alias": null,
+   "referente": "Santo Mazzotta",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "greco-gianluca",
+   "denominazione": "Greco Gianluca",
+   "alias": null,
+   "referente": "Gianluca Greco",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "madaro-graziano",
+   "denominazione": "Madaro Graziano",
+   "alias": null,
+   "referente": "Graziano Madaro",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-nardo-rita",
+   "denominazione": "De Nardo Rita",
+   "alias": null,
+   "referente": "Rita De Nardo",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "russo-franco",
+   "denominazione": "Russo Franco",
+   "alias": null,
+   "referente": "Franco Russo",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "trianni-alessandro",
+   "denominazione": "Trianni Alessandro",
+   "alias": null,
+   "referente": "Alessandro Trianni",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "pellegrino-vincenzo",
+   "denominazione": "Pellegrino Vincenzo",
+   "alias": null,
+   "referente": "Vincenzo Pellegrino",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cataldi-simone",
+   "denominazione": "Cataldi Simone",
+   "alias": null,
+   "referente": "Simone Cataldi",
+   "tipo": "concessionario",
+   "categoria": "Alimentare",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "C"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "palama-daniele",
+   "denominazione": "Victoria S.R.L.",
+   "alias": null,
+   "referente": "Daniele Palama'",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "petracca-angelo-quintino",
+   "denominazione": "Petracca Angelo Quintino",
+   "alias": null,
+   "referente": "Angelo Quintino Petracca",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "vitale-lucio-james",
+   "denominazione": "Vitale Lucio James",
+   "alias": null,
+   "referente": "Lucio James Vitale",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "dollorenzo-antonio",
+   "denominazione": "Fashion di Dollorenzo Antonio",
+   "alias": null,
+   "referente": "Antonio Dollorenzo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "russo-pasquale-lillino",
+   "denominazione": "Russo Pasquale Lillino",
+   "alias": null,
+   "referente": "Pasquale Lillino Russo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "marrocco-raffaele",
+   "denominazione": "Marrocco Raffaele",
+   "alias": null,
+   "referente": "Raffaele Marrocco",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "maruccia-fernando",
+   "denominazione": "Maruccia Fernando",
+   "alias": null,
+   "referente": "Fernando Maruccia",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-magistri-marco",
+   "denominazione": "De Magistri Marco",
+   "alias": null,
+   "referente": "Marco De Magistri",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "luzio-luigi",
+   "denominazione": "Luzio Luigi",
+   "alias": null,
+   "referente": "Luigi Luzio",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fari-mino",
+   "denominazione": "Fari' Mino",
+   "alias": null,
+   "referente": "Mino Fari'",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "bruno-luigi",
+   "denominazione": "Bruno Luigi",
+   "alias": null,
+   "referente": "Luigi Bruno",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "tavola-alessandro",
+   "denominazione": "Tavola Alessandro",
+   "alias": null,
+   "referente": "Alessandro Tavola",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "russo-simone",
+   "denominazione": "Russo Simone",
+   "alias": null,
+   "referente": "Simone Russo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "russo-antonio",
+   "denominazione": "Exclusive Shoes Societa' A Responsabilita' Limitata",
+   "alias": null,
+   "referente": "Antonio Russo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "singh-harpreet",
+   "denominazione": "Singh Harpreet",
+   "alias": null,
+   "referente": "Harpreet Singh",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "agrimi-rosanna",
+   "denominazione": "Agrimi Rosanna",
+   "alias": null,
+   "referente": "Rosanna Agrimi",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "gagliardi-cesare",
+   "denominazione": "Scarpe Diem Calzature & Pelletteria di Gagliardi Cesare",
+   "alias": null,
+   "referente": "Cesare Gagliardi",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "giannotta-salvatore",
+   "denominazione": "Giannotta Salvatore",
+   "alias": null,
+   "referente": "Salvatore Giannotta",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "giagnotti-valeria",
+   "denominazione": "Giagnotti Valeria",
+   "alias": null,
+   "referente": "Valeria Giagnotti",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "luceri-gianpiero",
+   "denominazione": "Evolution di Luceri Gianpiero",
+   "alias": null,
+   "referente": "Gianpiero Luceri",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "candido-fabio",
+   "denominazione": "Candido Fabio",
+   "alias": null,
+   "referente": "Fabio Candido",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fuso-alessandro-antonio",
+   "denominazione": "F.A Off Limits di Fuso Alessandro Antonio",
+   "alias": null,
+   "referente": "Alessandro Antonio Fuso",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "gabellone-angelo-pasquale",
+   "denominazione": "Gabellone Angelo Pasquale",
+   "alias": null,
+   "referente": "Angelo Pasquale Gabellone",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "marrocco-mirco-salvatore",
+   "denominazione": "Marrocco Mirco Salvatore",
+   "alias": null,
+   "referente": "Mirco Salvatore Marrocco",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "lorenzo-gianni",
+   "denominazione": "Lorenzo Gianni",
+   "alias": null,
+   "referente": "Gianni Lorenzo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "antonucci-vito",
+   "denominazione": "Antonucci Vito",
+   "alias": null,
+   "referente": "Vito Antonucci",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "panico-salvatore-antonio",
+   "denominazione": "Panico Salvatore Antonio",
+   "alias": null,
+   "referente": "Salvatore Antonio Panico",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "panico-dario-palmiro",
+   "denominazione": "Panico Dario Palmiro",
+   "alias": null,
+   "referente": "Dario Palmiro Panico",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "ahmed-rana-sajjad",
+   "denominazione": "Ahmed Rana Sajjad",
+   "alias": null,
+   "referente": "Rana Sajjad Ahmed",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "diouf-khadim",
+   "denominazione": "Diouf Khadim",
+   "alias": null,
+   "referente": "Khadim Diouf",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "majdi-youness",
+   "denominazione": "Majdi Youness",
+   "alias": null,
+   "referente": "Youness Majdi",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "nocera-giancarlo",
+   "denominazione": "Nocera Gian Carlo",
+   "alias": null,
+   "referente": "Giancarlo Nocera",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "rana-muhammad-ahmed-shahzad",
+   "denominazione": "Rana Muhammad Ahmed Shahzad",
+   "alias": null,
+   "referente": "Ahmed Shahzad Rana Muhammad",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "raza-rana-ali",
+   "denominazione": "Raza Rana Ali",
+   "alias": null,
+   "referente": "Rana Ali Raza",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "pranzo-antonio",
+   "denominazione": "Pranzo Antonio",
+   "alias": null,
+   "referente": "Antonio Pranzo",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "raza-rana-asif",
+   "denominazione": "Rana Asif Rana",
+   "alias": null,
+   "referente": "Rana Asif Raza",
+   "tipo": "concessionario",
+   "categoria": "Calzature",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "D"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "petracca-dario",
+   "denominazione": "Petracca Dario",
+   "alias": null,
+   "referente": "Dario Petracca",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "miccoli-angelo",
+   "denominazione": "Miccoli Angelo",
+   "alias": null,
+   "referente": "Angelo Miccoli",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "miccoli-antonio-giovanni",
+   "denominazione": "Miccoli Antonio Giovanni",
+   "alias": null,
+   "referente": "Antonio Giovanni Miccoli",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "duma-antonio",
+   "denominazione": "Duma Antonio",
+   "alias": null,
+   "referente": "Antonio Duma",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cimino-tommaso",
+   "denominazione": "Cimino Tommaso",
+   "alias": null,
+   "referente": "Tommaso Cimino",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "maniglia-francesco",
+   "denominazione": "Maniglia Francesco",
+   "alias": null,
+   "referente": "Francesco Maniglia",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "miccoli-giusto",
+   "denominazione": "Miccoli Giusto",
+   "alias": null,
+   "referente": "Giusto Miccoli",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "serra-gianluigi",
+   "denominazione": "Serra Gian Luigi",
+   "alias": null,
+   "referente": "Gianluigi Serra",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "levanto-giampiero",
+   "denominazione": "Levanto Giampiero",
+   "alias": null,
+   "referente": "Giampiero Levanto",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "falcone-romualdo",
+   "denominazione": "Terrecotte Fernando Falcone di Romualdo e Antonio Falcone S.N.C.",
+   "alias": null,
+   "referente": "Romualdo Falcone",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "miccoli-damiano-donato",
+   "denominazione": "Miccoli Damiano Donato",
+   "alias": null,
+   "referente": "Damiano Donato Miccoli",
+   "tipo": "concessionario",
+   "categoria": "Casalinghi / ferramenta / fiori",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [
+    "E"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "de-luca-biagio",
+   "denominazione": "De Luca Biagio",
+   "alias": null,
+   "referente": "Biagio De Luca",
+   "tipo": "concessionario",
+   "categoria": "Prodotti ittici",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fersini-luigi",
+   "denominazione": "Adriatica Societa' Cooperativa",
+   "alias": null,
+   "referente": "Luigi Fersini",
+   "tipo": "concessionario",
+   "categoria": "Prodotti ittici",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "fersini-cristiana",
+   "denominazione": "Mediterranea Commercio Prodotti Ittici SRLS",
+   "alias": null,
+   "referente": "Cristiana Fersini",
+   "tipo": "concessionario",
+   "categoria": "Prodotti ittici",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "operatori-vari-vendita-settimanale-carni",
+   "denominazione": "Operatori Vari - Vendita Settimanale Carni",
+   "alias": null,
+   "referente": null,
+   "tipo": "operatori-vari",
+   "categoria": "Carni",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "esposito-alessandro",
+   "denominazione": "Hyppocampus di Esposito Alessandro",
+   "alias": null,
+   "referente": "Alessandro Esposito",
+   "tipo": "concessionario",
+   "categoria": "Prodotti ittici",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "vincenti-nicola",
+   "denominazione": "Nicola Vincenti",
+   "alias": null,
+   "referente": "Nicola Vincenti",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "scarpa-raffaele",
+   "denominazione": "Raffaele Scarpa",
+   "alias": null,
+   "referente": "Raffaele Scarpa",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "vincenti-marco",
+   "denominazione": "Marco Vincenti",
+   "alias": null,
+   "referente": "Marco Vincenti",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "lazoi-salvatore",
+   "denominazione": "Salvatore Lazoi",
+   "alias": null,
+   "referente": "Salvatore Lazoi",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "marra-tommaso",
+   "denominazione": "Tommaso Marra",
+   "alias": null,
+   "referente": "Tommaso Marra",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "verardi-valter",
+   "denominazione": "Valter Verardi",
+   "alias": null,
+   "referente": "Valter Verardi",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "perfetto-antonio",
+   "denominazione": "Antonio Perfetto",
+   "alias": null,
+   "referente": "Antonio Perfetto",
+   "tipo": "produttore",
+   "categoria": "Prodotti agricoli",
+   "mercati": [
+    "coperto"
+   ],
+   "settori": [
+    "panche"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "sticchi-roberto",
+   "denominazione": "Azienda Agricola Sticchi di Sticchi Marco e Roberto S.N.C. Agricola",
+   "alias": null,
+   "referente": "Roberto Sticchi",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "sticchi-luigi",
+   "denominazione": "Luigi Sticchi",
+   "alias": null,
+   "referente": "Luigi Sticchi",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "box"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "presicce-marco",
+   "denominazione": "Marco Presicce",
+   "alias": null,
+   "referente": "Marco Presicce",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cisotta-antonio",
+   "denominazione": "Antonio Cisotta",
+   "alias": null,
+   "referente": "Antonio Cisotta",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "rizzo-giuseppe",
+   "denominazione": "Giuseppe Rizzo",
+   "alias": null,
+   "referente": "Giuseppe Rizzo",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "misciali-sebastiano",
+   "denominazione": "Ortofrutta di Misciali Sebastiano",
+   "alias": null,
+   "referente": "Sebastiano Misciali",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "notaro-marco",
+   "denominazione": "Marco Notaro",
+   "alias": null,
+   "referente": "Marco Notaro",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "cenere-giovanni",
+   "denominazione": "Gusto di Campo di Cenere Giovanni & C SNC",
+   "alias": null,
+   "referente": "Giovanni Cenere",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "gatto-giuseppe",
+   "denominazione": "Giuseppe Gatto",
+   "alias": null,
+   "referente": "Giuseppe Gatto",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "scrimieri-salvatore",
+   "denominazione": "Salvatore Scrimieri",
+   "alias": null,
+   "referente": "Salvatore Scrimieri",
+   "tipo": "concessionario",
+   "categoria": "Fiori",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "papaleo-pasquale",
+   "denominazione": "Pasquale Papaleo",
+   "alias": null,
+   "referente": "Pasquale Papaleo",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "calo-francesco",
+   "denominazione": "Francesco Calo'",
+   "alias": null,
+   "referente": "Francesco Calo'",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "biasco-rocco",
+   "denominazione": "Rocco Biasco",
+   "alias": null,
+   "referente": "Rocco Biasco",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  },
+  {
+   "id": "stefanizzi-donato-lorenzo",
+   "denominazione": "Donato Lorenzo Stefanizzi",
+   "alias": null,
+   "referente": "Donato Lorenzo Stefanizzi",
+   "tipo": "concessionario",
+   "categoria": "Ortofrutta",
+   "mercati": [
+    "ortofrutticolo"
+   ],
+   "settori": [
+    "settimanale"
+   ],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null
+  }
+ ]
+}

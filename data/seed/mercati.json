@@ -1,0 +1,40 @@
+{
+ "_meta": {
+  "fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026",
+  "generato": "scripts/import-suap.py"
+ },
+ "mercati": [
+  {
+   "id": "area-mercatale",
+   "nome": "Area Mercatale",
+   "tipo": "settimanale",
+   "hasMappa": true,
+   "indirizzo": null,
+   "giorni": null,
+   "orari": null,
+   "note": "Nuova Area Mercatale, 5 settori merceologici (A–E). Indirizzo/giorni/orari da confermare con il Comune."
+  },
+  {
+   "id": "coperto",
+   "nome": "Mercato Coperto Centro",
+   "tipo": "coperto",
+   "hasMappa": false,
+   "indirizzo": "Piazza Mercato, Maglie",
+   "giorni": null,
+   "orari": null,
+   "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli. Giorni/orari da confermare."
+  },
+  {
+   "id": "ortofrutticolo",
+   "nome": "Mercato Ortofrutticolo",
+   "tipo": "settimanale",
+   "hasMappa": false,
+   "indirizzo": "Piazza Immacolata, Maglie",
+   "giorni": [
+    "sabato"
+   ],
+   "orari": null,
+   "note": "Elenchi SUAP intitolati 'Mercato settimanale del sabato'. L'offerta cita Via Toma Nuzzichi nei giorni feriali: da chiarire."
+  }
+ ]
+}

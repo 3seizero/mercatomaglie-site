@@ -1,1 +1,4 @@
 .DS_Store
+
+# Dati personali (CF, P.IVA, indirizzi) estratti dagli elenchi SUAP: mai nel repo pubblico
+data/seed/espositori_riservati.json
