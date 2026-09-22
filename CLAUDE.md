@@ -111,6 +111,7 @@ git add . && git commit -m "descrizione" && git push
   scanner con BarcodeDetector nativo o jsQR
 - [x] Orari mercati (22/09/2026): area sabato 6-13, ortofrutticolo mercoledì 6-13, coperto tutti
   i giorni 6-13, in `mercati.json` (giorniSettimana/apertura/chiusura) e Firestore `mercati`;
+  modificabili dal pannello (pagina Mercati, solo admin; l'app li legge live con `useMercati()`);
   `mercatoAperto()` in dati.js: fuori orario la mappa mostra "Mercato chiuso · apre …" e le
   postazioni assegnate in colore neutro (niente rosso)
 - [x] Scheda self-service (22/09/2026): dal QR l'espositore propone alias/contatti/descrizione con

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { firebaseReady, FOTO_ABILITATE } from "./firebase.js";
 import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
-import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useAperture, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
+import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useMercati, useAperture, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
 
 // ============================================================
 // GOOGLE FONT INJECTION
@@ -1113,10 +1113,11 @@ export default function App(){
   const presenze=firebaseReady?presenzeRemote:presenzeLocal;
   const auth=useAuth();
   const live=usePubblico();
-  const aperture=useAperture();
+  const mercati=useMercati();
+  const aperture=useAperture(mercati);
   const postazioni=useMemo(()=>buildPostazioni(presenze,live),[presenze,live]);
   const elenchi=useMemo(()=>({coperto:buildElenco("coperto",presenze,live),ortofrutticolo:buildElenco("ortofrutticolo",presenze,live)}),[presenze,live]);
-  const mercatoById=id=>MERCATI.find(m=>m.id===id);
+  const mercatoById=id=>mercati.find(m=>m.id===id);
 
   const [eventi,setEventi]=useState(()=>store.get("ev",EVENTI_INIT));
   const [popup,setPopup]=useState(null);

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { stampaQr, qrDataUrl } from "./stampa.js";
 import {
   firebaseReady, MERCATI, SETTORI, TIPI, RUOLI, useAdminAuth, useCollection, rebuildPubblico,
-  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr, FOTO_ABILITATE, CAMPI_RICHIESTA, approvaRichiesta, rifiutaRichiesta, caricaFoto, eliminaFoto, salvaFotoEspositore,
+  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr, FOTO_ABILITATE, CAMPI_RICHIESTA, approvaRichiesta, rifiutaRichiesta, caricaFoto, eliminaFoto, salvaFotoEspositore, salvaMercato, GIORNI, testoGiorni, testoOrario,
 } from "./api.js";
 
 const sup = (p) => (p && p.superficie && typeof p.superficie === "object") ? p.superficie.raw : (p ? p.superficie : null);
@@ -26,7 +26,7 @@ export default function App() {
       <aside className="side">
         <div className="brand">Mercati di Maglie<small>Gestione</small></div>
         <div className="who">{auth.user.email}<br /><b>{auth.role}</b></div>
-        {[["espositori", "Espositori"], ["posteggi", "Posteggi"], ["richieste", `Richieste${inAttesa ? ` (${inAttesa})` : ""}`], ...(auth.isAdmin ? [["staff", "Staff"]] : []), ["account", "Account"]].map(([id, l]) => (
+        {[["espositori", "Espositori"], ["posteggi", "Posteggi"], ["richieste", `Richieste${inAttesa ? ` (${inAttesa})` : ""}`], ...(auth.isAdmin ? [["mercati", "Mercati"], ["staff", "Staff"]] : []), ["account", "Account"]].map(([id, l]) => (
           <button key={id} className={page === id ? "active" : ""} onClick={() => setPage(id)}>{l}</button>
         ))}
         <div className="spacer" />
@@ -37,6 +37,7 @@ export default function App() {
         {page === "espositori" && <Espositori auth={auth} />}
         {page === "posteggi" && <Posteggi auth={auth} />}
         {page === "richieste" && <Richieste auth={auth} richieste={richieste} />}
+        {page === "mercati" && auth.isAdmin && <Mercati />}
         {page === "staff" && auth.isAdmin && <Staff auth={auth} />}
         {page === "account" && <Account auth={auth} />}
       </main>
@@ -386,6 +387,55 @@ function NotaInline({ valore, onSave, disabled }) {
   const [v, setV] = useState(valore); const [ed, setEd] = useState(false);
   if (!ed) return <span className="muted" style={{ cursor: disabled ? "default" : "pointer" }} onClick={() => !disabled && setEd(true)}>{valore || "＋ nota"}</span>;
   return <span style={{ display: "flex", gap: 6 }}><input type="text" value={v} onChange={(e) => setV(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { onSave(v); setEd(false); } if (e.key === "Escape") setEd(false); }} autoFocus /><button className="btn sm" onClick={() => { onSave(v); setEd(false); }}>OK</button></span>;
+}
+
+// ------------------------------------------------------------ MERCATI (indirizzo, giorni, orari)
+function Mercati() {
+  const { rows } = useCollection("mercati");
+  if (!rows.length) return <div><h2>Mercati</h2><div className="muted">Caricamento…</div></div>;
+  const lista = MERCATI.map((m) => rows.find((r) => r.id === m.id) || { id: m.id, nome: m.nome });
+  return (
+    <div>
+      <h2>Mercati</h2>
+      <p className="muted">Giorni e orari determinano quando l'app mostra il mercato "aperto": solo in quelle fasce le presenze colorano le postazioni e gli assenti risultano in rosso. Fuori orario l'app indica la prossima apertura.</p>
+      <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+        {lista.map((m) => <SchedaMercato key={m.id} m={m} />)}
+      </div>
+    </div>
+  );
+}
+function SchedaMercato({ m }) {
+  const [f, setF] = useState({ nome: m.nome || "", indirizzo: m.indirizzo || "", giorniSettimana: m.giorniSettimana || [], apertura: m.apertura || "06:00", chiusura: m.chiusura || "13:00", note: m.note || "" });
+  const [msg, setMsg] = useState(null); const [busy, setBusy] = useState(false);
+  const set = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.value }));
+  const toggleG = (g) => setF((p) => ({ ...p, giorniSettimana: p.giorniSettimana.includes(g) ? p.giorniSettimana.filter((x) => x !== g) : [...p.giorniSettimana, g] }));
+  async function salva() {
+    if (!f.giorniSettimana.length) { setMsg({ ok: false, t: "Seleziona almeno un giorno" }); return; }
+    setBusy(true); setMsg(null);
+    try {
+      await salvaMercato(m.id, { ...f, giorni: [testoGiorni(f.giorniSettimana)], orari: testoOrario(f.apertura, f.chiusura) });
+      setMsg({ ok: true, t: "Salvato: l'app si aggiorna subito" });
+    } catch (e) { setMsg({ ok: false, t: errore(e) }); }
+    setBusy(false);
+  }
+  return (
+    <div className="card">
+      <h3 style={{ margin: "0 0 10px" }}>{m.nome}</h3>
+      <div className="field"><label>Nome</label><input type="text" value={f.nome} onChange={set("nome")} /></div>
+      <div className="field"><label>Indirizzo</label><input type="text" value={f.indirizzo} onChange={set("indirizzo")} /></div>
+      <div className="field"><label>Giorni di mercato</label>
+        <div className="tabs">{GIORNI.map(([g, l]) => <button key={g} type="button" className={f.giorniSettimana.includes(g) ? "active" : ""} onClick={() => toggleG(g)}>{l}</button>)}</div>
+        <div className="muted" style={{ marginTop: 4 }}>{f.giorniSettimana.length ? testoGiorni(f.giorniSettimana) : "—"}</div>
+      </div>
+      <div className="row2">
+        <div className="field"><label>Apertura</label><input type="time" value={f.apertura} onChange={set("apertura")} /></div>
+        <div className="field"><label>Chiusura</label><input type="time" value={f.chiusura} onChange={set("chiusura")} /></div>
+      </div>
+      <div className="field"><label>Note (visibili solo qui)</label><textarea value={f.note} onChange={set("note")} style={{ minHeight: 56 }} /></div>
+      {msg && <div className={"msg " + (msg.ok ? "ok" : "err")}>{msg.t}</div>}
+      <div className="actions"><button className="btn primary" disabled={busy} onClick={salva}>{busy ? "Salvataggio…" : "Salva"}</button></div>
+    </div>
+  );
 }
 
 // ------------------------------------------------------------ STAFF

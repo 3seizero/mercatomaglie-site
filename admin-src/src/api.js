@@ -174,6 +174,19 @@ export async function eliminaFoto(url) {
 }
 export const salvaFotoEspositore = (espositoreId, foto) => setDoc(doc(db, "espositori", docId(espositoreId)), { foto, _aggiornato: serverTimestamp() }, { merge: true });
 
+/** Mercati: indirizzo, giorni, orari, note (solo admin per regole). */
+export const salvaMercato = (id, data) => setDoc(doc(db, "mercati", id), { ...data, id, _aggiornato: serverTimestamp() }, { merge: true });
+export const GIORNI = [[1, "Lun"], [2, "Mar"], [3, "Mer"], [4, "Gio"], [5, "Ven"], [6, "Sab"], [0, "Dom"]];
+export function testoGiorni(gs) {
+  const set = new Set(gs);
+  if (set.size === 7) return "tutti i giorni";
+  if (set.size === 6 && !set.has(0)) return "da lunedì a sabato";
+  const nomi = { 1: "lunedì", 2: "martedì", 3: "mercoledì", 4: "giovedì", 5: "venerdì", 6: "sabato", 0: "domenica" };
+  const ord = [1, 2, 3, 4, 5, 6, 0].filter((g) => set.has(g)).map((g) => nomi[g]);
+  return ord.length === 1 ? "ogni " + ord[0] : ord.join(", ");
+}
+export const testoOrario = (a, c) => `${a.replace(/^0/, "")} – ${c.replace(/^0/, "")}`;
+
 export const aggiornaStaff = (uid, data) => updateDoc(doc(db, "staff", uid), { ...data, _aggiornato: serverTimestamp() });
 export const inviaReset = (email) => sendPasswordResetEmail(auth, email);
 export { getApp };

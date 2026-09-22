@@ -86,11 +86,25 @@ export function prossimaApertura(m, now = new Date()) {
   }
   return "";
 }
+/** Mercati: dati del bundle sovrascritti da Firestore mercati/{id} (indirizzo, giorni, orari modificabili dal pannello). */
+export function useMercati() {
+  const [mercati, setMercati] = useState(MERCATI);
+  useEffect(() => {
+    if (!firebaseReady) return;
+    const unsubs = MERCATI.map((m) => onSnapshot(doc(db, "mercati", m.id), (snap) => {
+      const d = snap.data(); if (!d) return;
+      setMercati((prev) => prev.map((x) => (x.id === m.id ? { ...x, ...d } : x)));
+    }, () => {}));
+    return () => unsubs.forEach((u) => u());
+  }, []);
+  return mercati;
+}
+
 /** Stato apertura di tutti i mercati (si aggiorna ogni minuto). */
-export function useAperture() {
-  const calc = () => Object.fromEntries(MERCATI.map((m) => [m.id, mercatoAperto(m)]));
+export function useAperture(mercati = MERCATI) {
+  const calc = () => Object.fromEntries(mercati.map((m) => [m.id, mercatoAperto(m)]));
   const [ap, setAp] = useState(calc);
-  useEffect(() => { const t = setInterval(() => setAp(calc()), 60000); return () => clearInterval(t); }, []);
+  useEffect(() => { setAp(calc()); const t = setInterval(() => setAp(calc()), 60000); return () => clearInterval(t); }, [mercati]); // eslint-disable-line react-hooks/exhaustive-deps
   return ap;
 }
 
