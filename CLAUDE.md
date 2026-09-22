@@ -78,6 +78,10 @@ git add . && git commit -m "descrizione" && git push
   `data/seed/espositori_riservati.json` (CF, P.IVA, indirizzi) è in .gitignore:
   il repo GitHub è PUBBLICO, quei dati non vanno mai committati.
 - Piano v2 (3 mercati, ruoli admin/operatore, QR presenze): `PIANO-V2.md`
+- Planimetria v2 (dal CAD del Comune, georeferenziata, codici ufficiali A-86…):
+  `data/mappa/area-mercatale-v2.svg` + `data/seed/posteggi-mappa.json`, metodo e
+  anomalie in `docs/MAPPA-V2.md`. In attesa di revisione di Carlo; la calibrazione
+  GEO dell'app resta valida (stesso sistema di coordinate).
 
 ## Prossimi sviluppi pianificati
 - [ ] Firebase Firestore

@@ -21,7 +21,7 @@
    "espositoreId": "migliaccio-massimo",
    "stato": "assegnato",
    "ordineElenco": 1,
-   "mapId": null
+   "mapId": "A-86"
   },
   {
    "id": "A-87",
@@ -40,7 +40,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 2,
-   "mapId": null
+   "mapId": "A-87"
   },
   {
    "id": "A-88",
@@ -59,7 +59,7 @@
    "espositoreId": "laghezza-michele",
    "stato": "assegnato",
    "ordineElenco": 3,
-   "mapId": null
+   "mapId": "A-88"
   },
   {
    "id": "A-89",
@@ -78,7 +78,7 @@
    "espositoreId": "fiorentino-salvatore",
    "stato": "assegnato",
    "ordineElenco": 4,
-   "mapId": null
+   "mapId": "A-89"
   },
   {
    "id": "A-90",
@@ -97,7 +97,7 @@
    "espositoreId": "fiorentino-claudio",
    "stato": "assegnato",
    "ordineElenco": 5,
-   "mapId": null
+   "mapId": "A-90"
   },
   {
    "id": "A-91",
@@ -116,7 +116,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 6,
-   "mapId": null
+   "mapId": "A-91"
   },
   {
    "id": "A-90bis",
@@ -135,7 +135,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 7,
-   "mapId": null
+   "mapId": "A-90bis"
   },
   {
    "id": "A-92",
@@ -154,7 +154,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 8,
-   "mapId": null
+   "mapId": "A-92"
   },
   {
    "id": "A-93",
@@ -173,7 +173,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 9,
-   "mapId": null
+   "mapId": "A-93"
   },
   {
    "id": "A-94",
@@ -192,7 +192,7 @@
    "espositoreId": "notaro-cesario-antonio",
    "stato": "assegnato",
    "ordineElenco": 10,
-   "mapId": null
+   "mapId": "A-94"
   },
   {
    "id": "A-93bis",
@@ -211,7 +211,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 11,
-   "mapId": null
+   "mapId": "A-93bis"
   },
   {
    "id": "A-29",
@@ -230,7 +230,7 @@
    "espositoreId": "verardi-massimo",
    "stato": "assegnato",
    "ordineElenco": 12,
-   "mapId": null
+   "mapId": "A-29"
   },
   {
    "id": "A-95",
@@ -249,7 +249,7 @@
    "espositoreId": "de-pascali-fabrizio",
    "stato": "assegnato",
    "ordineElenco": 13,
-   "mapId": null
+   "mapId": "A-95"
   },
   {
    "id": "A-96",
@@ -268,7 +268,7 @@
    "espositoreId": "de-matteis-claudio",
    "stato": "assegnato",
    "ordineElenco": 14,
-   "mapId": null
+   "mapId": "A-96"
   },
   {
    "id": "A-97",
@@ -287,7 +287,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 15,
-   "mapId": null
+   "mapId": "A-97"
   },
   {
    "id": "A-24",
@@ -306,7 +306,7 @@
    "espositoreId": "tedesco-vincenzo",
    "stato": "assegnato",
    "ordineElenco": 16,
-   "mapId": null
+   "mapId": "A-24"
   },
   {
    "id": "A-25",
@@ -325,7 +325,7 @@
    "espositoreId": "nico-tonio",
    "stato": "assegnato",
    "ordineElenco": 17,
-   "mapId": null
+   "mapId": "A-25"
   },
   {
    "id": "A-26",
@@ -344,7 +344,7 @@
    "espositoreId": "matricoti-dario",
    "stato": "assegnato",
    "ordineElenco": 18,
-   "mapId": null
+   "mapId": "A-26"
   },
   {
    "id": "A-27",
@@ -363,7 +363,7 @@
    "espositoreId": "de-matteis-claudio",
    "stato": "assegnato",
    "ordineElenco": 19,
-   "mapId": null
+   "mapId": "A-27"
   },
   {
    "id": "A-28",
@@ -382,7 +382,7 @@
    "espositoreId": "cavaliere-luca",
    "stato": "assegnato",
    "ordineElenco": 20,
-   "mapId": null
+   "mapId": "A-28"
   },
   {
    "id": "A-98",
@@ -401,7 +401,7 @@
    "espositoreId": "giannone-biagio",
    "stato": "assegnato",
    "ordineElenco": 21,
-   "mapId": null
+   "mapId": "A-98"
   },
   {
    "id": "A-99",
@@ -420,7 +420,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 22,
-   "mapId": null
+   "mapId": "A-99"
   },
   {
    "id": "A-100",
@@ -439,7 +439,7 @@
    "espositoreId": "za-giampaolo",
    "stato": "assegnato",
    "ordineElenco": 23,
-   "mapId": null
+   "mapId": "A-100"
   },
   {
    "id": "A-99bis",
@@ -458,7 +458,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 24,
-   "mapId": null
+   "mapId": "A-99bis"
   },
   {
    "id": "A-30",
@@ -477,7 +477,7 @@
    "espositoreId": "micello-massimo",
    "stato": "assegnato",
    "ordineElenco": 25,
-   "mapId": null
+   "mapId": "A-30"
   },
   {
    "id": "A-31",
@@ -496,7 +496,7 @@
    "espositoreId": "fitto-francesco",
    "stato": "assegnato",
    "ordineElenco": 26,
-   "mapId": null
+   "mapId": "A-31"
   },
   {
    "id": "A-32",
@@ -515,7 +515,7 @@
    "espositoreId": "spagnolo-sebastiano",
    "stato": "assegnato",
    "ordineElenco": 27,
-   "mapId": null
+   "mapId": "A-32"
   },
   {
    "id": "A-33",
@@ -534,7 +534,7 @@
    "espositoreId": "caputo-pasquale",
    "stato": "assegnato",
    "ordineElenco": 28,
-   "mapId": null
+   "mapId": "A-33"
   },
   {
    "id": "A-34",
@@ -553,7 +553,7 @@
    "espositoreId": "marcuccio-sebastiano",
    "stato": "assegnato",
    "ordineElenco": 29,
-   "mapId": null
+   "mapId": "A-34"
   },
   {
    "id": "A-35",
@@ -572,7 +572,7 @@
    "espositoreId": "blonda-luciano",
    "stato": "assegnato",
    "ordineElenco": 30,
-   "mapId": null
+   "mapId": "A-35"
   },
   {
    "id": "A-36",
@@ -591,7 +591,7 @@
    "espositoreId": "cafaro-cesario",
    "stato": "assegnato",
    "ordineElenco": 31,
-   "mapId": null
+   "mapId": "A-36"
   },
   {
    "id": "A-101",
@@ -610,7 +610,7 @@
    "espositoreId": "inglese-gianni",
    "stato": "assegnato",
    "ordineElenco": 32,
-   "mapId": null
+   "mapId": "A-101"
   },
   {
    "id": "A-102",
@@ -629,7 +629,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 33,
-   "mapId": null
+   "mapId": "A-102"
   },
   {
    "id": "A-103",
@@ -648,7 +648,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 34,
-   "mapId": null
+   "mapId": "A-103"
   },
   {
    "id": "A-104",
@@ -667,7 +667,7 @@
    "espositoreId": "poso-roberto",
    "stato": "assegnato",
    "ordineElenco": 35,
-   "mapId": null
+   "mapId": "A-104"
   },
   {
    "id": "A-37",
@@ -686,7 +686,7 @@
    "espositoreId": "papa-roberto",
    "stato": "assegnato",
    "ordineElenco": 36,
-   "mapId": null
+   "mapId": "A-37"
   },
   {
    "id": "A-38",
@@ -705,7 +705,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 37,
-   "mapId": null
+   "mapId": "A-38"
   },
   {
    "id": "A-39",
@@ -724,7 +724,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 38,
-   "mapId": null
+   "mapId": "A-39"
   },
   {
    "id": "A-40",
@@ -743,7 +743,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 39,
-   "mapId": null
+   "mapId": "A-40"
   },
   {
    "id": "A-41",
@@ -762,7 +762,7 @@
    "espositoreId": "ettaqy-m-hamed",
    "stato": "assegnato",
    "ordineElenco": 40,
-   "mapId": null
+   "mapId": "A-41"
   },
   {
    "id": "A-42",
@@ -781,7 +781,7 @@
    "espositoreId": "beccarisi-claudio",
    "stato": "assegnato",
    "ordineElenco": 41,
-   "mapId": null
+   "mapId": "A-42"
   },
   {
    "id": "A-43",
@@ -800,7 +800,7 @@
    "espositoreId": "de-pascali-antonio",
    "stato": "assegnato",
    "ordineElenco": 42,
-   "mapId": null
+   "mapId": "A-43"
   },
   {
    "id": "A-105",
@@ -819,7 +819,7 @@
    "espositoreId": "ramundo-cosimo",
    "stato": "assegnato",
    "ordineElenco": 43,
-   "mapId": null
+   "mapId": "A-105"
   },
   {
    "id": "A-106",
@@ -838,7 +838,7 @@
    "espositoreId": "venneri-mauro",
    "stato": "assegnato",
    "ordineElenco": 44,
-   "mapId": null
+   "mapId": "A-106"
   },
   {
    "id": "A-107",
@@ -857,7 +857,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 45,
-   "mapId": null
+   "mapId": "A-107"
   },
   {
    "id": "A-108",
@@ -876,7 +876,7 @@
    "espositoreId": "maruccia-ivano",
    "stato": "assegnato",
    "ordineElenco": 46,
-   "mapId": null
+   "mapId": "A-108"
   },
   {
    "id": "A-107bis",
@@ -895,7 +895,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 47,
-   "mapId": null
+   "mapId": "A-107bis"
   },
   {
    "id": "A-44",
@@ -914,7 +914,7 @@
    "espositoreId": "levanto-alessandro",
    "stato": "assegnato",
    "ordineElenco": 48,
-   "mapId": null
+   "mapId": "A-44"
   },
   {
    "id": "A-45",
@@ -933,7 +933,7 @@
    "espositoreId": "morrone-salvatore",
    "stato": "assegnato",
    "ordineElenco": 49,
-   "mapId": null
+   "mapId": "A-45"
   },
   {
    "id": "A-46",
@@ -952,7 +952,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 50,
-   "mapId": null
+   "mapId": "A-46"
   },
   {
    "id": "A-48",
@@ -971,7 +971,7 @@
    "espositoreId": "tundo-sergio",
    "stato": "assegnato",
    "ordineElenco": 51,
-   "mapId": null
+   "mapId": "A-48"
   },
   {
    "id": "A-49",
@@ -990,7 +990,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 52,
-   "mapId": null
+   "mapId": "A-49"
   },
   {
    "id": "A-50",
@@ -1009,7 +1009,7 @@
    "espositoreId": "conte-cosimo",
    "stato": "assegnato",
    "ordineElenco": 53,
-   "mapId": null
+   "mapId": "A-50"
   },
   {
    "id": "A-109",
@@ -1028,7 +1028,7 @@
    "espositoreId": "maggio-giuseppe",
    "stato": "assegnato",
    "ordineElenco": 54,
-   "mapId": null
+   "mapId": "A-109"
   },
   {
    "id": "A-110",
@@ -1047,7 +1047,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 55,
-   "mapId": null
+   "mapId": "A-110"
   },
   {
    "id": "A-111",
@@ -1066,7 +1066,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 56,
-   "mapId": null
+   "mapId": "A-111"
   },
   {
    "id": "A-112",
@@ -1085,7 +1085,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 57,
-   "mapId": null
+   "mapId": "A-112"
   },
   {
    "id": "A-1",
@@ -1104,7 +1104,7 @@
    "espositoreId": "perrotta-gianpiero-davide",
    "stato": "assegnato",
    "ordineElenco": 58,
-   "mapId": null
+   "mapId": "A-1"
   },
   {
    "id": "A-2",
@@ -1123,7 +1123,7 @@
    "espositoreId": "perrotta-gianpiero-davide",
    "stato": "assegnato",
    "ordineElenco": 59,
-   "mapId": null
+   "mapId": "A-2"
   },
   {
    "id": "A-3",
@@ -1142,7 +1142,7 @@
    "espositoreId": "biondino-roberta",
    "stato": "assegnato",
    "ordineElenco": 60,
-   "mapId": null
+   "mapId": "A-3"
   },
   {
    "id": "A-4",
@@ -1161,7 +1161,7 @@
    "espositoreId": "de-tommaso-maurizio",
    "stato": "assegnato",
    "ordineElenco": 61,
-   "mapId": null
+   "mapId": "A-4"
   },
   {
    "id": "A-5",
@@ -1180,7 +1180,7 @@
    "espositoreId": "accogli-raffaele",
    "stato": "assegnato",
    "ordineElenco": 62,
-   "mapId": null
+   "mapId": "A-5"
   },
   {
    "id": "A-6",
@@ -1199,7 +1199,7 @@
    "espositoreId": "stefanelli-marco",
    "stato": "assegnato",
    "ordineElenco": 63,
-   "mapId": null
+   "mapId": "A-6"
   },
   {
    "id": "A-7",
@@ -1218,7 +1218,7 @@
    "espositoreId": "terragno-antonio",
    "stato": "assegnato",
    "ordineElenco": 64,
-   "mapId": null
+   "mapId": "A-7"
   },
   {
    "id": "A-51",
@@ -1237,7 +1237,7 @@
    "espositoreId": "forlano-giuseppe",
    "stato": "assegnato",
    "ordineElenco": 65,
-   "mapId": null
+   "mapId": "A-51"
   },
   {
    "id": "A-52",
@@ -1256,7 +1256,7 @@
    "espositoreId": "forlano-giuseppe",
    "stato": "assegnato",
    "ordineElenco": 66,
-   "mapId": null
+   "mapId": "A-52"
   },
   {
    "id": "A-53",
@@ -1275,7 +1275,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 67,
-   "mapId": null
+   "mapId": "A-53"
   },
   {
    "id": "A-54",
@@ -1294,7 +1294,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 68,
-   "mapId": null
+   "mapId": "A-54"
   },
   {
    "id": "A-55/56",
@@ -1313,7 +1313,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 69,
-   "mapId": null
+   "mapId": "A-55/56"
   },
   {
    "id": "A-57",
@@ -1332,7 +1332,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 70,
-   "mapId": null
+   "mapId": "A-57"
   },
   {
    "id": "A-58",
@@ -1351,7 +1351,7 @@
    "espositoreId": "settimo-gianni",
    "stato": "assegnato",
    "ordineElenco": 71,
-   "mapId": null
+   "mapId": "A-58"
   },
   {
    "id": "A-113",
@@ -1370,7 +1370,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 72,
-   "mapId": null
+   "mapId": "A-113"
   },
   {
    "id": "A-114",
@@ -1389,7 +1389,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 73,
-   "mapId": null
+   "mapId": "A-114"
   },
   {
    "id": "A-115",
@@ -1408,7 +1408,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 74,
-   "mapId": null
+   "mapId": "A-115"
   },
   {
    "id": "A-116",
@@ -1427,7 +1427,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 75,
-   "mapId": null
+   "mapId": "A-116"
   },
   {
    "id": "A-8",
@@ -1446,7 +1446,7 @@
    "espositoreId": "resta-vincenzo",
    "stato": "assegnato",
    "ordineElenco": 76,
-   "mapId": null
+   "mapId": "A-8"
   },
   {
    "id": "A-9",
@@ -1465,7 +1465,7 @@
    "espositoreId": "paglialonga-alberto",
    "stato": "assegnato",
    "ordineElenco": 77,
-   "mapId": null
+   "mapId": "A-9"
   },
   {
    "id": "A-10",
@@ -1484,7 +1484,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 78,
-   "mapId": null
+   "mapId": "A-10"
   },
   {
    "id": "A-11",
@@ -1503,7 +1503,7 @@
    "espositoreId": "riccardo-vito-giovanni",
    "stato": "assegnato",
    "ordineElenco": 79,
-   "mapId": null
+   "mapId": "A-11"
   },
   {
    "id": "A-12",
@@ -1522,7 +1522,7 @@
    "espositoreId": "za-giampaolo-2",
    "stato": "assegnato",
    "ordineElenco": 80,
-   "mapId": null
+   "mapId": "A-12"
   },
   {
    "id": "A-13",
@@ -1541,7 +1541,7 @@
    "espositoreId": "scrascia-adriano",
    "stato": "assegnato",
    "ordineElenco": 81,
-   "mapId": null
+   "mapId": "A-13"
   },
   {
    "id": "A-59",
@@ -1560,7 +1560,7 @@
    "espositoreId": "antonaci-giovanni",
    "stato": "assegnato",
    "ordineElenco": 82,
-   "mapId": null
+   "mapId": "A-59"
   },
   {
    "id": "A-60",
@@ -1579,7 +1579,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 83,
-   "mapId": null
+   "mapId": "A-60"
   },
   {
    "id": "A-61",
@@ -1598,7 +1598,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 84,
-   "mapId": null
+   "mapId": "A-61"
   },
   {
    "id": "A-62",
@@ -1617,7 +1617,7 @@
    "espositoreId": "macri-emanuele-salvatore",
    "stato": "assegnato",
    "ordineElenco": 85,
-   "mapId": null
+   "mapId": "A-62"
   },
   {
    "id": "A-63",
@@ -1636,7 +1636,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 86,
-   "mapId": null
+   "mapId": "A-63"
   },
   {
    "id": "A-64",
@@ -1655,7 +1655,7 @@
    "espositoreId": "monte-alessandro",
    "stato": "assegnato",
    "ordineElenco": 87,
-   "mapId": null
+   "mapId": "A-64"
   },
   {
    "id": "A-65",
@@ -1674,7 +1674,7 @@
    "espositoreId": "congedo-domenico",
    "stato": "assegnato",
    "ordineElenco": 88,
-   "mapId": null
+   "mapId": "A-65"
   },
   {
    "id": "A-117",
@@ -1693,7 +1693,7 @@
    "espositoreId": "carlino-antonio",
    "stato": "assegnato",
    "ordineElenco": 89,
-   "mapId": null
+   "mapId": "A-117"
   },
   {
    "id": "A-118",
@@ -1712,7 +1712,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 90,
-   "mapId": null
+   "mapId": "A-118"
   },
   {
    "id": "A-118bis",
@@ -1731,7 +1731,7 @@
    "espositoreId": "ghazi-abes",
    "stato": "assegnato",
    "ordineElenco": 91,
-   "mapId": null
+   "mapId": "A-118bis"
   },
   {
    "id": "A-14",
@@ -1750,7 +1750,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 92,
-   "mapId": null
+   "mapId": "A-14"
   },
   {
    "id": "A-15",
@@ -1769,7 +1769,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 93,
-   "mapId": null
+   "mapId": "A-15"
   },
   {
    "id": "A-16",
@@ -1788,7 +1788,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 94,
-   "mapId": null
+   "mapId": "A-16"
   },
   {
    "id": "A-17",
@@ -1807,7 +1807,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 95,
-   "mapId": null
+   "mapId": "A-17"
   },
   {
    "id": "A-18",
@@ -1826,7 +1826,7 @@
    "espositoreId": "scrimieri-giovanni",
    "stato": "assegnato",
    "ordineElenco": 96,
-   "mapId": null
+   "mapId": "A-18"
   },
   {
    "id": "A-66",
@@ -1845,7 +1845,7 @@
    "espositoreId": "nuzzo-luigi",
    "stato": "assegnato",
    "ordineElenco": 97,
-   "mapId": null
+   "mapId": "A-66"
   },
   {
    "id": "A-67",
@@ -1864,7 +1864,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 98,
-   "mapId": null
+   "mapId": "A-67"
   },
   {
    "id": "A-68",
@@ -1883,7 +1883,7 @@
    "espositoreId": "scrascia-antonio",
    "stato": "assegnato",
    "ordineElenco": 99,
-   "mapId": null
+   "mapId": "A-68"
   },
   {
    "id": "A-69",
@@ -1902,7 +1902,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 100,
-   "mapId": null
+   "mapId": "A-69"
   },
   {
    "id": "A-70",
@@ -1921,7 +1921,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 101,
-   "mapId": null
+   "mapId": "A-70"
   },
   {
    "id": "A-71",
@@ -1940,7 +1940,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 102,
-   "mapId": null
+   "mapId": "A-71"
   },
   {
    "id": "A-72",
@@ -1959,7 +1959,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 103,
-   "mapId": null
+   "mapId": "A-72"
   },
   {
    "id": "A-120",
@@ -1978,7 +1978,7 @@
    "espositoreId": "milanese-piero",
    "stato": "assegnato",
    "ordineElenco": 104,
-   "mapId": null
+   "mapId": "A-120"
   },
   {
    "id": "A-121",
@@ -1997,7 +1997,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 105,
-   "mapId": null
+   "mapId": "A-121"
   },
   {
    "id": "A-123",
@@ -2016,7 +2016,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 106,
-   "mapId": null
+   "mapId": "A-123"
   },
   {
    "id": "A-19",
@@ -2035,7 +2035,7 @@
    "espositoreId": "caiulo-marco",
    "stato": "assegnato",
    "ordineElenco": 107,
-   "mapId": null
+   "mapId": "A-19"
   },
   {
    "id": "A-20",
@@ -2054,7 +2054,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 108,
-   "mapId": null
+   "mapId": "A-20"
   },
   {
    "id": "A-21",
@@ -2073,7 +2073,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 109,
-   "mapId": null
+   "mapId": "A-21"
   },
   {
    "id": "A-22",
@@ -2092,7 +2092,7 @@
    "espositoreId": "viceconte-francesko",
    "stato": "assegnato",
    "ordineElenco": 110,
-   "mapId": null
+   "mapId": "A-22"
   },
   {
    "id": "A-23",
@@ -2111,7 +2111,7 @@
    "espositoreId": "miccoli-massimiliano",
    "stato": "assegnato",
    "ordineElenco": 111,
-   "mapId": null
+   "mapId": "A-23"
   },
   {
    "id": "A-73",
@@ -2130,7 +2130,7 @@
    "espositoreId": "levanto-nicola",
    "stato": "assegnato",
    "ordineElenco": 112,
-   "mapId": null
+   "mapId": "A-73"
   },
   {
    "id": "A-74",
@@ -2149,7 +2149,7 @@
    "espositoreId": "polimeno-salvatore",
    "stato": "assegnato",
    "ordineElenco": 113,
-   "mapId": null
+   "mapId": "A-74"
   },
   {
    "id": "A-75",
@@ -2168,7 +2168,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 114,
-   "mapId": null
+   "mapId": "A-75"
   },
   {
    "id": "A-76",
@@ -2187,7 +2187,7 @@
    "espositoreId": "fall-moustapha",
    "stato": "assegnato",
    "ordineElenco": 115,
-   "mapId": null
+   "mapId": "A-76"
   },
   {
    "id": "A-77",
@@ -2206,7 +2206,7 @@
    "espositoreId": "luzio-enrico",
    "stato": "assegnato",
    "ordineElenco": 116,
-   "mapId": null
+   "mapId": "A-77"
   },
   {
    "id": "A-78",
@@ -2225,7 +2225,7 @@
    "espositoreId": "sponziello-fernando",
    "stato": "assegnato",
    "ordineElenco": 117,
-   "mapId": null
+   "mapId": "A-78"
   },
   {
    "id": "A-79",
@@ -2244,7 +2244,7 @@
    "espositoreId": "carrozzini-sergio",
    "stato": "assegnato",
    "ordineElenco": 118,
-   "mapId": null
+   "mapId": "A-79"
   },
   {
    "id": "A-124",
@@ -2263,7 +2263,7 @@
    "espositoreId": "presicce-claudio",
    "stato": "assegnato",
    "ordineElenco": 119,
-   "mapId": null
+   "mapId": "A-124"
   },
   {
    "id": "A-125",
@@ -2282,7 +2282,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 120,
-   "mapId": null
+   "mapId": "A-125"
   },
   {
    "id": "A-143",
@@ -2301,7 +2301,7 @@
    "espositoreId": "de-pascali-settimio",
    "stato": "assegnato",
    "ordineElenco": 121,
-   "mapId": null
+   "mapId": "A-143"
   },
   {
    "id": "A-144",
@@ -2320,7 +2320,7 @@
    "espositoreId": "paglialonga-walter",
    "stato": "assegnato",
    "ordineElenco": 122,
-   "mapId": null
+   "mapId": "A-144"
   },
   {
    "id": "A-145",
@@ -2339,7 +2339,7 @@
    "espositoreId": "paglialonga-walter",
    "stato": "assegnato",
    "ordineElenco": 123,
-   "mapId": null
+   "mapId": "A-145"
   },
   {
    "id": "A-146",
@@ -2358,7 +2358,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 124,
-   "mapId": null
+   "mapId": "A-146"
   },
   {
    "id": "A-147",
@@ -2377,7 +2377,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 125,
-   "mapId": null
+   "mapId": "A-147"
   },
   {
    "id": "A-148",
@@ -2396,7 +2396,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 126,
-   "mapId": null
+   "mapId": "A-148"
   },
   {
    "id": "A-149",
@@ -2415,7 +2415,7 @@
    "espositoreId": "frassante-fernando",
    "stato": "assegnato",
    "ordineElenco": 127,
-   "mapId": null
+   "mapId": "A-149"
   },
   {
    "id": "A-150",
@@ -2434,7 +2434,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 128,
-   "mapId": null
+   "mapId": "A-150"
   },
   {
    "id": "A-151",
@@ -2453,7 +2453,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 129,
-   "mapId": null
+   "mapId": "A-151"
   },
   {
    "id": "A-152",
@@ -2472,7 +2472,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 130,
-   "mapId": null
+   "mapId": "A-152"
   },
   {
    "id": "A-153",
@@ -2491,7 +2491,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 131,
-   "mapId": null
+   "mapId": "A-153"
   },
   {
    "id": "A-80",
@@ -2510,7 +2510,7 @@
    "espositoreId": "de-santis-pantaleo",
    "stato": "assegnato",
    "ordineElenco": 132,
-   "mapId": null
+   "mapId": "A-80"
   },
   {
    "id": "A-81",
@@ -2529,7 +2529,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 133,
-   "mapId": null
+   "mapId": "A-81"
   },
   {
    "id": "A-82",
@@ -2548,7 +2548,7 @@
    "espositoreId": "carcagni-francesco",
    "stato": "assegnato",
    "ordineElenco": 134,
-   "mapId": null
+   "mapId": "A-82"
   },
   {
    "id": "A-83",
@@ -2567,7 +2567,7 @@
    "espositoreId": "antonaci-luigi",
    "stato": "assegnato",
    "ordineElenco": 135,
-   "mapId": null
+   "mapId": "A-83"
   },
   {
    "id": "A-84",
@@ -2586,7 +2586,7 @@
    "espositoreId": "resta-salvatore",
    "stato": "assegnato",
    "ordineElenco": 136,
-   "mapId": null
+   "mapId": "A-84"
   },
   {
    "id": "A-85",
@@ -2605,7 +2605,7 @@
    "espositoreId": "pisanello-luigi",
    "stato": "assegnato",
    "ordineElenco": 137,
-   "mapId": null
+   "mapId": "A-85"
   },
   {
    "id": "A-131",
@@ -2624,7 +2624,7 @@
    "espositoreId": "cannazza-adriano",
    "stato": "assegnato",
    "ordineElenco": 138,
-   "mapId": null
+   "mapId": "A-131"
   },
   {
    "id": "A-132",
@@ -2643,7 +2643,7 @@
    "espositoreId": "epifani-massimo-salvatore",
    "stato": "assegnato",
    "ordineElenco": 139,
-   "mapId": null
+   "mapId": "A-132"
   },
   {
    "id": "A-134",
@@ -2662,7 +2662,7 @@
    "espositoreId": "de-marco-silvia",
    "stato": "assegnato",
    "ordineElenco": 140,
-   "mapId": null
+   "mapId": "A-134"
   },
   {
    "id": "A-158",
@@ -2681,7 +2681,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 141,
-   "mapId": null
+   "mapId": "A-158"
   },
   {
    "id": "A-133",
@@ -2700,7 +2700,7 @@
    "espositoreId": "doniselli-deborah",
    "stato": "assegnato",
    "ordineElenco": 142,
-   "mapId": null
+   "mapId": "A-133"
   },
   {
    "id": "A-137",
@@ -2719,7 +2719,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 143,
-   "mapId": null
+   "mapId": "A-137"
   },
   {
    "id": "A-160",
@@ -2738,7 +2738,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 144,
-   "mapId": null
+   "mapId": "A-160"
   },
   {
    "id": "A-161",
@@ -2757,7 +2757,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 145,
-   "mapId": null
+   "mapId": "A-161"
   },
   {
    "id": "A-136",
@@ -2776,7 +2776,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 146,
-   "mapId": null
+   "mapId": "A-136"
   },
   {
    "id": "A-138",
@@ -2795,7 +2795,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 147,
-   "mapId": null
+   "mapId": "A-138"
   },
   {
    "id": "A-163",
@@ -2814,7 +2814,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 148,
-   "mapId": null
+   "mapId": "A-163"
   },
   {
    "id": "A-164",
@@ -2833,7 +2833,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 149,
-   "mapId": null
+   "mapId": "A-164"
   },
   {
    "id": "A-142",
@@ -2852,7 +2852,7 @@
    "espositoreId": "sraidi-mohamed",
    "stato": "assegnato",
    "ordineElenco": 150,
-   "mapId": null
+   "mapId": "A-142"
   },
   {
    "id": "A-165",
@@ -2871,7 +2871,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 151,
-   "mapId": null
+   "mapId": "A-165"
   },
   {
    "id": "A-126",
@@ -2890,7 +2890,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 152,
-   "mapId": null
+   "mapId": "A-126"
   },
   {
    "id": "A-127",
@@ -2909,7 +2909,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 153,
-   "mapId": null
+   "mapId": "A-127"
   },
   {
    "id": "A-128",
@@ -2928,7 +2928,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 154,
-   "mapId": null
+   "mapId": "A-128"
   },
   {
    "id": "A-129",
@@ -2947,7 +2947,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 155,
-   "mapId": null
+   "mapId": "A-129"
   },
   {
    "id": "A-130",
@@ -2966,7 +2966,7 @@
    "espositoreId": "duca-massimo",
    "stato": "assegnato",
    "ordineElenco": 156,
-   "mapId": null
+   "mapId": "A-130"
   },
   {
    "id": "A-154",
@@ -2985,7 +2985,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 157,
-   "mapId": null
+   "mapId": "A-154"
   },
   {
    "id": "A-155",
@@ -3004,7 +3004,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 158,
-   "mapId": null
+   "mapId": "A-155"
   },
   {
    "id": "A-156",
@@ -3023,7 +3023,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 159,
-   "mapId": null
+   "mapId": "A-156"
   },
   {
    "id": "A-157",
@@ -3042,7 +3042,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 160,
-   "mapId": null
+   "mapId": "A-157"
   },
   {
    "id": "A-135",
@@ -3061,7 +3061,7 @@
    "espositoreId": "morrone-vincenzo",
    "stato": "assegnato",
    "ordineElenco": 161,
-   "mapId": null
+   "mapId": "A-135"
   },
   {
    "id": "A-159",
@@ -3080,7 +3080,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 162,
-   "mapId": null
+   "mapId": "A-159"
   },
   {
    "id": "A-162",
@@ -3099,7 +3099,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 163,
-   "mapId": null
+   "mapId": "A-162"
   },
   {
    "id": "A-139",
@@ -3118,7 +3118,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 164,
-   "mapId": null
+   "mapId": "A-139"
   },
   {
    "id": "A-140",
@@ -3137,7 +3137,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 165,
-   "mapId": null
+   "mapId": "A-140"
   },
   {
    "id": "A-141",
@@ -3156,7 +3156,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 166,
-   "mapId": null
+   "mapId": "A-141"
   },
   {
    "id": "A-166",
@@ -3175,7 +3175,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 167,
-   "mapId": null
+   "mapId": "A-166"
   },
   {
    "id": "A-119",
@@ -3213,7 +3213,7 @@
    "espositoreId": "madaghiele-alessandro",
    "stato": "assegnato",
    "ordineElenco": 1,
-   "mapId": null
+   "mapId": "B-1"
   },
   {
    "id": "B-2",
@@ -3232,7 +3232,7 @@
    "espositoreId": "provenzano-giovanni",
    "stato": "assegnato",
    "ordineElenco": 2,
-   "mapId": null
+   "mapId": "B-2"
   },
   {
    "id": "B-3",
@@ -3251,7 +3251,7 @@
    "espositoreId": "benegiamo-oronzo",
    "stato": "assegnato",
    "ordineElenco": 3,
-   "mapId": null
+   "mapId": "B-3"
   },
   {
    "id": "B-4",
@@ -3270,7 +3270,7 @@
    "espositoreId": "greco-gian-marco",
    "stato": "assegnato",
    "ordineElenco": 4,
-   "mapId": null
+   "mapId": "B-4"
   },
   {
    "id": "B-5",
@@ -3289,7 +3289,7 @@
    "espositoreId": "mele-marco",
    "stato": "assegnato",
    "ordineElenco": 5,
-   "mapId": null
+   "mapId": "B-5"
   },
   {
    "id": "B-6",
@@ -3308,7 +3308,7 @@
    "espositoreId": "rizzo-marco",
    "stato": "assegnato",
    "ordineElenco": 6,
-   "mapId": null
+   "mapId": "B-6"
   },
   {
    "id": "B-7",
@@ -3327,7 +3327,7 @@
    "espositoreId": "palumbo-lorenzo",
    "stato": "assegnato",
    "ordineElenco": 7,
-   "mapId": null
+   "mapId": "B-7"
   },
   {
    "id": "B-8",
@@ -3346,7 +3346,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 8,
-   "mapId": null
+   "mapId": "B-8"
   },
   {
    "id": "B-9",
@@ -3365,7 +3365,7 @@
    "espositoreId": "cirfera-daniela",
    "stato": "assegnato",
    "ordineElenco": 9,
-   "mapId": null
+   "mapId": "B-9"
   },
   {
    "id": "B-10",
@@ -3384,7 +3384,7 @@
    "espositoreId": "paglialonga-daniele",
    "stato": "assegnato",
    "ordineElenco": 10,
-   "mapId": null
+   "mapId": "B-10"
   },
   {
    "id": "C-1",
@@ -3403,7 +3403,7 @@
    "espositoreId": "calo-enzo",
    "stato": "assegnato",
    "ordineElenco": 1,
-   "mapId": null
+   "mapId": "C-1"
   },
   {
    "id": "C-2",
@@ -3422,7 +3422,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 2,
-   "mapId": null
+   "mapId": "C-2"
   },
   {
    "id": "C-4",
@@ -3441,7 +3441,7 @@
    "espositoreId": "spalluto-pasquale",
    "stato": "assegnato",
    "ordineElenco": 3,
-   "mapId": null
+   "mapId": "C-4"
   },
   {
    "id": "C-3",
@@ -3460,7 +3460,7 @@
    "espositoreId": "mazzotta-santo",
    "stato": "assegnato",
    "ordineElenco": 4,
-   "mapId": null
+   "mapId": "C-3"
   },
   {
    "id": "C-5",
@@ -3479,7 +3479,7 @@
    "espositoreId": "greco-gianluca",
    "stato": "assegnato",
    "ordineElenco": 5,
-   "mapId": null
+   "mapId": "C-5"
   },
   {
    "id": "C-6",
@@ -3498,7 +3498,7 @@
    "espositoreId": "madaro-graziano",
    "stato": "assegnato",
    "ordineElenco": 6,
-   "mapId": null
+   "mapId": "C-6"
   },
   {
    "id": "C-7",
@@ -3517,7 +3517,7 @@
    "espositoreId": "de-nardo-rita",
    "stato": "assegnato",
    "ordineElenco": 7,
-   "mapId": null
+   "mapId": "C-7"
   },
   {
    "id": "C-8",
@@ -3536,7 +3536,7 @@
    "espositoreId": "russo-franco",
    "stato": "assegnato",
    "ordineElenco": 8,
-   "mapId": null
+   "mapId": "C-8"
   },
   {
    "id": "C-9",
@@ -3555,7 +3555,7 @@
    "espositoreId": "trianni-alessandro",
    "stato": "assegnato",
    "ordineElenco": 9,
-   "mapId": null
+   "mapId": "C-9"
   },
   {
    "id": "C-10",
@@ -3574,7 +3574,7 @@
    "espositoreId": "pellegrino-vincenzo",
    "stato": "assegnato",
    "ordineElenco": 10,
-   "mapId": null
+   "mapId": "C-10"
   },
   {
    "id": "C-11",
@@ -3593,7 +3593,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 11,
-   "mapId": null
+   "mapId": "C-11"
   },
   {
    "id": "C-12",
@@ -3612,7 +3612,7 @@
    "espositoreId": "cataldi-simone",
    "stato": "assegnato",
    "ordineElenco": 12,
-   "mapId": null
+   "mapId": "C-12"
   },
   {
    "id": "D-1",
@@ -3631,7 +3631,7 @@
    "espositoreId": "palama-daniele",
    "stato": "assegnato",
    "ordineElenco": 1,
-   "mapId": null
+   "mapId": "D-1"
   },
   {
    "id": "D-2",
@@ -3650,7 +3650,7 @@
    "espositoreId": "petracca-angelo-quintino",
    "stato": "assegnato",
    "ordineElenco": 2,
-   "mapId": null
+   "mapId": "D-2"
   },
   {
    "id": "D-3",
@@ -3669,7 +3669,7 @@
    "espositoreId": "vitale-lucio-james",
    "stato": "assegnato",
    "ordineElenco": 3,
-   "mapId": null
+   "mapId": "D-3"
   },
   {
    "id": "D-4",
@@ -3688,7 +3688,7 @@
    "espositoreId": "vitale-lucio-james",
    "stato": "assegnato",
    "ordineElenco": 4,
-   "mapId": null
+   "mapId": "D-4"
   },
   {
    "id": "D-5",
@@ -3707,7 +3707,7 @@
    "espositoreId": "dollorenzo-antonio",
    "stato": "assegnato",
    "ordineElenco": 5,
-   "mapId": null
+   "mapId": "D-5"
   },
   {
    "id": "D-6",
@@ -3726,7 +3726,7 @@
    "espositoreId": "russo-pasquale-lillino",
    "stato": "assegnato",
    "ordineElenco": 6,
-   "mapId": null
+   "mapId": "D-6"
   },
   {
    "id": "D-7",
@@ -3745,7 +3745,7 @@
    "espositoreId": "marrocco-raffaele",
    "stato": "assegnato",
    "ordineElenco": 7,
-   "mapId": null
+   "mapId": "D-7"
   },
   {
    "id": "D-8",
@@ -3764,7 +3764,7 @@
    "espositoreId": "maruccia-fernando",
    "stato": "assegnato",
    "ordineElenco": 8,
-   "mapId": null
+   "mapId": "D-8"
   },
   {
    "id": "D-9",
@@ -3783,7 +3783,7 @@
    "espositoreId": "de-magistri-marco",
    "stato": "assegnato",
    "ordineElenco": 9,
-   "mapId": null
+   "mapId": "D-9"
   },
   {
    "id": "D-10",
@@ -3802,7 +3802,7 @@
    "espositoreId": "luzio-luigi",
    "stato": "assegnato",
    "ordineElenco": 10,
-   "mapId": null
+   "mapId": "D-10"
   },
   {
    "id": "D-11",
@@ -3821,7 +3821,7 @@
    "espositoreId": "fari-mino",
    "stato": "assegnato",
    "ordineElenco": 11,
-   "mapId": null
+   "mapId": "D-11"
   },
   {
    "id": "D-12",
@@ -3840,7 +3840,7 @@
    "espositoreId": "bruno-luigi",
    "stato": "assegnato",
    "ordineElenco": 12,
-   "mapId": null
+   "mapId": "D-12"
   },
   {
    "id": "D-15",
@@ -3859,7 +3859,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 13,
-   "mapId": null
+   "mapId": "D-15"
   },
   {
    "id": "D-16",
@@ -3878,7 +3878,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 14,
-   "mapId": null
+   "mapId": "D-16"
   },
   {
    "id": "D-17",
@@ -3897,7 +3897,7 @@
    "espositoreId": "tavola-alessandro",
    "stato": "assegnato",
    "ordineElenco": 15,
-   "mapId": null
+   "mapId": "D-17"
   },
   {
    "id": "D-18",
@@ -3916,7 +3916,7 @@
    "espositoreId": "russo-simone",
    "stato": "assegnato",
    "ordineElenco": 16,
-   "mapId": null
+   "mapId": "D-18"
   },
   {
    "id": "D-19",
@@ -3935,7 +3935,7 @@
    "espositoreId": "russo-antonio",
    "stato": "assegnato",
    "ordineElenco": 17,
-   "mapId": null
+   "mapId": "D-19"
   },
   {
    "id": "D-13/14",
@@ -3954,7 +3954,7 @@
    "espositoreId": "singh-harpreet",
    "stato": "assegnato",
    "ordineElenco": 18,
-   "mapId": null
+   "mapId": "D-13/14"
   },
   {
    "id": "D-20",
@@ -3973,7 +3973,7 @@
    "espositoreId": "agrimi-rosanna",
    "stato": "assegnato",
    "ordineElenco": 19,
-   "mapId": null
+   "mapId": "D-20"
   },
   {
    "id": "D-21",
@@ -3992,7 +3992,7 @@
    "espositoreId": "gagliardi-cesare",
    "stato": "assegnato",
    "ordineElenco": 20,
-   "mapId": null
+   "mapId": "D-21"
   },
   {
    "id": "D-22",
@@ -4011,7 +4011,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 21,
-   "mapId": null
+   "mapId": "D-22"
   },
   {
    "id": "D-23",
@@ -4030,7 +4030,7 @@
    "espositoreId": "giannotta-salvatore",
    "stato": "assegnato",
    "ordineElenco": 22,
-   "mapId": null
+   "mapId": "D-23"
   },
   {
    "id": "D-24",
@@ -4049,7 +4049,7 @@
    "espositoreId": "giagnotti-valeria",
    "stato": "assegnato",
    "ordineElenco": 23,
-   "mapId": null
+   "mapId": "D-24"
   },
   {
    "id": "D-25",
@@ -4068,7 +4068,7 @@
    "espositoreId": "luceri-gianpiero",
    "stato": "assegnato",
    "ordineElenco": 24,
-   "mapId": null
+   "mapId": "D-25"
   },
   {
    "id": "D-26",
@@ -4087,7 +4087,7 @@
    "espositoreId": "candido-fabio",
    "stato": "assegnato",
    "ordineElenco": 25,
-   "mapId": null
+   "mapId": "D-26"
   },
   {
    "id": "D-29",
@@ -4106,7 +4106,7 @@
    "espositoreId": "fuso-alessandro-antonio",
    "stato": "assegnato",
    "ordineElenco": 26,
-   "mapId": null
+   "mapId": "D-29"
   },
   {
    "id": "D-30",
@@ -4125,7 +4125,7 @@
    "espositoreId": "fuso-alessandro-antonio",
    "stato": "assegnato",
    "ordineElenco": 27,
-   "mapId": null
+   "mapId": "D-30"
   },
   {
    "id": "D-31",
@@ -4144,7 +4144,7 @@
    "espositoreId": "gabellone-angelo-pasquale",
    "stato": "assegnato",
    "ordineElenco": 28,
-   "mapId": null
+   "mapId": "D-31"
   },
   {
    "id": "D-27/28",
@@ -4163,7 +4163,7 @@
    "espositoreId": "marrocco-mirco-salvatore",
    "stato": "assegnato",
    "ordineElenco": 29,
-   "mapId": null
+   "mapId": "D-27/28"
   },
   {
    "id": "D-32",
@@ -4182,7 +4182,7 @@
    "espositoreId": "lorenzo-gianni",
    "stato": "assegnato",
    "ordineElenco": 30,
-   "mapId": null
+   "mapId": "D-32"
   },
   {
    "id": "D-33",
@@ -4201,7 +4201,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 31,
-   "mapId": null
+   "mapId": "D-33"
   },
   {
    "id": "D-34",
@@ -4220,7 +4220,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 32,
-   "mapId": null
+   "mapId": "D-34"
   },
   {
    "id": "D-35",
@@ -4239,7 +4239,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 33,
-   "mapId": null
+   "mapId": "D-35"
   },
   {
    "id": "D-36",
@@ -4258,7 +4258,7 @@
    "espositoreId": "antonucci-vito",
    "stato": "assegnato",
    "ordineElenco": 34,
-   "mapId": null
+   "mapId": "D-36"
   },
   {
    "id": "D-38",
@@ -4277,7 +4277,7 @@
    "espositoreId": "panico-salvatore-antonio",
    "stato": "assegnato",
    "ordineElenco": 35,
-   "mapId": null
+   "mapId": "D-38"
   },
   {
    "id": "D-39",
@@ -4296,7 +4296,7 @@
    "espositoreId": "panico-dario-palmiro",
    "stato": "assegnato",
    "ordineElenco": 36,
-   "mapId": null
+   "mapId": "D-39"
   },
   {
    "id": "D-40",
@@ -4315,7 +4315,7 @@
    "espositoreId": "ahmed-rana-sajjad",
    "stato": "assegnato",
    "ordineElenco": 37,
-   "mapId": null
+   "mapId": "D-40"
   },
   {
    "id": "D-41",
@@ -4334,7 +4334,7 @@
    "espositoreId": "diouf-khadim",
    "stato": "assegnato",
    "ordineElenco": 38,
-   "mapId": null
+   "mapId": "D-41"
   },
   {
    "id": "D-42",
@@ -4353,7 +4353,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 39,
-   "mapId": null
+   "mapId": "D-42"
   },
   {
    "id": "D-43",
@@ -4372,7 +4372,7 @@
    "espositoreId": "majdi-youness",
    "stato": "assegnato",
    "ordineElenco": 40,
-   "mapId": null
+   "mapId": "D-43"
   },
   {
    "id": "D-44",
@@ -4391,7 +4391,7 @@
    "espositoreId": "nocera-giancarlo",
    "stato": "assegnato",
    "ordineElenco": 41,
-   "mapId": null
+   "mapId": "D-44"
   },
   {
    "id": "D-45",
@@ -4410,7 +4410,7 @@
    "espositoreId": "rana-muhammad-ahmed-shahzad",
    "stato": "assegnato",
    "ordineElenco": 42,
-   "mapId": null
+   "mapId": "D-45"
   },
   {
    "id": "D-46",
@@ -4429,7 +4429,7 @@
    "espositoreId": "raza-rana-ali",
    "stato": "assegnato",
    "ordineElenco": 43,
-   "mapId": null
+   "mapId": "D-46"
   },
   {
    "id": "D-47",
@@ -4448,7 +4448,7 @@
    "espositoreId": "pranzo-antonio",
    "stato": "assegnato",
    "ordineElenco": 44,
-   "mapId": null
+   "mapId": "D-47"
   },
   {
    "id": "D-37",
@@ -4467,7 +4467,7 @@
    "espositoreId": "raza-rana-asif",
    "stato": "assegnato",
    "ordineElenco": 45,
-   "mapId": null
+   "mapId": "D-37"
   },
   {
    "id": "E-1",
@@ -4486,7 +4486,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 1,
-   "mapId": null
+   "mapId": "E-1"
   },
   {
    "id": "E-2",
@@ -4505,7 +4505,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 2,
-   "mapId": null
+   "mapId": "E-2"
   },
   {
    "id": "E-3",
@@ -4524,7 +4524,7 @@
    "espositoreId": "petracca-dario",
    "stato": "assegnato",
    "ordineElenco": 3,
-   "mapId": null
+   "mapId": "E-3"
   },
   {
    "id": "E-2bis",
@@ -4543,7 +4543,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 4,
-   "mapId": null
+   "mapId": "E-2bis"
   },
   {
    "id": "E-4",
@@ -4562,7 +4562,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 5,
-   "mapId": null
+   "mapId": "E-4"
   },
   {
    "id": "E-5/6",
@@ -4581,7 +4581,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 6,
-   "mapId": null
+   "mapId": "E-5/6"
   },
   {
    "id": "E-7",
@@ -4600,7 +4600,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 7,
-   "mapId": null
+   "mapId": "E-7"
   },
   {
    "id": "E-8",
@@ -4619,7 +4619,7 @@
    "espositoreId": "miccoli-angelo",
    "stato": "assegnato",
    "ordineElenco": 8,
-   "mapId": null
+   "mapId": "E-8"
   },
   {
    "id": "E-9",
@@ -4638,7 +4638,7 @@
    "espositoreId": "miccoli-antonio-giovanni",
    "stato": "assegnato",
    "ordineElenco": 9,
-   "mapId": null
+   "mapId": "E-9"
   },
   {
    "id": "E-10",
@@ -4657,7 +4657,7 @@
    "espositoreId": "duma-antonio",
    "stato": "assegnato",
    "ordineElenco": 10,
-   "mapId": null
+   "mapId": "E-10"
   },
   {
    "id": "E-11",
@@ -4676,7 +4676,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 11,
-   "mapId": null
+   "mapId": "E-11"
   },
   {
    "id": "E-12",
@@ -4695,7 +4695,7 @@
    "espositoreId": "cimino-tommaso",
    "stato": "assegnato",
    "ordineElenco": 12,
-   "mapId": null
+   "mapId": "E-12"
   },
   {
    "id": "E-13",
@@ -4714,7 +4714,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 13,
-   "mapId": null
+   "mapId": "E-13"
   },
   {
    "id": "E-14",
@@ -4733,7 +4733,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 14,
-   "mapId": null
+   "mapId": "E-14"
   },
   {
    "id": "E-15",
@@ -4752,7 +4752,7 @@
    "espositoreId": "maniglia-francesco",
    "stato": "assegnato",
    "ordineElenco": 15,
-   "mapId": null
+   "mapId": "E-15"
   },
   {
    "id": "E-16",
@@ -4771,7 +4771,7 @@
    "espositoreId": "miccoli-giusto",
    "stato": "assegnato",
    "ordineElenco": 16,
-   "mapId": null
+   "mapId": "E-16"
   },
   {
    "id": "E-17",
@@ -4790,7 +4790,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 17,
-   "mapId": null
+   "mapId": "E-17"
   },
   {
    "id": "E-18",
@@ -4809,7 +4809,7 @@
    "espositoreId": "serra-gianluigi",
    "stato": "assegnato",
    "ordineElenco": 18,
-   "mapId": null
+   "mapId": "E-18"
   },
   {
    "id": "E-19",
@@ -4828,7 +4828,7 @@
    "espositoreId": "levanto-giampiero",
    "stato": "assegnato",
    "ordineElenco": 19,
-   "mapId": null
+   "mapId": "E-19"
   },
   {
    "id": "E-20",
@@ -4847,7 +4847,7 @@
    "espositoreId": null,
    "stato": "vacante",
    "ordineElenco": 20,
-   "mapId": null
+   "mapId": "E-20"
   },
   {
    "id": "E-21",
@@ -4866,7 +4866,7 @@
    "espositoreId": "falcone-romualdo",
    "stato": "assegnato",
    "ordineElenco": 21,
-   "mapId": null
+   "mapId": "E-21"
   },
   {
    "id": "E-22",
@@ -4885,7 +4885,7 @@
    "espositoreId": "miccoli-damiano-donato",
    "stato": "assegnato",
    "ordineElenco": 22,
-   "mapId": null
+   "mapId": "E-22"
   },
   {
    "id": "COP-BOX-14",
