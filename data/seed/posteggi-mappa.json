@@ -6,9 +6,9 @@
   "accuratezza_stimata": "1-3 m (limite: georeferenziazione delle immagini satellitari); da verificare in loco (Fase 2, rilievo GPS con app operatore)",
   "note": [
    "A-47 presente in piantina ma assente negli elenchi SUAP (inElenco=false)",
-   "A-119 presente negli elenchi ma assente in piantina: da posizionare",
    "E-3 ricostruito da contorno aperto (3 lati)",
-   "PV-1, PV-2, PV-3 (contorno nero dietro la tensostruttura, in legenda \"attività espositiva prodotti vari\") e UOVA-1 (posteggio temporaneo vendita uova, cerchio) aggiunti su richiesta: nessun elenco SUAP"
+   "PV-1, PV-2, PV-3 (contorno nero dietro la tensostruttura, in legenda \"attività espositiva prodotti vari\") e UOVA-1 (posteggio temporaneo vendita uova, cerchio) aggiunti su richiesta: nessun elenco SUAP",
+   "A-119: presente in piantina accanto al 118bis (poligono irregolare \"mq 42\"); era stato segnalato per errore come mancante"
   ],
   "GEO_app": {
    "p1Lat": 40.116944,
@@ -7331,6 +7331,46 @@
    "r": 22.33,
    "lat": 40.116616,
    "lon": 18.308797
+  },
+  {
+   "id": "A-119",
+   "settore": "A",
+   "numero": "119",
+   "inElenco": true,
+   "pts": [
+    [
+     1039.44,
+     734.35
+    ],
+    [
+     1072.25,
+     766.98
+    ],
+    [
+     1072.39,
+     769.44
+    ],
+    [
+     1046.62,
+     769.98
+    ],
+    [
+     1046.49,
+     759.99
+    ],
+    [
+     1018.69,
+     760.24
+    ],
+    [
+     1018.3,
+     734.61
+    ]
+   ],
+   "cx": 1044.88,
+   "cy": 756.51,
+   "lat": 40.116924,
+   "lon": 18.310094
   }
  ]
 }

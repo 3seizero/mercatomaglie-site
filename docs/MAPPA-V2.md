@@ -10,7 +10,7 @@ Data: 22/09/2026. Stato: **da revisionare** (Carlo, in Illustrator) prima dell'i
 | `data/mappa/area-mercatale-v2-anteprima.png` | Render della SVG. |
 | `data/mappa/verifica-satellite.png` | Posteggi CAD sovrapposti alla foto satellitare (Esri, zoom 19) con i 4 punti GPS rilevati nella v1. |
 | `data/seed/posteggi-mappa.json` | 257 posteggi con vertici in unità mappa, centro, **lat/lon**, settore, numero, flag `inElenco`. |
-| `data/seed/posteggi.json` | aggiornato: `mapId` = codice ufficiale per 256 posteggi su 257. |
+| `data/seed/posteggi.json` | aggiornato: `mapId` = codice ufficiale per tutti i 257 posteggi. |
 | `scripts/mappa/` | pipeline di estrazione (vedi README lì dentro). |
 
 ## Come è stata costruita
@@ -32,12 +32,12 @@ Data: 22/09/2026. Stato: **da revisionare** (Carlo, in Illustrator) prima dell'i
 - Tavola allargata a `viewBox 0 0 2055.6 1842.6`: Illustrator ha traslato tutto il contenuto di **+287.93 in y** (x invariata, scala invariata). Per l'app la calibrazione diventa `p1SvgY = 747.93` (era 460); tutto il resto di `GEO` resta uguale. `posteggi-mappa.json` è già nel nuovo sistema.
 - Piazza bar/eventi ridotta a mano da Carlo.
 - Aggiunti i 3 posteggi con contorno nero dietro la tensostruttura (`PV-1`, `PV-2` 6x5 in etichetta ma disegnati 4,5x3,8; `PV-3` "10x10" ma disegnato 6,7x6,7) e il posteggio temporaneo vendita uova (`UOVA-1`, cerchio). In legenda il nero è "attività espositiva prodotti vari": non esiste elenco SUAP per questi, quindi `inElenco=false`.
-- Ipotesi di Carlo sulle anomalie: A-47 probabilmente vacante; A-119 da chiarire con il SUAP (nota: 118bis è presente sia in piantina sia in elenco, quindi 119 resta senza posizione).
+- Ipotesi di Carlo: A-47 probabilmente vacante. Il 119 è stato poi trovato in piantina (vedi sopra).
 
 ## Anomalie da segnalare al Comune
 
 - **A-47** (fila 8, 5x5) è disegnato in piantina ma non compare negli elenchi SUAP.
-- **A-119** (fila 10, 8x5, vacante) è negli elenchi ma non in piantina: manca la posizione. Ipotesi: è l'ex 47 rinumerato, oppure va aggiunto in coda alla fila 10.
+- ~~A-119~~: c'è, accanto al 118bis, come poligono irregolare ("mq 42") che il filtro dei quadrilateri aveva scartato; aggiunto il 22/09/2026. Non è un'anomalia.
 - Superfici diverse tra piantina (2017) ed elenco (2026), dedotte sia dall'etichetta stampata nel disegno (es. "8x4" su 142) sia dalle dimensioni vettoriali del poligono (3 pt = 1 m), che concordano tra loro: A-52 (8x5 vs 9x5), A-63 (6x5 vs 7x5), A-139/163/140/164 (larghezza 5 vs 4), A-142 (8x4 vs 5x6), C-8 (8x5 vs 8x3), C-9 (8x5 vs 9x5). I posteggi di fine fila (131, 135, 136, 138, B-4, E-9, E-22) sono trapezi: il lato lungo in piantina è maggiore di quello in elenco, non è un errore.
 
 ## Precisione e verifica in loco
