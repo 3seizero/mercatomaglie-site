@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { firebaseReady } from "./firebase.js";
+import { firebaseReady, FOTO_ABILITATE } from "./firebase.js";
 import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
-import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
+import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useAperture, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
 
 // ============================================================
 // GOOGLE FONT INJECTION
@@ -84,7 +84,7 @@ function gpsToSvg(lat, lon) {
   return { svgX, svgY };
 }
 
-function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
+function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,mercato}){
   const wrapRef = useRef(null);
   const layerRef = useRef(null);
   const [showCatSheet, setShowCatSheet] = useState(false);
@@ -345,11 +345,11 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
             // 3 stati: PRESENTE=verde, ASSENTE=rosso 50%, LIBERA=grigio
             const fillCol = dimmed ? "rgba(200,195,188,0.18)"
               : act ? "#c8862a"
-              : occ ? (e.presente ? "#3daa70" : "rgba(210,40,40,0.50)")
+              : occ ? (e.presente ? "#3daa70" : aperto ? "rgba(210,40,40,0.50)" : "#d9c9ad")
               : "#e8e2d8";
             const strokeCol = dimmed ? "rgba(180,175,168,0.4)"
               : act ? "#c8862a"
-              : occ ? (e.presente ? "#2a9060" : "rgba(180,20,20,0.75)")
+              : occ ? (e.presente ? "#2a9060" : aperto ? "rgba(180,20,20,0.75)" : "#b8a888")
               : "#c8c0b4";
             const strokeW = act ? 2 : occ && !dimmed ? 1.2 : 0.4;
             const isPoly = e.shape === "poly";
@@ -369,7 +369,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
                   : <rect x={e.svgX} y={e.svgY} width={e.svgW} height={e.svgH}
                       fill={fillCol} stroke={strokeCol} strokeWidth={strokeW} rx="1.5"/>
                 }
-                {occ&&!dimmed&&<circle cx={dotX} cy={dotY} r="3"
+                {occ&&!dimmed&&(aperto||e.presente)&&<circle cx={dotX} cy={dotY} r="3"
                   fill={e.presente?"#27ae60":"rgba(200,30,30,0.85)"} stroke="#fff" strokeWidth="1"/>}
                 {!dimmed&&<text x={tcx} y={tcy+2.5}
                   textAnchor="middle" fontSize="6.5"
@@ -481,11 +481,17 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
 
       {/* STATUS PILL */}
       <div style={S.statusPill}>
-        <span style={S.sDot("#3daa70")}/><span style={S.sTxt}>{presenti} presenti</span>
-        <span style={S.sSep}/>
-        <span style={S.sDot("rgba(210,40,40,0.85)")}/><span style={S.sTxt}>{assegnate-presenti} assenti</span>
-        <span style={S.sSep}/>
-        <span style={S.sDot("#c8c0b4")}/><span style={S.sTxt}>{libere} libere</span>
+        {aperto?(<>
+          <span style={S.sDot("#3daa70")}/><span style={S.sTxt}>{presenti} presenti</span>
+          <span style={S.sSep}/>
+          <span style={S.sDot("rgba(210,40,40,0.85)")}/><span style={S.sTxt}>{assegnate-presenti} assenti</span>
+          <span style={S.sSep}/>
+          <span style={S.sDot("#c8c0b4")}/><span style={S.sTxt}>{libere} libere</span>
+        </>):(<>
+          <span style={S.sDot("#c8c0b4")}/><span style={S.sTxt}>Mercato chiuso · apre {prossimaApertura(mercato)}</span>
+          <span style={S.sSep}/>
+          <span style={S.sTxt}>{assegnate} espositori</span>
+        </>)}
       </div>
 
       {/* ZOOM CONTROLS */}
@@ -521,16 +527,17 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
                     <div style={{...S.sheetNome,overflowWrap:"anywhere"}}>{esp.nome}</div>
                     <div style={S.sheetCat}>{esp.categoria}</div>
                   </div>
-                  <div style={{...S.presBadge,background:esp.presente?"#eaf7f0":"#fdecea",color:esp.presente?"#3daa70":"#c0392b",borderColor:esp.presente?"#3daa70":"#e07070"}}>
+                  {(aperto||esp.presente)&&<div style={{...S.presBadge,background:esp.presente?"#eaf7f0":"#fdecea",color:esp.presente?"#3daa70":"#c0392b",borderColor:esp.presente?"#3daa70":"#e07070"}}>
                     <Icon name={esp.presente?"checkCircle":"xCircle"} size={13} color={esp.presente?"#3daa70":"#c0392b"} sw={2}/>
                     {esp.presente?"Presente":"Assente"}
-                  </div>
+                  </div>}
                 </div>
                 <div style={S.divider}/>
                 <div style={{display:"flex",flexDirection:"column",gap:9,marginBottom:16}}>
                   {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color="#9a8070" sw={1.5}/><span>{esp.titolare}</span></div>}
                   <div style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5}/><span>{esp.etichetta}{esp.superficie?` · ${esp.superficie} m`:""}</span></div>
                   {esp.descrizione&&<div style={{...S.infoRow,alignItems:"flex-start"}}><span style={{fontSize:12,color:"#6b5040",lineHeight:1.45}}>{esp.descrizione}</span></div>}
+                  {FOTO_ABILITATE&&esp.foto&&esp.foto.length>0&&<div style={{display:"flex",gap:8,overflowX:"auto",paddingBottom:4}}>{esp.foto.map((u,i)=><img key={i} src={u} alt="" style={{height:110,borderRadius:10,flexShrink:0}}/>)}</div>}
                 </div>
                 <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
                   {esp.whatsapp&&<a href={`https://wa.me/${esp.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}>
@@ -564,15 +571,16 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
 // ============================================================
 // PAGE: MERCATO
 // ============================================================
-function PageMercato({negozi,mercato}){
+function PageMercato({negozi,mercato,aperto}){
   const cats=[...new Set(negozi.filter(n=>n.nome).map(n=>n.categoria).filter(Boolean))].sort();
   const [cat,setCat]=useState("Tutte");
   const fil=cat==="Tutte"?negozi:negozi.filter(n=>n.categoria===cat);
   const occupati=negozi.filter(n=>n.nome).length;
   return(
     <div style={S.page}>
-      {mercato&&<div style={{fontSize:11,color:"#9a8070",fontWeight:600,marginBottom:10,lineHeight:1.5}}>
-        <Icon name="pin" size={11} color="#9a8070" sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""} · {occupati} espositori, {negozi.length-occupati} posti liberi
+      {mercato&&<div style={{fontSize:11,color:"#9a8070",fontWeight:600,marginBottom:10,lineHeight:1.6}}>
+        <Icon name="pin" size={11} color="#9a8070" sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""}{mercato.orari?` · ${mercato.orari}`:""}<br/>
+        <span style={{color:aperto?"#3daa70":"#9a8070"}}>{aperto?"● Aperto ora":`○ Chiuso · apre ${prossimaApertura(mercato)}`}</span> · {occupati} espositori, {negozi.length-occupati} posti liberi
       </div>}
       <div style={S.filterBar}>
         {["Tutte",...cats].map(c=>(
@@ -583,7 +591,7 @@ function PageMercato({negozi,mercato}){
         {fil.map(n=>(
           <div key={n.id} style={{...S.nCard,opacity:n.nome?1:0.65}}>
             <div style={S.nTop}>
-              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?"#eaf7f0":undefined,color:n.presente?"#3daa70":undefined}}>{n.numero||"—"}</div>
+              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?"#eaf7f0":undefined,color:n.presente?"#3daa70":undefined}} title={n.presente?"Presente oggi":""}>{n.numero||"—"}</div>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{...S.nNome,overflowWrap:"anywhere"}}>{n.nome||"Posto libero"}</div>
                 <div style={S.nTit}>{n.nome?(n.titolare||n.etichetta):n.etichetta}{n.note?` · ${n.note}`:""}</div>
@@ -1105,6 +1113,7 @@ export default function App(){
   const presenze=firebaseReady?presenzeRemote:presenzeLocal;
   const auth=useAuth();
   const live=usePubblico();
+  const aperture=useAperture();
   const postazioni=useMemo(()=>buildPostazioni(presenze,live),[presenze,live]);
   const elenchi=useMemo(()=>({coperto:buildElenco("coperto",presenze,live),ortofrutticolo:buildElenco("ortofrutticolo",presenze,live)}),[presenze,live]);
   const mercatoById=id=>MERCATI.find(m=>m.id===id);
@@ -1157,9 +1166,9 @@ export default function App(){
       {scanner&&<Scanner S={S} onClose={()=>setScanner(false)} onToken={(t)=>{setScanner(false);window.location.hash="#/v/"+t;}}/>}
       <main style={S.main}>
         {qrToken && <PageScheda token={qrToken} auth={auth} postazioni={postazioni} elenchi={elenchi} presenze={presenze} onPresenza={onPresenza} onBack={chiudiScheda} S={S} Icon={Icon}/>}
-        {!qrToken && page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter}/>}
-        {!qrToken && page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")}/>}
-        {!qrToken && page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")}/>}
+        {!qrToken && page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter} aperto={aperture["area-mercatale"]} mercato={mercatoById("area-mercatale")}/>}
+        {!qrToken && page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")} aperto={aperture.coperto}/>}
+        {!qrToken && page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")} aperto={aperture.ortofrutticolo}/>}
         {!qrToken && page==="eventi"  && <PageEventi eventi={eventi}/>}
         {!qrToken && page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online} onScan={()=>setScanner(true)}/>}
       </main>

@@ -2,7 +2,7 @@
 // L'app pubblica legge un solo documento per mercato (stato/{mercatoId}); le anagrafiche
 // vengono dal bundle finché non ci sarà il pannello admin con modifiche live.
 import { useEffect, useState, useCallback } from "react";
-import { doc, getDoc, onSnapshot, runTransaction, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, runTransaction, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { db, auth, firebaseReady } from "./firebase.js";
 import { POSTAZIONI_MAPPA, GEO, PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H } from "./data/mappa.js";
@@ -64,6 +64,45 @@ export function usePubblico() {
 }
 
 /** Segna presenza/assenza di un espositore su un posteggio (solo staff: le regole Firestore lo impongono). */
+/** Il mercato è aperto adesso? (giorniSettimana 0=dom…6=sab, apertura/chiusura "HH:MM") */
+export function mercatoAperto(m, now = new Date()) {
+  if (!m || !m.giorniSettimana || !m.apertura || !m.chiusura) return true;
+  if (!m.giorniSettimana.includes(now.getDay())) return false;
+  const hm = now.getHours() * 60 + now.getMinutes();
+  const [a1, a2] = m.apertura.split(":").map(Number), [c1, c2] = m.chiusura.split(":").map(Number);
+  return hm >= a1 * 60 + a2 && hm < c1 * 60 + c2;
+}
+const GIORNI = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+/** Testo della prossima apertura: "sabato 6:00" / "domani 6:00" / "oggi alle 6:00" */
+export function prossimaApertura(m, now = new Date()) {
+  if (!m || !m.giorniSettimana) return "";
+  for (let d = 0; d < 8; d++) {
+    const g = (now.getDay() + d) % 7;
+    if (!m.giorniSettimana.includes(g)) continue;
+    const [a1, a2] = m.apertura.split(":").map(Number);
+    if (d === 0 && now.getHours() * 60 + now.getMinutes() >= a1 * 60 + a2) continue;
+    const ora = `${a1}:${String(a2).padStart(2, "0")}`;
+    return (d === 0 ? "oggi alle " : d === 1 ? "domani alle " : GIORNI[g] + " alle ") + ora;
+  }
+  return "";
+}
+/** Stato apertura di tutti i mercati (si aggiorna ogni minuto). */
+export function useAperture() {
+  const calc = () => Object.fromEntries(MERCATI.map((m) => [m.id, mercatoAperto(m)]));
+  const [ap, setAp] = useState(calc);
+  useEffect(() => { const t = setInterval(() => setAp(calc()), 60000); return () => clearInterval(t); }, []);
+  return ap;
+}
+
+/** Richiesta self-service di aggiornamento scheda (dal link QR): finisce in richieste/, approvata dal SUAP. */
+export async function inviaRichiesta({ token, espositoreId, alias, referente, whatsapp, telegram, descrizione }) {
+  if (!firebaseReady) throw new Error("Backend non configurato");
+  await addDoc(collection(db, "richieste"), {
+    token, espositoreId, alias: alias || "", referente: referente || "", whatsapp: whatsapp || "", telegram: telegram || "", descrizione: descrizione || "",
+    consenso: true, creato: serverTimestamp(), stato: "in-attesa",
+  });
+}
+
 /** Risolve un token QR: { espositoreId, attivo } oppure null. */
 export async function lookupQr(token) {
   if (!firebaseReady || !token) return null;
@@ -133,7 +172,7 @@ export function buildPostazioni(presenze, live) {
       nome: nomePubblico(e), titolare: e ? e.referente || "" : "",
       categoria: SETTORI[g.settore] || g.settore,
       whatsapp: e ? e.whatsapp || "" : "", telegram: e ? e.telegram || "" : "",
-      descrizione: e ? e.descrizione || "" : "",
+      descrizione: e ? e.descrizione || "" : "", foto: e ? e.foto || null : null, denominazione: e ? e.denominazione : "",
       presente: !!(e && presenze[e.id]),
       inElenco: g.inElenco,
     };
@@ -148,7 +187,7 @@ export function buildElenco(mercatoId, presenze, live) {
     return {
       id: p.id, etichetta: p.etichetta, numero: p.numero, tipo: p.tipo, settore: p.settore,
       nome: nomePubblico(e), titolare: e ? e.referente || "" : "", categoria: e ? e.categoria || p.articolo || "" : (p.articolo || ""),
-      whatsapp: e ? e.whatsapp || "" : "", telegram: e ? e.telegram || "" : "", descrizione: e ? e.descrizione || "" : "",
+      whatsapp: e ? e.whatsapp || "" : "", telegram: e ? e.telegram || "" : "", descrizione: e ? e.descrizione || "" : "", foto: e ? e.foto || null : null, denominazione: e ? e.denominazione : "",
       note: p.note || "", stato: p.stato, espositoreId: e ? e.id : null, presente: !!(e && presenze[e.id]),
     };
   });

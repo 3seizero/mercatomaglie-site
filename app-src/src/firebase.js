@@ -3,6 +3,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const cfg = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,3 +18,6 @@ export const firebaseReady = Boolean(cfg.apiKey && cfg.projectId);
 export const app = firebaseReady ? initializeApp(cfg) : null;
 export const auth = firebaseReady ? getAuth(app) : null;
 export const db = firebaseReady ? getFirestore(app) : null;
+// Foto: funzione pronta ma nascosta finché VITE_FOTO=1 (richiede piano Blaze per Storage)
+export const FOTO_ABILITATE = import.meta.env.VITE_FOTO === '1';
+export const storage = firebaseReady && FOTO_ABILITATE ? getStorage(app) : null;

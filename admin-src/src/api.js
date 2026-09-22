@@ -8,9 +8,10 @@ import {
   getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updatePassword,
   reauthenticateWithCredential, EmailAuthProvider, sendPasswordResetEmail, createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { db, auth, app, firebaseReady } from "./firebase.js";
+import { db, auth, app, firebaseReady, storage, FOTO_ABILITATE } from "./firebase.js";
+import { ref as sRef, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 
-export { firebaseReady };
+export { firebaseReady, FOTO_ABILITATE };
 export const MERCATI = [
   { id: "area-mercatale", nome: "Area Mercatale" },
   { id: "coperto", nome: "Mercato Coperto Centro" },
@@ -139,6 +140,39 @@ export async function revocaToken(espositoreId, token) {
 }
 export const APP_URL = "https://3seizero.com/projects/maglie/areamercatale/app/";
 export const urlQr = (token) => `${APP_URL}#/v/${token}`;
+
+/** Richieste self-service: approva (applica i campi all'espositore) o rifiuta. */
+export const CAMPI_RICHIESTA = ["alias", "referente", "whatsapp", "telegram", "descrizione"];
+export async function approvaRichiesta(r, campi, utente) {
+  const b = writeBatch(db);
+  const upd = {}; for (const k of campi) upd[k] = (r[k] || "").trim();
+  b.set(doc(db, "espositori", docId(r.espositoreId)), { ...upd, id: r.espositoreId, consensoPubblicazione: true, _aggiornato: serverTimestamp() }, { merge: true });
+  b.set(doc(db, "richieste", r._id), { stato: "approvata", gestitaDa: utente, gestita: serverTimestamp(), campiApplicati: campi }, { merge: true });
+  await b.commit();
+  return upd;
+}
+export const rifiutaRichiesta = (r, utente, motivo) => setDoc(doc(db, "richieste", r._id), { stato: "rifiutata", gestitaDa: utente, gestita: serverTimestamp(), motivo: motivo || "" }, { merge: true });
+
+/** Foto (solo con FOTO_ABILITATE): ridimensiona sul client, carica su Storage, salva gli URL in espositori.foto */
+async function ridimensiona(file, max = 1200, q = 0.82) {
+  const bmp = await createImageBitmap(file);
+  const k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  return new Promise((res) => c.toBlob(res, "image/jpeg", q));
+}
+export async function caricaFoto(espositoreId, file, indice) {
+  if (!storage) throw new Error("Le foto non sono abilitate (serve il piano Blaze e VITE_FOTO=1)");
+  const blob = await ridimensiona(file);
+  const r = sRef(storage, `espositori/${docId(espositoreId)}/${indice}-${Date.now()}.jpg`);
+  await uploadBytes(r, blob, { contentType: "image/jpeg", cacheControl: "public,max-age=31536000" });
+  return getDownloadURL(r);
+}
+export async function eliminaFoto(url) {
+  if (!storage) return;
+  try { await deleteObject(sRef(storage, url)); } catch { /* già assente */ }
+}
+export const salvaFotoEspositore = (espositoreId, foto) => setDoc(doc(db, "espositori", docId(espositoreId)), { foto, _aggiornato: serverTimestamp() }, { merge: true });
 
 export const aggiornaStaff = (uid, data) => updateDoc(doc(db, "staff", uid), { ...data, _aggiornato: serverTimestamp() });
 export const inviaReset = (email) => sendPasswordResetEmail(auth, email);

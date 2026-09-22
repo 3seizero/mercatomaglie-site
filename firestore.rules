@@ -35,6 +35,14 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // Richieste self-service degli espositori (dal link QR): chiunque può crearne una con i soli campi ammessi;
+    // lettura, approvazione e cancellazione solo admin/suap.
+    match /richieste/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['token','espositoreId','alias','referente','whatsapp','telegram','descrizione','consenso','creato','stato'])
+                    && request.resource.data.consenso == true && request.resource.data.token is string && request.resource.data.stato == 'in-attesa';
+      allow read, update, delete: if isSuap();
+    }
+
     // Staff: uid → ruolo. Lettura: admin o l'interessato. Scrittura: admin.
     match /staff/{uid} {
       allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);

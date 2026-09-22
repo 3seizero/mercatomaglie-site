@@ -10,9 +10,16 @@
    "tipo": "settimanale",
    "hasMappa": true,
    "indirizzo": null,
-   "giorni": null,
-   "orari": null,
-   "note": "Nuova Area Mercatale, 5 settori merceologici (A–E). Indirizzo/giorni/orari da confermare con il Comune."
+   "giorni": [
+    "ogni sabato"
+   ],
+   "orari": "6:00 – 13:00",
+   "note": "Nuova Area Mercatale, 5 settori merceologici (A–E). Indirizzo da confermare.",
+   "giorniSettimana": [
+    6
+   ],
+   "apertura": "06:00",
+   "chiusura": "13:00"
   },
   {
    "id": "coperto",
@@ -20,9 +27,22 @@
    "tipo": "coperto",
    "hasMappa": false,
    "indirizzo": "Via Toma Nuzzichi, Maglie",
-   "giorni": null,
-   "orari": null,
-   "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli. Giorni/orari da confermare."
+   "giorni": [
+    "tutti i giorni"
+   ],
+   "orari": "6:00 – 13:00",
+   "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli.",
+   "giorniSettimana": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    0
+   ],
+   "apertura": "06:00",
+   "chiusura": "13:00"
   },
   {
    "id": "ortofrutticolo",
@@ -31,10 +51,15 @@
    "hasMappa": false,
    "indirizzo": "Piazza Immacolata, Maglie",
    "giorni": [
-    "sabato"
+    "ogni mercoledì"
    ],
-   "orari": null,
-   "note": "Mercato settimanale del sabato (elenchi SUAP). Orari da confermare."
+   "orari": "6:00 – 13:00",
+   "note": "Mercato settimanale del sabato (elenchi SUAP).",
+   "giorniSettimana": [
+    3
+   ],
+   "apertura": "06:00",
+   "chiusura": "13:00"
   }
  ]
 }

@@ -109,7 +109,18 @@ git add . && git commit -m "descrizione" && git push
   rigenerazione/revoca e stampa (griglia A4) dal pannello; nell'app `#/v/<token>` apre la
   scheda (`src/qr.jsx`), lo staff conferma la presenza (metodo qr + posizione GPS),
   scanner con BarcodeDetector nativo o jsQR
-- [ ] Foto espositori (richiede piano Blaze per Storage)
+- [x] Orari mercati (22/09/2026): area sabato 6-13, ortofrutticolo mercoledì 6-13, coperto tutti
+  i giorni 6-13, in `mercati.json` (giorniSettimana/apertura/chiusura) e Firestore `mercati`;
+  `mercatoAperto()` in dati.js: fuori orario la mappa mostra "Mercato chiuso · apre …" e le
+  postazioni assegnate in colore neutro (niente rosso)
+- [x] Scheda self-service (22/09/2026): dal QR l'espositore propone alias/contatti/descrizione con
+  consenso → `richieste/` → pannello "Richieste" (suap/admin) approva campo per campo e pubblica
+- [~] Foto espositori: codice pronto ma NASCOSTO (flag `VITE_FOTO=1` in .env.local + piano Blaze
+  per Storage). Admin: sezione foto nella scheda (max 3, ridotte a 1200px); app: galleria nel popup
+- Utenti di prova creati il 22/09/2026: suap.test@3seizero.com (suap), operatore.test@3seizero.com
+  (operatore); password comunicate a Carlo in chat, non salvate nel repo
+- Chiave web Firebase: limitata (API Firebase + referrer 3seizero.com e localhost:5199/5198/5173);
+  vedi docs/SICUREZZA-CHIAVE-FIREBASE.md. Nuovi domini o porte dev vanno aggiunti ai referrer.
 - [ ] Firebase Push Notifications
 - [ ] (sospeso) OCR/sbarra targhe — vedi docs/ARCHIVIO-targhe.md
 - [ ] Share API e Contacts API

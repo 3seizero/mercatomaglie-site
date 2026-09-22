@@ -1,7 +1,8 @@
 // QR: scheda espositore raggiunta dal codice (#/v/<token>) e scanner per l'operatore.
 import { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
-import { lookupQr, setPresenza, SETTORI, MERCATI } from "./dati.js";
+import { lookupQr, inviaRichiesta, SETTORI, MERCATI } from "./dati.js";
+import { FOTO_ABILITATE } from "./firebase.js";
 
 export const tokenDaTesto = (t) => { const m = String(t || "").match(/#\/v\/([A-Za-z0-9_-]{8,})/) || String(t || "").match(/^([A-Za-z0-9_-]{16,})$/); return m ? m[1] : null; };
 
@@ -64,6 +65,7 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
         {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5} /><span>{p.etichetta}{p.superficie ? ` · ${p.superficie} m` : ""}</span></div>)}
         {!p0 && <div style={{ ...S.infoRow, color: "#a07000" }}><Icon name="pin" size={15} color="#e0a800" sw={1.5} /><span>Nessun posteggio assegnato: espositore occasionale, da collocare in un posteggio libero.</span></div>}
         {p0 && p0.descrizione && <div style={{ fontSize: 12, color: "#6b5040", lineHeight: 1.45 }}>{p0.descrizione}</div>}
+        {FOTO_ABILITATE && p0 && p0.foto && p0.foto.length > 0 && <div style={{ display: "flex", gap: 8, overflowX: "auto" }}>{p0.foto.map((u, i) => <img key={i} src={u} alt="" style={{ height: 120, borderRadius: 10 }} />)}</div>}
       </div>
       {p0 && (
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
@@ -85,9 +87,47 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
           <div style={S.loginHint}>Viene salvata anche la posizione GPS del telefono per la verifica delle postazioni.</div>
         </div>
       ) : (
-        <div style={{ textAlign: "center", fontSize: 11, color: "#9a8070" }}>Sei un operatore? Accedi da "Gestione" per registrare la presenza.</div>
+        <>
+          <SelfService token={token} q={q} p0={p0} S={S} />
+          <div style={{ textAlign: "center", fontSize: 11, color: "#9a8070", marginTop: 12 }}>Sei un operatore? Accedi da "Gestione" per registrare la presenza.</div>
+        </>
       )}
       <div style={{ textAlign: "center", marginTop: 14 }}><button style={S.cancelBtn} onClick={onBack}>Torna alla mappa</button></div>
+    </div>
+  );
+}
+
+/** Modulo self-service: l'espositore, dal proprio QR, propone alias, contatti e descrizione. Il SUAP approva. */
+function SelfService({ token, q, p0, S }) {
+  const [open, setOpen] = useState(false);
+  const [f, setF] = useState({ alias: p0?.nome && p0.nome !== p0.denominazione ? "" : "", referente: p0?.titolare || "", whatsapp: p0?.whatsapp || "", telegram: p0?.telegram || "", descrizione: p0?.descrizione || "", consenso: false });
+  const [stato, setStato] = useState(null); const [busy, setBusy] = useState(false);
+  const set = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.type === "checkbox" ? e.target.checked : e.target.value }));
+  if (!open) return <div style={{ textAlign: "center" }}><button style={{ ...S.cancelBtn, background: "#fdf0e0", color: "#8a5a10" }} onClick={() => setOpen(true)}>Sei tu l'espositore? Aggiorna la tua scheda</button></div>;
+  if (stato?.ok) return <div style={{ ...S.formCard, textAlign: "center" }}><div style={{ fontSize: 13, fontWeight: 700, color: "#2e7d52" }}>Richiesta inviata</div><div style={{ fontSize: 12, color: "#6b5040", marginTop: 6 }}>Il SUAP la verificherà e la pubblicherà nell'app. Grazie.</div></div>;
+  async function invia() {
+    if (!f.consenso) { setStato({ ok: false, t: "Serve il consenso alla pubblicazione dei contatti" }); return; }
+    setBusy(true); setStato(null);
+    try { await inviaRichiesta({ token, espositoreId: q.espositoreId, ...f }); setStato({ ok: true }); } catch (e) { setStato({ ok: false, t: e.message || String(e) }); }
+    setBusy(false);
+  }
+  return (
+    <div style={S.formCard}>
+      <div style={S.formH}>La tua scheda pubblica</div>
+      <div style={{ fontSize: 11, color: "#9a8070", marginBottom: 10, lineHeight: 1.5 }}>Compila quello che vuoi far vedere ai clienti nell'app. Le modifiche vengono pubblicate dopo la verifica del SUAP.</div>
+      {[["alias", "Nome da mostrare (es. insegna)"], ["referente", "Referente"], ["whatsapp", "WhatsApp (es. 393331234567)"], ["telegram", "Telegram (@utente)"]].map(([k, pl]) => (
+        <input key={k} style={S.input} placeholder={pl} value={f[k]} onChange={set(k)} />
+      ))}
+      <textarea style={{ ...S.input, minHeight: 70 }} placeholder="Descrizione breve (cosa vendi, specialità…)" value={f.descrizione} onChange={set("descrizione")} />
+      <label style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 11, color: "#6b5040", lineHeight: 1.45, marginBottom: 10 }}>
+        <input type="checkbox" checked={f.consenso} onChange={set("consenso")} style={{ marginTop: 2 }} />
+        <span>Acconsento alla pubblicazione di questi dati nell'app dei mercati di Maglie. Potrò chiederne la modifica o la rimozione al SUAP.</span>
+      </label>
+      {stato && !stato.ok && <div style={S.errMsg}>{stato.t}</div>}
+      <div style={{ display: "flex", gap: 8 }}>
+        <button style={{ ...S.saveBtn, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={invia}>{busy ? "Invio…" : "Invia al SUAP"}</button>
+        <button style={S.cancelBtn} onClick={() => setOpen(false)}>Annulla</button>
+      </div>
     </div>
   );
 }

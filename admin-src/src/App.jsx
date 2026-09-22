@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { stampaQr, qrDataUrl } from "./stampa.js";
 import {
   firebaseReady, MERCATI, SETTORI, TIPI, RUOLI, useAdminAuth, useCollection, rebuildPubblico,
-  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr,
+  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr, FOTO_ABILITATE, CAMPI_RICHIESTA, approvaRichiesta, rifiutaRichiesta, caricaFoto, eliminaFoto, salvaFotoEspositore,
 } from "./api.js";
 
 const sup = (p) => (p && p.superficie && typeof p.superficie === "object") ? p.superficie.raw : (p ? p.superficie : null);
@@ -16,6 +16,8 @@ const errore = (e) => ({ "auth/invalid-credential": "Email o password non validi
 export default function App() {
   const auth = useAdminAuth();
   const [page, setPage] = useState("espositori");
+  const { rows: richieste } = useCollection("richieste", !!auth.user && auth.isSuap);
+  const inAttesa = richieste.filter((r) => r.stato === "in-attesa").length;
   if (!firebaseReady) return <div className="login"><div className="box"><h1>Backend non configurato</h1><p>Manca app-src/.env.local con la configurazione Firebase.</p></div></div>;
   if (auth.loading) return <div className="login"><p>Caricamento…</p></div>;
   if (!auth.user || !auth.isSuap) return <Login auth={auth} />;
@@ -24,7 +26,7 @@ export default function App() {
       <aside className="side">
         <div className="brand">Mercati di Maglie<small>Gestione</small></div>
         <div className="who">{auth.user.email}<br /><b>{auth.role}</b></div>
-        {[["espositori", "Espositori"], ["posteggi", "Posteggi"], ...(auth.isAdmin ? [["staff", "Staff"]] : []), ["account", "Account"]].map(([id, l]) => (
+        {[["espositori", "Espositori"], ["posteggi", "Posteggi"], ["richieste", `Richieste${inAttesa ? ` (${inAttesa})` : ""}`], ...(auth.isAdmin ? [["staff", "Staff"]] : []), ["account", "Account"]].map(([id, l]) => (
           <button key={id} className={page === id ? "active" : ""} onClick={() => setPage(id)}>{l}</button>
         ))}
         <div className="spacer" />
@@ -34,6 +36,7 @@ export default function App() {
       <main className="main">
         {page === "espositori" && <Espositori auth={auth} />}
         {page === "posteggi" && <Posteggi auth={auth} />}
+        {page === "richieste" && <Richieste auth={auth} richieste={richieste} />}
         {page === "staff" && auth.isAdmin && <Staff auth={auth} />}
         {page === "account" && <Account auth={auth} />}
       </main>
@@ -230,6 +233,7 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
       {msg && <div className={"msg " + (msg.ok ? "ok" : "err")}>{msg.t}</div>}
       <div className="actions"><button className="btn primary" disabled={busy} onClick={salva}>{busy ? "Salvataggio…" : esp ? "Salva" : "Crea espositore"}</button></div>
       {esp && auth.isSuap && <SezioneQr esp={esp} ris={ris} posteggiEsp={posteggiEsp} auth={auth} run={run} busy={busy} />}
+      {esp && auth.isSuap && FOTO_ABILITATE && <SezioneFoto esp={esp} run={run} busy={busy} />}
       {esp && (<>
         <div className="sec">Posteggi assegnati</div>
         {posteggiEsp.length === 0 && <div className="muted">Nessun posteggio.</div>}
@@ -247,6 +251,72 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
           </div>
         </div>
       </>)}
+    </div>
+  );
+}
+
+function SezioneFoto({ esp, run, busy }) {
+  const foto = esp.foto || [];
+  async function aggiungi(e) {
+    const file = e.target.files && e.target.files[0]; if (!file) return;
+    await run(async () => { const url = await caricaFoto(esp.id, file, foto.length + 1); await salvaFotoEspositore(esp.id, [...foto, url]); }, "Foto caricata");
+    e.target.value = "";
+  }
+  const rimuovi = (url) => run(async () => { await eliminaFoto(url); await salvaFotoEspositore(esp.id, foto.filter((u) => u !== url)); }, "Foto rimossa");
+  return (
+    <>
+      <div className="sec">Foto della bancarella (max 3)</div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {foto.map((u) => <div key={u} style={{ position: "relative" }}><img src={u} alt="" style={{ width: 110, height: 82, objectFit: "cover", borderRadius: 8, border: "1px solid var(--border)" }} /><button className="btn sm danger" style={{ position: "absolute", top: 4, right: 4, padding: "2px 6px" }} disabled={busy} onClick={() => rimuovi(u)}>✕</button></div>)}
+        {foto.length < 3 && <label className="btn" style={{ cursor: "pointer" }}>+ Aggiungi foto<input type="file" accept="image/*" style={{ display: "none" }} onChange={aggiungi} disabled={busy} /></label>}
+      </div>
+      <div className="muted" style={{ marginTop: 6 }}>Le immagini vengono ridotte a 1200 px prima del caricamento. Ricordati di salvare la scheda per pubblicare.</div>
+    </>
+  );
+}
+
+// ------------------------------------------------------------ RICHIESTE (self-service espositori)
+function Richieste({ auth, richieste }) {
+  const { rows: espositori } = useCollection("espositori");
+  const { rows: posteggi } = useCollection("posteggi");
+  const [filtro, setFiltro] = useState("in-attesa"); const [msg, setMsg] = useState(null); const [busy, setBusy] = useState(false);
+  const [scelte, setScelte] = useState({});
+  const espById = useMemo(() => Object.fromEntries(espositori.map((e) => [e.id, e])), [espositori]);
+  const lista = richieste.filter((r) => filtro === "tutte" || r.stato === filtro).sort((a, b) => (b.creato?.seconds || 0) - (a.creato?.seconds || 0));
+  async function run(fn, ok) { setBusy(true); setMsg(null); try { await fn(); setMsg({ ok: true, t: ok }); } catch (e) { setMsg({ ok: false, t: errore(e) }); } setBusy(false); }
+  const campiScelti = (r) => scelte[r._id] || CAMPI_RICHIESTA.filter((k) => (r[k] || "").trim() !== "" && (r[k] || "").trim() !== (espById[r.espositoreId]?.[k] || ""));
+  const toggle = (r, k) => setScelte((s) => { const cur = new Set(campiScelti(r)); cur.has(k) ? cur.delete(k) : cur.add(k); return { ...s, [r._id]: [...cur] }; });
+  const approva = (r) => run(async () => {
+    const campi = campiScelti(r);
+    const upd = await approvaRichiesta(r, campi, auth.user.email);
+    await rebuildPubblico(espositori.map((e) => (e.id === r.espositoreId ? { ...e, ...upd } : e)), posteggi);
+  }, "Richiesta approvata e pubblicata");
+  const quando = (r) => (r.creato?.toDate ? r.creato.toDate().toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" }) : "");
+  return (
+    <div>
+      <h2>Richieste degli espositori <span className="count">{lista.length}</span></h2>
+      <div className="toolbar"><div className="tabs">{[["in-attesa", "In attesa"], ["approvata", "Approvate"], ["rifiutata", "Rifiutate"], ["tutte", "Tutte"]].map(([v, l]) => <button key={v} className={filtro === v ? "active" : ""} onClick={() => setFiltro(v)}>{l}</button>)}</div></div>
+      <p className="muted">Arrivano dal modulo "Aggiorna la tua scheda" che l'espositore trova aprendo il proprio QR. Approvando, i campi selezionati sostituiscono quelli attuali e vengono pubblicati.</p>
+      {msg && <div className={"msg " + (msg.ok ? "ok" : "err")}>{msg.t}</div>}
+      {lista.length === 0 && <div className="card muted">Nessuna richiesta.</div>}
+      {lista.map((r) => { const e = espById[r.espositoreId]; const sel = new Set(campiScelti(r)); return (
+        <div key={r._id} className="card" style={{ marginBottom: 12 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
+            <div><b>{e ? nomePub(e) : r.espositoreId}</b> <span className="muted">{e?.referente}</span></div>
+            <div className="muted">{quando(r)} · <span className={"tag " + (r.stato === "in-attesa" ? "" : r.stato === "approvata" ? "green" : "red")}>{r.stato}</span></div>
+          </div>
+          <table className="grid" style={{ marginTop: 10 }}><thead><tr><th></th><th>Campo</th><th>Attuale</th><th>Proposto</th></tr></thead><tbody>
+            {CAMPI_RICHIESTA.map((k) => (
+              <tr key={k}><td>{r.stato === "in-attesa" && <input type="checkbox" checked={sel.has(k)} onChange={() => toggle(r, k)} />}</td><td><b>{k}</b></td><td className="muted">{e?.[k] || "—"}</td><td style={{ fontWeight: (r[k] || "") !== (e?.[k] || "") ? 700 : 400 }}>{r[k] || "—"}</td></tr>
+            ))}
+          </tbody></table>
+          {r.stato === "in-attesa" && <div className="actions">
+            <button className="btn primary" disabled={busy || sel.size === 0} onClick={() => approva(r)}>Approva {sel.size} campi e pubblica</button>
+            <button className="btn danger" disabled={busy} onClick={() => run(() => rifiutaRichiesta(r, auth.user.email, ""), "Richiesta rifiutata")}>Rifiuta</button>
+          </div>}
+          {r.stato !== "in-attesa" && <div className="muted" style={{ marginTop: 8 }}>Gestita da {r.gestitaDa}{r.campiApplicati ? ` · campi: ${r.campiApplicati.join(", ")}` : ""}</div>}
+        </div>
+      ); })}
     </div>
   );
 }
