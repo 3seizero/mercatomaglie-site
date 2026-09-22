@@ -1,0 +1,7 @@
+{
+  "name": "mercati-maglie-firebase-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Script di amministrazione Firebase (seed dati, ruoli). Richiedono serviceAccount.json (non committato).",
+  "dependencies": { "firebase-admin": "^13.0.0" }
+}

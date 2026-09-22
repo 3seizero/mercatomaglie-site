@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role() { return signedIn() ? request.auth.token.role : null; }
+    function isAdmin() { return role() == 'admin'; }
+    function isStaff() { return role() in ['admin', 'operatore', 'suap']; }
+
+    // Dati pubblici: lettura libera, scrittura solo admin
+    match /mercati/{id}     { allow read: if true; allow write: if isAdmin(); }
+    match /posteggi/{id}    { allow read: if true; allow write: if isAdmin(); }
+    match /espositori/{id}  { allow read: if true; allow write: if isAdmin() || role() == 'suap'; }
+    match /eventi/{id}      { allow read: if true; allow write: if isAdmin(); }
+    // Stato aggregato del giorno per mercato (1 lettura per l'app pubblica)
+    match /stato/{mercatoId} { allow read: if true; allow write: if isStaff(); }
+
+    // Dati riservati (CF, P.IVA, indirizzi, token QR): solo admin e suap
+    match /espositori_riservati/{id} { allow read, write: if isAdmin() || role() == 'suap'; }
+
+    // Presenze giornaliere: lettura pubblica, scrittura operatore/admin
+    match /presenze/{id} {
+      allow read: if true;
+      allow create, update: if isStaff();
+      allow delete: if isAdmin();
+    }
+
+    // Staff: uid → ruolo (solo lettura per l'interessato, scrittura admin)
+    match /staff/{uid} {
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow write: if isAdmin();
+    }
+  }
+}
