@@ -5,10 +5,9 @@ Autenticazione senza chiavi su disco (consigliata):
     gcloud auth login                                   # una volta, apre il browser
     gcloud auth application-default login --project mercati-maglie   # credenziali per firebase-admin
 
-Regole Firestore (dal root del repo):
+Regole Firestore (usa le credenziali gcloud, niente Firebase CLI):
 
-    npx firebase-tools login          # una volta
-    npx firebase-tools deploy --only firestore:rules
+    node deploy-rules.mjs
 
 Dati e ruoli (da `scripts/firebase/`):
 
