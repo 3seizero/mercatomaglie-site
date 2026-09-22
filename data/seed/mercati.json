@@ -19,7 +19,7 @@
    "nome": "Mercato Coperto Centro",
    "tipo": "coperto",
    "hasMappa": false,
-   "indirizzo": "Piazza Mercato, Maglie",
+   "indirizzo": "Via Toma Nuzzichi, Maglie",
    "giorni": null,
    "orari": null,
    "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli. Giorni/orari da confermare."
@@ -34,7 +34,7 @@
     "sabato"
    ],
    "orari": null,
-   "note": "Elenchi SUAP intitolati 'Mercato settimanale del sabato'. L'offerta cita Via Toma Nuzzichi nei giorni feriali: da chiarire."
+   "note": "Mercato settimanale del sabato (elenchi SUAP). Orari da confermare."
   }
  ]
 }

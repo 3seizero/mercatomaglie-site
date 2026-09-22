@@ -38,11 +38,11 @@ MERCATI = [
      "indirizzo": None, "giorni": None, "orari": None,
      "note": "Nuova Area Mercatale, 5 settori merceologici (A–E). Indirizzo/giorni/orari da confermare con il Comune."},
     {"id": "coperto", "nome": "Mercato Coperto Centro", "tipo": "coperto", "hasMappa": False,
-     "indirizzo": "Piazza Mercato, Maglie", "giorni": None, "orari": None,
+     "indirizzo": "Via Toma Nuzzichi, Maglie", "giorni": None, "orari": None,
      "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli. Giorni/orari da confermare."},
     {"id": "ortofrutticolo", "nome": "Mercato Ortofrutticolo", "tipo": "settimanale", "hasMappa": False,
      "indirizzo": "Piazza Immacolata, Maglie", "giorni": ["sabato"], "orari": None,
-     "note": "Elenchi SUAP intitolati 'Mercato settimanale del sabato'. L'offerta cita Via Toma Nuzzichi nei giorni feriali: da chiarire."},
+     "note": "Mercato settimanale del sabato (elenchi SUAP). Orari da confermare."},
 ]
 
 # --------------------------------------------------------------------------

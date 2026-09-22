@@ -105,14 +105,14 @@ ul {{ margin: 2mm 0 0 5mm; padding: 0; }} li {{ margin-bottom: 1.5mm; }}
 .small {{ font-size: 8.5pt; color: #555; }}
 </style></head><body>
 <h1>Area Mercatale di Maglie — segnalazioni e chiarimenti per il SUAP</h1>
-<div class="sub">Confronto tra gli <b>elenchi posteggi SUAP del 07/09/2026</b> (Allegati 1–5, box e panche del Mercato Coperto, box e mercato settimanale di Piazza Immacolata) e la <b>piantina «Nuova Area Mercatale — individuazione postazioni e settori merceologici» del 02/01/2017</b>.<br>
-Preparato da 3seizero per la web app dei mercati, {__import__('datetime').date.today().strftime('%d/%m/%Y')}. L'ultima colonna è per le annotazioni durante l'incontro.</div>
+<div class="sub">Confronto tra gli elenchi dei posteggi forniti dal SUAP del 07/09/2026 (Elenchi Settori A–E) e la piantina «Nuova Area Mercatale» del 02/01/2017.<br>
+Documento preparato da 3seizero nell'ambito della realizzazione della web app dedicata all'Area Mercatale di Maglie.</div>
 
 <h2>A. Posteggi dell'area mercatale</h2>
 <div class="small">Il ritaglio mostra il posteggio nella piantina (cerchiato in rosso). Le misure «vettoriali» sono prese dal disegno CAD alla scala della tavola (verificata: 9x5 in etichetta = 9x5 m disegnati).</div>
 <table><thead><tr><th>Posteggio</th><th>Piantina</th><th>Cosa dice la piantina (2017)</th><th>Cosa dice l'elenco (2026)</th><th>Domanda</th><th>Risposta SUAP</th></tr></thead>
 <tbody>{trs}</tbody></table>
-<div class="small" style="margin-top:2mm">Nota: i posteggi di fine fila (es. 131, 135, 136, 138, B-4, E-9, E-22) sono trapezoidali; il lato lungo disegnato è maggiore di quello in elenco, non è un'incongruenza.</div>
+<div class="small" style="margin-top:2mm">Nota: i posteggi di fine fila (es. 131, 135, 136, 138, B-4, E-9, E-22) sono trapezoidali e quindi il lato lungo disegnato è maggiore di quello in elenco, determinando quindi una differenza di calcolo della superficie.</div>
 
 <h2>B. Settori presenti in piantina senza elenco</h2>
 <div class="box"><img src="{extra_imgs['pv']}"><b>Tre posteggi a contorno nero dietro la tensostruttura</b> (n. 1 e 2 con etichetta 6x5, n. 3 con etichetta 10x10). In legenda il nero corrisponde ad «Attività espositiva prodotti vari». Non c'è un elenco SUAP per questo settore.<br><br>Domande: sono ancora attivi? Chi li occupa? Esiste un elenco? Le misure reali sono quelle dell'etichetta o quelle disegnate (circa 4,5x3,8 e 6,7x6,7)?<div style="clear:both"></div></div>
@@ -130,7 +130,7 @@ Preparato da 3seizero per la web app dei mercati, {__import__('datetime').date.t
 
 <h2>D. Informazioni necessarie per la web app</h2>
 <ul>
-<li><b>Giorni, orari e indirizzo ufficiali</b> dei tre mercati: Area Mercatale, Mercato Coperto «Centro» (Piazza Mercato), Mercato ortofrutticolo. Per quest'ultimo l'offerta approvata cita «Via Toma Nuzzichi nei giorni feriali», gli elenchi «Piazza Immacolata, mercato settimanale del sabato»: quale vale?</li>
+<li><b>Giorni e orari ufficiali</b> dei tre mercati: Area Mercatale, Mercato Coperto Centro (Via Toma Nuzzichi), Mercato Ortofrutticolo (Piazza Immacolata).</li>
 <li><b>La piantina del 2017 è ancora quella vigente?</b> Esistono modifiche successive (nuovi posteggi, soppressioni, rinumerazioni)? È disponibile il file <b>DWG/DXF</b> originale dell'ufficio tecnico?</li>
 <li><b>Mercato Coperto</b>: il box n. 17 risulta «operatori vari – vendita settimanale carni»: chi sono gli operatori e in quale giorno?</li>
 <li><b>Panche Mercato Coperto</b>: gli assegnatari sono produttori agricoli senza partita IVA in elenco: hanno una denominazione da usare al pubblico?</li>
