@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { firebaseReady } from "./firebase.js";
+import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
 
 // ============================================================
 // GOOGLE FONT INJECTION
@@ -69,324 +71,16 @@ const LogoMark = ({ size = 44, light = false }) => {
 };
 
 // ============================================================
-// DATA — 251 postazioni da planimetria vettoriale reale
-// ============================================================
-const ESPOSITORI_INIT = (()=>{
-  const filled = [
-  {id:1,postazione:"P001",shape:"rect",svgX:664.64,svgY:486.31,svgW:20.93,svgH:42.79,cx:675.10,cy:507.70,nome:"Frutta & Sapori",titolare:"Giovanni Marzo",categoria:"Alimentare",whatsapp:"393331234567",presente:true},
-  {id:2,postazione:"P002",shape:"rect",svgX:687.25,svgY:486.31,svgW:20.93,svgH:42.79,cx:697.71,cy:507.70,nome:"Abbigliamento Sole",titolare:"Maria Greco",categoria:"Abbigliamento",whatsapp:"393337654321",presente:true},
-  {id:3,postazione:"P003",shape:"rect",svgX:722.19,svgY:486.31,svgW:20.93,svgH:42.79,cx:732.65,cy:507.70,nome:"Calzature DeLux",titolare:"Antonio Rizzo",categoria:"Calzature",whatsapp:"393339876543",presente:true},
-  {id:4,postazione:"P004",shape:"rect",svgX:744.80,svgY:486.31,svgW:20.93,svgH:42.79,cx:755.26,cy:507.70,nome:"Profumi & Bellezza",titolare:"Lucia Toma",categoria:"Cosmetica",whatsapp:"393332345678",presente:true},
-  {id:5,postazione:"P005",shape:"rect",svgX:779.74,svgY:486.31,svgW:20.93,svgH:42.79,cx:790.20,cy:507.70,nome:"Spezie del Salento",titolare:"Francesco Bello",categoria:"Alimentare",whatsapp:"393335678901",presente:true},
-  {id:6,postazione:"P006",shape:"rect",svgX:802.35,svgY:486.31,svgW:20.93,svgH:42.79,cx:812.81,cy:507.70,nome:"Tessuti Preziosi",titolare:"Rosa Manno",categoria:"Tessuti",whatsapp:"393338901234",presente:true},
-  {id:7,postazione:"P007",shape:"rect",svgX:837.29,svgY:486.31,svgW:20.93,svgH:42.79,cx:847.75,cy:507.70,nome:"Elettronica Viva",titolare:"Marco Fusco",categoria:"Elettronica",whatsapp:"393331122334",presente:true},
-  {id:8,postazione:"P008",shape:"rect",svgX:859.90,svgY:486.31,svgW:20.93,svgH:42.79,cx:870.36,cy:507.70,nome:"Bigiotteria Arte",titolare:"Carmen Liso",categoria:"Bigiotteria",whatsapp:"393334455667",presente:true},
-  {id:9,postazione:"P009",shape:"rect",svgX:894.84,svgY:486.31,svgW:20.93,svgH:42.79,cx:905.30,cy:507.70,nome:"Casalinghi & Co.",titolare:"Salvatore Urso",categoria:"Casalinghi",whatsapp:"393337788990",presente:true},
-  {id:10,postazione:"P010",shape:"rect",svgX:917.45,svgY:486.31,svgW:20.93,svgH:42.79,cx:927.91,cy:507.70,nome:"Formaggi Pugliesi",titolare:"Grazia Conte",categoria:"Alimentare",whatsapp:"393330011223",presente:true},
-  {id:11,postazione:"P011",shape:"rect",svgX:952.39,svgY:486.31,svgW:20.93,svgH:42.79,cx:962.85,cy:507.70,nome:"Fiori & Piante",titolare:"Vito Palmieri",categoria:"Floricoltura",whatsapp:"393333344556",presente:true},
-  {id:12,postazione:"P012",shape:"poly",points:"995.924 529.096 974.999 529.096 974.999 486.309 985.461 486.309 995.924 500.899 995.924 529.096",cx:987.21,cy:510.13,nome:"Olii Extravergine",titolare:"Donato Suma",categoria:"Alimentare",whatsapp:"393339900112",presente:true},
-  {id:13,postazione:"P013",shape:"poly",points:"1055.763 563.353 1012.229 563.353 1012.229 517.411 1033.996 540.382 1055.763 563.353",cx:1034.00,cy:549.57,nome:"Borse Artigianali",titolare:"Miriam Greco",categoria:"Pelletteria",whatsapp:"393332233445",presente:true},
-  {id:14,postazione:"P014",shape:"rect",svgX:664.64,svgY:531.12,svgW:20.93,svgH:42.79,cx:675.10,cy:552.51,nome:"Vini Salentini",titolare:"Cosimo Resta",categoria:"Alimentare",whatsapp:"393335566778",presente:true},
-  {id:15,postazione:"P015",shape:"rect",svgX:687.25,svgY:531.12,svgW:20.93,svgH:42.79,cx:697.71,cy:552.51,nome:"Ceramiche Arte",titolare:"Angela Nuzzo",categoria:"Artigianato",whatsapp:"393338899001",presente:true},
-  {id:16,postazione:"P016",shape:"rect",svgX:722.19,svgY:531.12,svgW:20.93,svgH:42.79,cx:732.65,cy:552.51,nome:"Street Food Sud",titolare:"Luigi Stomeo",categoria:"Ristorazione",whatsapp:"393331234000",presente:true},
-  {id:17,postazione:"P017",shape:"rect",svgX:744.80,svgY:531.12,svgW:20.93,svgH:42.79,cx:755.26,cy:552.51,nome:"Pasticceria Dolce",titolare:"Teresa Colì",categoria:"Alimentare",whatsapp:"393334567890",presente:true},
-  {id:18,postazione:"P018",shape:"rect",svgX:779.74,svgY:531.12,svgW:20.93,svgH:42.79,cx:790.20,cy:552.51,nome:"Libri & Cultura",titolare:"Pietro Cataldi",categoria:"Editoria",whatsapp:"393337890123",presente:true},
-  {id:19,postazione:"P019",shape:"rect",svgX:802.35,svgY:531.12,svgW:20.93,svgH:42.79,cx:812.81,cy:552.51,nome:"Sport & Outdoor",titolare:"Rocco Longo",categoria:"Sport",whatsapp:"393330123456",presente:true},
-  {id:20,postazione:"P020",shape:"rect",svgX:837.29,svgY:531.12,svgW:20.93,svgH:42.79,cx:847.75,cy:552.51,nome:"Erbe Salentine",titolare:"Nunzia Cazzato",categoria:"Erboristeria",whatsapp:"393333210987",presente:true},
-  {id:21,postazione:"P021",shape:"rect",svgX:859.90,svgY:531.12,svgW:20.93,svgH:42.79,cx:870.36,cy:552.51,nome:"Abbigliamento Moda Sud",titolare:"Carmela Ingrosso",categoria:"Abbigliamento",whatsapp:"393331112233",presente:true},
-  {id:22,postazione:"P022",shape:"rect",svgX:894.84,svgY:531.12,svgW:20.93,svgH:42.79,cx:905.30,cy:552.51,nome:"Delizie Salentine",titolare:"Oronzo De Marco",categoria:"Alimentare",whatsapp:"393332223344",presente:true},
-  {id:23,postazione:"P023",shape:"rect",svgX:917.45,svgY:531.12,svgW:20.93,svgH:42.79,cx:927.91,cy:552.51,nome:"Pelletteria Artigiana",titolare:"Filomena Greco",categoria:"Pelletteria",whatsapp:"393333334455",presente:true},
-  {id:24,postazione:"P024",shape:"rect",svgX:952.39,svgY:531.12,svgW:20.93,svgH:42.79,cx:962.85,cy:552.51,nome:"Tecnologia Facile",titolare:"Massimo Erroi",categoria:"Elettronica",whatsapp:"393334445566",presente:true},
-  {id:25,postazione:"P025",shape:"rect",svgX:975.00,svgY:531.12,svgW:20.93,svgH:42.79,cx:985.46,cy:552.51,nome:"Intimo & Lingerie",titolare:"Rossella Ciardo",categoria:"Abbigliamento",whatsapp:"393335556677",presente:true},
-  {id:26,postazione:"P026",shape:"rect",svgX:1012.23,svgY:564.72,svgW:20.93,svgH:42.75,cx:1022.69,cy:586.10,nome:"Sapori di Puglia",titolare:"Donato Coppola",categoria:"Alimentare",whatsapp:"393336667788",presente:true},
-  {id:27,postazione:"P027",shape:"rect",svgX:1034.84,svgY:564.72,svgW:20.93,svgH:42.75,cx:1045.30,cy:586.10,nome:"Ottica Moderna",titolare:"Luigi Stomeo",categoria:"Ottica",whatsapp:"393337778899",presente:true},
-  {id:28,postazione:"P028",shape:"rect",svgX:664.64,svgY:575.92,svgW:20.93,svgH:32.92,cx:675.10,cy:592.38,nome:"Giochi & Giocattoli",titolare:"Maria Paola Urso",categoria:"Giocattoli",whatsapp:"393338889900",presente:true},
-  {id:29,postazione:"P029",shape:"rect",svgX:687.25,svgY:575.92,svgW:20.93,svgH:32.92,cx:697.71,cy:592.38,nome:"Ceramiche Salentine",titolare:"Vincenzo Raho",categoria:"Artigianato",whatsapp:"393339990011",presente:true},
-  {id:30,postazione:"P030",shape:"rect",svgX:722.19,svgY:575.92,svgW:20.93,svgH:32.92,cx:732.65,cy:592.38,nome:"Orologi & Bijoux",titolare:"Grazia Manno",categoria:"Bigiotteria",whatsapp:"393330001122",presente:true},
-  {id:31,postazione:"P031",shape:"rect",svgX:744.80,svgY:575.92,svgW:20.93,svgH:32.92,cx:755.26,cy:592.38,nome:"Tessuti & Tendaggi",titolare:"Salvatore Prete",categoria:"Tessuti",whatsapp:"393331113344",presente:true},
-  {id:32,postazione:"P032",shape:"rect",svgX:779.74,svgY:575.92,svgW:20.93,svgH:32.92,cx:790.20,cy:592.38,nome:"Pane & Dolci",titolare:"Antonia Vergine",categoria:"Alimentare",whatsapp:"393332224455",presente:true},
-  {id:33,postazione:"P033",shape:"rect",svgX:802.35,svgY:575.92,svgW:20.93,svgH:32.92,cx:812.81,cy:592.38,nome:"Coltelleria Artigiana",titolare:"Pietro Liso",categoria:"Artigianato",whatsapp:"393333335566",presente:true},
-  {id:34,postazione:"P034",shape:"rect",svgX:837.29,svgY:575.92,svgW:20.93,svgH:32.92,cx:847.75,cy:592.38,nome:"Erboristeria Natura",titolare:"Nunzia Palma",categoria:"Erboristeria",whatsapp:"393334446677",presente:true},
-  {id:35,postazione:"P035",shape:"rect",svgX:859.90,svgY:575.92,svgW:20.93,svgH:32.92,cx:870.36,cy:592.38,nome:"Calzature Comfort",titolare:"Antonio De Giorgi",categoria:"Calzature",whatsapp:"393335557788",presente:true},
-  {id:36,postazione:"P036",shape:"rect",svgX:894.84,svgY:575.92,svgW:20.93,svgH:32.92,cx:905.30,cy:592.38,nome:"Profumeria Esclusiva",titolare:"Rosa Cataldi",categoria:"Cosmetica",whatsapp:"393336668899",presente:true},
-  {id:37,postazione:"P037",shape:"rect",svgX:917.45,svgY:575.92,svgW:20.93,svgH:32.92,cx:927.91,cy:592.38,nome:"Fiori & Composizioni",titolare:"Vito Pastore",categoria:"Floricoltura",whatsapp:"393337779900",presente:false},
-  {id:38,postazione:"P038",shape:"rect",svgX:952.39,svgY:575.92,svgW:20.93,svgH:32.92,cx:962.85,cy:592.38,nome:"Sport & Fitness",titolare:"Marco Resta",categoria:"Sport",whatsapp:"393338880011",presente:false},
-  {id:39,postazione:"P039",shape:"rect",svgX:975.00,svgY:575.92,svgW:20.93,svgH:32.92,cx:985.46,cy:592.38,nome:"Casa & Cucina",titolare:"Angela Ciullo",categoria:"Casalinghi",whatsapp:"393339991122",presente:false},
-  {id:40,postazione:"P040",shape:"rect",svgX:664.64,svgY:610.87,svgW:20.93,svgH:32.92,cx:675.10,cy:627.33,nome:"Vini & Liquori",titolare:"Cosimo Palmieri",categoria:"Alimentare",whatsapp:"393330002233",presente:false},
-  {id:41,postazione:"P041",shape:"rect",svgX:687.25,svgY:610.87,svgW:20.93,svgH:32.92,cx:697.71,cy:627.33,nome:"Borse & Valigie",titolare:"Miriam Fersino",categoria:"Pelletteria",whatsapp:"393331113355",presente:false},
-  {id:42,postazione:"P042",shape:"rect",svgX:722.19,svgY:610.87,svgW:20.93,svgH:32.92,cx:732.65,cy:627.33,nome:"Giornali & Libri",titolare:"Pietro Erroi",categoria:"Editoria",whatsapp:"393332224466",presente:false},
-  {id:43,postazione:"P043",shape:"rect",svgX:744.80,svgY:610.87,svgW:20.93,svgH:32.92,cx:755.26,cy:627.33,nome:"Articoli Religiosi",titolare:"Teresa Mancarella",categoria:"Artigianato",whatsapp:"393333335577",presente:false},
-  {id:44,postazione:"P044",shape:"rect",svgX:779.74,svgY:610.87,svgW:20.93,svgH:32.92,cx:790.20,cy:627.33,nome:"Casalinghi Premium",titolare:"Eugenia Coppola",categoria:"Casalinghi",whatsapp:"393334446688",presente:false},
-  {id:45,postazione:"P045",shape:"rect",svgX:802.35,svgY:610.87,svgW:20.93,svgH:32.92,cx:812.81,cy:627.33,nome:"Abbigliamento Bimbi",titolare:"Lucia Panese",categoria:"Abbigliamento",whatsapp:"393335557799",presente:false},
-  {id:46,postazione:"P046",shape:"rect",svgX:837.29,svgY:610.87,svgW:20.93,svgH:32.92,cx:847.75,cy:627.33,nome:"Miele & Prodotti Bio",titolare:"Francesco Erroi",categoria:"Alimentare",whatsapp:"393336668800",presente:false},
-  {id:47,postazione:"P047",shape:"rect",svgX:859.90,svgY:610.87,svgW:20.93,svgH:32.92,cx:870.36,cy:627.33,nome:"Elettrodomestici",titolare:"Rocco Ingrosso",categoria:"Elettronica",whatsapp:"393337779911",presente:false},
-  {id:48,postazione:"P048",shape:"rect",svgX:894.84,svgY:610.87,svgW:20.93,svgH:32.92,cx:905.30,cy:627.33,nome:"Maglieria Artigiana",titolare:"Carmen Ciardo",categoria:"Tessuti",whatsapp:"393338880022",presente:false},
-  {id:49,postazione:"P049",shape:"rect",svgX:917.45,svgY:610.87,svgW:20.93,svgH:32.92,cx:927.91,cy:627.33,nome:"Spezie & Aromi",titolare:"Giovanni Fersino",categoria:"Alimentare",whatsapp:"393339991133",presente:false},
-  {id:50,postazione:"P050",shape:"rect",svgX:952.39,svgY:610.87,svgW:20.93,svgH:32.92,cx:962.85,cy:627.33,nome:"Ottica & Fotografia",titolare:"Silvana Palmieri",categoria:"Ottica",whatsapp:"393330002244",presente:false}
-  ];
-  const emptyRects = [
-  [51,"P051",975.00,610.87,20.93,32.92,985.46,627.33],
-  [52,"P052",1012.23,608.85,20.93,34.94,1022.69,626.32],
-  [53,"P053",1034.84,608.85,20.93,34.94,1045.30,626.32],
-  [54,"P054",897.72,671.33,20.93,36.14,908.18,689.40],
-  [55,"P055",920.33,671.33,20.93,36.14,930.79,689.40],
-  [56,"P056",955.27,671.33,20.93,36.14,965.73,689.40],
-  [57,"P057",977.88,671.33,20.93,36.14,988.34,689.40],
-  [58,"P058",1013.23,671.33,20.93,36.14,1023.69,689.40],
-  [59,"P059",1035.84,671.33,20.93,36.14,1046.30,689.40],
-  [60,"P060",897.72,708.74,20.93,34.50,908.18,725.98],
-  [61,"P061",920.33,708.74,20.93,34.50,930.79,725.98],
-  [62,"P062",955.27,708.74,20.93,34.50,965.73,725.98],
-  [63,"P063",977.88,708.74,20.93,34.50,988.34,725.98],
-  [64,"P064",1013.23,708.74,20.93,34.50,1023.69,725.98],
-  [65,"P065",1035.84,708.74,20.93,34.50,1046.30,725.98],
-  [66,"P066",897.72,744.50,20.93,34.50,908.18,761.75],
-  [67,"P067",920.33,744.50,20.93,34.50,930.79,761.75],
-  [68,"P068",955.27,744.50,20.93,34.50,965.73,761.75],
-  [69,"P069",977.88,744.50,20.93,34.50,988.34,761.75],
-  [70,"P070",1013.23,744.50,20.93,34.50,1023.69,761.75],
-  [71,"P071",1035.84,744.50,20.93,34.50,1046.30,761.75],
-  [72,"P072",1186.83,732.85,20.93,34.50,1197.29,750.10],
-  [73,"P073",1209.43,732.85,20.93,34.50,1219.90,750.10],
-  [74,"P074",1186.83,768.62,20.93,34.50,1197.29,785.86],
-  [75,"P075",1209.43,768.62,20.93,34.50,1219.90,785.86],
-  [76,"P076",897.72,780.26,20.93,34.50,908.18,797.51],
-  [77,"P077",920.33,780.26,20.93,34.50,930.79,797.51],
-  [78,"P078",955.27,780.26,20.93,34.50,965.73,797.51],
-  [79,"P079",977.88,780.26,20.93,34.50,988.34,797.51],
-  [80,"P080",1013.23,780.26,20.93,34.50,1023.69,797.51],
-  [81,"P081",1035.84,780.26,20.93,34.50,1046.30,797.51],
-  [83,"P083",1186.83,804.38,20.93,34.50,1197.29,821.63],
-  [84,"P084",1209.43,804.38,20.93,34.50,1219.90,821.63],
-  [85,"P085",1245.82,804.38,20.93,34.50,1256.28,821.63],
-  [86,"P086",1268.42,804.38,20.93,34.50,1278.89,821.63],
-  [87,"P087",897.72,816.03,20.93,34.50,908.18,833.28],
-  [88,"P088",920.33,816.03,20.93,34.50,930.79,833.28],
-  [89,"P089",955.27,816.03,20.93,34.50,965.73,833.28],
-  [90,"P090",977.88,816.03,20.93,34.50,988.34,833.28],
-  [91,"P091",1013.23,816.03,20.93,34.50,1023.69,833.28],
-  [92,"P092",1035.84,816.03,20.93,34.50,1046.30,833.28],
-  [93,"P093",897.72,851.79,20.93,34.50,908.18,869.04],
-  [94,"P094",920.33,851.79,20.93,34.50,930.79,869.04],
-  [95,"P095",955.27,851.79,20.93,34.50,965.73,869.04],
-  [96,"P096",977.88,851.79,20.93,34.50,988.34,869.04],
-  [97,"P097",1013.23,851.79,20.93,34.50,1023.69,869.04],
-  [98,"P098",1035.84,851.79,20.93,34.50,1046.30,869.04],
-  [99,"P099",1186.83,840.14,20.93,34.50,1197.29,857.39],
-  [100,"P100",1209.43,840.14,20.93,34.50,1219.90,857.39],
-  [101,"P101",1245.82,840.14,20.93,34.50,1256.28,857.39],
-  [102,"P102",1268.42,840.14,20.93,34.50,1278.89,857.39],
-  [103,"P103",1303.37,840.14,20.93,34.50,1313.83,857.39],
-  [104,"P104",1325.97,840.14,20.93,34.50,1336.44,857.39],
-  [105,"P105",897.72,887.55,20.93,34.50,908.18,904.80],
-  [106,"P106",920.33,887.55,20.93,34.50,930.79,904.80],
-  [107,"P107",955.27,887.55,20.93,34.50,965.73,904.80],
-  [108,"P108",977.88,887.55,20.93,34.50,988.34,904.80],
-  [109,"P109",1013.23,887.55,20.93,34.50,1023.69,904.80],
-  [110,"P110",1035.84,887.55,20.93,34.50,1046.30,904.80],
-  [111,"P111",1186.83,875.91,20.93,34.50,1197.29,893.16],
-  [112,"P112",1209.43,875.91,20.93,34.50,1219.90,893.16],
-  [113,"P113",1245.82,875.91,20.93,34.50,1256.28,893.16],
-  [114,"P114",1268.42,875.91,20.93,34.50,1278.89,893.16],
-  [115,"P115",1303.37,875.91,20.93,34.50,1313.83,893.16],
-  [116,"P116",1325.97,875.91,20.93,34.50,1336.44,893.16],
-  [117,"P117",897.72,923.32,20.93,34.50,908.18,940.57],
-  [118,"P118",920.33,923.32,20.93,34.50,930.79,940.57],
-  [119,"P119",955.27,923.32,20.93,34.50,965.73,940.57],
-  [120,"P120",977.88,923.32,20.93,34.50,988.34,940.57],
-  [121,"P121",1013.23,923.32,20.93,34.50,1023.69,940.57],
-  [122,"P122",1035.84,923.32,20.93,34.50,1046.30,940.57],
-  [123,"P123",1186.83,911.67,20.93,43.85,1197.29,933.60],
-  [124,"P124",1209.43,911.67,20.93,43.85,1219.90,933.60],
-  [125,"P125",1245.82,911.67,20.93,43.85,1256.28,933.60],
-  [126,"P126",1268.42,911.67,20.93,43.85,1278.89,933.60],
-  [127,"P127",1303.37,911.67,20.93,43.85,1313.83,933.60],
-  [128,"P128",1325.97,911.67,20.93,43.85,1336.44,933.60],
-  [129,"P129",1361.92,911.67,20.93,43.85,1372.38,933.60],
-  [130,"P130",1384.53,911.67,20.93,43.85,1394.99,933.60],
-  [131,"P131",668.28,984.98,20.93,34.50,678.74,1002.23],
-  [132,"P132",690.89,984.98,20.93,34.50,701.35,1002.23],
-  [133,"P133",727.24,984.98,20.93,34.50,737.71,1002.23],
-  [134,"P134",749.85,984.98,20.93,34.50,760.31,1002.23],
-  [135,"P135",784.79,984.98,20.93,34.50,795.26,1002.23],
-  [136,"P136",807.40,984.98,20.93,34.50,817.87,1002.23],
-  [137,"P137",842.76,984.98,20.93,34.50,853.22,1002.23],
-  [138,"P138",865.37,984.98,20.93,34.50,875.83,1002.23],
-  [139,"P139",900.72,984.98,20.93,34.50,911.18,1002.23],
-  [140,"P140",923.33,984.98,20.93,34.50,933.79,1002.23],
-  [141,"P141",958.27,984.98,20.93,34.50,968.73,1002.23],
-  [142,"P142",980.88,984.98,20.93,34.50,991.34,1002.23],
-  [143,"P143",1016.23,984.98,20.93,34.50,1026.69,1002.23],
-  [144,"P144",1038.84,984.98,20.93,34.50,1049.30,1002.23],
-  [145,"P145",1189.83,980.30,20.93,37.77,1200.29,999.19],
-  [146,"P146",1212.43,980.30,20.93,37.77,1222.90,999.19],
-  [147,"P147",1247.82,980.30,20.93,37.77,1258.28,999.19],
-  [148,"P148",1270.42,980.30,20.93,37.77,1280.89,999.19],
-  [149,"P149",1305.37,980.30,20.93,37.77,1315.83,999.19],
-  [150,"P150",1327.97,980.30,20.93,37.77,1338.44,999.19],
-  [151,"P151",1363.92,980.30,20.93,37.77,1374.38,999.19],
-  [152,"P152",1386.53,980.30,20.93,37.77,1396.99,999.19],
-  [153,"P153",1422.47,980.30,20.93,37.77,1432.93,999.19],
-  [154,"P154",1445.08,980.30,20.93,37.77,1455.54,999.19],
-  [155,"P155",668.28,1021.15,20.93,37.99,678.74,1040.15],
-  [156,"P156",690.89,1021.15,20.93,37.99,701.35,1040.15],
-  [157,"P157",727.24,1021.15,20.93,37.99,737.71,1040.15],
-  [158,"P158",749.85,1021.15,20.93,37.99,760.31,1040.15],
-  [159,"P159",784.79,1021.15,20.93,37.99,795.26,1040.15],
-  [160,"P160",807.40,1021.15,20.93,37.99,817.87,1040.15],
-  [161,"P161",842.76,1021.15,20.93,37.99,853.22,1040.15],
-  [162,"P162",865.37,1021.15,20.93,37.99,875.83,1040.15],
-  [163,"P163",900.72,1021.15,20.93,37.99,911.18,1040.15],
-  [164,"P164",923.33,1021.15,20.93,37.99,933.79,1040.15],
-  [165,"P165",958.27,1021.15,20.93,37.99,968.73,1040.15],
-  [166,"P166",980.88,1021.15,20.93,37.99,991.34,1040.15],
-  [167,"P167",1016.23,1021.15,20.93,37.99,1026.69,1040.15],
-  [168,"P168",1038.84,1021.15,20.93,37.99,1049.30,1040.15],
-  [169,"P169",1189.83,1019.48,20.93,34.56,1200.29,1036.76],
-  [170,"P170",1212.43,1019.48,20.93,34.56,1222.90,1036.76],
-  [171,"P171",1247.82,1019.48,20.93,34.56,1258.28,1036.76],
-  [172,"P172",1270.42,1019.48,20.93,34.56,1280.89,1036.76],
-  [173,"P173",1305.37,1019.48,20.93,34.56,1315.83,1036.76],
-  [174,"P174",1327.97,1019.48,20.93,34.56,1338.44,1036.76],
-  [175,"P175",1363.92,1019.48,20.93,34.56,1374.38,1036.76],
-  [176,"P176",1386.53,1019.48,20.93,34.56,1396.99,1036.76],
-  [177,"P177",1422.47,1019.48,20.93,34.56,1432.93,1036.76],
-  [178,"P178",1445.08,1019.48,20.93,34.56,1455.54,1036.76],
-  [179,"P179",668.28,1060.82,20.93,34.50,678.74,1078.07],
-  [180,"P180",690.89,1060.82,20.93,34.50,701.35,1078.07],
-  [181,"P181",727.24,1060.82,20.93,34.50,737.71,1078.07],
-  [182,"P182",749.85,1060.82,20.93,34.50,760.31,1078.07],
-  [183,"P183",784.79,1060.82,20.93,34.50,795.26,1078.07],
-  [184,"P184",807.40,1060.82,20.93,34.50,817.87,1078.07],
-  [185,"P185",842.76,1060.82,20.93,34.50,853.22,1078.07],
-  [186,"P186",865.37,1060.82,20.93,34.50,875.83,1078.07],
-  [187,"P187",900.72,1060.82,20.93,34.50,911.18,1078.07],
-  [188,"P188",923.33,1060.82,20.93,34.50,933.79,1078.07],
-  [189,"P189",958.27,1060.82,20.93,34.50,968.73,1078.07],
-  [190,"P190",980.88,1060.82,20.93,34.50,991.34,1078.07],
-  [191,"P191",1016.23,1060.82,20.93,34.50,1026.69,1078.07],
-  [192,"P192",1038.84,1060.82,20.93,34.50,1049.30,1078.07],
-  [193,"P193",1189.83,1055.44,20.93,36.21,1200.29,1073.55],
-  [194,"P194",1212.43,1055.44,20.93,36.21,1222.90,1073.55],
-  [195,"P195",1247.82,1055.44,20.93,36.21,1258.28,1073.55],
-  [196,"P196",1270.42,1055.44,20.93,36.21,1280.89,1073.55],
-  [197,"P197",1305.37,1055.44,20.93,36.21,1315.83,1073.55],
-  [198,"P198",1327.97,1055.44,20.93,36.21,1338.44,1073.55],
-  [204,"P204",668.28,1097.00,20.93,43.13,678.74,1118.56],
-  [205,"P205",690.89,1097.00,20.93,43.13,701.35,1118.56],
-  [206,"P206",727.24,1097.00,20.93,43.13,737.71,1118.56],
-  [207,"P207",749.85,1097.00,20.93,43.13,760.31,1118.56],
-  [208,"P208",784.79,1097.00,20.93,43.13,795.26,1118.56],
-  [209,"P209",807.40,1097.00,20.93,43.13,817.87,1118.56],
-  [210,"P210",842.76,1097.00,20.93,43.13,853.22,1118.56],
-  [211,"P211",865.37,1097.00,20.93,43.13,875.83,1118.56],
-  [212,"P212",900.72,1097.00,20.93,43.13,911.18,1118.56],
-  [213,"P213",923.33,1097.00,20.93,43.13,933.79,1118.56],
-  [214,"P214",958.27,1097.00,20.93,43.13,968.73,1118.56],
-  [215,"P215",980.88,1097.00,20.93,43.13,991.34,1118.56],
-  [216,"P216",1016.23,1097.00,20.93,43.13,1026.69,1118.56],
-  [217,"P217",1038.84,1097.00,20.93,43.13,1049.30,1118.56],
-  [222,"P222",668.28,1141.80,20.93,43.95,678.74,1163.78],
-  [223,"P223",690.89,1141.80,20.93,43.95,701.35,1163.78],
-  [224,"P224",727.24,1141.80,20.93,43.95,737.71,1163.78],
-  [225,"P225",749.85,1141.80,20.93,43.95,760.31,1163.78],
-  [226,"P226",784.79,1141.80,20.93,43.95,795.26,1163.78],
-  [227,"P227",807.40,1141.80,20.93,43.95,817.87,1163.78],
-  [228,"P228",842.76,1141.80,20.93,43.95,853.22,1163.78],
-  [229,"P229",865.37,1141.80,20.93,43.95,875.83,1163.78],
-  [230,"P230",900.72,1141.80,20.93,43.95,911.18,1163.78],
-  [231,"P231",923.33,1141.80,20.93,43.95,933.79,1163.78],
-  [232,"P232",958.27,1141.80,20.93,43.95,968.73,1163.78],
-  [233,"P233",980.88,1141.80,20.93,43.95,991.34,1163.78],
-  [236,"P236",668.28,1187.43,20.93,43.95,678.74,1209.41],
-  [237,"P237",690.89,1187.43,20.93,43.95,701.35,1209.41],
-  [238,"P238",727.24,1187.43,20.93,43.95,737.71,1209.41],
-  [239,"P239",749.85,1187.43,20.93,43.95,760.31,1209.41],
-  [240,"P240",784.79,1187.43,20.93,43.95,795.26,1209.41],
-  [241,"P241",807.40,1187.43,20.93,43.95,817.87,1209.41]
-  ];
-  const emptyPolys = [
-  [82,"P082","1289.349 803.112 1245.815 803.112 1245.815 751.762 1289.349 803.112",1267.58,790.27],
-  [199,"P199","1384.841 1100.834 1363.916 1106.315 1363.916 1055.444 1384.841 1055.444 1384.841 1100.834",1376.47,1083.77],
-  [200,"P200","1407.45 1094.531 1386.525 1100.286 1386.525 1055.444 1407.45 1055.444 1407.45 1094.531",1399.08,1080.05],
-  [201,"P201","1466.001 1078.008 1422.467 1090.009 1422.467 1055.444 1466.001 1055.444 1466.001 1078.008",1448.59,1071.38],
-  [202,"P202","1326.29 1116.729 1305.366 1122.347 1305.366 1093.058 1326.29 1093.058 1326.29 1116.729",1317.92,1108.38],
-  [203,"P203","1348.899 1110.562 1327.975 1116.318 1327.975 1093.058 1348.899 1093.058 1348.899 1110.562",1340.53,1104.71],
-  [218,"P218","1210.751 1148.107 1189.826 1153.999 1189.826 1093.058 1210.751 1093.058 1210.751 1148.107",1202.38,1127.27],
-  [219,"P219","1233.36 1141.804 1212.435 1147.559 1212.435 1093.058 1233.36 1093.058 1233.36 1141.804",1224.99,1123.46],
-  [220,"P220","1268.74 1132.151 1247.815 1137.968 1247.815 1093.058 1268.74 1093.058 1268.74 1132.151",1260.37,1117.68],
-  [221,"P221","1291.349 1126.046 1270.424 1131.664 1270.424 1093.058 1291.349 1093.058 1291.349 1126.046",1282.98,1113.97],
-  [234,"P234","1059.763 1186.235 1038.838 1191.755 1038.838 1141.804 1059.763 1141.804 1059.763 1186.235",1051.39,1169.57],
-  [235,"P235","1037.154 1192.195 1016.229 1197.686 1016.229 1141.804 1037.154 1141.804 1037.154 1192.195",1028.78,1173.14],
-  [242,"P242","921.642 1222.615 900.717 1228.062 900.717 1187.434 921.642 1187.434 921.642 1222.615",913.27,1209.63],
-  [243,"P243","944.251 1216.449 923.326 1221.998 923.326 1187.434 944.251 1187.434 944.251 1216.449",935.88,1205.95],
-  [244,"P244","1001.802 1201.342 958.268 1213.057 958.268 1187.434 1001.802 1187.434 1001.802 1201.342",984.39,1198.12],
-  [245,"P245","863.68 1237.688 842.756 1243.134 842.756 1187.434 863.68 1187.434 863.68 1237.688",855.31,1218.68],
-  [246,"P246","886.289 1231.864 865.365 1237.311 865.365 1187.434 886.289 1187.434 886.289 1231.864",877.92,1215.18],
-  [247,"P247","828.328 1247.348 784.794 1258.539 784.794 1233.063 828.328 1233.063 828.328 1247.348",810.91,1243.87],
-  [248,"P248","689.206 1284.014 668.282 1289.586 668.282 1233.063 689.206 1233.063 689.206 1284.014",680.84,1264.75],
-  [249,"P249","711.815 1278.014 690.891 1283.625 690.891 1233.063 711.815 1233.063 711.815 1278.014",703.45,1261.16],
-  [250,"P250","748.168 1268.724 727.243 1274.136 727.243 1233.063 748.168 1233.063 748.168 1268.724",739.80,1255.54],
-  [251,"P251","770.777 1262.763 749.852 1268.313 749.852 1233.063 770.777 1233.063 770.777 1262.763",762.41,1251.99]
-  ];
-  const fromRects = emptyRects.map(([id,postazione,svgX,svgY,svgW,svgH,cx,cy])=>
-    ({id,postazione,shape:"rect",svgX,svgY,svgW,svgH,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false})
-  );
-  const fromPolys = emptyPolys.map(([id,postazione,points,cx,cy])=>
-    ({id,postazione,shape:"poly",points,cx,cy,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false})
-  );
-  return [...filled,...fromRects,...fromPolys].sort((a,b)=>a.id-b.id);
-})();
-
-// SVG viewBox della planimetria originale
-const SVG_VIEWBOX = "0 0 2055.647 1554.619";
-
-// Segnaposto Bar & Area Ristoro — rettangolo arancione nella planimetria
-// (Area_Bar/Eventi): x=631.823 y=677.309 width=236 height=281
-const BAR_SVG = {x:631.823, y:677.309, w:236, h:281};
-
-
-// ============================================================
-// PAGE: MAPPA — planimetria vettoriale + overlay postazioni
+// DATI — geometria mappa, anagrafiche e calibrazione GPS vengono da ./dati.js
+// (generati dai seed SUAP e dalla planimetria v2 con scripts/app/gen-data.py)
 // ============================================================
 
-// SVG planimetria come data URI (evita problemi di parsing JSX)
-const PLANIMETRIA_URI = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIwNTUuNjQ3IDE1NTQuNjE5Ij48ZyBpZD0iQXJlYV9NYXBwYSI+CiAgICA8cGF0aCBmaWxsPSIjZjBlY2U0IiBkPSJNNDgzLjI2OSwxMTM0LjI3OGwuNTYyLTQuMjE4Yy4xNC03LjMyNC0uMjcyLTUyLjIwNC0yNi41MDYtMTQyLjc5Mi0xMi41NTMtNDMuMzQ1LTE5LjQyOS03OS4yODMtMjQuOTU1LTEwOC4xNTktMTEuNTg4LTYwLjU2MS0xNC43MDItNzYuODM4LTUyLjk2Ny0xMTMuMzc4bC0zLjI5MS0zLjE0My0xMDAuMDExLTExMi4xNiwxMDcuMzg4LTEwNC4yODYsNDA5LjE2LTM5OS42NTYsMS41NzEtMS40MjRjMTEuNDYtMTAuMzg1LDQzLjA4My0zNC41NDEsODkuMS0zNC41NDEsMzQuMzc4LDAsNjYuOTQzLDEzLjYzMSw5MS42OTQsMzguMzgxLDEyLjA1NiwxMi4wMDgsNTI3LjkyMSw1MTkuOTQyLDgwMS4yNTUsNzg5LjA1MywzNC41MywzMS4xNyw1MC4xNzIsNzYuNjI1LDQwLjk2LDEyMC40MDUtNS45ODIsMjguNDM2LTIyLjE5OCw1NC4wMzctNDUuNjU5LDcyLjA4OC0xNC4yNjgsMTAuOTc4LTMxLjE1MywxOS4xNTYtNTAuMTg5LDI0LjMwOS0yNy45OTgsNy41NzctMTA1Mi4yNDksMjc3LjQ1Mi0xMDk1LjgzNywyODguOTM3bC0xNDIuMjc1LDM3LjQ4N3YtMzQ2LjkwM1oiLz4KICA8L2c+CiAgPGcgaWQ9IlN0cmFkYV9kaV9hY2Nlc3NvIj4KICAgIDxwYXRoIGZpbGw9IiM3MDZmNmYiIGQ9Ik00NjIuNjQ0LDYyNy4zMjZsNDA3LjcxNi0zOTguMjQ2czEyLjg0MS0xMS42MzgsMjQuNDc5LDAsODA0LjMxOSw3OTIuMDc0LDgwNC4zMTksNzkyLjA3NGMwLDAsMjAuNTU0LDE2LjU5LTcuMzk5LDI0LjE1NnMtMTA5NS4xMDUsMjg4Ljc0MS0xMDk1LjEwNSwyODguNzQxdi0xOTIuMjQ2czcuMzk5LTU1LjQ4OC0zMC40Mi0xODYuMDc2LTE3LjI2NS0xODQuODUxLTEwOC41MjQtMjcxLjk5OWwtMjQuNjY1LTI3LjY2MSwyOS41OTctMjguNzQzWiIvPgogIDwvZz4KICA8ZyBpZD0iQXJlYV9NZXJjYXRvIj4KICAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMTg5LjgyNiwxMTU4LjIyNmwyODQuOTk4LTc3LjU2M3YtMTE3LjUwNWwtNDgxLjQ4Ny00OTEuODg3LTE2My41MTMtMTY1Ljk2Mi0yNzEsMjY3LTg2LDg0LDIwLjIsMTguNjQ2YzMuMzg3LDMuMTI3LDcuMDc1LDUuOTAyLDEwLjkzMSw4LjQyOCwxNi40NCwxMC43NjksMjcuMDI4LDI2Ljc5NCwzMi40NjIsMzYuNzg4LDIuNjIyLDQuODIyLDQuNjI0LDkuOTU2LDYuMDI4LDE1LjI2M2w2Ni4zNzksMjUwLjg3NWg1MnYzMDhsNDA2LjUxMi0xMDYuODc2LDEyMi40OS0yOS4yMDdaIi8+CiAgPC9nPgogIDxnIGlkPSJBcmVlX1BhcmNoZWdnaW8iPgogICAgPHBvbHlnb24gZmlsbD0iI2U2ZDg2NyIgcG9pbnRzPSI3NzYuMzYzIDM4Ni4zMTYgNzc2LjM2MyAzNjYuMDM2IDg3NS4wMjEgMzY2LjAzNiA5NTIuMzkgNDQ3LjcwMyA5NTIuMzkgNDcxLjI3MiA5MzAuNzg4IDQ3MS4yNzIgOTMwLjc4OCA0NTUuOTI1IDkyMy44MDIgNDU1LjkyNSA5MjMuODAyIDQ2NC4xNDYgNzI4LjEzIDQ2NC4xNDYgNzI4LjEzIDQ0Ni4wNTkgNzIyLjE4OCA0NDYuMDU5IDcyMi4xODggNDcxLjI3MiA3MDAuMTc3IDQ3MS4yNzIgNzAwLjE3NyA0NDYuMDU5IDY4Ny4yNDYgNDQ2LjA1OSA3NDcuODU4IDM4NS40NDcgNzc2LjM2MyAzODYuMzE2Ii8+CiAgICA8cG9seWdvbiBmaWxsPSIjZTZkODY3IiBwb2ludHM9IjEwNTEuNzkzIDQxNi41MzcgMTIyMy44MTkgNTg0Ljg2MiAxMTY5LjMxNSA2NDAuMzg1IDgzNC43NTMgMzAwLjE1MyA4ODQuNzA5IDI0OS4yNjMgMTA1MS43OTMgNDE2LjUzNyIvPgogICAgPHBvbHlnb24gZmlsbD0iI2U2ZDg2NyIgcG9pbnRzPSIxMjM5LjIyOSA1OTkuMTU1IDE0MDkuODk1IDc3My4yNDIgMTM1My4zMDQgODMwLjk0OCAxMTgzLjc1OCA2NTYuMDY5IDEyMzkuMjI5IDU5OS4xNTUiLz4KICAgIDxwYXRoIGZpbGw9IiNlNmQ4NjciIGQ9Ik0xNDI0Ljc2Niw3ODguMjVsMjI5LjEwNiwyMjcuODA0czYuMDI5LDcuODc5LTUuNDgxLDExLjcxNi01NC4yNjIsMTcuNTM5LTU0LjI2MiwxNy41MzlsLTg5LjM0LTg5LjUxMi0xMy4xNTQsMTIuMjI5LTEyMy44NzEtMTI1LjUxNSw1Ny4wMDItNTQuMjYyWiIvPgogIDwvZz4KICA8ZyBpZD0iQWl1b2xlIj4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iMTQ3NC44MjMgMTA4MC42NjQgMTQ3NC44MjMgOTYyLjQzNCAxNDkxLjYzNCA5NjguMDI3IDE1MDQuNzg5IDk1NS43OTggMTU5NC4xMjkgMTA0NS4zMDkgMTQ3NC44MjMgMTA4MC42NjQiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iODI5LjgyMyAzMDUuMzA5IDgzNC43NTMgMzAwLjE1MyAxMTY5LjMxNSA2NDAuMzg1IDExNjMuOTgzIDY0NS42MDQgODI5LjgyMyAzMDUuMzA5Ii8+CiAgICA8cGF0aCBmaWxsPSIjOWVjNTgzIiBkPSJNNjM4LjgyMyw1NDYuMzA5djgycy4xMDMsMTktMTcsMTloLTEzOS43ODZsMTU3LjI3NC0xNTQuMy0uNDg4LDUzLjNaIi8+CiAgICA8cG9seWdvbiBmaWxsPSIjOWVjNTgzIiBwb2ludHM9IjEwNjkuODIzIDY0Mi4zMDkgMTA2OS44MjMgNTcwLjE1OSAxMTQyLjM5OCA2NDIuNzM0IDEwNjkuODIzIDY0Mi4zMDkiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iNzQ3Ljg1OCAzODUuNDQ3IDgyOS44MjMgMzA1LjMwOSA5OTMuMzM2IDQ3MS4yNzIgOTUyLjM5IDQ3MS4yNzIgOTUyLjM5IDQ0Ny43MDMgODc1LjAyMSAzNjYuMDM2IDc3Ni4zNjMgMzY2LjAzNiA3NzYuMzYzIDM4Ni4zMTYgNzQ3Ljg1OCAzODUuNDQ3Ii8+CiAgICA8cGF0aCBmaWxsPSIjOWVjNTgzIiBkPSJNMTA3Mi44MjQsNjg2LjMwOXMxLTE4LDE2LTE4aDY4czE3LjUtMS4wOTIsMTcuNSwxNy41YzAsMjMuNSwwLDI1NC41LDAsMjU0LjUsMCwwLC4xODQsMTUuMjA5LTE1LjI1LDE1LjI1LTE4LjI1LjA0OC03MC4yNSwwLTcwLjI1LDAsMCwwLTE0LjYyNS0xLTE0LjYyNS0xNC42MjVzLTEuMzc1LTI1NC42MjUtMS4zNzUtMjU0LjYyNVoiLz4KICAgIDxwYXRoIGZpbGw9IiM5ZWM1ODMiIGQ9Ik0xMDcyLjgyNCwxMDAwLjMwOXMxLTE4LDE2LTE4aDY4czE3LjY4NC0uNjg2LDE3LjUsMTcuNWMtLjIzNywyMy40OTksMCwxNDguNSwwLDE0OC41LDAsMCwuMTg0LDExLjk5My0xNS4yNSwxNS4yNWwtNzAuMDcxLDE2LjcxNXMtMTQuODA0LS43Mi0xNC44MDQtMTQuMzQ1LTEuMzc1LTE2NS42Mi0xLjM3NS0xNjUuNjJaIi8+CiAgICA8cG9seWdvbiBmaWxsPSIjOWVjNTgzIiBwb2ludHM9IjE0MDMuMjgxIDkxMC40MDMgMTM2MS45MTYgOTEwLjQwMyAxMzYxLjkxNiA4NjkuMDM5IDE0MDMuMjgxIDkxMC40MDMiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iMTMzMS44ODMgODM5LjAwNiAxMzAzLjM2NiA4MzkuMDA2IDEzMDMuMzY2IDgxMC41OTIgMTMzMS44ODMgODM5LjAwNiIvPgogICAgPHBvbHlnb24gZmlsbD0iIzllYzU4MyIgcG9pbnRzPSIxMjI2LjYyOCA3MzEuMjAxIDExODYuODI2IDczMS4yMDEgMTE4Ni44MjYgNzA1LjQ0OCAxMjAxLjY4OSA3MDUuNDQ4IDEyMjYuNjI4IDczMS4yMDEiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iMTQ0OC42MDUgOTU1LjcyOCAxNDA3LjI0MSA5NTUuNzI4IDE0MDcuMjQxIDkxNC4zNjMgMTQ0OC42MDUgOTU1LjcyOCIvPgogICAgPHBhdGggZmlsbD0iIzllYzU4MyIgZD0iTTYzMS44MjMsMTMwMS45MTh2LTE3MS41MjZzLTMuMzExLTcxLjI0OC0xMy43MjQtMTAxLjQyOGMtLjg5NC0yLjU5MS05LjI3Ni00Mi42NTUtOS4yNzYtNDIuNjU1aDUydjMwOGwtMjksNy42MDlaIi8+CiAgICA8cGF0aCBmaWxsPSIjOWVjNTgzIiBkPSJNNjE5LjE5NSw2NzcuMzA5djExNS45NzFoLTQwLjAxMWwtMTQuMjUxLTUwLjA0OHMtMS43OS0xMi4wODctMTguMDg3LTQ0LjIyNWMtMTAuNDk4LTIwLjcwMi0xNC4yNTEtMjEuNjk4LTE0LjI1MS0yMS42OThoODYuNloiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iMTM2Mi4xMjcgODQ4LjAyOSAxMzY3Ljc2MyA4NDIuNTEyIDE0OTEuNjM0IDk2OC4wMjcgMTQ3NC44MjMgOTYyLjQzNCAxMzYyLjEyNyA4NDguMDI5Ii8+CiAgICA8cG9seWdvbiBmaWxsPSIjOWVjNTgzIiBwb2ludHM9IjExNzguODkgNjYwLjgzMyAxMTgzLjc1OCA2NTYuMDY5IDEzNTMuMzA0IDgzMC45NDggMTM0OS4yNzEgODM0Ljg5NSAxMTc4Ljg5IDY2MC44MzMiLz4KICAgIDxwb2x5Z29uIGZpbGw9IiM5ZWM1ODMiIHBvaW50cz0iOTMwLjc4OCA0NTUuOTI1IDkyMy44MDIgNDU1LjkyNSA5MjMuODAyIDQ2NC4xNDYgNzI4LjEzIDQ2NC4xNDYgNzI4LjEzIDQ0Ni4wNTkgNzIyLjE4OCA0NDYuMDU5IDcyMi4xODggNDcxLjI3MiA5MzAuNzg4IDQ3MS4yNzIgOTMwLjc4OCA0NTUuOTI1Ii8+CiAgICA8cG9seWxpbmUgZmlsbD0iIzllYzU4MyIgcG9pbnRzPSI4NjMuNTggNDExLjUyOSA3MjguMTMgNDExLjUyOSA3MjguMTMgNDExLjUyOSA3MjIuMTg4IDQxMS41MjkgNzE0Ljc4MSA0MTguNjU0IDg3MC41NjYgNDE4LjY1NCIvPgogICAgPHBvbHlnb24gZmlsbD0iIzllYzU4MyIgcG9pbnRzPSI2ODYuOTY1IDQ0Ni4wNTkgNzAwLjE3NyA0NDYuMDU5IDcwMC4xNzcgNDcxLjI3MiA2NjEuMzc1IDQ3MS4yNzIgNjg2Ljk2NSA0NDYuMDU5Ii8+CiAgPC9nPgo8ZyBpZD0iQXJlYV9CYXJfX3gyRl9fRXZlbnRpIj4KICAgIDxyZWN0IGZpbGw9IiNkMzgyNjciIHg9IjYzMS44MjMiIHk9IjY3Ny4zMDkiIHdpZHRoPSIyMzYiIGhlaWdodD0iMjgxIi8+CiAgPC9nPgo8L3N2Zz4=";
-// Dimensioni canvas SVG originale
-const SVG_W = 2055.647, SVG_H = 1554.619;
-
-// ============================================================
-// CALIBRAZIONE GPS ↔ SVG — 4 punti rilevati sul campo
-// P1 NW 40°07'01.0"N 18°18'32.9"E  P2 SE 40°06'56.9"N 18°18'40.9"E
-// P3 NE 40°06'60.0"N 18°18'38.0"E  P4 SW 40°06'55.5"N 18°18'33.7"E
-// Trasformazione affine con rotazione — errore residuo < 1m
-// ============================================================
-const GEO = {
-  // Punto di origine (NW)
-  p1Lat: 40.116944, p1Lon: 18.309139,
-  p1SvgX: 630, p1SvgY: 460,
-  // Scala px/m e correzione rotazione
-  mPerLat: 111320.0,
-  mPerLon: 85130.55,
-  scale:   5.102959,
-  cosR:    0.99997414,
-  sinR:   -0.00719104,
-};
 function gpsToSvg(lat, lon) {
   const dx = (lon - GEO.p1Lon) * GEO.mPerLon;
   const dy = -(lat - GEO.p1Lat) * GEO.mPerLat;
   const svgX = GEO.p1SvgX + GEO.scale * (GEO.cosR * dx - GEO.sinR * dy);
   const svgY = GEO.p1SvgY + GEO.scale * (GEO.sinR * dx + GEO.cosR * dy);
   return { svgX, svgY };
-}
-function svgToGps(svgX, svgY) {
-  const dx_px = svgX - GEO.p1SvgX;
-  const dy_px = svgY - GEO.p1SvgY;
-  const dx_m =  (GEO.cosR * dx_px + GEO.sinR * dy_px) / GEO.scale;
-  const dy_m = (-GEO.sinR * dx_px + GEO.cosR * dy_px) / GEO.scale;
-  const lon = GEO.p1Lon + dx_m / GEO.mPerLon;
-  const lat = GEO.p1Lat - dy_m / GEO.mPerLat;
-  return { lat, lon };
 }
 
 function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
@@ -617,10 +311,6 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
   const libere=espositori.filter(e=>!e.nome).length;
   const esp=popup?espositori.find(e=>e.id===popup):null;
 
-  // Categorie presenti tra le postazioni assegnate (dinamiche)
-  const categorie = ["Tutte", ...Array.from(new Set(
-    espositori.filter(e=>e.categoria).map(e=>e.categoria)
-  )).sort()];
 
   return(
     <div ref={wrapRef} style={S.mapCont}>
@@ -640,7 +330,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
 
         {/* Overlay SVG interattivo — postazioni sopra la planimetria */}
         <svg style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",overflow:"visible"}}
-          viewBox="0 0 2055.647 1554.619" xmlns="http://www.w3.org/2000/svg">
+          viewBox={SVG_VIEWBOX} xmlns="http://www.w3.org/2000/svg">
 
           {/* Labels gestiti direttamente nell'SVG di Illustrator */}
 
@@ -684,7 +374,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
                   textAnchor="middle" fontSize="6.5"
                   fill={occ?"#2c1d0e":"#9a8878"}
                   fontFamily="Montserrat,sans-serif" fontWeight="700">
-                  {e.postazione.replace("P","")}
+                  {e.numero}
                 </text>}
               </g>
             );
@@ -827,7 +517,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
                     <span style={{fontSize:10,fontWeight:900,color:esp.presente?"#3daa70":"#9a8878"}}>{esp.postazione}</span>
                   </div>
                   <div style={{flex:1}}>
-                    <div style={S.sheetNome}>{esp.nome}</div>
+                    <div style={{...S.sheetNome,overflowWrap:"anywhere"}}>{esp.nome}</div>
                     <div style={S.sheetCat}>{esp.categoria}</div>
                   </div>
                   <div style={{...S.presBadge,background:esp.presente?"#eaf7f0":"#fdecea",color:esp.presente?"#3daa70":"#c0392b",borderColor:esp.presente?"#3daa70":"#e07070"}}>
@@ -837,28 +527,31 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
                 </div>
                 <div style={S.divider}/>
                 <div style={{display:"flex",flexDirection:"column",gap:9,marginBottom:16}}>
-                  <div style={S.infoRow}><Icon name="users" size={15} color="#9a8070" sw={1.5}/><span>{esp.titolare}</span></div>
-                  <div style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5}/><span>Postazione {esp.postazione}</span></div>
+                  {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color="#9a8070" sw={1.5}/><span>{esp.titolare}</span></div>}
+                  <div style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5}/><span>{esp.etichetta}{esp.superficie?` · ${esp.superficie} m`:""}</span></div>
+                  {esp.descrizione&&<div style={{...S.infoRow,alignItems:"flex-start"}}><span style={{fontSize:12,color:"#6b5040",lineHeight:1.45}}>{esp.descrizione}</span></div>}
                 </div>
-                <div style={{display:"flex",gap:10,justifyContent:"center"}}>
-                  <a href={`https://wa.me/${esp.whatsapp}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}>
+                <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+                  {esp.whatsapp&&<a href={`https://wa.me/${esp.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}>
                     <Icon name="wa" size={20} color="#fff" sw={1.8}/>
                     <span>WhatsApp</span>
+                  </a>}
+                  {esp.telegram&&<a href={`https://t.me/${esp.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnPopup,background:"#2aabee"}}>
+                    <Icon name="navigate" size={20} color="#fff" sw={1.8}/>
+                    <span>Telegram</span>
+                  </a>}
+                  <a href={`https://www.google.com/maps/dir/?api=1&destination=${esp.lat.toFixed(6)},${esp.lon.toFixed(6)}&travelmode=walking`}
+                    target="_blank" rel="noreferrer" style={S.naviBtn}>
+                    <Icon name="navigate" size={20} color="#fff" sw={1.8}/>
+                    <span>A piedi</span>
                   </a>
-                  {(()=>{const {lat,lon}=svgToGps(esp.cx, esp.cy); return(
-                    <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat.toFixed(6)},${lon.toFixed(6)}`}
-                      target="_blank" rel="noreferrer" style={S.naviBtn}>
-                      <Icon name="navigate" size={20} color="#fff" sw={1.8}/>
-                      <span>Naviga</span>
-                    </a>
-                  );})()}
                 </div>
               </>
             ):(
               <div style={{textAlign:"center",padding:"24px 0"}}>
                 <div style={{fontSize:32,marginBottom:8}}>🏪</div>
-                <div style={{fontSize:15,fontWeight:700,color:"#3d2b1a",marginBottom:4}}>Postazione {esp.postazione}</div>
-                <div style={{fontSize:12,color:"#9a8070"}}>Postazione libera</div>
+                <div style={{fontSize:15,fontWeight:700,color:"#3d2b1a",marginBottom:4}}>{esp.etichetta}</div>
+                <div style={{fontSize:12,color:"#9a8070"}}>{esp.inElenco?"Posteggio libero":"Posteggio non in elenco SUAP"}{esp.superficie?` · ${esp.superficie} m`:""}</div>
               </div>
             )}
           </div>
@@ -870,12 +563,16 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter}){
 // ============================================================
 // PAGE: MERCATO
 // ============================================================
-function PageMercato({negozi}){
-  const cats=[...new Set(negozi.map(n=>n.categoria))].sort();
+function PageMercato({negozi,mercato}){
+  const cats=[...new Set(negozi.filter(n=>n.nome).map(n=>n.categoria).filter(Boolean))].sort();
   const [cat,setCat]=useState("Tutte");
   const fil=cat==="Tutte"?negozi:negozi.filter(n=>n.categoria===cat);
+  const occupati=negozi.filter(n=>n.nome).length;
   return(
     <div style={S.page}>
+      {mercato&&<div style={{fontSize:11,color:"#9a8070",fontWeight:600,marginBottom:10,lineHeight:1.5}}>
+        <Icon name="pin" size={11} color="#9a8070" sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""} · {occupati} espositori, {negozi.length-occupati} posti liberi
+      </div>}
       <div style={S.filterBar}>
         {["Tutte",...cats].map(c=>(
           <button key={c} style={{...S.fBtn,...(cat===c?S.fBtnAct:{})}} onClick={()=>setCat(c)}>{c}</button>
@@ -883,24 +580,27 @@ function PageMercato({negozi}){
       </div>
       <div style={S.col}>
         {fil.map(n=>(
-          <div key={n.id} style={S.nCard}>
+          <div key={n.id} style={{...S.nCard,opacity:n.nome?1:0.65}}>
             <div style={S.nTop}>
-              <div style={S.nNum}>{String(n.id).padStart(2,"0")}</div>
-              <div style={{flex:1}}>
-                <div style={S.nNome}>{n.nome}</div>
-                <div style={S.nTit}>{n.titolare}</div>
+              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?"#eaf7f0":undefined,color:n.presente?"#3daa70":undefined}}>{n.numero||"—"}</div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{...S.nNome,overflowWrap:"anywhere"}}>{n.nome||"Posto libero"}</div>
+                <div style={S.nTit}>{n.nome?(n.titolare||n.etichetta):n.etichetta}{n.note?` · ${n.note}`:""}</div>
               </div>
-              <span style={S.nCat}>{n.categoria}</span>
+              {n.categoria&&<span style={S.nCat}>{n.categoria}</span>}
             </div>
-            {n.desc && <div style={S.nDesc}>{n.desc}</div>}
-            {n.orari && <div style={S.nOrari}>🕐 {n.orari}{n.tel ? `  ·  📞 ${n.tel}` : ""}</div>}
-            <div style={S.divider}/>
-            <div style={{display:"flex",gap:8}}>
-              <a href={`https://wa.me/${n.whatsapp}`} target="_blank" rel="noreferrer" style={S.waBtnCard}>
-                <Icon name="wa" size={16} color="#fff" sw={1.8}/> WhatsApp
-              </a>
-              <a href={`mailto:${n.email}`} style={S.mailBtn}><Icon name="mail" size={15} color="#3d2b1a" sw={1.5}/> Email</a>
-            </div>
+            {n.descrizione && <div style={S.nDesc}>{n.descrizione}</div>}
+            {(n.whatsapp||n.telegram)&&<>
+              <div style={S.divider}/>
+              <div style={{display:"flex",gap:8}}>
+                {n.whatsapp&&<a href={`https://wa.me/${n.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer" style={S.waBtnCard}>
+                  <Icon name="wa" size={16} color="#fff" sw={1.8}/> WhatsApp
+                </a>}
+                {n.telegram&&<a href={`https://t.me/${n.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnCard,background:"#2aabee"}}>
+                  <Icon name="navigate" size={16} color="#fff" sw={1.8}/> Telegram
+                </a>}
+              </div>
+            </>}
           </div>
         ))}
       </div>
@@ -951,44 +651,75 @@ function PageEventi({eventi}){
 // ============================================================
 // PAGE: ADMIN
 // ============================================================
-function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,setEventi,updPresenza}){
+function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online}){
+  const [email,setEmail]=useState("");
   const [pwd,setPwd]=useState("");
-  const [err,setErr]=useState(false);
+  const [err,setErr]=useState("");
+  const [busy,setBusy]=useState(false);
   const [tab,setTab]=useState("presenze");
-  const [addE,setAddE]=useState(false);
-  const [addErr,setAddErr]=useState("");
+  const [q,setQ]=useState("");
+  const [mercato,setMercato]=useState("area-mercatale");
   const [addEv,setAddEv]=useState(false);
-  const [nE,setNE]=useState({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:""});
   const [nEv,setNEv]=useState({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});
+  const [pending,setPending]=useState({});
 
-  if(!adminLogged) return(
+  async function doLogin(){
+    setErr(""); setBusy(true);
+    try{ await auth.login(email,pwd); }
+    catch(e){ setErr(e.code==="auth/invalid-credential"||e.code==="auth/wrong-password"||e.code==="auth/user-not-found"?"Email o password non validi":(e.message||"Errore di accesso")); }
+    setBusy(false);
+  }
+
+  if(!auth.user||!auth.isStaff) return(
     <div style={S.loginWrap}>
       <div style={S.loginBox}>
         <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color="#c8862a" sw={1.5}/></div>
         <div style={S.loginH}>Area Riservata</div>
-        <div style={S.loginSub}>Accesso riservato agli amministratori</div>
-        <input style={{...S.input,...(err?{borderColor:"#c0392b"}:{})}} type="password" placeholder="Password" value={pwd}
-          onChange={e=>setPwd(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doLogin()}/>
-        {err&&<div style={S.errMsg}>Password non valida</div>}
-        <button style={S.loginBtn} onClick={doLogin}><Icon name="lock" size={16} color="#fff" sw={2}/> Accedi</button>
-        <div style={S.loginHint}>Demo: <b>admin2024</b></div>
+        <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo assegnato. Contatta l'amministratore.":"Accesso per amministratori e operatori"}</div>
+        {auth.user&&!auth.isStaff?(
+          <button style={S.loginBtn} onClick={auth.logout}>Esci</button>
+        ):(<>
+          <input style={S.input} type="email" placeholder="Email" value={email} autoComplete="username"
+            onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doLogin()}/>
+          <input style={{...S.input,...(err?{borderColor:"#c0392b"}:{})}} type="password" placeholder="Password" value={pwd} autoComplete="current-password"
+            onChange={e=>setPwd(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doLogin()}/>
+          {err&&<div style={S.errMsg}>{err}</div>}
+          <button style={{...S.loginBtn,opacity:busy?0.6:1}} disabled={busy} onClick={doLogin}><Icon name="lock" size={16} color="#fff" sw={2}/> {busy?"Accesso…":"Accedi"}</button>
+          {!firebaseReady&&<div style={S.loginHint}>Backend non configurato (manca .env.local)</div>}
+        </>)}
       </div>
     </div>
   );
-  function doLogin(){if(pwd==="admin2024"){setAdminLogged(true);setErr(false);}else setErr(true);}
 
-  const TABS=[{id:"presenze",icon:"checkCircle",l:"Presenze"},{id:"espositori",icon:"store",l:"Espositori"},{id:"eventi",icon:"calendar",l:"Eventi"}];
+  const TABS=[{id:"presenze",icon:"checkCircle",l:"Presenze"},{id:"espositori",icon:"store",l:"Espositori"},...(auth.isAdmin?[{id:"eventi",icon:"calendar",l:"Eventi"}]:[])];
+  const numKey=v=>{const m=String(v||"").match(/\d+/);return m?Number(m[0]):9999;};
+  const lista=(mercato==="area-mercatale"?postazioni:elenchi[mercato]||[]).filter(e=>e.nome)
+    .slice().sort((a,b)=>String(a.settore||"").localeCompare(String(b.settore||""))||numKey(a.fila)-numKey(b.fila)||numKey(a.numero)-numKey(b.numero)||String(a.numero).localeCompare(String(b.numero)));
+  const norm=t=>(t||"").toLowerCase();
+  const filtra=arr=>q?arr.filter(e=>norm(e.nome).includes(norm(q))||norm(e.titolare).includes(norm(q))||norm(e.etichetta).includes(norm(q))||norm(e.numero).includes(norm(q))):arr;
+  const presentiOggi=lista.filter(e=>e.presente).length;
+
+  async function toggle(e){
+    if(pending[e.id]) return;
+    setPending(p=>({...p,[e.id]:true}));
+    try{ await onPresenza({mercatoId:mercato,espositoreId:e.espositoreId,posteggioId:e.id,presente:!e.presente}); }
+    catch(err){ alert("Salvataggio non riuscito: "+(err.message||err)); }
+    setPending(p=>{const n={...p};delete n[e.id];return n;});
+  }
 
   return(
     <div style={S.page}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
-        <span style={{fontSize:16,fontWeight:800,color:"#2c1d0e"}}>Pannello Admin</span>
-        <button style={S.logoutBtn} onClick={()=>setAdminLogged(false)}>
+        <div>
+          <span style={{fontSize:16,fontWeight:800,color:"#2c1d0e"}}>Gestione</span>
+          <div style={{fontSize:10,color:"#9a8070",marginTop:2}}>{auth.user.email} · {auth.role}{firebaseReady?(online?" · online":" · connessione…"):" · offline"}</div>
+        </div>
+        <button style={S.logoutBtn} onClick={auth.logout}>
           <Icon name="logout" size={15} color="#3d2b1a" sw={1.8}/> Esci
         </button>
       </div>
 
-      <div style={{display:"flex",gap:6,marginBottom:16}}>
+      <div style={{display:"flex",gap:6,marginBottom:12}}>
         {TABS.map(t=>(
           <button key={t.id} style={{...S.aTab,...(tab===t.id?S.aTabAct:{})}} onClick={()=>setTab(t.id)}>
             <Icon name={t.icon} size={16} color={tab===t.id?"#fff":"#6b5040"} sw={tab===t.id?2:1.5}/>
@@ -997,17 +728,28 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
         ))}
       </div>
 
+      {tab!=="eventi"&&(
+        <>
+          <div style={S.filterBar}>
+            {MERCATI.map(m=>(
+              <button key={m.id} style={{...S.fBtn,...(mercato===m.id?S.fBtnAct:{})}} onClick={()=>{setMercato(m.id);setQ("");}}>{m.nome.replace("Mercato ","")}</button>
+            ))}
+          </div>
+          <input style={{...S.input,marginBottom:10}} placeholder="Cerca espositore o posteggio…" value={q} onChange={e=>setQ(e.target.value)}/>
+        </>
+      )}
+
       {/* PRESENZE */}
       {tab==="presenze"&&(
         <div>
-          <div style={S.secLbl}>Presenza Espositori</div>
+          <div style={S.secLbl}>Presenze di oggi · {presentiOggi} su {lista.length}</div>
           <div style={S.col}>
-            {espositori.filter(e=>e.nome).map(e=>(
+            {filtra(lista).map(e=>(
               <div key={e.id} style={S.presRow}>
                 <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?"#3daa70":"#c0b0a0",flexShrink:0,display:"inline-block"}}/>
-                <div style={{flex:1}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.postazione} · {e.categoria}</div></div>
-                <button style={{...S.togBtn,background:e.presente?"#fdecea":"#eaf7f0",color:e.presente?"#c0392b":"#3daa70"}} onClick={()=>updPresenza(e.id,!e.presente)}>
-                  {e.presente?"Assente":"Presente"}
+                <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e",overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}</div></div>
+                <button style={{...S.togBtn,background:e.presente?"#fdecea":"#eaf7f0",color:e.presente?"#c0392b":"#3daa70",opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>toggle(e)}>
+                  {e.presente?"Segna assente":"Presente"}
                 </button>
               </div>
             ))}
@@ -1018,45 +760,16 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
       {/* ESPOSITORI */}
       {tab==="espositori"&&(
         <div>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-            <div style={S.secLbl}>Espositori</div>
-            <button style={S.addBtn} onClick={()=>{setAddE(true);setAddErr("");}}><Icon name="plus" size={15} color="#fff" sw={2}/> Aggiungi</button>
-          </div>
-          {addE&&(
-            <div style={S.formCard}>
-              <div style={S.formH}>Assegna postazione</div>
-              {[["nome","Nome attività *"],["titolare","Titolare"],["whatsapp","WhatsApp"],["postazione","Codice postazione libera (es. P051) *"]].map(([k,pl])=>(
-                <input key={k} style={S.input} placeholder={pl} value={nE[k]} onChange={e=>setNE(p=>({...p,[k]:e.target.value}))}/>
-              ))}
-              <select style={S.select} value={nE.categoria} onChange={e=>setNE(p=>({...p,categoria:e.target.value}))}>
-                {["Alimentare","Abbigliamento","Calzature","Cosmetica","Tessuti","Elettronica","Bigiotteria","Casalinghi","Floricoltura","Giocattoli","Pelletteria","Artigianato","Ristorazione","Editoria","Sport","Erboristeria","Sartoria"].map(c=><option key={c}>{c}</option>)}
-              </select>
-              {addErr&&<div style={S.errMsg}>{addErr}</div>}
-              <div style={{display:"flex",gap:8}}>
-                <button style={S.saveBtn} onClick={()=>{
-                  setAddErr("");
-                  if(!nE.nome.trim()||!nE.postazione.trim()){setAddErr("Nome attività e codice postazione sono obbligatori");return;}
-                  const code=nE.postazione.trim().toUpperCase();
-                  const target=espositori.find(x=>x.postazione.toUpperCase()===code);
-                  if(!target){setAddErr(`Postazione ${code} inesistente (usa un codice da P001 a P251)`);return;}
-                  if(target.nome){setAddErr(`${code} è già assegnata a "${target.nome}"`);return;}
-                  setEspositori(p=>p.map(x=>x.id===target.id?{...x,nome:nE.nome.trim(),titolare:nE.titolare.trim(),categoria:nE.categoria,whatsapp:nE.whatsapp.trim()}:x));
-                  setAddE(false);setAddErr("");
-                  setNE({nome:"",titolare:"",categoria:"Alimentare",whatsapp:"",postazione:""});
-                }}>Salva</button>
-                <button style={S.cancelBtn} onClick={()=>{setAddE(false);setAddErr("");}}>Annulla</button>
-              </div>
-            </div>
-          )}
+          <div style={S.secLbl}>Espositori · {lista.length} assegnatari</div>
           <div style={S.col}>
-            {espositori.filter(e=>e.nome).map(e=>(
+            {filtra(lista).map(e=>(
               <div key={e.id} style={S.aRow}>
-                <span style={{fontSize:11,fontWeight:800,color:e.presente?"#3daa70":"#9a8070",minWidth:36}}>{e.postazione}</span>
-                <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{[e.titolare,e.categoria].filter(Boolean).join(" · ")}</div></div>
-                <button style={S.delBtn} title="Libera postazione" onClick={()=>setEspositori(p=>p.map(x=>x.id===e.id?{...x,nome:"",titolare:"",categoria:"",whatsapp:"",presente:false}:x))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
+                <span style={{fontSize:11,fontWeight:800,color:e.presente?"#3daa70":"#9a8070",minWidth:36}}>{e.numero}</span>
+                <div style={{flex:1,minWidth:0}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e",overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{[e.titolare,e.categoria,e.whatsapp?"WhatsApp":null].filter(Boolean).join(" · ")}</div></div>
               </div>
             ))}
           </div>
+          <div style={{fontSize:10,color:"#9a8070",marginTop:12,lineHeight:1.5}}>Le anagrafiche vengono dagli elenchi SUAP del 07/09/2026. La modifica (alias, contatti, foto) arriva con il pannello completo.</div>
         </div>
       )}
 
@@ -1077,7 +790,7 @@ function PageAdmin({adminLogged,setAdminLogged,espositori,setEspositori,eventi,s
                 {Object.keys(EV_COL).map(c=><option key={c}>{c}</option>)}
               </select>
               <div style={{display:"flex",gap:8}}>
-                <button style={S.saveBtn} onClick={()=>{if(!nEv.titolo||!nEv.data)return;const id=Math.max(...eventi.map(e=>e.id))+1;setEventi(p=>[...p,{...nEv,id}]);setAddEv(false);setNEv({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});}}>Salva</button>
+                <button style={S.saveBtn} onClick={()=>{if(!nEv.titolo||!nEv.data)return;const id=Math.max(0,...eventi.map(e=>e.id))+1;setEventi(p=>[...p,{...nEv,id}]);setAddEv(false);setNEv({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});}}>Salva</button>
                 <button style={S.cancelBtn} onClick={()=>setAddEv(false)}>Annulla</button>
               </div>
             </div>
@@ -1205,32 +918,6 @@ const GCss=`
 // ============================================================
 // DATI STATICI — mercati, eventi, colori
 // ============================================================
-const NEGOZI_COPERTO = [
-  {id:1,nome:"Macelleria Pugliese",titolare:"Giuseppe De Giorgi",categoria:"Macelleria",whatsapp:"393331111111",email:"macelleria@mercatomaglie.it",tel:"0836123456",orari:"Lun-Sab 6:00-13:30",desc:"Carni fresche selezionate, specialità di agnello e maiale del Salento."},
-  {id:2,nome:"Pescheria del Mare",titolare:"Cosimo Mele",categoria:"Pescheria",whatsapp:"393332222222",email:"pescheria@mercatomaglie.it",tel:"0836234567",orari:"Mar-Dom 6:00-13:00",desc:"Pesce fresco dall'Adriatico e dallo Jonio, consegnato ogni mattina all'alba."},
-  {id:3,nome:"Panificio Tradizione",titolare:"Antonia Vergine",categoria:"Panetteria",whatsapp:"393333333333",email:"panificio@mercatomaglie.it",tel:"0836345678",orari:"Lun-Sab 6:30-14:00",desc:"Pane di grano duro, friselle, tarallini e focacce artigianali."},
-  {id:4,nome:"Salumeria Autentica",titolare:"Mario Caliandro",categoria:"Salumeria",whatsapp:"393334444444",email:"salumeria@mercatomaglie.it",tel:"0836456789",orari:"Lun-Sab 7:00-13:30",desc:"Salumi e formaggi tipici pugliesi, capocollo, soppressata e burrata fresca."},
-  {id:5,nome:"Frutta & Verdura Bio",titolare:"Concetta Pastore",categoria:"Ortofrutta",whatsapp:"393335555555",email:"bio@mercatomaglie.it",tel:"0836567890",orari:"Lun-Sab 6:00-13:00",desc:"Prodotti biologici certificati da agricoltori locali del Salento."},
-  {id:6,nome:"Formaggi & Latticini",titolare:"Sergio Ciardo",categoria:"Latteria",whatsapp:"393336666666",email:"formaggi@mercatomaglie.it",tel:"0836678901",orari:"Lun-Sab 7:00-13:30",desc:"Ricotta fresca, mozzarella, caciocavallo e pecorino del Salento."},
-  {id:7,nome:"Bar & Area Ristoro",titolare:"Silvana Quarta",categoria:"Bar/Caffè",whatsapp:"393337777777",email:"bar@mercatomaglie.it",tel:"0836789012",orari:"Lun-Dom 6:00-15:00",desc:"Caffetteria, colazioni, panini e pranzi veloci nell'area mercatale."},
-  {id:8,nome:"Dolci & Delizie",titolare:"Anna Ingrosso",categoria:"Pasticceria",whatsapp:"393338888888",email:"dolci@mercatomaglie.it",tel:"0836890123",orari:"Lun-Sab 7:00-13:30",desc:"Pasticciotti leccesi, cartellate, mostaccioli e dolci tradizionali salentini."},
-  {id:9,nome:"Pescheria Adriatica",titolare:"Rocco Manca",categoria:"Pescheria",whatsapp:"393339001234",email:"adriatica@mercatomaglie.it",tel:"0836901234",orari:"Mar-Dom 6:00-13:00",desc:"Specialità di mare: ricci, cozze, vongole e pesce azzurro freschissimo."},
-  {id:10,nome:"Macelleria Equina",titolare:"Oronzo Stomeo",categoria:"Macelleria",whatsapp:"393330112345",email:"equina@mercatomaglie.it",tel:"0836012345",orari:"Lun-Sab 6:30-13:30",desc:"Specialità di carne di cavallo e asino, tradizione culinaria salentina."},
-  {id:11,nome:"Spezieria del Salento",titolare:"Franca Erroi",categoria:"Alimentare",whatsapp:"393331223456",email:"spezieria@mercatomaglie.it",tel:"0836123457",orari:"Lun-Sab 8:00-14:00",desc:"Spezie, erbe aromatiche, peperoncini e conserve artigianali del territorio."},
-  {id:12,nome:"Norcineria Artigiana",titolare:"Vito Quarta",categoria:"Salumeria",whatsapp:"393332334567",email:"norcineria@mercatomaglie.it",tel:"0836234568",orari:"Lun-Sab 7:00-13:30",desc:"Insaccati artigianali, salsicce fresche e prodotti di norcineria tradizionale."},
-];
-const NEGOZI_ORTO = [
-  {id:1,nome:"Agrumi Salentini",titolare:"Rocco Erroi",categoria:"Agrumi",whatsapp:"393339999991",email:"agrumi@mercatomaglie.it",tel:"0836111222",orari:"Lun-Sab 6:00-13:00",desc:"Arance, limoni, mandarini e pompelmi direttamente dai nostri agrumeti del Salento."},
-  {id:2,nome:"Primizie di Stagione",titolare:"Tiziana Mancarella",categoria:"Verdure",whatsapp:"393339999992",email:"primizie@mercatomaglie.it",tel:"0836222333",orari:"Lun-Sab 6:00-13:00",desc:"Verdure fresche di stagione coltivate nell'agro di Maglie e dintorni."},
-  {id:3,nome:"Funghi & Tartufi",titolare:"Silvio Panese",categoria:"Funghi",whatsapp:"393339999993",email:"funghi@mercatomaglie.it",tel:"0836333444",orari:"Mer-Dom 7:00-13:00",desc:"Funghi porcini, champignon, pleurotus e tartufo del Salento quando disponibile."},
-  {id:4,nome:"Legumi Biologici",titolare:"Patrizia Ciullo",categoria:"Legumi",whatsapp:"393339999994",email:"legumi@mercatomaglie.it",tel:"0836444555",orari:"Lun-Sab 7:00-13:30",desc:"Fave, ceci, lenticchie e piselli biologici a km zero, secchi e freschi."},
-  {id:5,nome:"Pomodori DOP",titolare:"Oronzo Fersino",categoria:"Verdure",whatsapp:"393339999995",email:"pomodori@mercatomaglie.it",tel:"0836555666",orari:"Lun-Sab 6:30-13:00",desc:"Pomodori a grappolo, pachino, pizzutello e san marzano di produzione propria."},
-  {id:6,nome:"Frutta Esotica",titolare:"Luca Taurisano",categoria:"Frutta Esotica",whatsapp:"393339999996",email:"esotica@mercatomaglie.it",tel:"0836666777",orari:"Lun-Sab 7:00-14:00",desc:"Mango, avocado, ananas, papaya e frutta tropicale di importazione selezionata."},
-  {id:7,nome:"Patate & Cipolla",titolare:"Franco Suma",categoria:"Verdure",whatsapp:"393339999997",email:"patate@mercatomaglie.it",tel:"0836777888",orari:"Lun-Sab 6:00-13:00",desc:"Patate novelle, cipolle rosse di Tropea, aglio e ortaggi da radice del territorio."},
-  {id:8,nome:"Erbe Aromatiche",titolare:"Carmela Toma",categoria:"Erbe",whatsapp:"393339999998",email:"erbe@mercatomaglie.it",tel:"0836888999",orari:"Lun-Sab 7:00-13:30",desc:"Basilico, prezzemolo, rosmarino, origano e erbe officinali coltivate biologicamente."},
-  {id:9,nome:"Frutta di Stagione",titolare:"Giovanni Pastore",categoria:"Frutta",whatsapp:"393339999999",email:"frutta@mercatomaglie.it",tel:"0836999000",orari:"Lun-Sab 6:00-13:00",desc:"Pesche, albicocche, fichi, uva e frutta di stagione delle nostre campagne salentine."},
-  {id:10,nome:"Ortaggi Bio Km0",titolare:"Lucia Mancarella",categoria:"Verdure",whatsapp:"393330000001",email:"ortaggi@mercatomaglie.it",tel:"0836000111",orari:"Lun-Sab 6:30-13:00",desc:"Zucchine, melanzane, peperoni e fagiolini biologici certificati a chilometro zero."},
-];
 const EVENTI_INIT = [
   {id:1,titolo:"Sagra della Frisa Salentina",data:"2025-06-14",ora:"18:00",luogo:"Piazza Mercato",descrizione:"Degustazione di frisa con pomodoro, ricotta e olio EVO del territorio.",categoria:"Gastronomia"},
   {id:2,titolo:"Mercatino dell'Antiquariato",data:"2025-06-21",ora:"09:00",luogo:"Mercato Aperto",descrizione:"Prima edizione del mercatino vintage e antiquariato di Maglie.",categoria:"Cultura"},
@@ -1394,48 +1081,36 @@ const store={
 };
 
 // Versione dati — cambia per forzare reset cache
-const DATA_VERSION = "v12-overrides";
+const DATA_VERSION = "v13-firebase";
 
 export default function App(){
   const [splash,setSplash]=useState(true);
   const [page,setPage]=useState("mappa");
+  useEffect(()=>{
+    if(store.get("data_version","")!==DATA_VERSION){ try{ localStorage.clear(); }catch(e){} store.set("data_version",DATA_VERSION); }
+  },[]);
 
-  // Geometria e codici postazione vengono SEMPRE da ESPOSITORI_INIT (base);
-  // da localStorage si recuperano solo i campi modificabili (presenza +
-  // anagrafica) salvati come override per id.
-  const [espositori,setEspositori]=useState(()=>{
-    if(store.get("data_version","")!==DATA_VERSION){
-      // Cancella tutto il localStorage e riparte da zero
-      try{ localStorage.clear(); }catch(e){}
-      store.set("data_version",DATA_VERSION);
-      return ESPOSITORI_INIT;
-    }
-    const overrides = store.get("esp_overrides",null);
-    if(!overrides) return ESPOSITORI_INIT;
-    return ESPOSITORI_INIT.map(e=>
-      overrides[e.id] ? {...e,...overrides[e.id]} : e
-    );
-  });
+  // Presenze del giorno da Firestore (fallback locale se il backend non è configurato)
+  const {presenze:presenzeRemote,online}=usePresenze();
+  const [presenzeLocal,setPresenzeLocal]=useState({});
+  const presenze=firebaseReady?presenzeRemote:presenzeLocal;
+  const auth=useAuth();
+  const postazioni=useMemo(()=>buildPostazioni(presenze),[presenze]);
+  const elenchi=useMemo(()=>({coperto:buildElenco("coperto",presenze),ortofrutticolo:buildElenco("ortofrutticolo",presenze)}),[presenze]);
+  const mercatoById=id=>MERCATI.find(m=>m.id===id);
 
   const [eventi,setEventi]=useState(()=>store.get("ev",EVENTI_INIT));
-  const [adminLogged,setAdminLogged]=useState(false);
   const [popup,setPopup]=useState(null);
   const [catFilter,setCatFilter]=useState("Tutte");
 
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
-
-  // Salva gli override modificabili per id (presenza + anagrafica).
-  // Geometria, shape e codici restano in ESPOSITORI_INIT e non vengono salvati.
-  useEffect(()=>{
-    const overrides = {};
-    espositori.forEach(e=>{
-      overrides[e.id] = {nome:e.nome,titolare:e.titolare,categoria:e.categoria,whatsapp:e.whatsapp,presente:e.presente};
-    });
-    store.set("esp_overrides",overrides);
-  },[espositori]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 
-  const updPresenza=(id,p)=>setEspositori(prev=>prev.map(e=>e.id===id?{...e,presente:p}:e));
+  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente})=>{
+    if(!espositoreId) return;
+    if(!firebaseReady){ setPresenzeLocal(p=>{const n={...p}; if(presente) n[espositoreId]={posteggioId,mercato:mercatoId}; else delete n[espositoreId]; return n;}); return; }
+    await setPresenza({mercatoId,espositoreId,posteggioId,presente,utente:auth.user?auth.user.email:null});
+  };
 
   const [splashReady,setSplashReady]=useState(false);
   useEffect(()=>{const t=setTimeout(()=>setSplashReady(true),2000);return()=>clearTimeout(t);},[]);
@@ -1448,7 +1123,7 @@ export default function App(){
     {id:"eventi",icon:"calendar",label:"Eventi"},
     {id:"admin",icon:"settings",label:"Gestione"},
   ];
-  const PAGE_TITLES={mappa:"Mercato Aperto",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
+  const PAGE_TITLES={mappa:"Area Mercatale",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
 
   return(
     <div style={S.app}>
@@ -1470,11 +1145,11 @@ export default function App(){
       </header>
       {/* MAIN */}
       <main style={S.main}>
-        {page==="mappa"   && <PageMappa espositori={espositori} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter}/>}
-        {page==="coperto" && <PageMercato negozi={NEGOZI_COPERTO}/>}
-        {page==="orto"    && <PageMercato negozi={NEGOZI_ORTO}/>}
+        {page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter}/>}
+        {page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")}/>}
+        {page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")}/>}
         {page==="eventi"  && <PageEventi eventi={eventi}/>}
-        {page==="admin"   && <PageAdmin adminLogged={adminLogged} setAdminLogged={setAdminLogged} espositori={espositori} setEspositori={setEspositori} eventi={eventi} setEventi={setEventi} updPresenza={updPresenza}/>}
+        {page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online}/>}
       </main>
       {/* BOTTOM NAV */}
       <nav style={S.nav}>

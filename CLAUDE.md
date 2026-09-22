@@ -14,7 +14,10 @@ mercatomaglie-site/
 ├── data/seed/          # Dati reali normalizzati (posteggi, espositori, mercati)
 ├── app-src/            # SVILUPPO — sorgenti React/Vite (modificare QUI)
 │   ├── src/
-│   │   └── App.jsx     # Componente principale (single file, ~1490 righe)
+│   │   ├── App.jsx     # Componente principale (UI, ~1180 righe)
+│   │   ├── dati.js     # Livello dati: presenze/login Firebase + costruzione postazioni
+│   │   ├── firebase.js # Init Firebase da .env.local (VITE_FIREBASE_*)
+│   │   └── data/       # mappa.js + seed.js GENERATI da scripts/app/gen-data.py
 │   ├── public/         # File statici: manifest, icone, _headers (CORS)
 │   ├── index.html      # Entry point SORGENTE (punta a /src/main.jsx)
 │   ├── vite.config.js  # build.outDir = '../app' (scrive direttamente in app/)
@@ -60,15 +63,22 @@ git add . && git commit -m "descrizione" && git push
 
 ## Note importanti
 - App.jsx è un file singolo con tutti i componenti (in `app-src/src/App.jsx`)
-- Le postazioni sono 251 (P001-P251), 50 con dati demo
+- Le postazioni sono 262 con codici ufficiali (es. `A-86`, `D-13/14`, `PV-1`, `UOVA-1`):
+  geometria in `app-src/src/data/mappa.js`, anagrafiche in `data/seed.js`, entrambi
+  generati con `python3 scripts/app/gen-data.py` dai file in `data/` (rieseguire dopo
+  ogni modifica ai seed o alla SVG). Nessun dato demo: espositori reali dagli elenchi SUAP.
+- Presenze del giorno: documento Firestore `stato/{mercatoId}` ({data, presenti:{espId:{…}}}),
+  letto dall'app pubblica (1 lettura per mercato); scrittura via `setPresenza` (solo staff).
+  Login admin/operatore con Firebase Auth email+password e custom claim `role`.
+- Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
+  (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano
+  le credenziali `gcloud auth application-default login`, niente chiavi service account).
 - Dopo ogni modifica ad App.jsx: `cd app-src && npm run build` → git push
   (il build scrive già in app/, niente più cp manuale)
 - NON modificare i file dentro app/ direttamente: vengono rigenerati dal build
 - La calibrazione GPS è implementata con 4 punti rilevati sul campo
 - DATA_VERSION va incrementata quando cambiano i dati delle postazioni
-- Persistenza attuale: in localStorage si salvano gli override per id
-  (nome/titolare/categoria/whatsapp/presente) e gli eventi. La geometria
-  resta in ESPOSITORI_INIT — da risolvere con la migrazione Firebase
+- localStorage: solo eventi (`ev`) e `data_version`. Le presenze stanno su Firestore.
 - Funzionalità TARGHE (simulatore accessi, campo targa, idea sbarra OCR):
   SOSPESA dal 15/09/2026 e rimossa dal codice. Archiviata nel tag git
   `v1-targhe` e documentata in `docs/ARCHIVIO-targhe.md`. Non reintrodurla
@@ -84,8 +94,9 @@ git add . && git commit -m "descrizione" && git push
   GEO dell'app resta valida (stesso sistema di coordinate).
 
 ## Prossimi sviluppi pianificati
-- [ ] Firebase Firestore
-- [ ] Firebase Authentication
+- [x] Firebase Firestore (presenze; anagrafiche ancora dal bundle)
+- [x] Firebase Authentication (email/password + ruoli)
+- [ ] Pannello admin completo (CRUD espositori, alias/contatti/foto, QR)
 - [ ] Firebase Push Notifications
 - [ ] (sospeso) OCR/sbarra targhe — vedi docs/ARCHIVIO-targhe.md
 - [ ] Share API e Contacts API
