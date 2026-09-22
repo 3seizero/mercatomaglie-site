@@ -117,6 +117,29 @@ export async function creaStaff({ email, password, nome, role }) {
   await setDoc(doc(db, "staff", uid), { email: email.trim(), nome: nome || "", role, creato: serverTimestamp() });
   return uid;
 }
+/** QR: genera (o rigenera) il token di un espositore. Revoca l'eventuale token precedente. */
+export function nuovoToken() {
+  const a = new Uint8Array(15); crypto.getRandomValues(a);
+  return btoa(String.fromCharCode(...a)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+export async function generaToken(espositoreId, tokenPrecedente) {
+  const token = nuovoToken();
+  const b = writeBatch(db);
+  if (tokenPrecedente) b.set(doc(db, "qr", tokenPrecedente), { attivo: false, revocato: serverTimestamp() }, { merge: true });
+  b.set(doc(db, "qr", token), { espositoreId, attivo: true, creato: serverTimestamp() });
+  b.set(doc(db, "espositori_riservati", docId(espositoreId)), { id: espositoreId, qrToken: token, qrCreato: serverTimestamp() }, { merge: true });
+  await b.commit();
+  return token;
+}
+export async function revocaToken(espositoreId, token) {
+  const b = writeBatch(db);
+  b.set(doc(db, "qr", token), { attivo: false, revocato: serverTimestamp() }, { merge: true });
+  b.set(doc(db, "espositori_riservati", docId(espositoreId)), { qrToken: deleteField() }, { merge: true });
+  await b.commit();
+}
+export const APP_URL = "https://3seizero.com/projects/maglie/areamercatale/app/";
+export const urlQr = (token) => `${APP_URL}#/v/${token}`;
+
 export const aggiornaStaff = (uid, data) => updateDoc(doc(db, "staff", uid), { ...data, _aggiornato: serverTimestamp() });
 export const inviaReset = (email) => sendPasswordResetEmail(auth, email);
 export { getApp };

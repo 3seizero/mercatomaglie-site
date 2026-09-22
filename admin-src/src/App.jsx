@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { stampaQr, qrDataUrl } from "./stampa.js";
 import {
   firebaseReady, MERCATI, SETTORI, TIPI, RUOLI, useAdminAuth, useCollection, rebuildPubblico,
-  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset,
+  salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr,
 } from "./api.js";
 
 const sup = (p) => (p && p.superficie && typeof p.superficie === "object") ? p.superficie.raw : (p ? p.superficie : null);
@@ -88,6 +89,7 @@ function Espositori({ auth }) {
             <option value="tutti">Tutti i mercati</option>{MERCATI.map((m) => <option key={m.id} value={m.id}>{m.nome}</option>)}
           </select>
           {auth.isSuap && <button className="btn ocra" onClick={() => { setNuovo(true); setSel(null); }}>+ Nuovo espositore</button>}
+          {auth.isSuap && <StampaBlocco lista={lista} risById={risById} postByEsp={postByEsp} />}
         </div>
         {e1 && <div className="msg err">{e1}</div>}
         <table className="grid"><thead><tr><th>Espositore</th><th>Referente</th><th>Posteggi</th><th>Contatti</th><th>Stato</th></tr></thead><tbody>
@@ -107,6 +109,57 @@ function Espositori({ auth }) {
           tutti={{ espositori, posteggi }} auth={auth} onClose={() => { setSel(null); setNuovo(false); }} onCreated={(id) => { setNuovo(false); setSel(id); }} />
       )}
     </div>
+  );
+}
+
+function StampaBlocco({ lista, risById, postByEsp }) {
+  const [busy, setBusy] = useState(false); const [msg, setMsg] = useState("");
+  const conToken = lista.filter((e) => risById[e.id]?.qrToken);
+  const senza = lista.filter((e) => !risById[e.id]?.qrToken);
+  const sotto = (e) => (postByEsp[e.id] || []).map((p) => p.etichetta).join(" · ") || (e.referente || "");
+  async function stampa() {
+    setBusy(true); setMsg("");
+    try { await stampaQr(conToken.map((e) => ({ nome: nomePub(e), sotto: sotto(e), token: risById[e.id].qrToken }))); } catch (e) { setMsg(errore(e)); }
+    setBusy(false);
+  }
+  async function genera() {
+    if (!confirm(`Generare il QR per ${senza.length} espositori senza codice?`)) return;
+    setBusy(true); setMsg("");
+    try { for (const e of senza) await generaToken(e.id, null); setMsg(`Generati ${senza.length} QR`); } catch (e) { setMsg(errore(e)); }
+    setBusy(false);
+  }
+  return (<>
+    <button className="btn" disabled={busy || !conToken.length} onClick={stampa} title="Stampa i QR degli espositori in elenco che hanno già un codice">Stampa QR ({conToken.length})</button>
+    {senza.length > 0 && <button className="btn" disabled={busy} onClick={genera}>Genera QR mancanti ({senza.length})</button>}
+    {msg && <span className="muted">{msg}</span>}
+  </>);
+}
+
+function SezioneQr({ esp, ris, posteggiEsp, auth, run, busy }) {
+  const token = ris?.qrToken || null;
+  const [img, setImg] = useState(null);
+  useEffect(() => { let ok = true; if (token) qrDataUrl(token).then((u) => ok && setImg(u)); else setImg(null); return () => { ok = false; }; }, [token]);
+  const sotto = posteggiEsp.map((p) => p.etichetta).join(" · ") || (esp.referente || "");
+  return (
+    <>
+      <div className="sec">QR code presenza</div>
+      {token ? (
+        <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+          {img && <img src={img} alt="QR" style={{ width: 120, height: 120, border: "1px solid var(--border)", borderRadius: 8 }} />}
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <div className="muted" style={{ overflowWrap: "anywhere", fontSize: 11 }}>{urlQr(token)}</div>
+            <div className="actions">
+              <button className="btn sm" disabled={busy} onClick={() => run(() => stampaQr([{ nome: nomePub(esp), sotto, token }]), "Stampa avviata")}>Stampa</button>
+              <button className="btn sm" disabled={busy} onClick={() => navigator.clipboard?.writeText(urlQr(token))}>Copia link</button>
+              {auth.isSuap && <button className="btn sm" disabled={busy} onClick={() => confirm("Rigenerare il QR? Quello stampato finora smetterà di funzionare.") && run(() => generaToken(esp.id, token), "Nuovo QR generato")}>Rigenera</button>}
+              {auth.isSuap && <button className="btn sm danger" disabled={busy} onClick={() => confirm("Revocare il QR? L'espositore non potrà più essere registrato con questo codice.") && run(() => revocaToken(esp.id, token), "QR revocato")}>Revoca</button>}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="actions"><button className="btn ocra" disabled={busy} onClick={() => run(() => generaToken(esp.id, null), "QR generato")}>Genera QR</button><span className="muted">Nessun codice ancora rilasciato.</span></div>
+      )}
+    </>
   );
 }
 
@@ -176,6 +229,7 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
       </>)}
       {msg && <div className={"msg " + (msg.ok ? "ok" : "err")}>{msg.t}</div>}
       <div className="actions"><button className="btn primary" disabled={busy} onClick={salva}>{busy ? "Salvataggio…" : esp ? "Salva" : "Crea espositore"}</button></div>
+      {esp && auth.isSuap && <SezioneQr esp={esp} ris={ris} posteggiEsp={posteggiEsp} auth={auth} run={run} busy={busy} />}
       {esp && (<>
         <div className="sec">Posteggi assegnati</div>
         {posteggiEsp.length === 0 && <div className="muted">Nessun posteggio.</div>}

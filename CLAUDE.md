@@ -105,7 +105,10 @@ git add . && git commit -m "descrizione" && git push
 - [x] Firebase Firestore (presenze; anagrafiche ancora dal bundle)
 - [x] Firebase Authentication (email/password + ruoli)
 - [x] Pannello admin desktop (espositori, posteggi, staff, password) — 22/09/2026
-- [ ] QR: token per espositore, stampa PDF, scanner operatore, scheda pubblica da QR
+- [x] QR (22/09/2026): token in `qr/{token}` + `espositori_riservati.qrToken`, generazione/
+  rigenerazione/revoca e stampa (griglia A4) dal pannello; nell'app `#/v/<token>` apre la
+  scheda (`src/qr.jsx`), lo staff conferma la presenza (metodo qr + posizione GPS),
+  scanner con BarcodeDetector nativo o jsQR
 - [ ] Foto espositori (richiede piano Blaze per Storage)
 - [ ] Firebase Push Notifications
 - [ ] (sospeso) OCR/sbarra targhe — vedi docs/ARCHIVIO-targhe.md

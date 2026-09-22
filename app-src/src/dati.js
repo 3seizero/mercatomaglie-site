@@ -64,7 +64,14 @@ export function usePubblico() {
 }
 
 /** Segna presenza/assenza di un espositore su un posteggio (solo staff: le regole Firestore lo impongono). */
-export async function setPresenza({ mercatoId, espositoreId, posteggioId, presente, utente, metodo = "manuale" }) {
+/** Risolve un token QR: { espositoreId, attivo } oppure null. */
+export async function lookupQr(token) {
+  if (!firebaseReady || !token) return null;
+  const snap = await getDoc(doc(db, "qr", token));
+  return snap.exists() ? snap.data() : null;
+}
+
+export async function setPresenza({ mercatoId, espositoreId, posteggioId, presente, utente, metodo = "manuale", posizione = null }) {
   if (!firebaseReady) throw new Error("Firebase non configurato");
   const giorno = oggi();
   const ref = doc(db, "stato", mercatoId);
@@ -77,7 +84,7 @@ export async function setPresenza({ mercatoId, espositoreId, posteggioId, presen
     tx.set(ref, { data: giorno, presenti, aggiornato: serverTimestamp() });
   });
   await setDoc(doc(db, "presenze", `${giorno}_${docId(espositoreId)}`), {
-    data: giorno, mercato: mercatoId, espositoreId, posteggioId, presente, metodo, da: utente || null, ora: serverTimestamp(),
+    data: giorno, mercato: mercatoId, espositoreId, posteggioId, presente, metodo, da: utente || null, ora: serverTimestamp(), posizione,
   });
 }
 

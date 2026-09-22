@@ -22,6 +22,9 @@ service cloud.firestore {
     match /pubblico/{mercatoId} { allow read: if true; allow write: if isSuap(); }
     match /stato/{mercatoId}    { allow read: if true; allow write: if isStaff(); }
 
+    // QR: token → espositore. Leggibile da chi conosce il token; scritto da admin/suap.
+    match /qr/{token} { allow get: if true; allow list: if isSuap(); allow write: if isSuap(); }
+
     // Dati riservati (CF, P.IVA, indirizzi, token QR): solo admin e suap
     match /espositori_riservati/{id} { allow read, write: if isSuap(); }
 

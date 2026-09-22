@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { firebaseReady } from "./firebase.js";
+import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
 import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
 
 // ============================================================
@@ -651,7 +652,7 @@ function PageEventi({eventi}){
 // ============================================================
 // PAGE: ADMIN
 // ============================================================
-function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online}){
+function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,onScan}){
   const [email,setEmail]=useState("");
   const [pwd,setPwd]=useState("");
   const [err,setErr]=useState("");
@@ -728,6 +729,9 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online})
         ))}
       </div>
 
+      {tab==="presenze"&&(
+        <button style={{...S.loginBtn,marginBottom:12,background:"#c8862a"}} onClick={onScan}><Icon name="locate" size={16} color="#fff" sw={2}/> Scansiona QR espositore</button>
+      )}
       {tab!=="eventi"&&(
         <>
           <div style={S.filterBar}>
@@ -1084,11 +1088,16 @@ const store={
 const DATA_VERSION = "v13-firebase";
 
 export default function App(){
-  const [splash,setSplash]=useState(true);
+  const [qrToken,setQrToken]=useState(()=>tokenDaTesto(window.location.hash));
+  const [splash,setSplash]=useState(()=>!tokenDaTesto(window.location.hash));
   const [page,setPage]=useState("mappa");
+  const [scanner,setScanner]=useState(false);
   useEffect(()=>{
     if(store.get("data_version","")!==DATA_VERSION){ try{ localStorage.clear(); }catch(e){} store.set("data_version",DATA_VERSION); }
+    const onHash=()=>{ const t=tokenDaTesto(window.location.hash); setQrToken(t); if(t){ setSplash(false); setScanner(false); } };
+    window.addEventListener("hashchange",onHash); return()=>window.removeEventListener("hashchange",onHash);
   },[]);
+  const chiudiScheda=()=>{ setQrToken(null); if(window.location.hash) history.replaceState(null,"",window.location.pathname+window.location.search); };
 
   // Presenze del giorno da Firestore (fallback locale se il backend non è configurato)
   const {presenze:presenzeRemote,online}=usePresenze();
@@ -1107,10 +1116,10 @@ export default function App(){
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 
-  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente})=>{
+  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione})=>{
     if(!espositoreId) return;
     if(!firebaseReady){ setPresenzeLocal(p=>{const n={...p}; if(presente) n[espositoreId]={posteggioId,mercato:mercatoId}; else delete n[espositoreId]; return n;}); return; }
-    await setPresenza({mercatoId,espositoreId,posteggioId,presente,utente:auth.user?auth.user.email:null});
+    await setPresenza({mercatoId,espositoreId,posteggioId,presente,utente:auth.user?auth.user.email:null,metodo:metodo||"manuale",posizione:posizione||null});
   };
 
   const [splashReady,setSplashReady]=useState(false);
@@ -1124,7 +1133,7 @@ export default function App(){
     {id:"eventi",icon:"calendar",label:"Eventi"},
     {id:"admin",icon:"settings",label:"Gestione"},
   ];
-  const PAGE_TITLES={mappa:"Area Mercatale",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
+  const PAGE_TITLES={scheda:"Espositore",mappa:"Area Mercatale",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
 
   return(
     <div style={S.app}>
@@ -1141,16 +1150,18 @@ export default function App(){
               <div style={S.hdrSub}>Maglie</div>
             </div>
           </div>
-          <div style={S.hdrPage}>{PAGE_TITLES[page]}</div>
+          <div style={S.hdrPage}>{qrToken?PAGE_TITLES.scheda:PAGE_TITLES[page]}</div>
         </div>
       </header>
       {/* MAIN */}
+      {scanner&&<Scanner S={S} onClose={()=>setScanner(false)} onToken={(t)=>{setScanner(false);window.location.hash="#/v/"+t;}}/>}
       <main style={S.main}>
-        {page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter}/>}
-        {page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")}/>}
-        {page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")}/>}
-        {page==="eventi"  && <PageEventi eventi={eventi}/>}
-        {page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online}/>}
+        {qrToken && <PageScheda token={qrToken} auth={auth} postazioni={postazioni} elenchi={elenchi} presenze={presenze} onPresenza={onPresenza} onBack={chiudiScheda} S={S} Icon={Icon}/>}
+        {!qrToken && page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter}/>}
+        {!qrToken && page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")}/>}
+        {!qrToken && page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")}/>}
+        {!qrToken && page==="eventi"  && <PageEventi eventi={eventi}/>}
+        {!qrToken && page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online} onScan={()=>setScanner(true)}/>}
       </main>
       {/* BOTTOM NAV */}
       <nav style={S.nav}>
@@ -1158,7 +1169,7 @@ export default function App(){
           const act=page===n.id;
           return(
             <button key={n.id} style={{...S.navBtn,...(act?{background:"rgba(232,160,69,0.07)"}:{})}}
-              onClick={()=>{setPage(n.id);setPopup(null);}}>
+              onClick={()=>{setPage(n.id);setPopup(null);chiudiScheda();}}>
               <Icon name={n.icon} size={22} color={act?"#e8a045":"#786050"} sw={act?2:1.5}/>
               <span style={{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700,color:act?"#e8a045":"#786050"}}>{n.label}</span>
             </button>
