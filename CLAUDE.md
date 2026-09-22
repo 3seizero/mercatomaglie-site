@@ -22,6 +22,8 @@ mercatomaglie-site/
 │   ├── index.html      # Entry point SORGENTE (punta a /src/main.jsx)
 │   ├── vite.config.js  # build.outDir = '../app' (scrive direttamente in app/)
 │   └── package.json
+├── admin-src/          # SVILUPPO pannello di gestione desktop (React/Vite, stessa .env di app-src)
+├── admin/              # PRODUZIONE pannello — output del build (…/areamercatale/admin/)
 └── app/                # PRODUZIONE — output del build, committato e servito
     ├── index.html      # Entry point COMPILATO (generato dal build)
     ├── assets/         # JS/CSS COMPILATI con hash
@@ -38,6 +40,7 @@ NOTA STRUTTURALE (importante):
 
 ## Comandi principali
 cd app-src && npm run build      # builda e scrive in ../app
+cd admin-src && npm run build    # builda il pannello e scrive in ../admin
 git add . && git commit -m "descrizione" && git push
 
 ## Stack tecnico
@@ -70,6 +73,11 @@ git add . && git commit -m "descrizione" && git push
 - Presenze del giorno: documento Firestore `stato/{mercatoId}` ({data, presenti:{espId:{…}}}),
   letto dall'app pubblica (1 lettura per mercato); scrittura via `setPresenza` (solo staff).
   Login admin/operatore con Firebase Auth email+password e custom claim `role`.
+- Pannello di gestione (`admin-src/`): espositori (pubblici + riservati), posteggi
+  (assegna/libera/note), staff (creazione utenti con app Firebase secondaria, ruoli nel
+  documento `staff/{uid}`), account (cambio password). Ogni salvataggio ricostruisce
+  `pubblico/{mercato}` (riassunto letto dall'app pubblica in tempo reale, 1 doc/mercato).
+  Le regole Firestore leggono il ruolo da `staff/{uid}` (fallback custom claim).
 - Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
   (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano
   le credenziali `gcloud auth application-default login`, niente chiavi service account).
@@ -96,7 +104,9 @@ git add . && git commit -m "descrizione" && git push
 ## Prossimi sviluppi pianificati
 - [x] Firebase Firestore (presenze; anagrafiche ancora dal bundle)
 - [x] Firebase Authentication (email/password + ruoli)
-- [ ] Pannello admin completo (CRUD espositori, alias/contatti/foto, QR)
+- [x] Pannello admin desktop (espositori, posteggi, staff, password) — 22/09/2026
+- [ ] QR: token per espositore, stampa PDF, scanner operatore, scheda pubblica da QR
+- [ ] Foto espositori (richiede piano Blaze per Storage)
 - [ ] Firebase Push Notifications
 - [ ] (sospeso) OCR/sbarra targhe — vedi docs/ARCHIVIO-targhe.md
 - [ ] Share API e Contacts API

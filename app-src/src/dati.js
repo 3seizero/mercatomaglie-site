@@ -2,7 +2,7 @@
 // L'app pubblica legge un solo documento per mercato (stato/{mercatoId}); le anagrafiche
 // vengono dal bundle finché non ci sarà il pannello admin con modifiche live.
 import { useEffect, useState, useCallback } from "react";
-import { doc, onSnapshot, runTransaction, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, runTransaction, setDoc, serverTimestamp } from "firebase/firestore";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { db, auth, firebaseReady } from "./firebase.js";
 import { POSTAZIONI_MAPPA, GEO, PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H } from "./data/mappa.js";
@@ -47,6 +47,22 @@ export function usePresenze() {
   return { presenze, online };
 }
 
+/** Anagrafiche e assegnazioni live dai riassunti pubblico/{mercato}: { espositori:{id:{}}, posteggi:{id:{espositoreId,stato,note}} } */
+export function usePubblico() {
+  const [live, setLive] = useState({ espositori: {}, posteggi: {} });
+  useEffect(() => {
+    if (!firebaseReady) return;
+    const unsubs = MERCATI.map((m) =>
+      onSnapshot(doc(db, "pubblico", m.id), (snap) => {
+        const d = snap.data(); if (!d) return;
+        setLive((prev) => ({ espositori: { ...prev.espositori, ...(d.espositori || {}) }, posteggi: { ...prev.posteggi, ...(d.posteggi || {}) } }));
+      }, () => {})
+    );
+    return () => unsubs.forEach((u) => u());
+  }, []);
+  return live;
+}
+
 /** Segna presenza/assenza di un espositore su un posteggio (solo staff: le regole Firestore lo impongono). */
 export async function setPresenza({ mercatoId, espositoreId, posteggioId, presente, utente, metodo = "manuale" }) {
   if (!firebaseReady) throw new Error("Firebase non configurato");
@@ -75,7 +91,10 @@ export function useAuth() {
     return onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
-        try { const t = await u.getIdTokenResult(true); setRole(t.claims.role || null); } catch { setRole(null); }
+        let r = null;
+        try { const t = await u.getIdTokenResult(true); r = t.claims.role || null; } catch { r = null; }
+        if (!r) { try { const sd = await getDoc(doc(db, "staff", u.uid)); r = sd.exists() ? sd.data().role || null : null; } catch { r = null; } }
+        setRole(r);
       } else setRole(null);
       setLoading(false);
     });
@@ -90,10 +109,13 @@ export function useAuth() {
 }
 
 /** Postazioni dell'area mercatale nel formato usato dalla mappa: geometria + espositore + presenza. */
-export function buildPostazioni(presenze) {
+const mergePost = (p, live) => (p && live && live.posteggi[p.id]) ? { ...p, ...live.posteggi[p.id] } : p;
+const findEsp = (id, live) => (id ? ((live && live.espositori[id]) ? { ...(ESP_BY_ID[id] || {}), ...live.espositori[id] } : ESP_BY_ID[id] || null) : null);
+
+export function buildPostazioni(presenze, live) {
   return POSTAZIONI_MAPPA.map((g) => {
-    const p = POST_BY_ID[g.id];
-    const e = p && p.espositoreId ? ESP_BY_ID[p.espositoreId] : null;
+    const p = mergePost(POST_BY_ID[g.id], live);
+    const e = p ? findEsp(p.espositoreId, live) : null;
     return {
       id: g.id, shape: "poly", points: g.points, cx: g.cx, cy: g.cy, lat: g.lat, lon: g.lon,
       settore: g.settore, numero: g.numero, fila: p ? p.fila : null,
@@ -112,9 +134,10 @@ export function buildPostazioni(presenze) {
 }
 
 /** Elenco per Coperto / Ortofrutticolo: posteggi del mercato con espositore. */
-export function buildElenco(mercatoId, presenze) {
-  return POSTEGGI.filter((p) => p.mercato === mercatoId).map((p) => {
-    const e = p.espositoreId ? ESP_BY_ID[p.espositoreId] : null;
+export function buildElenco(mercatoId, presenze, live) {
+  return POSTEGGI.filter((p0) => p0.mercato === mercatoId).map((p0) => {
+    const p = mergePost(p0, live);
+    const e = findEsp(p.espositoreId, live);
     return {
       id: p.id, etichetta: p.etichetta, numero: p.numero, tipo: p.tipo, settore: p.settore,
       nome: nomePubblico(e), titolare: e ? e.referente || "" : "", categoria: e ? e.categoria || p.articolo || "" : (p.articolo || ""),

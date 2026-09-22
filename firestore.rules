@@ -2,29 +2,37 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
-    function role() { return signedIn() ? request.auth.token.role : null; }
+    // Ruolo: custom claim oppure documento staff/{uid} (gestito dal pannello admin)
+    function staffDoc() { return get(/databases/$(database)/documents/staff/$(request.auth.uid)); }
+    function role() {
+      return !signedIn() ? null
+        : (request.auth.token.role != null ? request.auth.token.role
+        : (exists(/databases/$(database)/documents/staff/$(request.auth.uid)) ? staffDoc().data.role : null));
+    }
     function isAdmin() { return role() == 'admin'; }
+    function isSuap() { return role() in ['admin', 'suap']; }
     function isStaff() { return role() in ['admin', 'operatore', 'suap']; }
 
-    // Dati pubblici: lettura libera, scrittura solo admin
+    // Dati pubblici: lettura libera, scrittura admin/suap
     match /mercati/{id}     { allow read: if true; allow write: if isAdmin(); }
-    match /posteggi/{id}    { allow read: if true; allow write: if isAdmin(); }
-    match /espositori/{id}  { allow read: if true; allow write: if isAdmin() || role() == 'suap'; }
+    match /posteggi/{id}    { allow read: if true; allow write: if isSuap(); }
+    match /espositori/{id}  { allow read: if true; allow write: if isSuap(); }
     match /eventi/{id}      { allow read: if true; allow write: if isAdmin(); }
-    // Stato aggregato del giorno per mercato (1 lettura per l'app pubblica)
-    match /stato/{mercatoId} { allow read: if true; allow write: if isStaff(); }
+    // Riassunti per l'app pubblica (1 lettura per mercato)
+    match /pubblico/{mercatoId} { allow read: if true; allow write: if isSuap(); }
+    match /stato/{mercatoId}    { allow read: if true; allow write: if isStaff(); }
 
     // Dati riservati (CF, P.IVA, indirizzi, token QR): solo admin e suap
-    match /espositori_riservati/{id} { allow read, write: if isAdmin() || role() == 'suap'; }
+    match /espositori_riservati/{id} { allow read, write: if isSuap(); }
 
-    // Presenze giornaliere: lettura pubblica, scrittura operatore/admin
+    // Presenze giornaliere
     match /presenze/{id} {
       allow read: if true;
       allow create, update: if isStaff();
       allow delete: if isAdmin();
     }
 
-    // Staff: uid → ruolo (solo lettura per l'interessato, scrittura admin)
+    // Staff: uid → ruolo. Lettura: admin o l'interessato. Scrittura: admin.
     match /staff/{uid} {
       allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
       allow write: if isAdmin();
