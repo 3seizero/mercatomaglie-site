@@ -1,536 +1,606 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2055.647 1554.619">
-  <g id="Area_Mappa"><path fill="#f0ece4" fill-rule="evenodd" d="M559.01,1528.25 L607.68,1524.85 L1757.03,1217.23 L1786.60,1199.90 L1967.64,1019.41 L1990.31,972.52 L768.58,-256.43 L205.45,304.96 L213.17,368.42 L287.50,637.93 L319.55,701.42 L388.94,791.91 L415.72,891.89 L469.18,1168.33 L464.41,1443.81 L493.88,1496.00Z"/></g>
-  <g id="Strada_di_accesso"><path fill="#706f6f" fill-rule="evenodd" d="M1715.47,1112.88 L1747.68,1080.78 L607.03,1383.20 L603.56,1379.71 L609.99,1152.90 L562.57,906.89 L534.09,777.36 L524.57,748.66 L495.11,694.74 L449.14,638.18 L859.98,212.98 L872.15,213.00 L892.10,233.02 L912.12,213.06 L891.30,192.17 L889.57,185.22 L914.81,158.32 L926.11,160.94 L945.20,180.09 L960.86,166.21 L964.33,171.43 L950.40,185.31 L1292.29,521.28 L1277.49,537.77 L1296.58,556.92 L1314.85,542.18 L1333.08,558.72 L1316.54,576.94 L1336.49,596.96 L1354.77,580.47 L1512.70,731.93 L1493.55,752.76 L1513.51,772.78 L1532.66,753.69 L1553.49,771.10 L1533.47,792.80 L1553.42,812.81 L1576.05,791.99 L1779.97,987.84 L1754.73,1014.74 L1774.69,1034.76 L1800.80,1008.73 L1811.21,1017.44 L1832.10,996.61 L1414.70,600.55 L969.55,164.49 L984.35,146.26 L966.08,161.00 L767.37,-34.83 L680.61,-127.08 L659.72,-106.26 L890.53,127.00 L890.52,132.21 L431.81,606.87 L423.13,596.43 L411.01,563.38 L350.53,335.60 L338.55,212.18 L313.32,235.61 L312.42,253.86 L323.57,348.60 L390.98,595.51 L413.50,640.73 L468.15,707.73 L491.55,746.87 L507.99,792.96 L526.12,872.07 L581.30,1157.20 L573.08,1417.04Z"/></g>
-  <g id="Area_Mercato"><path fill="#ffffff" d="M1686.82,1096.33 L835.60,240.75 L450.01,639.05 L495.98,693.87 L525.45,747.80 L534.96,776.49 L563.44,906.02 L610.86,1152.03 L604.43,1378.85 L607.90,1382.33Z"/><path fill="#ffffff" d="M462.19,626.90 L1250.70,1005.28 L1338.47,1004.54 L1366.33,976.78 L1361.49,729.96 L905.08,270.41 L804.27,271.99Z M431.81,605.13 L749.51,277.99 L601.73,303.83 L394.81,364.35 L366.96,392.12 L411.89,562.52 L424.00,595.56Z"/></g>
-  <g id="Aree_Parcheggio"><path fill="#e6d867" d="M1748.55,1079.91 L1810.34,1018.30 L1801.67,1009.60 L1773.82,1035.63 L1753.86,1013.87 L1779.10,988.71 L1575.18,792.86 L1552.55,813.68 L1532.59,793.66 L1552.62,771.97 L1533.52,754.56 L1512.64,773.64 L1492.68,753.63 L1511.83,732.80 L1353.90,581.34 L1335.62,597.83 L1315.67,577.81 L1332.21,559.58 L1313.98,543.04 L1295.71,557.79 L1276.62,538.64 L1291.42,522.15 L949.53,186.18 L963.46,170.56 L959.99,167.08 L944.32,180.96 L925.24,161.81 L913.07,160.05 L890.44,186.09 L912.99,213.93 L892.97,233.89 L871.27,213.87 L860.85,213.85 L836.47,239.89 L1689.43,1095.46Z"/></g>
-  <g id="Aiuole"><path fill="#9ec583" fill-rule="evenodd" d="M722.39,-172.21 L1446.92,556.28 L1870.40,958.43 L1880.84,948.02 L1595.36,670.36 L1443.49,528.47 L1035.67,117.66 L1026.12,109.82 L1022.64,113.29 L1017.43,109.81 L1020.92,102.86 L894.22,-13.78 L739.77,-170.44 L729.36,-179.15Z M683.23,-133.16 L699.70,-111.41 L806.43,-0.88 L967.83,157.53 L973.04,154.06 L976.52,157.54 L973.03,162.75 L1424.25,604.91 L1834.71,994.01 L1846.03,982.73 L1409.54,567.52 L1128.40,285.52 L992.16,154.09 L698.02,-144.44Z M1752.99,1013.00 L1773.88,992.18 L1570.82,798.94 L1555.16,814.55Z M1492.69,750.15 L1504.87,736.26 L1348.67,588.29 L1338.23,598.70Z M1275.75,536.03 L1285.33,526.49 L920.88,167.89 L894.78,190.44 L917.34,213.07 L937.34,200.07 L1110.02,371.53 L1093.48,389.75 L1109.96,408.03 L1130.84,392.42Z M655.31,-67.16 L661.32,-19.35 L721.30,-27.08 L680.52,-69.73Z M1613.16,959.77 L1591.47,934.54 L1570.59,951.89 L1472.54,855.27 L1594.02,977.13Z M1451.71,834.38 L1362.34,743.00 L1379.75,723.90 L1370.21,712.59 L1365.87,709.98 L1346.72,727.33 L1254.74,638.55Z M1561.87,970.99 L1519.35,928.34 L1520.16,970.93Z M1511.54,920.51 L1467.29,876.12 L1468.09,920.44Z M1264.22,689.83 L1264.18,717.64 L1309.37,717.71 L1281.60,689.86Z M1206.98,615.01 L1128.88,538.41 L1131.37,615.76Z M793.80,296.31 L901.56,296.47 L905.04,299.96 L905.87,321.68 L926.73,321.71 L992.67,387.86 L994.37,417.41 L1030.87,415.73 L1236.52,618.53 L1200.94,582.85 L1219.22,562.89 L1200.14,543.74 L1180.99,562.83 L972.74,353.94 L990.15,334.85 L974.53,319.18 L956.25,335.66 L944.10,326.96 L872.95,253.85 L890.36,234.76 L871.27,215.61Z M416.89,132.35 L691.64,47.61 L479.56,71.62Z M1142.98,975.56 L1241.19,974.85 L1249.89,967.91 L1245.15,656.78 L1239.08,650.69 L1137.40,653.14 L1132.17,661.82 L1137.78,970.34Z M347.93,334.73 L359.21,344.31 L366.11,377.34 L620.84,310.82 L642.45,384.72 L863.55,153.89 L748.14,39.87 L714.24,44.17 L771.30,235.44 L766.95,241.52 L715.66,252.74 L707.84,248.38 L348.80,330.39Z M433.58,582.54 L439.68,572.99 L392.16,393.02 L383.46,394.75Z M476.10,625.18 L645.56,622.84 L643.22,451.63Z M586.22,784.39 L589.70,780.92 L587.28,660.12 L495.16,661.71 L533.32,715.65 L546.31,744.35 L556.68,782.60Z M621.83,1366.71 L630.50,1375.41 L1151.27,1239.77 L1155.62,1233.69 L1233.87,1212.95 L1255.60,1212.12 L1593.79,1121.39 L1605.97,1114.45 L1736.38,1079.89 L1633.12,979.79 L1602.65,1011.90 L1605.11,1110.11 L1590.33,1116.17 L1586.84,1123.11 L1539.89,1135.21 L1533.82,1130.85 L1519.03,1135.18 L1513.81,1142.12 L1476.43,1151.62 L1472.09,1147.27 L1464.26,1149.87 L1460.79,1146.39 L1458.40,1002.99 L1406.26,1002.91 L1406.89,1161.95 L1393.84,1168.01 L1389.50,1163.66 L1387.14,1004.62 L1333.26,1004.53 L1335.60,1180.96 L1322.55,1187.02 L1318.21,1182.67 L1315.88,1004.51 L1262.87,1005.30 L1265.18,1199.10 L1256.48,1204.30 L1253.01,1200.82 L1248.95,1012.23 L1244.61,1009.61 L1141.19,1012.06 L1137.70,1020.75 L1142.59,1229.33 L1137.36,1243.22 L1111.28,1250.14 L1106.07,1244.91 L1084.34,1250.96 L1078.24,1258.77 L1036.51,1269.14 L1023.48,1266.51 L1008.70,1270.83 L1000.87,1278.64 L958.26,1289.88 L952.19,1285.52 L933.06,1290.71 L929.57,1297.65 L906.10,1303.70 L900.02,1299.35 L893.93,1307.16 L874.80,1312.34 L866.12,1308.85 L847.86,1313.17 L841.77,1320.98 L792.21,1333.94 L779.18,1331.32 L764.40,1335.64 L761.78,1341.72 L711.36,1355.55 L700.93,1352.05 L683.54,1357.24 L680.93,1363.32 L660.06,1368.50 L654.86,1361.54 L650.17,1022.60 L644.09,1014.77 L608.46,1015.59 L604.10,1028.62 L630.83,1161.62Z M1433.83,1157.64 L1429.51,1144.60 L1429.58,1099.41 L1433.06,1095.94 L1455.65,1095.97 L1459.13,1099.45 L1459.92,1147.25 L1454.70,1152.46Z M1267.10,1077.43 L1263.63,1073.95 L1262.86,1010.51 L1267.21,1006.17 L1288.07,1006.20 L1292.41,1010.56 L1294.05,1073.13 L1286.22,1077.46Z M1339.94,1181.83 L1336.47,1178.35 L1335.70,1116.65 L1341.79,1112.31 L1357.43,1112.33 L1360.90,1115.82 L1361.68,1174.04 L1357.33,1178.38Z M1268.65,1200.84 L1265.18,1197.36 L1265.25,1148.69 L1269.61,1144.35 L1290.46,1144.39 L1294.80,1148.74 L1295.60,1191.32 L1291.25,1195.66Z"/></g>
-  <g id="Area_Bar__x2F__Eventi"><polygon fill="#d38267" points="624.60,644.17 780.73,643.04 782.74,922.68 626.61,923.81"/></g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2055.6 1842.6">
+  <!-- Generator: Adobe Illustrator 30.8.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #f0ece4;
+      }
+
+      .st0, .st1, .st2 {
+        fill-rule: evenodd;
+      }
+
+      .st1 {
+        fill: #706f6f;
+      }
+
+      .st3 {
+        fill: #9a8878;
+        font-family: Montserrat-Bold, Montserrat;
+        font-size: 6.5px;
+        font-weight: 700;
+        isolation: isolate;
+      }
+
+      .st4 {
+        fill: #e8e2d8;
+        stroke: #c8c0b4;
+        stroke-width: .6px;
+      }
+
+      .st5 {
+        fill: #fff;
+      }
+
+      .st6 {
+        fill: #e6d867;
+      }
+
+      .st2 {
+        fill: #9ec583;
+      }
+
+      .st7 {
+        fill: #d38267;
+      }
+    </style>
+  </defs>
+  <g id="Area_Mappa">
+    <path class="st0" d="M559,1816.2l48.7-3.4,1149.4-307.6,29.6-17.3,181-180.5,22.7-46.9L768.6,31.5,205.4,592.9l7.7,63.5,74.3,269.5,32,63.5,69.4,90.5,26.8,100,53.5,276.4-4.8,275.5,29.5,52.2,65.1,32.2Z"/>
+  </g>
+  <g id="Strada_di_accesso">
+    <path class="st1" d="M1715.5,1400.8l32.2-32.1-1140.7,302.4-3.5-3.5,6.4-226.8-47.4-246-28.5-129.5-9.5-28.7-29.5-53.9-46-56.6,410.8-425.2h12.2s19.9,20,19.9,20l20-20-20.8-20.9-1.7-6.9,25.2-26.9,11.3,2.6,19.1,19.1,15.7-13.9,3.5,5.2-13.9,13.9,341.9,336-14.8,16.5,19.1,19.1,18.3-14.7,18.2,16.5-16.5,18.2,19.9,20,18.3-16.5,157.9,151.5-19.1,20.8,20,20,19.2-19.1,20.8,17.4-20,21.7,20,20,22.6-20.8,203.9,195.9-25.2,26.9,20,20,26.1-26,10.4,8.7,20.9-20.8-417.4-396.1-445.1-436.1,14.8-18.2-18.3,14.7-198.7-195.8-86.8-92.2-20.9,20.8,230.8,233.3v5.2s-458.7,474.7-458.7,474.7l-8.7-10.4-12.1-33-60.5-227.8-12-123.4-25.2,23.4-.9,18.2,11.1,94.7,67.4,246.9,22.5,45.2,54.6,67,23.4,39.1,16.4,46.1,18.1,79.1,55.2,285.1-8.2,259.8,1142.4-304.2Z"/>
+  </g>
+  <g id="Area_Mercato">
+    <path class="st5" d="M1686.8,1384.3l-851.2-855.6-385.6,398.3,46,54.8,29.5,53.9,9.5,28.7,28.5,129.5,47.4,246-6.4,226.8,3.5,3.5,1078.9-286Z"/>
+    <path class="st5" d="M462.2,914.8l788.5,378.4,87.8-.7,27.9-27.8-4.8-246.8-456.4-459.6-100.8,1.6-342.1,354.9ZM431.8,893.1l317.7-327.1-147.8,25.8-206.9,60.5-27.9,27.8,44.9,170.4,12.1,33,7.8,9.6Z"/>
+  </g>
+  <g id="Aree_Parcheggio">
+    <path class="st6" d="M1748.6,1367.8l61.8-61.6-8.7-8.7-27.9,26-20-21.8,25.2-25.2-203.9-195.9-22.6,20.8-20-20,20-21.7-19.1-17.4-20.9,19.1-20-20,19.1-20.8-157.9-151.5-18.3,16.5-19.9-20,16.5-18.2-18.2-16.5-18.3,14.8-19.1-19.1,14.8-16.5-341.9-336,13.9-15.6-3.5-3.5-15.7,13.9-19.1-19.2-12.2-1.8-22.6,26,22.5,27.8-20,20-21.7-20h-10.4s-24.4,26-24.4,26l853,855.6,59.1-15.5Z"/>
+  </g>
+  <g id="Aiuole">
+    <path class="st2" d="M722.4,115.7l724.5,728.5,423.5,402.1,10.4-10.4-285.5-277.7-151.9-141.9-407.8-410.8-9.6-7.8-3.5,3.5-5.2-3.5,3.5-6.9-126.7-116.6-154.4-156.7-10.4-8.7-7,6.9ZM683.2,154.8l16.5,21.8,106.7,110.5,161.4,158.4,5.2-3.5,3.5,3.5-3.5,5.2,451.2,442.2,410.5,389.1,11.3-11.3-436.5-415.2-281.1-282-136.2-131.4-294.1-298.5-14.8,11.3ZM1753,1300.9l20.9-20.8-203.1-193.2-15.7,15.6,197.8,198.5ZM1492.7,1038.1l12.2-13.9-156.2-148-10.4,10.4,154.5,151.5ZM1275.8,824l9.6-9.5-364.4-358.6-26.1,22.6,22.6,22.6,20-13,172.7,171.5-16.5,18.2,16.5,18.3,20.9-15.6,144.9,143.6ZM655.3,220.8l6,47.8,60-7.7-40.8-42.7-25.2,2.6ZM1613.2,1247.7l-21.7-25.2-20.9,17.4-98-96.6,121.5,121.9,19.1-17.4ZM1451.7,1122.3l-89.4-91.4,17.4-19.1-9.5-11.3-4.3-2.6-19.2,17.4-92-88.8,197,195.8ZM1561.9,1258.9l-42.5-42.6.8,42.6h41.7ZM1511.5,1208.4l-44.2-44.4.8,44.3h43.5ZM1264.2,977.8v27.8s45.2,0,45.2,0l-27.8-27.9h-17.4ZM1207,902.9l-78.1-76.6,2.5,77.4,75.6-.8ZM793.8,584.2l107.8.2,3.5,3.5.8,21.7h20.9s65.9,66.2,65.9,66.2l1.7,29.6,36.5-1.7,205.7,202.8-35.6-35.7,18.3-20-19.1-19.2-19.2,19.1-208.2-208.9,17.4-19.1-15.6-15.7-18.3,16.5-12.2-8.7-71.1-73.1,17.4-19.1-19.1-19.1-77.5,80.7ZM416.9,420.3l274.8-84.7-212.1,24-62.7,60.7ZM1143,1263.5l98.2-.7,8.7-6.9-4.7-311.1-6.1-6.1-101.7,2.5-5.2,8.7,5.6,308.5,5.2,5.2ZM347.9,622.7l11.3,9.6,6.9,33,254.7-66.5,21.6,73.9,221.1-230.8-115.4-114-33.9,4.3,57.1,191.3-4.3,6.1-51.3,11.2-7.8-4.4-359,82-.9,4.3ZM433.6,870.5l6.1-9.5-47.5-180-8.7,1.7,50.1,187.8ZM476.1,913.1l169.5-2.3-2.3-171.2-167.1,173.5ZM586.2,1072.3l3.5-3.5-2.4-120.8-92.1,1.6,38.2,53.9,13,28.7,10.4,38.2,29.5,1.8ZM621.8,1654.6l8.7,8.7,520.8-135.6,4.3-6.1,78.2-20.7,21.7-.8,338.2-90.7,12.2-6.9,130.4-34.6-103.3-100.1-30.5,32.1,2.5,98.2-14.8,6.1-3.5,6.9-46.9,12.1-6.1-4.4-14.8,4.3-5.2,6.9-37.4,9.5-4.3-4.3-7.8,2.6-3.5-3.5-2.4-143.4h-52.1c0,0,.6,159,.6,159l-13.1,6.1-4.3-4.3-2.4-159h-53.9c0,0,2.3,176.3,2.3,176.3l-13,6.1-4.3-4.3-2.3-178.2-53,.8,2.3,193.8-8.7,5.2-3.5-3.5-4.1-188.6-4.3-2.6-103.4,2.5-3.5,8.7,4.9,208.6-5.2,13.9-26.1,6.9-5.2-5.2-21.7,6-6.1,7.8-41.7,10.4-13-2.6-14.8,4.3-7.8,7.8-42.6,11.2-6.1-4.4-19.1,5.2-3.5,6.9-23.5,6-6.1-4.3-6.1,7.8-19.1,5.2-8.7-3.5-18.3,4.3-6.1,7.8-49.6,13-13-2.6-14.8,4.3-2.6,6.1-50.4,13.8-10.4-3.5-17.4,5.2-2.6,6.1-20.9,5.2-5.2-7-4.7-338.9-6.1-7.8-35.6.8-4.4,13,26.7,133-9,205.1ZM1433.8,1445.6l-4.3-13v-45.2c0,0,3.6-3.5,3.6-3.5h22.6s3.5,3.5,3.5,3.5l.8,47.8-5.2,5.2-20.9,5.2ZM1267.1,1365.4l-3.5-3.5-.8-63.4,4.3-4.3h20.9s4.3,4.4,4.3,4.4l1.6,62.6-7.8,4.3h-19.1ZM1339.9,1469.8l-3.5-3.5-.8-61.7,6.1-4.3h15.6s3.5,3.5,3.5,3.5l.8,58.2-4.4,4.3-17.4,3.4ZM1268.7,1488.8l-3.5-3.5v-48.7c0,0,4.4-4.3,4.4-4.3h20.8s4.3,4.4,4.3,4.4l.8,42.6-4.3,4.3-22.6,5.2Z"/>
+  </g>
+  <g id="Area_Bar__x2F__Eventi">
+    <polygon class="st7" points="624.6 1009.7 780.7 1008.8 782.7 1210.9 626.6 1211.7 624.6 1009.7"/>
+  </g>
   <g id="Postazioni">
     <g id="Settore_A" data-nome="Abbigliamento">
-      <polygon id="A-8" data-settore="A" data-numero="8" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1056.58,1257.66 1055.9,1229.72 1030.27,1230.11 1030.8,1264.57"/>
-      <polygon id="A-1" data-settore="A" data-numero="1" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1006.54,1223.99 980.91,1224.39 981.84,1277.52 1007.33,1270.61"/>
-      <polygon id="A-2" data-settore="A" data-numero="2" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1006.54,1221.39 1006.01,1190.69 980.38,1191.09 980.91,1221.78"/>
-      <polygon id="A-29" data-settore="A" data-numero="29" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="727.63,979.02 727.23,953.4 686.26,954.06 686.66,979.69"/>
-      <polygon id="A-19" data-settore="A" data-numero="19" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1137.84,1235.92 1137.33,1191.62 1106.49,1192.01 1107.27,1244.13"/>
-      <polygon id="A-14" data-settore="A" data-numero="14" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1082.86,1211.51 1057.08,1212.05 1057.88,1257.23 1083.38,1250.61"/>
-      <polygon id="A-15" data-settore="A" data-numero="15" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1082.72,1209.06 1082.06,1168.08 1056.43,1168.47 1057.09,1209.45"/>
-      <polygon id="A-9" data-settore="A" data-numero="9" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1055.9,1227.4 1055.11,1176.15 1029.49,1176.54 1030.27,1227.79"/>
-      <polygon id="A-10" data-settore="A" data-numero="10" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1055.12,1173.53 1054.45,1137.78 1028.83,1138.17 1029.49,1173.93"/>
-      <polygon id="A-3" data-settore="A" data-numero="3" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1006.01,1188.08 1005.49,1157.39 979.85,1157.78 980.38,1188.48"/>
-      <polygon id="A-4" data-settore="A" data-numero="4" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1005.48,1154.78 1005.09,1129.16 979.46,1129.55 979.86,1155.18"/>
-      <polygon id="A-5" data-settore="A" data-numero="5" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1004.95,1126.7 1004.56,1095.86 978.94,1096.25 979.32,1127.09"/>
-      <polygon id="A-24" data-settore="A" data-numero="24" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="813.2,977.56 849.11,977.04 848.31,925.78 812.26,926.45"/>
-      <polygon id="A-131" data-settore="A" data-numero="131" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="467.36,569.47 452.1,511.24 427.33,517.72 446.63,591.01"/>
-      <polygon id="A-20" data-settore="A" data-numero="20" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1137.18,1189.16 1136.67,1148.04 1105.83,1148.43 1106.34,1189.54"/>
-      <polygon id="A-21" data-settore="A" data-numero="21" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1136.52,1145.57 1135.87,1104.6 1105.03,1104.99 1105.69,1145.96"/>
-      <polygon id="A-16" data-settore="A" data-numero="16" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1082.06,1165.47 1081.4,1124.49 1055.77,1124.89 1056.44,1165.87"/>
-      <polygon id="A-17" data-settore="A" data-numero="17" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1081.4,1121.89 1080.47,1065.57 1054.84,1065.96 1055.77,1122.28"/>
-      <polygon id="A-11" data-settore="A" data-numero="11" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1054.45,1135.17 1053.93,1099.26 1028.3,1099.66 1028.82,1135.56"/>
-      <polygon id="A-12" data-settore="A" data-numero="12" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1053.79,1096.8 1053.12,1055.82 1027.5,1056.22 1028.16,1097.2"/>
-      <polygon id="A-6" data-settore="A" data-numero="6" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1004.42,1093.39 1004.03,1062.56 978.41,1062.95 978.79,1093.79"/>
-      <polygon id="A-7" data-settore="A" data-numero="7" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1003.89,1060.1 1003.1,1008.84 977.48,1009.24 978.26,1060.49"/>
-      <polygon id="A-37" data-settore="A" data-numero="37" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="925.98,978.46 925.18,932.42 899.56,932.82 900.35,978.85"/>
-      <polygon id="A-36" data-settore="A" data-numero="36" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="872.12,979.25 897.75,978.86 897.21,948.16 871.59,948.56"/>
-      <polygon id="A-38" data-settore="A" data-numero="38" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="925.19,929.82 924.53,883.63 898.91,884.02 899.56,930.21"/>
-      <polygon id="A-35" data-settore="A" data-numero="35" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="897.22,945.55 896.43,894.3 870.8,894.69 871.59,945.94"/>
-      <polygon id="A-25" data-settore="A" data-numero="25" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="817.48,923.86 848.18,923.32 847.52,877.13 816.83,877.67"/>
-      <polygon id="A-26" data-settore="A" data-numero="26" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="847.38,874.68 816.68,875.21 815.89,828.88 846.72,828.49"/>
-      <polygon id="A-84" data-settore="A" data-numero="84" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="664.28,657.08 633.58,657.61 633.98,683.24 664.67,682.7"/>
-      <polygon id="A-85" data-settore="A" data-numero="85" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="630.97,657.61 590.0,658.27 590.39,683.89 631.37,683.23"/>
-      <polygon id="A-137" data-settore="A" data-numero="137" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="488.18,496.39 468.48,501.57 482.15,554.14 498.83,536.95"/>
-      <polygon id="A-135" data-settore="A" data-numero="135" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="519.71,515.26 505.89,462.54 480.98,469.16 498.83,536.95"/>
-      <polygon id="A-133" data-settore="A" data-numero="133" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="475.94,449.32 455.95,454.49 467.76,499.1 487.6,493.78"/>
-      <polygon id="A-132" data-settore="A" data-numero="132" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="451.53,508.64 441.02,469.1 416.25,475.57 426.62,515.26"/>
-      <polygon id="A-158" data-settore="A" data-numero="158" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="440.44,466.49 431.38,431.87 406.61,438.35 415.53,473.11"/>
-      <polygon id="A-134" data-settore="A" data-numero="134" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="430.65,429.41 418.85,384.8 394.08,391.28 405.89,435.89"/>
-      <polygon id="A-22" data-settore="A" data-numero="22" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1135.87,1101.99 1135.07,1055.66 1104.37,1056.2 1105.03,1102.38"/>
-      <polygon id="A-23" data-settore="A" data-numero="23" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1134.93,1053.2 1134.28,1007.01 1103.59,1007.83 1104.24,1053.73"/>
-      <polygon id="A-18" data-settore="A" data-numero="18" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1080.48,1062.97 1079.55,1006.64 1053.93,1007.04 1054.85,1063.36"/>
-      <polygon id="A-13" data-settore="A" data-numero="13" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1053.13,1053.22 1052.47,1007.03 1026.85,1007.43 1027.5,1053.61"/>
-      <polygon id="A-65" data-settore="A" data-numero="65" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1051.66,976.63 1051.42,940.72 1025.79,941.12 1026.32,977.02"/>
-      <polygon id="A-51" data-settore="A" data-numero="51" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1002.71,979.74 1002.05,938.76 976.43,939.16 977.09,980.13"/>
-      <polygon id="A-50" data-settore="A" data-numero="50" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="974.77,978.39 973.84,927.28 948.21,927.68 949.0,978.93"/>
-      <polygon id="A-52" data-settore="A" data-numero="52" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1001.39,895.18 975.77,895.57 976.43,936.55 1002.06,936.16"/>
-      <polygon id="A-49" data-settore="A" data-numero="49" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="973.84,924.68 973.18,883.7 947.55,884.09 948.21,925.07"/>
-      <polygon id="A-48" data-settore="A" data-numero="48" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="973.19,881.1 972.38,839.98 946.89,840.52 947.56,881.49"/>
-      <polygon id="A-39" data-settore="A" data-numero="39" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="924.39,881.17 923.73,840.19 898.11,840.58 898.76,881.56"/>
-      <polygon id="A-34" data-settore="A" data-numero="34" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="896.43,891.69 895.77,850.72 870.15,851.11 870.81,892.09"/>
-      <polygon id="A-40" data-settore="A" data-numero="40" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="923.74,837.58 923.08,796.61 897.45,797.01 898.11,837.98"/>
-      <polygon id="A-33" data-settore="A" data-numero="33" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="895.63,848.25 894.98,802.07 869.35,802.47 870.0,848.65"/>
-      <polygon id="A-32" data-settore="A" data-numero="32" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="894.98,799.46 894.59,773.83 868.82,774.37 869.36,799.85"/>
-      <polygon id="A-27" data-settore="A" data-numero="27" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="846.59,820.81 815.75,821.21 814.96,775.16 845.8,774.78"/>
-      <polygon id="A-28" data-settore="A" data-numero="28" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="814.96,772.56 845.8,772.17 845.01,720.91 814.17,721.3"/>
-      <polygon id="A-82" data-settore="A" data-numero="82" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="766.78,655.5 725.81,656.16 726.2,681.79 767.18,681.13"/>
-      <polygon id="A-83" data-settore="A" data-numero="83" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="723.2,656.15 666.88,657.08 667.28,682.71 723.6,681.78"/>
-      <polygon id="A-89" data-settore="A" data-numero="89" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="698.2,623.54 723.83,623.14 723.44,592.3 697.82,592.7"/>
-      <polygon id="A-86" data-settore="A" data-numero="86" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="646.95,624.33 672.58,623.94 671.92,577.75 646.3,578.14"/>
-      <polygon id="A-136" data-settore="A" data-numero="136" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="553.93,479.99 538.1,419.74 513.33,426.21 533.2,501.52"/>
-      <polygon id="A-162" data-settore="A" data-numero="162" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="505.31,460.22 492.22,410.54 467.45,417.02 480.55,466.7"/>
-      <polygon id="A-160" data-settore="A" data-numero="160" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="466.16,412.24 446.31,417.27 455.52,452.03 475.22,446.86"/>
-      <polygon id="A-159" data-settore="A" data-numero="159" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="496.57,406.79 486.2,367.09 456.37,374.87 466.73,414.56"/>
-      <polygon id="A-161" data-settore="A" data-numero="161" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="456.37,374.87 436.52,380.2 445.59,414.81 465.58,409.63"/>
-      <polygon id="A-79" data-settore="A" data-numero="79" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1134.77,972.7 1134.25,931.58 1103.41,931.97 1103.93,973.09"/>
-      <polygon id="A-66" data-settore="A" data-numero="66" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1079.37,935.12 1053.74,935.51 1054.41,976.48 1080.03,976.09"/>
-      <polygon id="A-67" data-settore="A" data-numero="67" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1079.38,932.51 1053.75,932.91 1053.09,891.93 1078.71,891.54"/>
-      <polygon id="A-64" data-settore="A" data-numero="64" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1050.62,892.07 1025.0,892.47 1025.79,938.51 1051.41,938.11"/>
-      <polygon id="A-68" data-settore="A" data-numero="68" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1078.57,889.07 1078.06,847.95 1052.43,848.35 1052.95,889.47"/>
-      <polygon id="A-63" data-settore="A" data-numero="63" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1050.48,889.61 1049.95,858.63 1024.47,859.16 1024.85,890.01"/>
-      <polygon id="A-53" data-settore="A" data-numero="53" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1001.26,892.72 1000.6,846.53 974.97,846.93 975.63,893.12"/>
-      <polygon id="A-54" data-settore="A" data-numero="54" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1000.61,843.93 1000.07,813.23 974.45,813.63 974.98,844.32"/>
-      <polygon id="A-47" data-settore="A" data-numero="47" data-non-in-elenco="true" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="972.38,837.37 971.99,811.74 946.36,812.14 946.9,837.91"/>
-      <polygon id="A-55/56" data-settore="A" data-numero="55/56" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1000.08,810.63 999.28,764.58 973.65,764.98 974.45,811.02"/>
-      <polygon id="A-46" data-settore="A" data-numero="46" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="971.85,809.28 971.06,758.02 945.43,758.42 946.22,809.68"/>
-      <polygon id="A-41" data-settore="A" data-numero="41" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="897.45,794.4 923.08,794.01 922.42,753.03 896.79,753.43"/>
-      <polygon id="A-42" data-settore="A" data-numero="42" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="896.8,750.81 922.42,750.42 921.76,709.45 896.13,709.84"/>
-      <polygon id="A-31" data-settore="A" data-numero="31" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="868.82,771.77 894.45,771.37 893.39,704.77 867.77,705.17"/>
-      <polygon id="A-80" data-settore="A" data-numero="80" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="818.7,695.68 818.04,654.71 792.41,655.1 793.07,696.08"/>
-      <polygon id="A-81" data-settore="A" data-numero="81" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="789.8,655.1 769.24,655.36 769.64,680.98 790.2,680.72"/>
-      <polygon id="A-95" data-settore="A" data-numero="95" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="777.55,622.22 803.17,621.82 802.52,575.64 776.9,576.03"/>
-      <polygon id="A-94" data-settore="A" data-numero="94" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="726.44,623.15 752.07,622.75 751.55,581.64 725.77,582.18"/>
-      <polygon id="A-93" data-settore="A" data-numero="93" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="725.78,579.57 751.41,579.17 750.6,538.05 725.12,538.6"/>
-      <polygon id="A-90" data-settore="A" data-numero="90" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="697.67,590.24 723.3,589.84 722.78,553.94 697.15,554.33"/>
-      <polygon id="A-90bis" data-settore="A" data-numero="90bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="697.16,551.73 722.78,551.34 722.0,500.08 696.37,500.47"/>
-      <polygon id="A-87" data-settore="A" data-numero="87" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="646.3,575.54 671.93,575.14 670.87,508.54 645.25,508.94"/>
-      <polygon id="A-88" data-settore="A" data-numero="88" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="645.11,506.47 670.73,506.08 669.94,454.82 644.32,455.22"/>
-      <polygon id="A-142" data-settore="A" data-numero="142" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="574.81,458.3 564.88,420.79 540.11,427.26 553.93,479.99"/>
-      <polygon id="A-138" data-settore="A" data-numero="138" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="608.17,423.89 597.37,382.9 572.46,389.53 587.14,445.43"/>
-      <polygon id="A-139" data-settore="A" data-numero="139" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="564.31,418.18 553.95,378.5 529.03,385.11 539.54,424.65"/>
-      <polygon id="A-163" data-settore="A" data-numero="163" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="537.67,417.27 529.75,387.58 504.98,394.05 512.75,423.89"/>
-      <polygon id="A-140" data-settore="A" data-numero="140" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="553.22,376.03 546.75,351.26 521.98,357.74 528.46,382.51"/>
-      <polygon id="A-164" data-settore="A" data-numero="164" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="529.03,385.11 521.26,355.28 496.49,361.75 504.26,391.59"/>
-      <polygon id="A-78" data-settore="A" data-numero="78" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1134.11,929.12 1133.33,872.66 1102.49,873.04 1103.27,929.5"/>
-      <polygon id="A-77" data-settore="A" data-numero="77" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1133.18,870.19 1132.66,834.29 1101.82,834.67 1102.34,870.58"/>
-      <polygon id="A-76" data-settore="A" data-numero="76" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1101.82,832.06 1132.67,831.68 1132.12,811.12 1101.43,811.65"/>
-      <polygon id="A-69" data-settore="A" data-numero="69" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1077.92,845.49 1077.25,804.52 1051.63,804.92 1052.29,845.89"/>
-      <polygon id="A-62" data-settore="A" data-numero="62" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1049.96,856.02 1049.02,804.91 1023.4,805.31 1024.33,856.71"/>
-      <polygon id="A-70" data-settore="A" data-numero="70" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1051.63,802.31 1077.26,801.91 1076.74,766.01 1051.11,766.4"/>
-      <polygon id="A-61" data-settore="A" data-numero="61" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1023.4,802.7 1049.03,802.31 1048.37,756.12 1022.75,756.51"/>
-      <polygon id="A-57" data-settore="A" data-numero="57" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="999.28,761.98 998.22,700.59 972.59,700.98 973.65,762.38"/>
-      <polygon id="A-45" data-settore="A" data-numero="45" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="971.06,755.42 970.26,709.38 944.64,709.77 945.43,755.82"/>
-      <polygon id="A-44" data-settore="A" data-numero="44" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="970.27,706.77 969.48,655.52 943.85,655.92 944.64,707.17"/>
-      <polygon id="A-43" data-settore="A" data-numero="43" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="921.77,706.84 920.69,655.59 895.21,656.13 896.14,707.24"/>
-      <polygon id="A-30" data-settore="A" data-numero="30" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="893.4,702.17 892.59,656.12 866.97,656.52 867.76,702.56"/>
-      <polygon id="A-105" data-settore="A" data-numero="105" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="911.04,620.1 910.51,589.41 884.88,589.8 885.27,620.64"/>
-      <polygon id="A-101" data-settore="A" data-numero="101" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="882.66,620.63 882.28,589.8 856.65,590.19 857.04,621.03"/>
-      <polygon id="A-100" data-settore="A" data-numero="100" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="805.78,621.82 831.41,621.43 830.89,580.31 805.27,580.7"/>
-      <polygon id="A-99bis" data-settore="A" data-numero="99bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="805.12,578.24 830.75,577.85 830.09,536.88 804.46,537.26"/>
-      <polygon id="A-96" data-settore="A" data-numero="96" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="776.9,573.42 802.53,573.02 801.73,526.99 776.1,527.38"/>
-      <polygon id="A-93bis" data-settore="A" data-numero="93bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="725.13,535.99 750.61,535.45 749.95,494.47 724.32,494.87"/>
-      <polygon id="A-92" data-settore="A" data-numero="92" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="724.32,492.27 749.95,491.87 749.29,450.89 723.66,451.29"/>
-      <polygon id="A-91" data-settore="A" data-numero="91" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="696.22,498.01 721.85,497.62 721.2,451.43 695.58,451.83"/>
-      <polygon id="A-141" data-settore="A" data-numero="141" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="642.39,388.33 633.04,352.55 603.2,360.32 617.31,414.21"/>
-      <polygon id="A-166" data-settore="A" data-numero="166" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="632.31,350.09 625.84,325.32 596.14,332.95 602.62,357.72"/>
-      <polygon id="A-165" data-settore="A" data-numero="165" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="596.8,380.58 586.29,340.76 561.38,347.38 572.03,387.07"/>
-      <polygon id="A-149" data-settore="A" data-numero="149" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1307.2,976.0 1338.03,975.62 1337.23,934.5 1306.54,935.03"/>
-      <polygon id="A-143" data-settore="A" data-numero="143" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1253.48,976.94 1284.18,976.41 1283.38,925.15 1252.69,925.68"/>
-      <polygon id="A-144" data-settore="A" data-numero="144" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1252.69,925.68 1283.38,925.15 1282.59,879.11 1251.9,879.64"/>
-      <polygon id="A-75" data-settore="A" data-numero="75" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1101.43,809.05 1132.12,808.51 1131.32,762.47 1100.63,763.0"/>
-      <polygon id="A-74" data-settore="A" data-numero="74" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1100.63,760.4 1131.33,759.87 1130.4,703.54 1099.71,704.08"/>
-      <polygon id="A-71" data-settore="A" data-numero="71" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1051.12,763.8 1076.74,763.4 1075.67,702.01 1050.05,702.41"/>
-      <polygon id="A-60" data-settore="A" data-numero="60" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1022.61,754.05 1048.23,753.66 1047.44,702.4 1021.82,702.8"/>
-      <polygon id="A-72" data-settore="A" data-numero="72" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1075.68,699.41 1074.88,653.36 1049.26,653.76 1050.05,699.8"/>
-      <polygon id="A-59" data-settore="A" data-numero="59" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1047.45,699.8 1046.65,653.75 1021.02,654.15 1021.82,700.19"/>
-      <polygon id="A-58" data-settore="A" data-numero="58" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="998.23,697.98 997.56,657.01 971.93,657.41 972.6,698.38"/>
-      <polygon id="A-109" data-settore="A" data-numero="109" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="968.81,619.18 968.15,578.21 942.52,578.59 942.75,619.72"/>
-      <polygon id="A-106" data-settore="A" data-numero="106" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="910.51,586.8 909.85,545.82 884.22,546.22 884.89,587.2"/>
-      <polygon id="A-102" data-settore="A" data-numero="102" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="882.28,587.19 881.34,536.08 855.72,536.48 856.51,587.73"/>
-      <polygon id="A-107" data-settore="A" data-numero="107" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="909.71,543.37 909.19,507.46 883.56,507.85 884.09,543.76"/>
-      <polygon id="A-103" data-settore="A" data-numero="103" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="881.35,533.48 880.69,492.51 855.06,492.9 855.72,533.87"/>
-      <polygon id="A-99" data-settore="A" data-numero="99" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="804.47,534.66 830.1,534.27 829.43,493.3 803.8,493.69"/>
-      <polygon id="A-98" data-settore="A" data-numero="98" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="803.81,491.08 829.43,490.69 828.77,449.71 803.15,450.11"/>
-      <polygon id="A-97" data-settore="A" data-numero="97" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="776.11,524.77 801.73,524.38 800.54,452.71 774.91,453.1"/>
-      <polygon id="A-130" data-settore="A" data-numero="130" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="743.98,417.73 743.59,392.11 784.56,391.44 784.96,417.07"/>
-      <polygon id="A-150" data-settore="A" data-numero="150" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1306.54,932.43 1337.23,931.89 1336.45,880.64 1305.75,881.17"/>
-      <polygon id="A-151" data-settore="A" data-numero="151" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1305.75,878.56 1336.44,878.03 1335.79,837.06 1305.1,837.59"/>
-      <polygon id="A-145" data-settore="A" data-numero="145" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1251.74,879.5 1282.59,879.11 1281.8,827.85 1250.95,828.24"/>
-      <polygon id="A-146" data-settore="A" data-numero="146" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1250.96,828.24 1281.8,827.85 1281.13,786.88 1250.29,787.27"/>
-      <polygon id="A-147" data-settore="A" data-numero="147" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1250.3,787.27 1281.13,786.88 1280.74,761.25 1249.91,761.64"/>
-      <polygon id="A-73" data-settore="A" data-numero="73" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1130.4,700.94 1129.61,649.68 1098.92,650.21 1099.71,701.47"/>
-      <polygon id="A-120" data-settore="A" data-numero="120" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1074.94,617.46 1074.28,576.49 1048.65,576.88 1049.17,618.0"/>
-      <polygon id="A-117" data-settore="A" data-numero="117" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1020.49,618.53 1046.27,618.0 1045.77,566.74 1020.29,567.28"/>
-      <polygon id="A-113" data-settore="A" data-numero="113" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="996.24,572.75 970.62,573.14 971.41,619.18 997.03,618.79"/>
-      <polygon id="A-114" data-settore="A" data-numero="114" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="996.25,570.14 995.73,534.23 970.09,534.63 970.62,570.53"/>
-      <polygon id="A-110" data-settore="A" data-numero="110" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="968.16,575.6 967.49,534.63 941.86,535.02 942.52,575.99"/>
-      <polygon id="A-115" data-settore="A" data-numero="115" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="995.58,531.77 995.07,490.65 969.44,491.05 969.96,532.17"/>
-      <polygon id="A-111" data-settore="A" data-numero="111" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="967.35,532.16 966.83,491.04 941.21,491.44 941.72,532.56"/>
-      <polygon id="A-112" data-settore="A" data-numero="112" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="966.69,488.58 966.03,447.61 940.41,448.01 941.07,488.98"/>
-      <polygon id="A-107bis" data-settore="A" data-numero="107bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="909.19,504.86 908.51,474.01 883.03,474.56 883.56,505.25"/>
-      <polygon id="A-108" data-settore="A" data-numero="108" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="908.52,471.41 908.12,445.78 882.64,446.32 883.03,471.95"/>
-      <polygon id="A-104" data-settore="A" data-numero="104" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="880.69,489.89 880.03,448.93 854.4,449.32 855.06,490.29"/>
-      <polygon id="A-127" data-settore="A" data-numero="127" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="864.45,415.89 864.05,390.26 905.02,389.6 905.42,415.23"/>
-      <polygon id="A-128" data-settore="A" data-numero="128" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="820.86,416.55 820.47,390.92 861.45,390.26 861.84,415.89"/>
-      <polygon id="A-129" data-settore="A" data-numero="129" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="787.57,417.07 787.17,391.45 817.87,390.91 818.26,416.54"/>
-      <polygon id="A-152" data-settore="A" data-numero="152" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1304.95,835.13 1335.64,834.6 1334.72,773.06 1304.03,773.59"/>
-      <polygon id="A-153" data-settore="A" data-numero="153" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1304.03,770.99 1334.73,770.46 1334.07,729.48 1303.38,730.01"/>
-      <polygon id="A-148" data-settore="A" data-numero="148" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1249.9,761.64 1280.74,761.25 1280.23,720.13 1249.38,720.52"/>
-      <polygon id="A-124" data-settore="A" data-numero="124" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1129.09,616.68 1128.3,565.41 1102.67,565.81 1103.46,617.07"/>
-      <polygon id="A-125" data-settore="A" data-numero="125" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1128.15,562.96 1127.37,511.71 1101.74,512.1 1102.53,563.36"/>
-      <polygon id="A-121" data-settore="A" data-numero="121" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1074.14,573.73 1073.48,532.76 1047.7,533.3 1048.51,574.13"/>
-      <polygon id="A-118" data-settore="A" data-numero="118" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1045.77,564.13 1044.99,512.88 1019.36,513.28 1020.29,564.67"/>
-      <polygon id="A-123" data-settore="A" data-numero="123" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1073.33,530.29 1072.39,484.11 1046.76,484.51 1047.71,530.69"/>
-      <polygon id="A-118bis" data-settore="A" data-numero="118bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1044.84,510.42 1044.32,474.51 1018.69,474.91 1019.22,510.81"/>
-      <polygon id="A-116" data-settore="A" data-numero="116" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="994.93,488.19 994.27,447.22 968.64,447.61 969.3,488.58"/>
-      <polygon id="A-126" data-settore="A" data-numero="126" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="908.02,415.23 959.28,414.45 958.89,388.82 907.63,389.61"/>
-      <polygon id="A-154" data-settore="A" data-numero="154" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="881.67,323.26 881.27,297.63 904.44,297.37 904.84,323.0"/>
-      <polygon id="A-155" data-settore="A" data-numero="155" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="850.58,298.16 850.97,323.79 881.67,323.26 881.27,297.63"/>
-      <polygon id="A-156" data-settore="A" data-numero="156" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="819.88,298.7 820.28,324.32 850.97,323.79 850.58,298.16"/>
-      <polygon id="A-157" data-settore="A" data-numero="157" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="789.45,324.71 820.28,324.32 819.88,298.7 789.05,299.08"/>
+      <polygon id="A-8" class="st4" data-numero="8" data-settore="A" points="1056.6 1545.6 1055.9 1517.7 1030.3 1518 1030.8 1552.5 1056.6 1545.6"/>
+      <polygon id="A-1" class="st4" data-numero="1" data-settore="A" points="1006.5 1511.9 980.9 1512.3 981.8 1565.5 1007.3 1558.5 1006.5 1511.9"/>
+      <polygon id="A-2" class="st4" data-numero="2" data-settore="A" points="1006.5 1509.3 1006 1478.6 980.4 1479 980.9 1509.7 1006.5 1509.3"/>
+      <polygon id="A-29" class="st4" data-numero="29" data-settore="A" points="727.6 1267 727.2 1241.3 686.3 1242 686.7 1267.6 727.6 1267"/>
+      <polygon id="A-19" class="st4" data-numero="19" data-settore="A" points="1137.8 1523.9 1137.3 1479.6 1106.5 1479.9 1107.3 1532.1 1137.8 1523.9"/>
+      <polygon id="A-14" class="st4" data-numero="14" data-settore="A" points="1082.9 1499.4 1057.1 1500 1057.9 1545.2 1083.4 1538.5 1082.9 1499.4"/>
+      <polygon id="A-15" class="st4" data-numero="15" data-settore="A" points="1082.7 1497 1082.1 1456 1056.4 1456.4 1057.1 1497.4 1082.7 1497"/>
+      <polygon id="A-9" class="st4" data-numero="9" data-settore="A" points="1055.9 1515.3 1055.1 1464.1 1029.5 1464.5 1030.3 1515.7 1055.9 1515.3"/>
+      <polygon id="A-10" class="st4" data-numero="10" data-settore="A" points="1055.1 1461.5 1054.4 1425.7 1028.8 1426.1 1029.5 1461.9 1055.1 1461.5"/>
+      <polygon id="A-3" class="st4" data-numero="3" data-settore="A" points="1006 1476 1005.5 1445.3 979.8 1445.7 980.4 1476.4 1006 1476"/>
+      <polygon id="A-4" class="st4" data-numero="4" data-settore="A" points="1005.5 1442.7 1005.1 1417.1 979.5 1417.5 979.9 1443.1 1005.5 1442.7"/>
+      <polygon id="A-5" class="st4" data-numero="5" data-settore="A" points="1005 1414.6 1004.6 1383.8 978.9 1384.2 979.3 1415 1005 1414.6"/>
+      <polygon id="A-24" class="st4" data-numero="24" data-settore="A" points="813.2 1265.5 849.1 1265 848.3 1213.7 812.3 1214.4 813.2 1265.5"/>
+      <polygon id="A-131" class="st4" data-numero="131" data-settore="A" points="467.4 857.4 452.1 799.2 427.3 805.7 446.6 878.9 467.4 857.4"/>
+      <polygon id="A-20" class="st4" data-numero="20" data-settore="A" points="1137.2 1477.1 1136.7 1436 1105.8 1436.4 1106.3 1477.5 1137.2 1477.1"/>
+      <polygon id="A-21" class="st4" data-numero="21" data-settore="A" points="1136.5 1433.5 1135.9 1392.5 1105 1392.9 1105.7 1433.9 1136.5 1433.5"/>
+      <polygon id="A-16" class="st4" data-numero="16" data-settore="A" points="1082.1 1453.4 1081.4 1412.4 1055.8 1412.8 1056.4 1453.8 1082.1 1453.4"/>
+      <polygon id="A-17" class="st4" data-numero="17" data-settore="A" points="1081.4 1409.8 1080.5 1353.5 1054.8 1353.9 1055.8 1410.2 1081.4 1409.8"/>
+      <polygon id="A-11" class="st4" data-numero="11" data-settore="A" points="1054.4 1423.1 1053.9 1387.2 1028.3 1387.6 1028.8 1423.5 1054.4 1423.1"/>
+      <polygon id="A-12" class="st4" data-numero="12" data-settore="A" points="1053.8 1384.7 1053.1 1343.8 1027.5 1344.2 1028.2 1385.1 1053.8 1384.7"/>
+      <polygon id="A-6" class="st4" data-numero="6" data-settore="A" points="1004.4 1381.3 1004 1350.5 978.4 1350.9 978.8 1381.7 1004.4 1381.3"/>
+      <polygon id="A-7" class="st4" data-numero="7" data-settore="A" points="1003.9 1348 1003.1 1296.8 977.5 1297.2 978.3 1348.4 1003.9 1348"/>
+      <polygon id="A-37" class="st4" data-numero="37" data-settore="A" points="926 1266.4 925.2 1220.4 899.6 1220.8 900.3 1266.8 926 1266.4"/>
+      <polygon id="A-36" class="st4" data-numero="36" data-settore="A" points="872.1 1267.2 897.8 1266.8 897.2 1236.1 871.6 1236.5 872.1 1267.2"/>
+      <polygon id="A-38" class="st4" data-numero="38" data-settore="A" points="925.2 1217.8 924.5 1171.6 898.9 1172 899.6 1218.1 925.2 1217.8"/>
+      <polygon id="A-35" class="st4" data-numero="35" data-settore="A" points="897.2 1233.5 896.4 1182.2 870.8 1182.6 871.6 1233.9 897.2 1233.5"/>
+      <polygon id="A-25" class="st4" data-numero="25" data-settore="A" points="817.5 1211.8 848.2 1211.3 847.5 1165.1 816.8 1165.6 817.5 1211.8"/>
+      <polygon id="A-26" class="st4" data-numero="26" data-settore="A" points="847.4 1162.6 816.7 1163.1 815.9 1116.8 846.7 1116.4 847.4 1162.6"/>
+      <polygon id="A-84" class="st4" data-numero="84" data-settore="A" points="664.3 945 633.6 945.5 634 971.2 664.7 970.6 664.3 945"/>
+      <polygon id="A-85" class="st4" data-numero="85" data-settore="A" points="631 945.5 590 946.2 590.4 971.8 631.4 971.2 631 945.5"/>
+      <polygon id="A-137" class="st4" data-numero="137" data-settore="A" points="488.2 784.3 468.5 789.5 482.1 842.1 498.8 824.9 488.2 784.3"/>
+      <polygon id="A-135" class="st4" data-numero="135" data-settore="A" points="519.7 803.2 505.9 750.5 481 757.1 498.8 824.9 519.7 803.2"/>
+      <polygon id="A-133" class="st4" data-numero="133" data-settore="A" points="475.9 737.3 456 742.4 467.8 787 487.6 781.7 475.9 737.3"/>
+      <polygon id="A-132" class="st4" data-numero="132" data-settore="A" points="451.5 796.6 441 757 416.2 763.5 426.6 803.2 451.5 796.6"/>
+      <polygon id="A-158" class="st4" data-numero="158" data-settore="A" points="440.4 754.4 431.4 719.8 406.6 726.3 415.5 761 440.4 754.4"/>
+      <polygon id="A-134" class="st4" data-numero="134" data-settore="A" points="430.6 717.3 418.9 672.7 394.1 679.2 405.9 723.8 430.6 717.3"/>
+      <polygon id="A-22" class="st4" data-numero="22" data-settore="A" points="1135.9 1389.9 1135.1 1343.6 1104.4 1344.1 1105 1390.3 1135.9 1389.9"/>
+      <polygon id="A-23" class="st4" data-numero="23" data-settore="A" points="1134.9 1341.1 1134.3 1294.9 1103.6 1295.8 1104.2 1341.7 1134.9 1341.1"/>
+      <polygon id="A-18" class="st4" data-numero="18" data-settore="A" points="1080.5 1350.9 1079.6 1294.6 1053.9 1295 1054.8 1351.3 1080.5 1350.9"/>
+      <polygon id="A-13" class="st4" data-numero="13" data-settore="A" points="1053.1 1341.2 1052.5 1295 1026.8 1295.4 1027.5 1341.5 1053.1 1341.2"/>
+      <polygon id="A-65" class="st4" data-numero="65" data-settore="A" points="1051.7 1264.6 1051.4 1228.7 1025.8 1229.1 1026.3 1265 1051.7 1264.6"/>
+      <polygon id="A-51" class="st4" data-numero="51" data-settore="A" points="1002.7 1267.7 1002 1226.7 976.4 1227.1 977.1 1268.1 1002.7 1267.7"/>
+      <polygon id="A-50" class="st4" data-numero="50" data-settore="A" points="974.8 1266.3 973.8 1215.2 948.2 1215.6 949 1266.9 974.8 1266.3"/>
+      <polygon id="A-52" class="st4" data-numero="52" data-settore="A" points="1001.4 1183.1 975.8 1183.5 976.4 1224.5 1002.1 1224.1 1001.4 1183.1"/>
+      <polygon id="A-49" class="st4" data-numero="49" data-settore="A" points="973.8 1212.6 973.2 1171.6 947.5 1172 948.2 1213 973.8 1212.6"/>
+      <polygon id="A-48" class="st4" data-numero="48" data-settore="A" points="973.2 1169 972.4 1127.9 946.9 1128.5 947.6 1169.4 973.2 1169"/>
+      <polygon id="A-39" class="st4" data-numero="39" data-settore="A" points="924.4 1169.1 923.7 1128.1 898.1 1128.5 898.8 1169.5 924.4 1169.1"/>
+      <polygon id="A-34" class="st4" data-numero="34" data-settore="A" points="896.4 1179.6 895.8 1138.7 870.2 1139 870.8 1180 896.4 1179.6"/>
+      <polygon id="A-40" class="st4" data-numero="40" data-settore="A" points="923.7 1125.5 923.1 1084.5 897.5 1084.9 898.1 1125.9 923.7 1125.5"/>
+      <polygon id="A-33" class="st4" data-numero="33" data-settore="A" points="895.6 1136.2 895 1090 869.3 1090.4 870 1136.6 895.6 1136.2"/>
+      <polygon id="A-32" class="st4" data-numero="32" data-settore="A" points="895 1087.4 894.6 1061.8 868.8 1062.3 869.4 1087.8 895 1087.4"/>
+      <polygon id="A-27" class="st4" data-numero="27" data-settore="A" points="846.6 1108.7 815.8 1109.1 815 1063.1 845.8 1062.7 846.6 1108.7"/>
+      <polygon id="A-28" class="st4" data-numero="28" data-settore="A" points="815 1060.5 845.8 1060.1 845 1008.8 814.2 1009.2 815 1060.5"/>
+      <polygon id="A-82" class="st4" data-numero="82" data-settore="A" points="766.8 943.4 725.8 944.1 726.2 969.7 767.2 969.1 766.8 943.4"/>
+      <polygon id="A-83" class="st4" data-numero="83" data-settore="A" points="723.2 944.1 666.9 945 667.3 970.6 723.6 969.7 723.2 944.1"/>
+      <polygon id="A-89" class="st4" data-numero="89" data-settore="A" points="698.2 911.5 723.8 911.1 723.4 880.2 697.8 880.6 698.2 911.5"/>
+      <polygon id="A-86" class="st4" data-numero="86" data-settore="A" points="647 912.3 672.6 911.9 671.9 865.7 646.3 866.1 647 912.3"/>
+      <polygon id="A-136" class="st4" data-numero="136" data-settore="A" points="553.9 767.9 538.1 707.7 513.3 714.1 533.2 789.5 553.9 767.9"/>
+      <polygon id="A-162" class="st4" data-numero="162" data-settore="A" points="505.3 748.2 492.2 698.5 467.5 705 480.5 754.6 505.3 748.2"/>
+      <polygon id="A-160" class="st4" data-numero="160" data-settore="A" points="466.2 700.2 446.3 705.2 455.5 740 475.2 734.8 466.2 700.2"/>
+      <polygon id="A-159" class="st4" data-numero="159" data-settore="A" points="496.6 694.7 486.2 655 456.4 662.8 466.7 702.5 496.6 694.7"/>
+      <polygon id="A-161" class="st4" data-numero="161" data-settore="A" points="456.4 662.8 436.5 668.1 445.6 702.7 465.6 697.6 456.4 662.8"/>
+      <polygon id="A-79" class="st4" data-numero="79" data-settore="A" points="1134.8 1260.6 1134.2 1219.5 1103.4 1219.9 1103.9 1261 1134.8 1260.6"/>
+      <polygon id="A-66" class="st4" data-numero="66" data-settore="A" points="1079.4 1223.1 1053.7 1223.4 1054.4 1264.4 1080 1264 1079.4 1223.1"/>
+      <polygon id="A-67" class="st4" data-numero="67" data-settore="A" points="1079.4 1220.4 1053.8 1220.8 1053.1 1179.9 1078.7 1179.5 1079.4 1220.4"/>
+      <polygon id="A-64" class="st4" data-numero="64" data-settore="A" points="1050.6 1180 1025 1180.4 1025.8 1226.4 1051.4 1226 1050.6 1180"/>
+      <polygon id="A-68" class="st4" data-numero="68" data-settore="A" points="1078.6 1177 1078.1 1135.9 1052.4 1136.3 1052.9 1177.4 1078.6 1177"/>
+      <polygon id="A-63" class="st4" data-numero="63" data-settore="A" points="1050.5 1177.5 1049.9 1146.6 1024.5 1147.1 1024.8 1177.9 1050.5 1177.5"/>
+      <polygon id="A-53" class="st4" data-numero="53" data-settore="A" points="1001.3 1180.7 1000.6 1134.5 975 1134.9 975.6 1181.1 1001.3 1180.7"/>
+      <polygon id="A-54" class="st4" data-numero="54" data-settore="A" points="1000.6 1131.9 1000.1 1101.2 974.5 1101.6 975 1132.3 1000.6 1131.9"/>
+      <polygon id="A-47" class="st4" data-non-in-elenco="true" data-numero="47" data-settore="A" points="972.4 1125.3 972 1099.7 946.4 1100.1 946.9 1125.8 972.4 1125.3"/>
+      <polygon id="A-55_x2F_56" class="st4" data-numero="55/56" data-settore="A" points="1000.1 1098.6 999.3 1052.5 973.7 1052.9 974.5 1099 1000.1 1098.6"/>
+      <polygon id="A-46" class="st4" data-numero="46" data-settore="A" points="971.8 1097.2 971.1 1046 945.4 1046.4 946.2 1097.6 971.8 1097.2"/>
+      <polygon id="A-41" class="st4" data-numero="41" data-settore="A" points="897.5 1082.3 923.1 1081.9 922.4 1041 896.8 1041.4 897.5 1082.3"/>
+      <polygon id="A-42" class="st4" data-numero="42" data-settore="A" points="896.8 1038.7 922.4 1038.4 921.8 997.4 896.1 997.8 896.8 1038.7"/>
+      <polygon id="A-31" class="st4" data-numero="31" data-settore="A" points="868.8 1059.7 894.5 1059.3 893.4 992.7 867.8 993.1 868.8 1059.7"/>
+      <polygon id="A-80" class="st4" data-numero="80" data-settore="A" points="818.7 983.6 818 942.6 792.4 943 793.1 984 818.7 983.6"/>
+      <polygon id="A-81" class="st4" data-numero="81" data-settore="A" points="789.8 943 769.2 943.3 769.6 968.9 790.2 968.7 789.8 943"/>
+      <polygon id="A-95" class="st4" data-numero="95" data-settore="A" points="777.5 910.2 803.2 909.8 802.5 863.6 776.9 864 777.5 910.2"/>
+      <polygon id="A-94" class="st4" data-numero="94" data-settore="A" points="726.4 911.1 752.1 910.7 751.5 869.6 725.8 870.1 726.4 911.1"/>
+      <polygon id="A-93" class="st4" data-numero="93" data-settore="A" points="725.8 867.5 751.4 867.1 750.6 826 725.1 826.5 725.8 867.5"/>
+      <polygon id="A-90" class="st4" data-numero="90" data-settore="A" points="697.7 878.2 723.3 877.8 722.8 841.9 697.2 842.3 697.7 878.2"/>
+      <polygon id="A-90bis" class="st4" data-numero="90bis" data-settore="A" points="697.2 839.7 722.8 839.3 722 788 696.4 788.4 697.2 839.7"/>
+      <polygon id="A-87" class="st4" data-numero="87" data-settore="A" points="646.3 863.5 671.9 863.1 670.9 796.5 645.2 796.9 646.3 863.5"/>
+      <polygon id="A-88" class="st4" data-numero="88" data-settore="A" points="645.1 794.4 670.7 794 669.9 742.8 644.3 743.2 645.1 794.4"/>
+      <polygon id="A-142" class="st4" data-numero="142" data-settore="A" points="574.8 746.2 564.9 708.7 540.1 715.2 553.9 767.9 574.8 746.2"/>
+      <polygon id="A-138" class="st4" data-numero="138" data-settore="A" points="608.2 711.8 597.4 670.8 572.5 677.5 587.1 733.4 608.2 711.8"/>
+      <polygon id="A-139" class="st4" data-numero="139" data-settore="A" points="564.3 706.1 554 666.4 529 673 539.5 712.6 564.3 706.1"/>
+      <polygon id="A-163" class="st4" data-numero="163" data-settore="A" points="537.7 705.2 529.8 675.5 505 682 512.8 711.8 537.7 705.2"/>
+      <polygon id="A-140" class="st4" data-numero="140" data-settore="A" points="553.2 664 546.8 639.2 522 645.7 528.5 670.4 553.2 664"/>
+      <polygon id="A-164" class="st4" data-numero="164" data-settore="A" points="529 673 521.3 643.2 496.5 649.7 504.3 679.5 529 673"/>
+      <polygon id="A-78" class="st4" data-numero="78" data-settore="A" points="1134.1 1217.1 1133.3 1160.6 1102.5 1161 1103.3 1217.4 1134.1 1217.1"/>
+      <polygon id="A-77" class="st4" data-numero="77" data-settore="A" points="1133.2 1158.1 1132.7 1122.2 1101.8 1122.6 1102.3 1158.5 1133.2 1158.1"/>
+      <polygon id="A-76" class="st4" data-numero="76" data-settore="A" points="1101.8 1120 1132.7 1119.6 1132.1 1099.1 1101.4 1099.6 1101.8 1120"/>
+      <polygon id="A-69" class="st4" data-numero="69" data-settore="A" points="1077.9 1133.4 1077.2 1092.5 1051.6 1092.9 1052.3 1133.8 1077.9 1133.4"/>
+      <polygon id="A-62" class="st4" data-numero="62" data-settore="A" points="1050 1144 1049 1092.8 1023.4 1093.2 1024.3 1144.6 1050 1144"/>
+      <polygon id="A-70" class="st4" data-numero="70" data-settore="A" points="1051.6 1090.2 1077.3 1089.8 1076.7 1053.9 1051.1 1054.3 1051.6 1090.2"/>
+      <polygon id="A-61" class="st4" data-numero="61" data-settore="A" points="1023.4 1090.6 1049 1090.2 1048.4 1044.1 1022.8 1044.4 1023.4 1090.6"/>
+      <polygon id="A-57" class="st4" data-numero="57" data-settore="A" points="999.3 1049.9 998.2 988.5 972.6 988.9 973.7 1050.3 999.3 1049.9"/>
+      <polygon id="A-45" class="st4" data-numero="45" data-settore="A" points="971.1 1043.4 970.3 997.3 944.6 997.7 945.4 1043.8 971.1 1043.4"/>
+      <polygon id="A-44" class="st4" data-numero="44" data-settore="A" points="970.3 994.7 969.5 943.5 943.8 943.9 944.6 995.1 970.3 994.7"/>
+      <polygon id="A-43" class="st4" data-numero="43" data-settore="A" points="921.8 994.8 920.7 943.5 895.2 944.1 896.1 995.2 921.8 994.8"/>
+      <polygon id="A-30" class="st4" data-numero="30" data-settore="A" points="893.4 990.1 892.6 944.1 867 944.5 867.8 990.5 893.4 990.1"/>
+      <polygon id="A-105" class="st4" data-numero="105" data-settore="A" points="911 908 910.5 877.3 884.9 877.7 885.3 908.6 911 908"/>
+      <polygon id="A-101" class="st4" data-numero="101" data-settore="A" points="882.7 908.6 882.3 877.7 856.7 878.1 857 909 882.7 908.6"/>
+      <polygon id="A-100" class="st4" data-numero="100" data-settore="A" points="805.8 909.8 831.4 909.4 830.9 868.2 805.3 868.6 805.8 909.8"/>
+      <polygon id="A-99bis" class="st4" data-numero="99bis" data-settore="A" points="805.1 866.2 830.8 865.8 830.1 824.8 804.5 825.2 805.1 866.2"/>
+      <polygon id="A-96" class="st4" data-numero="96" data-settore="A" points="776.9 861.4 802.5 861 801.7 814.9 776.1 815.3 776.9 861.4"/>
+      <polygon id="A-93bis" class="st4" data-numero="93bis" data-settore="A" points="725.1 823.9 750.6 823.4 750 782.4 724.3 782.8 725.1 823.9"/>
+      <polygon id="A-92" class="st4" data-numero="92" data-settore="A" points="724.3 780.2 750 779.8 749.3 738.8 723.7 739.2 724.3 780.2"/>
+      <polygon id="A-91" class="st4" data-numero="91" data-settore="A" points="696.2 785.9 721.8 785.6 721.2 739.4 695.6 739.8 696.2 785.9"/>
+      <polygon id="A-141" class="st4" data-numero="141" data-settore="A" points="642.4 676.3 633 640.5 603.2 648.3 617.3 702.1 642.4 676.3"/>
+      <polygon id="A-166" class="st4" data-numero="166" data-settore="A" points="632.3 638 625.8 613.3 596.1 620.9 602.6 645.7 632.3 638"/>
+      <polygon id="A-165" class="st4" data-numero="165" data-settore="A" points="596.8 668.5 586.3 628.7 561.4 635.3 572 675 596.8 668.5"/>
+      <polygon id="A-149" class="st4" data-numero="149" data-settore="A" points="1307.2 1263.9 1338 1263.6 1337.2 1222.4 1306.5 1223 1307.2 1263.9"/>
+      <polygon id="A-143" class="st4" data-numero="143" data-settore="A" points="1253.5 1264.9 1284.2 1264.3 1283.4 1213.1 1252.7 1213.6 1253.5 1264.9"/>
+      <polygon id="A-144" class="st4" data-numero="144" data-settore="A" points="1252.7 1213.6 1283.4 1213.1 1282.6 1167 1251.9 1167.6 1252.7 1213.6"/>
+      <polygon id="A-75" class="st4" data-numero="75" data-settore="A" points="1101.4 1097 1132.1 1096.4 1131.3 1050.4 1100.6 1050.9 1101.4 1097"/>
+      <polygon id="A-74" class="st4" data-numero="74" data-settore="A" points="1100.6 1048.3 1131.3 1047.8 1130.4 991.5 1099.7 992 1100.6 1048.3"/>
+      <polygon id="A-71" class="st4" data-numero="71" data-settore="A" points="1051.1 1051.7 1076.7 1051.3 1075.7 989.9 1050.1 990.3 1051.1 1051.7"/>
+      <polygon id="A-60" class="st4" data-numero="60" data-settore="A" points="1022.6 1042 1048.2 1041.6 1047.4 990.3 1021.8 990.7 1022.6 1042"/>
+      <polygon id="A-72" class="st4" data-numero="72" data-settore="A" points="1075.7 987.3 1074.9 941.3 1049.3 941.7 1050.1 987.7 1075.7 987.3"/>
+      <polygon id="A-59" class="st4" data-numero="59" data-settore="A" points="1047.4 987.7 1046.7 941.7 1021 942.1 1021.8 988.1 1047.4 987.7"/>
+      <polygon id="A-58" class="st4" data-numero="58" data-settore="A" points="998.2 985.9 997.6 944.9 971.9 945.3 972.6 986.3 998.2 985.9"/>
+      <polygon id="A-109" class="st4" data-numero="109" data-settore="A" points="968.8 907.1 968.2 866.1 942.5 866.5 942.8 907.7 968.8 907.1"/>
+      <polygon id="A-106" class="st4" data-numero="106" data-settore="A" points="910.5 874.7 909.8 833.8 884.2 834.2 884.9 875.1 910.5 874.7"/>
+      <polygon id="A-102" class="st4" data-numero="102" data-settore="A" points="882.3 875.1 881.3 824 855.7 824.4 856.5 875.7 882.3 875.1"/>
+      <polygon id="A-107" class="st4" data-numero="107" data-settore="A" points="909.7 831.3 909.2 795.4 883.6 795.8 884.1 831.7 909.7 831.3"/>
+      <polygon id="A-103" class="st4" data-numero="103" data-settore="A" points="881.3 821.4 880.7 780.4 855.1 780.8 855.7 821.8 881.3 821.4"/>
+      <polygon id="A-99" class="st4" data-numero="99" data-settore="A" points="804.5 822.6 830.1 822.2 829.4 781.2 803.8 781.6 804.5 822.6"/>
+      <polygon id="A-98" class="st4" data-numero="98" data-settore="A" points="803.8 779 829.4 778.6 828.8 737.6 803.2 738 803.8 779"/>
+      <polygon id="A-97" class="st4" data-numero="97" data-settore="A" points="776.1 812.7 801.7 812.3 800.5 740.6 774.9 741 776.1 812.7"/>
+      <polygon id="A-130" class="st4" data-numero="130" data-settore="A" points="744 705.7 743.6 680 784.6 679.4 785 705 744 705.7"/>
+      <polygon id="A-150" class="st4" data-numero="150" data-settore="A" points="1306.5 1220.4 1337.2 1219.8 1336.4 1168.6 1305.8 1169.1 1306.5 1220.4"/>
+      <polygon id="A-151" class="st4" data-numero="151" data-settore="A" points="1305.8 1166.5 1336.4 1166 1335.8 1125 1305.1 1125.5 1305.8 1166.5"/>
+      <polygon id="A-145" class="st4" data-numero="145" data-settore="A" points="1251.7 1167.4 1282.6 1167 1281.8 1115.8 1250.9 1116.2 1251.7 1167.4"/>
+      <polygon id="A-146" class="st4" data-numero="146" data-settore="A" points="1251 1116.2 1281.8 1115.8 1281.1 1074.8 1250.3 1075.2 1251 1116.2"/>
+      <polygon id="A-147" class="st4" data-numero="147" data-settore="A" points="1250.3 1075.2 1281.1 1074.8 1280.7 1049.2 1249.9 1049.6 1250.3 1075.2"/>
+      <polygon id="A-73" class="st4" data-numero="73" data-settore="A" points="1130.4 988.9 1129.6 937.6 1098.9 938.1 1099.7 989.4 1130.4 988.9"/>
+      <polygon id="A-120" class="st4" data-numero="120" data-settore="A" points="1074.9 905.4 1074.3 864.4 1048.7 864.8 1049.2 905.9 1074.9 905.4"/>
+      <polygon id="A-117" class="st4" data-numero="117" data-settore="A" points="1020.5 906.5 1046.3 905.9 1045.8 854.7 1020.3 855.2 1020.5 906.5"/>
+      <polygon id="A-113" class="st4" data-numero="113" data-settore="A" points="996.2 860.7 970.6 861.1 971.4 907.1 997 906.7 996.2 860.7"/>
+      <polygon id="A-114" class="st4" data-numero="114" data-settore="A" points="996.2 858.1 995.7 822.2 970.1 822.6 970.6 858.5 996.2 858.1"/>
+      <polygon id="A-110" class="st4" data-numero="110" data-settore="A" points="968.2 863.5 967.5 822.6 941.9 823 942.5 863.9 968.2 863.5"/>
+      <polygon id="A-115" class="st4" data-numero="115" data-settore="A" points="995.6 819.7 995.1 778.6 969.4 779 970 820.1 995.6 819.7"/>
+      <polygon id="A-111" class="st4" data-numero="111" data-settore="A" points="967.3 820.1 966.8 779 941.2 779.4 941.7 820.5 967.3 820.1"/>
+      <polygon id="A-112" class="st4" data-numero="112" data-settore="A" points="966.7 776.5 966 735.5 940.4 735.9 941.1 776.9 966.7 776.5"/>
+      <polygon id="A-107bis" class="st4" data-numero="107bis" data-settore="A" points="909.2 792.8 908.5 761.9 883 762.5 883.6 793.2 909.2 792.8"/>
+      <polygon id="A-108" class="st4" data-numero="108" data-settore="A" points="908.5 759.3 908.1 733.7 882.6 734.3 883 759.9 908.5 759.3"/>
+      <polygon id="A-104" class="st4" data-numero="104" data-settore="A" points="880.7 777.8 880 736.9 854.4 737.3 855.1 778.2 880.7 777.8"/>
+      <polygon id="A-127" class="st4" data-numero="127" data-settore="A" points="864.5 703.8 864 678.2 905 677.5 905.4 703.2 864.5 703.8"/>
+      <polygon id="A-128" class="st4" data-numero="128" data-settore="A" points="820.9 704.5 820.5 678.9 861.5 678.2 861.8 703.8 820.9 704.5"/>
+      <polygon id="A-129" class="st4" data-numero="129" data-settore="A" points="787.6 705 787.2 679.4 817.9 678.8 818.3 704.5 787.6 705"/>
+      <polygon id="A-152" class="st4" data-numero="152" data-settore="A" points="1304.9 1123.1 1335.6 1122.5 1334.7 1061 1304 1061.5 1304.9 1123.1"/>
+      <polygon id="A-153" class="st4" data-numero="153" data-settore="A" points="1304 1058.9 1334.7 1058.4 1334.1 1017.4 1303.4 1017.9 1304 1058.9"/>
+      <polygon id="A-148" class="st4" data-numero="148" data-settore="A" points="1249.9 1049.6 1280.7 1049.2 1280.2 1008.1 1249.4 1008.5 1249.9 1049.6"/>
+      <polygon id="A-124" class="st4" data-numero="124" data-settore="A" points="1129.1 904.6 1128.3 853.3 1102.7 853.7 1103.5 905 1129.1 904.6"/>
+      <polygon id="A-125" class="st4" data-numero="125" data-settore="A" points="1128.2 850.9 1127.4 799.6 1101.7 800 1102.5 851.3 1128.2 850.9"/>
+      <polygon id="A-121" class="st4" data-numero="121" data-settore="A" points="1074.1 861.7 1073.5 820.7 1047.7 821.2 1048.5 862.1 1074.1 861.7"/>
+      <polygon id="A-118" class="st4" data-numero="118" data-settore="A" points="1045.8 852.1 1045 800.8 1019.4 801.2 1020.3 852.6 1045.8 852.1"/>
+      <polygon id="A-123" class="st4" data-numero="123" data-settore="A" points="1073.3 818.2 1072.4 772 1046.8 772.4 1047.7 818.6 1073.3 818.2"/>
+      <polygon id="A-118bis" class="st4" data-numero="118bis" data-settore="A" points="1044.8 798.4 1044.3 762.4 1018.7 762.8 1019.2 798.7 1044.8 798.4"/>
+      <polygon id="A-116" class="st4" data-numero="116" data-settore="A" points="994.9 776.1 994.3 735.2 968.6 735.5 969.3 776.5 994.9 776.1"/>
+      <polygon id="A-126" class="st4" data-numero="126" data-settore="A" points="908 703.2 959.3 702.4 958.9 676.8 907.6 677.5 908 703.2"/>
+      <polygon id="A-154" class="st4" data-numero="154" data-settore="A" points="881.7 611.2 881.3 585.6 904.4 585.3 904.8 610.9 881.7 611.2"/>
+      <polygon id="A-155" class="st4" data-numero="155" data-settore="A" points="850.6 586.1 851 611.7 881.7 611.2 881.3 585.6 850.6 586.1"/>
+      <polygon id="A-156" class="st4" data-numero="156" data-settore="A" points="819.9 586.6 820.3 612.3 851 611.7 850.6 586.1 819.9 586.6"/>
+      <polygon id="A-157" class="st4" data-numero="157" data-settore="A" points="789.5 612.6 820.3 612.3 819.9 586.6 789 587 789.5 612.6"/>
     </g>
     <g id="Settore_B" data-nome="Abbigliamento usato">
-      <polygon id="B-7" data-settore="B" data-numero="7" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1432.73,974.02 1431.94,922.77 1411.52,923.17 1412.31,974.43"/>
-      <polygon id="B-5" data-settore="B" data-numero="5" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1412.31,974.43 1411.4,912.9 1390.83,913.15 1391.75,974.69"/>
-      <polygon id="B-1" data-settore="B" data-numero="1" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1339.58,913.95 1370.28,913.41 1371.34,975.09 1340.5,975.48"/>
-      <polygon id="B-2" data-settore="B" data-numero="2" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1338.78,867.9 1369.47,867.37 1370.28,913.41 1339.58,913.94"/>
-      <polygon id="B-10" data-settore="B" data-numero="10" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1518.08,924.21 1518.87,972.57 1488.18,973.1 1487.39,924.74"/>
-      <polygon id="B-9" data-settore="B" data-numero="9" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1466.83,921.23 1466.04,872.3 1450.54,872.42 1451.49,921.5"/>
-      <polygon id="B-8" data-settore="B" data-numero="8" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1431.94,922.77 1431.28,876.58 1410.87,876.99 1411.52,923.17"/>
-      <polygon id="B-6" data-settore="B" data-numero="6" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1411.4,912.9 1410.6,861.64 1390.04,861.9 1390.83,913.15"/>
-      <polygon id="B-3" data-settore="B" data-numero="3" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1338.78,867.9 1369.47,867.37 1368.56,805.84 1337.86,806.36"/>
-      <polygon id="B-4" data-settore="B" data-numero="4" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1367.91,757.62 1368.56,805.84 1337.86,806.37 1336.54,726.45"/>
+      <polygon id="B-7" class="st4" data-numero="7" data-settore="B" points="1432.7 1262 1431.9 1210.7 1411.5 1211.1 1412.3 1262.4 1432.7 1262"/>
+      <polygon id="B-5" class="st4" data-numero="5" data-settore="B" points="1412.3 1262.4 1411.4 1200.8 1390.8 1201.1 1391.8 1262.6 1412.3 1262.4"/>
+      <polygon id="B-1" class="st4" data-numero="1" data-settore="B" points="1339.6 1201.9 1370.3 1201.3 1371.3 1263 1340.5 1263.4 1339.6 1201.9"/>
+      <polygon id="B-2" class="st4" data-numero="2" data-settore="B" points="1338.8 1155.8 1369.5 1155.3 1370.3 1201.3 1339.6 1201.9 1338.8 1155.8"/>
+      <polygon id="B-10" class="st4" data-numero="10" data-settore="B" points="1518.1 1212.1 1518.9 1260.5 1488.2 1261 1487.4 1212.7 1518.1 1212.1"/>
+      <polygon id="B-9" class="st4" data-numero="9" data-settore="B" points="1466.8 1209.2 1466 1160.2 1450.5 1160.4 1451.5 1209.4 1466.8 1209.2"/>
+      <polygon id="B-8" class="st4" data-numero="8" data-settore="B" points="1431.9 1210.7 1431.3 1164.5 1410.9 1164.9 1411.5 1211.1 1431.9 1210.7"/>
+      <polygon id="B-6" class="st4" data-numero="6" data-settore="B" points="1411.4 1200.8 1410.6 1149.6 1390 1149.8 1390.8 1201.1 1411.4 1200.8"/>
+      <polygon id="B-3" class="st4" data-numero="3" data-settore="B" points="1338.8 1155.8 1369.5 1155.3 1368.6 1093.8 1337.9 1094.3 1338.8 1155.8"/>
+      <polygon id="B-4" class="st4" data-numero="4" data-settore="B" points="1367.9 1045.6 1368.6 1093.8 1337.9 1094.3 1336.5 1014.4 1367.9 1045.6"/>
     </g>
     <g id="Settore_C" data-nome="Alimentare">
-      <polygon id="C-3" data-settore="C" data-numero="3" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1516.36,1104.03 1495.94,1104.43 1496.32,1140.77 1516.88,1135.3"/>
-      <polygon id="C-1" data-settore="C" data-numero="1" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1494.19,1109.93 1473.63,1110.19 1474.16,1146.67 1494.72,1141.21"/>
-      <polygon id="C-10" data-settore="C" data-numero="10" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1587.76,1082.56 1562.14,1082.96 1562.8,1123.06 1588.29,1116.44"/>
-      <polygon id="C-7" data-settore="C" data-numero="7" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1560.4,1083.24 1534.78,1083.64 1535.42,1130.41 1561.07,1123.64"/>
-      <polygon id="C-8" data-settore="C" data-numero="8" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1559.74,1042.27 1534.11,1042.67 1534.78,1083.64 1560.4,1083.24"/>
-      <polygon id="C-5" data-settore="C" data-numero="5" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1515.83,1068.12 1495.42,1068.53 1495.94,1104.43 1516.36,1104.03"/>
-      <polygon id="C-2" data-settore="C" data-numero="2" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1493.53,1068.95 1472.97,1069.21 1473.63,1110.19 1494.19,1109.93"/>
-      <polygon id="C-6" data-settore="C" data-numero="6" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1515.16,1032.36 1494.6,1032.62 1495.42,1068.53 1515.83,1068.12"/>
-      <polygon id="C-4" data-settore="C" data-numero="4" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1492.87,1027.98 1472.31,1028.24 1472.97,1069.21 1493.53,1068.95"/>
-      <polygon id="C-11" data-settore="C" data-numero="11" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1587.25,1041.44 1561.62,1041.84 1562.14,1082.96 1587.76,1082.56"/>
-      <polygon id="C-12" data-settore="C" data-numero="12" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1586.45,1000.32 1560.96,1000.86 1561.62,1041.84 1587.25,1041.44"/>
-      <polygon id="C-9" data-settore="C" data-numero="9" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1559.07,1001.3 1533.45,1001.69 1534.11,1042.67 1559.74,1042.27"/>
+      <polygon id="C-3" class="st4" data-numero="3" data-settore="C" points="1516.4 1392 1495.9 1392.4 1496.3 1428.7 1516.9 1423.2 1516.4 1392"/>
+      <polygon id="C-1" class="st4" data-numero="1" data-settore="C" points="1494.2 1397.9 1473.6 1398.1 1474.2 1434.6 1494.7 1429.1 1494.2 1397.9"/>
+      <polygon id="C-10" class="st4" data-numero="10" data-settore="C" points="1587.8 1370.5 1562.1 1370.9 1562.8 1411 1588.3 1404.4 1587.8 1370.5"/>
+      <polygon id="C-7" class="st4" data-numero="7" data-settore="C" points="1560.4 1371.2 1534.8 1371.6 1535.4 1418.3 1561.1 1411.6 1560.4 1371.2"/>
+      <polygon id="C-8" class="st4" data-numero="8" data-settore="C" points="1559.7 1330.2 1534.1 1330.6 1534.8 1371.6 1560.4 1371.2 1559.7 1330.2"/>
+      <polygon id="C-5" class="st4" data-numero="5" data-settore="C" points="1515.8 1356.1 1495.4 1356.5 1495.9 1392.4 1516.4 1392 1515.8 1356.1"/>
+      <polygon id="C-2" class="st4" data-numero="2" data-settore="C" points="1493.5 1356.9 1473 1357.1 1473.6 1398.1 1494.2 1397.9 1493.5 1356.9"/>
+      <polygon id="C-6" class="st4" data-numero="6" data-settore="C" points="1515.2 1320.3 1494.6 1320.6 1495.4 1356.5 1515.8 1356.1 1515.2 1320.3"/>
+      <polygon id="C-4" class="st4" data-numero="4" data-settore="C" points="1492.9 1315.9 1472.3 1316.2 1473 1357.1 1493.5 1356.9 1492.9 1315.9"/>
+      <polygon id="C-11" class="st4" data-numero="11" data-settore="C" points="1587.2 1329.4 1561.6 1329.8 1562.1 1370.9 1587.8 1370.5 1587.2 1329.4"/>
+      <polygon id="C-12" class="st4" data-numero="12" data-settore="C" points="1586.4 1288.3 1561 1288.8 1561.6 1329.8 1587.2 1329.4 1586.4 1288.3"/>
+      <polygon id="C-9" class="st4" data-numero="9" data-settore="C" points="1559.1 1289.2 1533.4 1289.6 1534.1 1330.6 1559.7 1330.2 1559.1 1289.2"/>
     </g>
     <g id="Settore_D" data-nome="Calzature">
-      <polygon id="D-7" data-settore="D" data-numero="7" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="736.77,1342.59 735.99,1285.83 704.57,1286.51 705.63,1350.79"/>
-      <polygon id="D-1" data-settore="D" data-numero="1" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="682.6,1356.99 681.81,1305.73 656.18,1306.12 657.11,1363.6"/>
-      <polygon id="D-2" data-settore="D" data-numero="2" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="681.67,1303.27 680.88,1252.01 655.25,1252.41 656.04,1303.67"/>
-      <polygon id="D-20" data-settore="D" data-numero="20" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="812.81,1322.29 812.03,1271.04 786.39,1271.43 787.32,1329.21"/>
-      <polygon id="D-13/14" data-settore="D" data-numero="13/14" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="763.85,1335.25 763.07,1283.99 737.44,1284.38 738.36,1342.16"/>
-      <polygon id="D-15" data-settore="D" data-numero="15" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="762.93,1281.53 762.26,1240.56 736.64,1240.95 737.3,1281.93"/>
-      <polygon id="D-8" data-settore="D" data-numero="8" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="735.85,1283.37 735.19,1237.18 703.92,1237.72 704.58,1284.19"/>
-      <polygon id="D-9" data-settore="D" data-numero="9" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="735.2,1234.58 734.27,1183.47 702.99,1184.0 703.78,1235.26"/>
-      <polygon id="D-3" data-settore="D" data-numero="3" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="680.89,1249.41 680.09,1198.15 654.47,1198.55 655.26,1249.8"/>
-      <polygon id="D-4" data-settore="D" data-numero="4" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="680.1,1195.55 679.16,1144.44 653.54,1144.83 654.47,1195.95"/>
-      <polygon id="D-32" data-settore="D" data-numero="32" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="899.14,1299.55 898.35,1246.55 867.65,1247.09 868.43,1307.61"/>
-      <polygon id="D-26" data-settore="D" data-numero="26" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="845.11,1313.8 844.19,1257.48 813.35,1257.87 814.41,1321.86"/>
-      <polygon id="D-27/28" data-settore="D" data-numero="27/28" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="844.19,1254.87 843.26,1198.55 812.42,1198.93 813.35,1255.26"/>
-      <polygon id="D-21" data-settore="D" data-numero="21" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="812.02,1268.43 811.1,1212.11 785.48,1212.5 786.4,1268.83"/>
-      <polygon id="D-22" data-settore="D" data-numero="22" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="811.11,1209.5 810.17,1158.4 784.54,1158.79 785.48,1209.9"/>
-      <polygon id="D-16" data-settore="D" data-numero="16" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="762.27,1237.95 761.48,1186.7 735.85,1187.09 736.64,1238.35"/>
-      <polygon id="D-17" data-settore="D" data-numero="17" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="761.48,1184.09 760.69,1132.84 734.92,1133.38 735.85,1184.49"/>
-      <polygon id="D-10" data-settore="D" data-numero="10" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="734.26,1180.86 733.48,1129.61 702.06,1129.99 702.99,1181.39"/>
-      <polygon id="D-5" data-settore="D" data-numero="5" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="679.17,1141.83 678.25,1080.29 652.62,1080.69 653.54,1142.23"/>
-      <polygon id="D-6" data-settore="D" data-numero="6" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="678.25,1077.69 677.32,1021.37 651.7,1021.76 652.62,1078.09"/>
-      <polygon id="D-42" data-settore="D" data-numero="42" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="932.45,1290.62 931.51,1240.38 900.82,1240.91 901.74,1298.68"/>
-      <polygon id="D-41" data-settore="D" data-numero="41" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="931.52,1237.78 931.26,1217.22 900.42,1217.89 900.82,1238.31"/>
-      <polygon id="D-33" data-settore="D" data-numero="33" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="898.21,1244.1 897.56,1197.9 866.72,1198.3 867.51,1244.63"/>
-      <polygon id="D-34" data-settore="D" data-numero="34" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="897.56,1195.3 896.63,1138.98 865.8,1139.37 866.72,1195.69"/>
-      <polygon id="D-29" data-settore="D" data-numero="29" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="843.26,1195.94 842.19,1139.47 811.5,1140.01 812.43,1196.33"/>
-      <polygon id="D-23" data-settore="D" data-numero="23" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="810.17,1155.79 809.51,1114.81 783.89,1115.21 784.55,1156.18"/>
-      <polygon id="D-24" data-settore="D" data-numero="24" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="809.52,1112.21 808.85,1071.23 783.23,1071.62 783.88,1112.6"/>
-      <polygon id="D-18" data-settore="D" data-numero="18" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="760.55,1130.37 759.63,1068.84 734.0,1069.23 734.92,1130.77"/>
-      <polygon id="D-11" data-settore="D" data-numero="11" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="733.48,1127.0 732.42,1065.61 701.58,1066.0 702.06,1127.39"/>
-      <polygon id="D-19" data-settore="D" data-numero="19" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="759.64,1066.24 758.7,1015.12 733.08,1015.52 734.01,1066.63"/>
-      <polygon id="D-12" data-settore="D" data-numero="12" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="732.28,1062.87 731.63,1016.67 700.93,1017.21 701.58,1063.39"/>
-      <polygon id="D-43" data-settore="D" data-numero="43" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="980.25,1277.95 979.33,1216.14 953.7,1216.53 954.76,1284.58"/>
-      <polygon id="D-44" data-settore="D" data-numero="44" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="979.34,1213.52 978.54,1167.49 952.91,1167.88 953.71,1213.92"/>
-      <polygon id="D-40" data-settore="D" data-numero="40" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="931.41,1215.34 930.33,1164.08 899.49,1164.46 900.57,1215.72"/>
-      <polygon id="D-39" data-settore="D" data-numero="39" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="930.33,1161.47 929.4,1110.36 898.56,1110.75 899.49,1161.86"/>
-      <polygon id="D-35" data-settore="D" data-numero="35" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="896.64,1136.38 865.8,1136.76 864.86,1085.65 895.7,1085.26"/>
-      <polygon id="D-30" data-settore="D" data-numero="30" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="842.2,1136.87 841.27,1080.55 810.58,1081.08 811.5,1137.4"/>
-      <polygon id="D-31" data-settore="D" data-numero="31" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="841.28,1077.95 840.21,1016.55 809.52,1017.08 810.58,1078.47"/>
-      <polygon id="D-25" data-settore="D" data-numero="25" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="808.86,1068.63 783.23,1069.02 782.43,1022.97 808.06,1022.58"/>
-      <polygon id="D-45" data-settore="D" data-numero="45" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="978.54,1164.88 977.88,1123.9 952.25,1124.3 952.92,1165.27"/>
-      <polygon id="D-46" data-settore="D" data-numero="46" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="977.88,1121.3 976.95,1070.19 951.32,1070.58 952.25,1121.69"/>
-      <polygon id="D-38" data-settore="D" data-numero="38" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="929.4,1107.76 928.35,1035.94 897.52,1036.33 898.56,1108.14"/>
-      <polygon id="D-36" data-settore="D" data-numero="36" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="895.71,1082.66 864.87,1083.05 864.22,1036.86 895.05,1036.47"/>
-      <polygon id="D-37" data-settore="D" data-numero="37" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="926.8,1007.71 863.68,1008.77 864.08,1034.4 927.2,1033.33"/>
-      <polygon id="D-47" data-settore="D" data-numero="47" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="976.95,1067.58 976.3,1021.4 950.67,1021.79 951.33,1067.98"/>
+      <polygon id="D-7" class="st4" data-numero="7" data-settore="D" points="736.8 1630.5 736 1573.8 704.6 1574.4 705.6 1638.7 736.8 1630.5"/>
+      <polygon id="D-1" class="st4" data-numero="1" data-settore="D" points="682.6 1644.9 681.8 1593.7 656.2 1594.1 657.1 1651.5 682.6 1644.9"/>
+      <polygon id="D-2" class="st4" data-numero="2" data-settore="D" points="681.7 1591.2 680.9 1539.9 655.2 1540.3 656 1591.6 681.7 1591.2"/>
+      <polygon id="D-20" class="st4" data-numero="20" data-settore="D" points="812.8 1610.2 812 1559 786.4 1559.4 787.3 1617.1 812.8 1610.2"/>
+      <polygon id="D-13_x2F_14" class="st4" data-numero="13/14" data-settore="D" points="763.8 1623.2 763.1 1571.9 737.4 1572.3 738.4 1630.1 763.8 1623.2"/>
+      <polygon id="D-15" class="st4" data-numero="15" data-settore="D" points="762.9 1569.5 762.3 1528.5 736.6 1528.9 737.3 1569.9 762.9 1569.5"/>
+      <polygon id="D-8" class="st4" data-numero="8" data-settore="D" points="735.8 1571.3 735.2 1525.1 703.9 1525.7 704.6 1572.1 735.8 1571.3"/>
+      <polygon id="D-9" class="st4" data-numero="9" data-settore="D" points="735.2 1522.5 734.3 1471.4 703 1471.9 703.8 1523.2 735.2 1522.5"/>
+      <polygon id="D-3" class="st4" data-numero="3" data-settore="D" points="680.9 1537.3 680.1 1486.1 654.5 1486.5 655.3 1537.7 680.9 1537.3"/>
+      <polygon id="D-4" class="st4" data-numero="4" data-settore="D" points="680.1 1483.5 679.2 1432.4 653.5 1432.8 654.5 1483.9 680.1 1483.5"/>
+      <polygon id="D-32" class="st4" data-numero="32" data-settore="D" points="899.1 1587.5 898.3 1534.5 867.7 1535 868.4 1595.5 899.1 1587.5"/>
+      <polygon id="D-26" class="st4" data-numero="26" data-settore="D" points="845.1 1601.7 844.2 1545.4 813.3 1545.8 814.4 1609.8 845.1 1601.7"/>
+      <polygon id="D-27_x2F_28" class="st4" data-numero="27/28" data-settore="D" points="844.2 1542.8 843.3 1486.5 812.4 1486.9 813.3 1543.2 844.2 1542.8"/>
+      <polygon id="D-21" class="st4" data-numero="21" data-settore="D" points="812 1556.4 811.1 1500 785.5 1500.4 786.4 1556.8 812 1556.4"/>
+      <polygon id="D-22" class="st4" data-numero="22" data-settore="D" points="811.1 1497.4 810.2 1446.3 784.5 1446.7 785.5 1497.8 811.1 1497.4"/>
+      <polygon id="D-16" class="st4" data-numero="16" data-settore="D" points="762.3 1525.9 761.5 1474.6 735.8 1475 736.6 1526.3 762.3 1525.9"/>
+      <polygon id="D-17" class="st4" data-numero="17" data-settore="D" points="761.5 1472 760.7 1420.8 734.9 1421.3 735.8 1472.4 761.5 1472"/>
+      <polygon id="D-10" class="st4" data-numero="10" data-settore="D" points="734.3 1468.8 733.5 1417.5 702.1 1417.9 703 1469.3 734.3 1468.8"/>
+      <polygon id="D-5" class="st4" data-numero="5" data-settore="D" points="679.2 1429.8 678.2 1368.2 652.6 1368.6 653.5 1430.2 679.2 1429.8"/>
+      <polygon id="D-6" class="st4" data-numero="6" data-settore="D" points="678.2 1365.6 677.3 1309.3 651.7 1309.7 652.6 1366 678.2 1365.6"/>
+      <polygon id="D-42" class="st4" data-numero="42" data-settore="D" points="932.5 1578.6 931.5 1528.3 900.8 1528.8 901.7 1586.6 932.5 1578.6"/>
+      <polygon id="D-41" class="st4" data-numero="41" data-settore="D" points="931.5 1525.7 931.3 1505.2 900.4 1505.8 900.8 1526.2 931.5 1525.7"/>
+      <polygon id="D-33" class="st4" data-numero="33" data-settore="D" points="898.2 1532 897.6 1485.8 866.7 1486.2 867.5 1532.6 898.2 1532"/>
+      <polygon id="D-34" class="st4" data-numero="34" data-settore="D" points="897.6 1483.2 896.6 1426.9 865.8 1427.3 866.7 1483.6 897.6 1483.2"/>
+      <polygon id="D-29" class="st4" data-numero="29" data-settore="D" points="843.3 1483.9 842.2 1427.4 811.5 1427.9 812.4 1484.3 843.3 1483.9"/>
+      <polygon id="D-23" class="st4" data-numero="23" data-settore="D" points="810.2 1443.7 809.5 1402.7 783.9 1403.1 784.5 1444.1 810.2 1443.7"/>
+      <polygon id="D-24" class="st4" data-numero="24" data-settore="D" points="809.5 1400.1 808.8 1359.2 783.2 1359.6 783.9 1400.5 809.5 1400.1"/>
+      <polygon id="D-18" class="st4" data-numero="18" data-settore="D" points="760.5 1418.3 759.6 1356.8 734 1357.2 734.9 1418.7 760.5 1418.3"/>
+      <polygon id="D-11" class="st4" data-numero="11" data-settore="D" points="733.5 1414.9 732.4 1353.5 701.6 1353.9 702.1 1415.3 733.5 1414.9"/>
+      <polygon id="D-19" class="st4" data-numero="19" data-settore="D" points="759.6 1354.2 758.7 1303.1 733.1 1303.5 734 1354.6 759.6 1354.2"/>
+      <polygon id="D-12" class="st4" data-numero="12" data-settore="D" points="732.3 1350.8 731.6 1304.6 700.9 1305.1 701.6 1351.3 732.3 1350.8"/>
+      <polygon id="D-43" class="st4" data-numero="43" data-settore="D" points="980.2 1565.9 979.3 1504.1 953.7 1504.5 954.8 1572.5 980.2 1565.9"/>
+      <polygon id="D-44" class="st4" data-numero="44" data-settore="D" points="979.3 1501.5 978.5 1455.4 952.9 1455.8 953.7 1501.9 979.3 1501.5"/>
+      <polygon id="D-40" class="st4" data-numero="40" data-settore="D" points="931.4 1503.3 930.3 1452 899.5 1452.4 900.6 1503.7 931.4 1503.3"/>
+      <polygon id="D-39" class="st4" data-numero="39" data-settore="D" points="930.3 1449.4 929.4 1398.3 898.6 1398.7 899.5 1449.8 930.3 1449.4"/>
+      <polygon id="D-35" class="st4" data-numero="35" data-settore="D" points="896.6 1424.3 865.8 1424.7 864.9 1373.6 895.7 1373.2 896.6 1424.3"/>
+      <polygon id="D-30" class="st4" data-numero="30" data-settore="D" points="842.2 1424.8 841.3 1368.5 810.6 1369 811.5 1425.3 842.2 1424.8"/>
+      <polygon id="D-31" class="st4" data-numero="31" data-settore="D" points="841.3 1365.9 840.2 1304.5 809.5 1305 810.6 1366.4 841.3 1365.9"/>
+      <polygon id="D-25" class="st4" data-numero="25" data-settore="D" points="808.9 1356.6 783.2 1357 782.4 1310.9 808.1 1310.5 808.9 1356.6"/>
+      <polygon id="D-45" class="st4" data-numero="45" data-settore="D" points="978.5 1452.8 977.9 1411.8 952.2 1412.2 952.9 1453.2 978.5 1452.8"/>
+      <polygon id="D-46" class="st4" data-numero="46" data-settore="D" points="977.9 1409.2 977 1358.1 951.3 1358.5 952.2 1409.6 977.9 1409.2"/>
+      <polygon id="D-38" class="st4" data-numero="38" data-settore="D" points="929.4 1395.7 928.3 1323.9 897.5 1324.3 898.6 1396.1 929.4 1395.7"/>
+      <polygon id="D-36" class="st4" data-numero="36" data-settore="D" points="895.7 1370.6 864.9 1371 864.2 1324.8 895 1324.4 895.7 1370.6"/>
+      <polygon id="D-37" class="st4" data-numero="37" data-settore="D" points="926.8 1295.6 863.7 1296.7 864.1 1322.3 927.2 1321.3 926.8 1295.6"/>
+      <polygon id="D-47" class="st4" data-numero="47" data-settore="D" points="977 1355.5 976.3 1309.3 950.7 1309.7 951.3 1355.9 977 1355.5"/>
     </g>
     <g id="Settore_E" data-nome="Casalinghi-Ferramenta-Fiori">
-      <polygon id="E-4" data-settore="E" data-numero="4" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1317.66,1142.52 1297.09,1142.78 1297.88,1193.46 1318.31,1188.13"/>
-      <polygon id="E-1" data-settore="E" data-numero="1" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1295.36,1143.36 1264.52,1143.74 1265.44,1202.09 1296.15,1194.03"/>
-      <polygon id="E-5/6" data-settore="E" data-numero="5/6" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1316.99,1101.55 1296.43,1101.81 1297.09,1142.78 1317.65,1142.52"/>
-      <polygon id="E-2" data-settore="E" data-numero="2" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1294.96,1117.73 1264.12,1118.12 1264.52,1143.74 1295.36,1143.35"/>
-      <polygon id="E-2bis" data-settore="E" data-numero="2bis" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1294.96,1117.73 1294.3,1076.76 1263.46,1077.14 1264.12,1118.12"/>
-      <polygon id="E-16" data-settore="E" data-numero="16" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1427.31,1110.4 1406.89,1110.81 1407.68,1164.38 1427.95,1158.91"/>
-      <polygon id="E-12" data-settore="E" data-numero="12" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1388.75,1136.7 1363.12,1137.09 1363.79,1176.04 1389.28,1169.13"/>
-      <polygon id="E-13" data-settore="E" data-numero="13" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1388.22,1106.0 1362.59,1106.39 1363.12,1137.09 1388.75,1136.7"/>
-      <polygon id="E-9" data-settore="E" data-numero="9" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1360.99,1111.46 1335.36,1111.86 1336.41,1183.38 1361.9,1176.47"/>
-      <polygon id="E-14" data-settore="E" data-numero="14" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1387.43,1054.74 1361.8,1055.14 1362.59,1106.39 1388.22,1106.0"/>
-      <polygon id="E-10" data-settore="E" data-numero="10" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1360.07,1055.14 1334.44,1055.53 1335.36,1111.86 1360.99,1111.46"/>
-      <polygon id="E-7" data-settore="E" data-numero="7" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1316.99,1101.55 1316.2,1055.5 1295.64,1055.76 1296.43,1101.81"/>
-      <polygon id="E-8" data-settore="E" data-numero="8" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1316.2,1055.5 1315.41,1004.25 1294.84,1004.51 1295.64,1055.76"/>
-      <polygon id="E-22" data-settore="E" data-numero="22" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1459.47,1094.53 1428.78,1095.06 1429.83,1158.48 1460.4,1150.27"/>
-      <polygon id="E-20" data-settore="E" data-numero="20" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1458.68,1043.27 1427.99,1043.81 1428.78,1095.06 1459.47,1094.53"/>
-      <polygon id="E-17" data-settore="E" data-numero="17" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1426.64,1069.43 1406.08,1069.69 1406.89,1110.81 1427.45,1110.55"/>
-      <polygon id="E-18" data-settore="E" data-numero="18" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1426.12,1033.52 1405.41,1033.92 1406.08,1069.69 1426.78,1069.29"/>
-      <polygon id="E-19" data-settore="E" data-numero="19" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1426.12,1033.52 1425.59,1002.83 1405.03,1003.09 1405.56,1033.79"/>
-      <polygon id="E-15" data-settore="E" data-numero="15" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1361.01,1003.89 1361.8,1055.14 1387.43,1054.74 1386.63,1003.49"/>
-      <polygon id="E-11" data-settore="E" data-numero="11" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1359.27,1003.88 1333.65,1004.28 1334.44,1055.53 1360.06,1055.14"/>
-      <polygon id="E-21" data-settore="E" data-numero="21" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1458.68,1043.27 1458.02,1002.3 1427.33,1002.83 1427.98,1043.81"/>
-      <polygon id="E-3" data-settore="E" data-numero="3" fill="#e8e2d8" stroke="#c8c0b4" stroke-width="0.6" points="1294.3,1076.76 1292.96,1004.94 1262.27,1005.47 1263.61,1077.28"/>
+      <polygon id="E-4" class="st4" data-numero="4" data-settore="E" points="1317.7 1430.5 1297.1 1430.7 1297.9 1481.4 1318.3 1476.1 1317.7 1430.5"/>
+      <polygon id="E-1" class="st4" data-numero="1" data-settore="E" points="1295.4 1431.3 1264.5 1431.7 1265.4 1490 1296.2 1482 1295.4 1431.3"/>
+      <polygon id="E-5_x2F_6" class="st4" data-numero="5/6" data-settore="E" points="1317 1389.5 1296.4 1389.7 1297.1 1430.7 1317.7 1430.5 1317 1389.5"/>
+      <polygon id="E-2" class="st4" data-numero="2" data-settore="E" points="1295 1405.7 1264.1 1406.1 1264.5 1431.7 1295.4 1431.3 1295 1405.7"/>
+      <polygon id="E-2bis" class="st4" data-numero="2bis" data-settore="E" points="1295 1405.7 1294.3 1364.7 1263.5 1365.1 1264.1 1406.1 1295 1405.7"/>
+      <polygon id="E-16" class="st4" data-numero="16" data-settore="E" points="1427.3 1398.3 1406.9 1398.7 1407.7 1452.3 1427.9 1446.8 1427.3 1398.3"/>
+      <polygon id="E-12" class="st4" data-numero="12" data-settore="E" points="1388.8 1424.6 1363.1 1425 1363.8 1464 1389.3 1457.1 1388.8 1424.6"/>
+      <polygon id="E-13" class="st4" data-numero="13" data-settore="E" points="1388.2 1393.9 1362.6 1394.3 1363.1 1425 1388.8 1424.6 1388.2 1393.9"/>
+      <polygon id="E-9" class="st4" data-numero="9" data-settore="E" points="1361 1399.4 1335.4 1399.8 1336.4 1471.3 1361.9 1464.4 1361 1399.4"/>
+      <polygon id="E-14" class="st4" data-numero="14" data-settore="E" points="1387.4 1342.7 1361.8 1343.1 1362.6 1394.3 1388.2 1393.9 1387.4 1342.7"/>
+      <polygon id="E-10" class="st4" data-numero="10" data-settore="E" points="1360.1 1343.1 1334.4 1343.5 1335.4 1399.8 1361 1399.4 1360.1 1343.1"/>
+      <polygon id="E-7" class="st4" data-numero="7" data-settore="E" points="1317 1389.5 1316.2 1343.4 1295.6 1343.7 1296.4 1389.7 1317 1389.5"/>
+      <polygon id="E-8" class="st4" data-numero="8" data-settore="E" points="1316.2 1343.4 1315.4 1292.2 1294.8 1292.4 1295.6 1343.7 1316.2 1343.4"/>
+      <polygon id="E-22" class="st4" data-numero="22" data-settore="E" points="1459.5 1382.5 1428.8 1383 1429.8 1446.4 1460.4 1438.2 1459.5 1382.5"/>
+      <polygon id="E-20" class="st4" data-numero="20" data-settore="E" points="1458.7 1331.2 1428 1331.7 1428.8 1383 1459.5 1382.5 1458.7 1331.2"/>
+      <polygon id="E-17" class="st4" data-numero="17" data-settore="E" points="1426.6 1357.4 1406.1 1357.6 1406.9 1398.7 1427.4 1398.5 1426.6 1357.4"/>
+      <polygon id="E-18" class="st4" data-numero="18" data-settore="E" points="1426.1 1321.5 1405.4 1321.9 1406.1 1357.6 1426.8 1357.2 1426.1 1321.5"/>
+      <polygon id="E-19" class="st4" data-numero="19" data-settore="E" points="1426.1 1321.5 1425.6 1290.8 1405 1291 1405.6 1321.7 1426.1 1321.5"/>
+      <polygon id="E-15" class="st4" data-numero="15" data-settore="E" points="1361 1291.8 1361.8 1343.1 1387.4 1342.7 1386.6 1291.4 1361 1291.8"/>
+      <polygon id="E-11" class="st4" data-numero="11" data-settore="E" points="1359.3 1291.8 1333.7 1292.2 1334.4 1343.5 1360.1 1343.1 1359.3 1291.8"/>
+      <polygon id="E-21" class="st4" data-numero="21" data-settore="E" points="1458.7 1331.2 1458 1290.2 1427.3 1290.8 1428 1331.7 1458.7 1331.2"/>
+      <polygon id="E-3" class="st4" data-numero="3" data-settore="E" points="1294.3 1364.7 1293 1292.9 1262.3 1293.4 1263.6 1365.2 1294.3 1364.7"/>
+    </g>
+    <g id="Settore_PV" data-nome="Prodotti vari / uova">
+      <polygon id="PV-1" class="st4" data-settore="PV" data-numero="1" data-non-in-elenco="true" points="605.78 1230.86 586.66 1231.12 587.93 1254.15 607.05 1253.89"/>
+      <polygon id="PV-2" class="st4" data-settore="PV" data-numero="2" data-non-in-elenco="true" points="604.52 1204.08 585.26 1204.48 586.53 1227.5 605.78 1227.1"/>
+      <polygon id="PV-3" class="st4" data-settore="PV" data-numero="3" data-non-in-elenco="true" points="558.77 1109.47 593.08 1107.64 591.25 1073.32 556.94 1075.15"/>
+      <circle id="UOVA-1" class="st4" data-settore="UOVA" data-numero="1" data-non-in-elenco="true" cx="482.62" cy="935.56" r="22.33"/>
     </g>
   </g>
-  <g id="Etichette" font-family="Montserrat, sans-serif" font-size="6.5" font-weight="700" fill="#9a8878" text-anchor="middle">
-    <text x="1043.39" y="1247.81">8</text>
-    <text x="994.16" y="1251.43">1</text>
-    <text x="993.46" y="1208.54">2</text>
-    <text x="706.94" y="968.8399999999999">29</text>
-    <text x="1122.23" y="1218.22">19</text>
-    <text x="1070.3" y="1235.1499999999999">14</text>
-    <text x="1069.57" y="1191.06">15</text>
-    <text x="1042.69" y="1204.27">9</text>
-    <text x="1041.97" y="1158.1499999999999">10</text>
-    <text x="992.93" y="1175.23">3</text>
-    <text x="992.47" y="1144.47">4</text>
-    <text x="991.94" y="1113.77">5</text>
-    <text x="830.72" y="954.01">24</text>
-    <text x="448.36" y="549.66">131</text>
-    <text x="1121.51" y="1171.09">20</text>
-    <text x="1120.78" y="1127.58">21</text>
-    <text x="1068.92" y="1147.48">16</text>
-    <text x="1068.12" y="1096.23">17</text>
-    <text x="1041.38" y="1119.71">11</text>
-    <text x="1040.64" y="1078.81">12</text>
-    <text x="991.41" y="1080.47">6</text>
-    <text x="990.68" y="1036.97">7</text>
-    <text x="912.77" y="957.9399999999999">37</text>
-    <text x="884.67" y="966.0">36</text>
-    <text x="912.05" y="909.2199999999999">38</text>
-    <text x="884.01" y="922.42">35</text>
-    <text x="832.5" y="902.8">25</text>
-    <text x="831.67" y="854.1099999999999">26</text>
-    <text x="649.13" y="672.4599999999999">84</text>
-    <text x="610.68" y="673.05">85</text>
-    <text x="484.41" y="524.56">137</text>
-    <text x="501.35" y="498.28000000000003">135</text>
-    <text x="471.81" y="476.48">133</text>
-    <text x="433.85" y="494.44">132</text>
-    <text x="423.49" y="454.76">158</text>
-    <text x="412.37" y="412.65000000000003">134</text>
-    <text x="1120.09" y="1081.36">22</text>
-    <text x="1119.26" y="1032.74">23</text>
-    <text x="1067.2" y="1037.3">18</text>
-    <text x="1039.99" y="1032.62">13</text>
-    <text x="1038.8" y="961.17">65</text>
-    <text x="989.57" y="961.75">51</text>
-    <text x="961.46" y="955.37">50</text>
-    <text x="988.91" y="918.17">52</text>
-    <text x="960.7" y="906.6899999999999">49</text>
-    <text x="960.01" y="863.0699999999999">48</text>
-    <text x="911.25" y="863.18">39</text>
-    <text x="883.29" y="873.6999999999999">34</text>
-    <text x="910.59" y="819.5999999999999">40</text>
-    <text x="882.49" y="827.66">33</text>
-    <text x="881.94" y="789.18">32</text>
-    <text x="830.77" y="800.29">27</text>
-    <text x="829.99" y="749.03">28</text>
-    <text x="746.49" y="670.9399999999999">82</text>
-    <text x="695.24" y="671.7299999999999">83</text>
-    <text x="710.82" y="610.2199999999999">89</text>
-    <text x="659.44" y="603.3399999999999">86</text>
-    <text x="534.64" y="459.16">136</text>
-    <text x="486.38" y="440.92">162</text>
-    <text x="460.8" y="434.40000000000003">160</text>
-    <text x="476.47" y="393.13">159</text>
-    <text x="451.01" y="397.18">161</text>
-    <text x="1119.09" y="954.63">79</text>
-    <text x="1066.89" y="958.0999999999999">66</text>
-    <text x="1066.23" y="914.52">67</text>
-    <text x="1038.21" y="917.5899999999999">64</text>
-    <text x="1065.5" y="871.01">68</text>
-    <text x="1037.44" y="876.65">63</text>
-    <text x="988.11" y="872.13">53</text>
-    <text x="987.53" y="831.0799999999999">54</text>
-    <text x="959.41" y="827.0899999999999">47</text>
-    <text x="986.87" y="790.0999999999999">55/56</text>
-    <text x="958.64" y="786.15">46</text>
-    <text x="909.93" y="776.01">41</text>
-    <text x="909.28" y="732.43">42</text>
-    <text x="881.11" y="740.5699999999999">31</text>
-    <text x="805.55" y="677.6899999999999">80</text>
-    <text x="779.72" y="670.3399999999999">81</text>
-    <text x="790.03" y="601.2199999999999">95</text>
-    <text x="738.96" y="604.7299999999999">94</text>
-    <text x="738.23" y="561.15">93</text>
-    <text x="710.23" y="574.39">90</text>
-    <text x="709.58" y="528.1999999999999">90bis</text>
-    <text x="658.59" y="544.3399999999999">87</text>
-    <text x="657.52" y="482.95">88</text>
-    <text x="558.44" y="448.89">142</text>
-    <text x="591.28" y="412.74">138</text>
-    <text x="546.71" y="403.91">139</text>
-    <text x="521.29" y="408.0">163</text>
-    <text x="537.6" y="369.19">140</text>
-    <text x="512.76" y="375.73">164</text>
-    <text x="1118.3" y="903.38">78</text>
-    <text x="1117.5" y="854.7299999999999">77</text>
-    <text x="1117.01" y="823.93">76</text>
-    <text x="1064.77" y="827.51">69</text>
-    <text x="1036.68" y="833.04">62</text>
-    <text x="1064.19" y="786.4599999999999">70</text>
-    <text x="1035.89" y="781.7099999999999">61</text>
-    <text x="985.94" y="733.78">57</text>
-    <text x="957.85" y="734.9">45</text>
-    <text x="957.06" y="683.64">44</text>
-    <text x="908.45" y="683.75">43</text>
-    <text x="880.18" y="681.64">30</text>
-    <text x="897.92" y="607.29">105</text>
-    <text x="869.65" y="607.7199999999999">101</text>
-    <text x="818.34" y="603.37">100</text>
-    <text x="817.61" y="559.8599999999999">99bis</text>
-    <text x="789.31" y="552.5">96</text>
-    <text x="737.5" y="517.5">93bis</text>
-    <text x="736.8" y="473.88">92</text>
-    <text x="708.71" y="477.02000000000004">91</text>
-    <text x="623.98" y="381.15000000000003">141</text>
-    <text x="614.23" y="343.82">166</text>
-    <text x="579.12" y="366.25">165</text>
-    <text x="1322.25" y="957.5899999999999">149</text>
-    <text x="1268.43" y="953.3399999999999">143</text>
-    <text x="1267.64" y="904.6999999999999">144</text>
-    <text x="1116.38" y="788.06">75</text>
-    <text x="1115.52" y="734.27">74</text>
-    <text x="1063.39" y="735.1999999999999">71</text>
-    <text x="1035.02" y="730.53">60</text>
-    <text x="1062.47" y="678.88">72</text>
-    <text x="1034.23" y="679.27">59</text>
-    <text x="985.08" y="680.0">58</text>
-    <text x="955.56" y="601.2199999999999">109</text>
-    <text x="897.37" y="568.81">106</text>
-    <text x="868.96" y="564.17">102</text>
-    <text x="896.63" y="527.91">107</text>
-    <text x="868.2" y="515.49">103</text>
-    <text x="816.95" y="516.28">99</text>
-    <text x="816.29" y="472.7">98</text>
-    <text x="788.32" y="491.04">97</text>
-    <text x="764.27" y="406.89">130</text>
-    <text x="1321.49" y="908.8299999999999">150</text>
-    <text x="1320.77" y="860.1099999999999">151</text>
-    <text x="1266.77" y="855.9699999999999">145</text>
-    <text x="1266.04" y="809.8599999999999">146</text>
-    <text x="1265.52" y="776.56">147</text>
-    <text x="1114.66" y="677.88">73</text>
-    <text x="1061.76" y="599.5">120</text>
-    <text x="1033.2" y="594.9399999999999">117</text>
-    <text x="983.83" y="598.26">113</text>
-    <text x="983.17" y="554.68">114</text>
-    <text x="955.01" y="557.6099999999999">110</text>
-    <text x="982.51" y="513.71">115</text>
-    <text x="954.28" y="514.1">111</text>
-    <text x="953.55" y="470.59000000000003">112</text>
-    <text x="896.07" y="491.97">107bis</text>
-    <text x="895.58" y="461.16">108</text>
-    <text x="867.55" y="471.91">104</text>
-    <text x="884.73" y="405.05">127</text>
-    <text x="841.15" y="405.7">128</text>
-    <text x="802.71" y="406.29">129</text>
-    <text x="1319.84" y="806.4">152</text>
-    <text x="1319.05" y="752.53">153</text>
-    <text x="1265.06" y="743.1899999999999">148</text>
-    <text x="1115.88" y="593.54">124</text>
-    <text x="1114.95" y="539.8299999999999">125</text>
-    <text x="1060.96" y="555.78">121</text>
-    <text x="1032.6" y="541.04">118</text>
-    <text x="1060.05" y="509.7">123</text>
-    <text x="1031.77" y="494.96000000000004">118bis</text>
-    <text x="981.78" y="470.2">116</text>
-    <text x="933.45" y="404.33">126</text>
-    <text x="893.06" y="312.62">154</text>
-    <text x="866.12" y="313.01">155</text>
-    <text x="835.43" y="313.54">156</text>
-    <text x="804.66" y="314.0">157</text>
-    <text x="1422.12" y="950.9">7</text>
-    <text x="1401.57" y="946.0899999999999">5</text>
-    <text x="1355.42" y="946.78">1</text>
-    <text x="1354.53" y="892.9599999999999">2</text>
-    <text x="1503.13" y="950.9499999999999">10</text>
-    <text x="1458.72" y="899.16">9</text>
-    <text x="1421.4" y="902.18">8</text>
-    <text x="1400.72" y="889.6999999999999">6</text>
-    <text x="1353.67" y="839.17">3</text>
-    <text x="1352.71" y="776.37">4</text>
-    <text x="1506.37" y="1123.43">3</text>
-    <text x="1484.18" y="1129.3">1</text>
-    <text x="1575.25" y="1103.56">10</text>
-    <text x="1547.92" y="1107.53">7</text>
-    <text x="1547.26" y="1065.25">8</text>
-    <text x="1505.88" y="1088.58">5</text>
-    <text x="1483.58" y="1091.87">2</text>
-    <text x="1505.25" y="1052.7">6</text>
-    <text x="1482.92" y="1050.8899999999999">4</text>
-    <text x="1574.69" y="1064.5">11</text>
-    <text x="1574.07" y="1023.42">12</text>
-    <text x="1546.59" y="1024.28">9</text>
-    <text x="720.74" y="1318.73">7</text>
-    <text x="669.42" y="1335.4099999999999">1</text>
-    <text x="668.46" y="1280.1399999999999">2</text>
-    <text x="799.64" y="1300.79">20</text>
-    <text x="750.68" y="1313.75">13/14</text>
-    <text x="749.78" y="1263.54">15</text>
-    <text x="719.88" y="1262.9199999999998">8</text>
-    <text x="719.06" y="1211.6299999999999">9</text>
-    <text x="667.68" y="1226.28">3</text>
-    <text x="666.82" y="1172.49">4</text>
-    <text x="883.39" y="1277.5">32</text>
-    <text x="829.26" y="1290.05">26</text>
-    <text x="828.31" y="1229.2">27/28</text>
-    <text x="798.75" y="1242.77">21</text>
-    <text x="797.82" y="1186.45">22</text>
-    <text x="749.06" y="1214.82">16</text>
-    <text x="748.24" y="1161.0">17</text>
-    <text x="718.2" y="1157.76">10</text>
-    <text x="665.89" y="1113.56">5</text>
-    <text x="664.97" y="1052.03">6</text>
-    <text x="916.63" y="1269.95">42</text>
-    <text x="916.01" y="1230.1">41</text>
-    <text x="882.5" y="1223.53">33</text>
-    <text x="881.68" y="1169.6399999999999">34</text>
-    <text x="827.35" y="1170.24">29</text>
-    <text x="797.03" y="1137.8">23</text>
-    <text x="796.37" y="1094.22">24</text>
-    <text x="747.28" y="1102.1">18</text>
-    <text x="717.39" y="1098.8">11</text>
-    <text x="746.36" y="1043.18">19</text>
-    <text x="716.6" y="1042.33">12</text>
-    <text x="967.01" y="1251.1">43</text>
-    <text x="966.12" y="1193.0">44</text>
-    <text x="915.45" y="1192.2">40</text>
-    <text x="914.45" y="1138.4099999999999">39</text>
-    <text x="880.75" y="1113.31">35</text>
-    <text x="826.39" y="1111.27">30</text>
-    <text x="825.4" y="1049.81">31</text>
-    <text x="795.65" y="1048.1">25</text>
-    <text x="965.4" y="1146.8899999999999">45</text>
-    <text x="964.6" y="1098.24">46</text>
-    <text x="913.46" y="1074.34">38</text>
-    <text x="879.96" y="1062.06">36</text>
-    <text x="895.44" y="1023.3499999999999">37</text>
-    <text x="963.81" y="1046.99">47</text>
-    <text x="1307.73" y="1169.02">4</text>
-    <text x="1280.37" y="1173.11">1</text>
-    <text x="1307.04" y="1124.46">5/6</text>
-    <text x="1279.74" y="1133.04">2</text>
-    <text x="1279.21" y="1099.74">2bis</text>
-    <text x="1417.46" y="1138.4199999999998">16</text>
-    <text x="1376.24" y="1157.04">12</text>
-    <text x="1375.67" y="1123.85">13</text>
-    <text x="1348.67" y="1148.09">9</text>
-    <text x="1375.01" y="1082.87">14</text>
-    <text x="1347.72" y="1085.8">10</text>
-    <text x="1306.32" y="1080.96">7</text>
-    <text x="1305.52" y="1032.31">8</text>
-    <text x="1444.62" y="1126.8799999999999">22</text>
-    <text x="1443.73" y="1071.47">20</text>
-    <text x="1416.77" y="1092.4199999999998">17</text>
-    <text x="1416.1" y="1053.9099999999999">18</text>
-    <text x="1415.57" y="1020.6099999999999">19</text>
-    <text x="1374.22" y="1031.61">15</text>
-    <text x="1346.86" y="1032.01">11</text>
-    <text x="1443.0" y="1025.35">21</text>
-    <text x="1278.28" y="1043.4099999999999">3</text>
+  <g id="Etichette">
+    <text class="st3" transform="translate(1041.245 1535.7494)"><tspan x="0" y="0">8</tspan></text>
+    <text class="st3" transform="translate(992.886 1539.3694)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(991.5425 1496.4794)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(702.9523 1256.7794)"><tspan x="0" y="0">29</tspan></text>
+    <text class="st3" transform="translate(1118.8857 1506.1593)"><tspan x="0" y="0">19</tspan></text>
+    <text class="st3" transform="translate(1066.7869 1523.0894)"><tspan x="0" y="0">14</tspan></text>
+    <text class="st3" transform="translate(1066.3623 1478.9994)"><tspan x="0" y="0">15</tspan></text>
+    <text class="st3" transform="translate(1040.6198 1492.2094)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st3" transform="translate(1038.4893 1446.0894)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st3" transform="translate(991.006 1463.1693)"><tspan x="0" y="0">3</tspan></text>
+    <text class="st3" transform="translate(990.2307 1432.4093)"><tspan x="0" y="0">4</tspan></text>
+    <text class="st3" transform="translate(990.0063 1401.7094)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st3" transform="translate(826.5957 1241.9494)"><tspan x="0" y="0">24</tspan></text>
+    <text class="st3" transform="translate(443.9 837.6)"><tspan x="0" y="0">131</tspan></text>
+    <text class="st3" transform="translate(1117.3859 1459.0293)"><tspan x="0" y="0">20</tspan></text>
+    <text class="st3" transform="translate(1117.5885 1415.5193)"><tspan x="0" y="0">21</tspan></text>
+    <text class="st3" transform="translate(1065.5758 1435.4193)"><tspan x="0" y="0">16</tspan></text>
+    <text class="st3" transform="translate(1064.8311 1384.1693)"><tspan x="0" y="0">17</tspan></text>
+    <text class="st3" transform="translate(1038.832 1407.6493)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st3" transform="translate(1037.4485 1366.7494)"><tspan x="0" y="0">12</tspan></text>
+    <text class="st3" transform="translate(989.3397 1368.4093)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st3" transform="translate(988.665 1324.9093)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st3" transform="translate(908.8602 1245.8794)"><tspan x="0" y="0">37</tspan></text>
+    <text class="st3" transform="translate(880.6758 1253.9394)"><tspan x="0" y="0">36</tspan></text>
+    <text class="st3" transform="translate(907.981 1197.1593)"><tspan x="0" y="0">38</tspan></text>
+    <text class="st3" transform="translate(880.1848 1210.3593)"><tspan x="0" y="0">35</tspan></text>
+    <text class="st3" transform="translate(828.6488 1190.7393)"><tspan x="0" y="0">25</tspan></text>
+    <text class="st3" transform="translate(827.6823 1142.0493)"><tspan x="0" y="0">26</tspan></text>
+    <text class="st3" transform="translate(644.7 960.4)"><tspan x="0" y="0">84</tspan></text>
+    <text class="st3" transform="translate(606.6 961)"><tspan x="0" y="0">85</tspan></text>
+    <text class="st3" transform="translate(479.2 812.5)"><tspan x="0" y="0">137</tspan></text>
+    <text class="st3" transform="translate(496.3 786.2)"><tspan x="0" y="0">135</tspan></text>
+    <text class="st3" transform="translate(466.7 764.4)"><tspan x="0" y="0">133</tspan></text>
+    <text class="st3" transform="translate(428.8 782.4)"><tspan x="0" y="0">132</tspan></text>
+    <text class="st3" transform="translate(418.1 742.7)"><tspan x="0" y="0">158</tspan></text>
+    <text class="st3" transform="translate(406.9 700.6)"><tspan x="0" y="0">134</tspan></text>
+    <text class="st3" transform="translate(1116.255 1369.2993)"><tspan x="0" y="0">22</tspan></text>
+    <text class="st3" transform="translate(1115.4186 1320.6793)"><tspan x="0" y="0">23</tspan></text>
+    <text class="st3" transform="translate(1063.781 1325.2394)"><tspan x="0" y="0">18</tspan></text>
+    <text class="st3" transform="translate(1036.792 1320.5593)"><tspan x="0" y="0">13</tspan></text>
+    <text class="st3" transform="translate(1034.7961 1249.1093)"><tspan x="0" y="0">65</tspan></text>
+    <text class="st3" transform="translate(986.3623 1249.6894)"><tspan x="0" y="0">51</tspan></text>
+    <text class="st3" transform="translate(957.3196 1243.3093)"><tspan x="0" y="0">50</tspan></text>
+    <text class="st3" transform="translate(985.075 1206.1093)"><tspan x="0" y="0">52</tspan></text>
+    <text class="st3" transform="translate(956.4036 1194.6294)"><tspan x="0" y="0">49</tspan></text>
+    <text class="st3" transform="translate(955.5933 1151.0094)"><tspan x="0" y="0">48</tspan></text>
+    <text class="st3" transform="translate(907.2558 1151.1193)"><tspan x="0" y="0">39</tspan></text>
+    <text class="st3" transform="translate(879.1268 1161.6394)"><tspan x="0" y="0">34</tspan></text>
+    <text class="st3" transform="translate(906.1441 1107.5393)"><tspan x="0" y="0">40</tspan></text>
+    <text class="st3" transform="translate(878.6583 1115.5993)"><tspan x="0" y="0">33</tspan></text>
+    <text class="st3" transform="translate(878.1147 1077.1193)"><tspan x="0" y="0">32</tspan></text>
+    <text class="st3" transform="translate(826.8375 1088.2293)"><tspan x="0" y="0">27</tspan></text>
+    <text class="st3" transform="translate(825.9276 1036.9694)"><tspan x="0" y="0">28</tspan></text>
+    <text class="st3" transform="translate(742.4 958.9)"><tspan x="0" y="0">82</tspan></text>
+    <text class="st3" transform="translate(691.2 959.7)"><tspan x="0" y="0">83</tspan></text>
+    <text class="st3" transform="translate(706.6 898.2)"><tspan x="0" y="0">89</tspan></text>
+    <text class="st3" transform="translate(655.2 891.3)"><tspan x="0" y="0">86</tspan></text>
+    <text class="st3" transform="translate(529.4 747.1)"><tspan x="0" y="0">136</tspan></text>
+    <text class="st3" transform="translate(481.1 728.9)"><tspan x="0" y="0">162</tspan></text>
+    <text class="st3" transform="translate(455.2 722.3)"><tspan x="0" y="0">160</tspan></text>
+    <text class="st3" transform="translate(471.2 681.1)"><tspan x="0" y="0">159</tspan></text>
+    <text class="st3" transform="translate(446.4 685.1)"><tspan x="0" y="0">161</tspan></text>
+    <text class="st3" transform="translate(1115.0048 1242.5694)"><tspan x="0" y="0">79</tspan></text>
+    <text class="st3" transform="translate(1062.7495 1246.0393)"><tspan x="0" y="0">66</tspan></text>
+    <text class="st3" transform="translate(1062.1577 1202.4594)"><tspan x="0" y="0">67</tspan></text>
+    <text class="st3" transform="translate(1033.9005 1205.5294)"><tspan x="0" y="0">64</tspan></text>
+    <text class="st3" transform="translate(1061.2848 1158.9494)"><tspan x="0" y="0">68</tspan></text>
+    <text class="st3" transform="translate(1033.4457 1164.5894)"><tspan x="0" y="0">63</tspan></text>
+    <text class="st3" transform="translate(984.2685 1160.0694)"><tspan x="0" y="0">53</tspan></text>
+    <text class="st3" transform="translate(983.3571 1119.0194)"><tspan x="0" y="0">54</tspan></text>
+    <text class="st3" transform="translate(955.2922 1115.0294)"><tspan x="0" y="0">47</tspan></text>
+    <text class="st3" transform="translate(977.7408 1078.0393)"><tspan x="0" y="0">55/56</tspan></text>
+    <text class="st3" transform="translate(954.3306 1074.0894)"><tspan x="0" y="0">46</tspan></text>
+    <text class="st3" transform="translate(906.498 1063.9494)"><tspan x="0" y="0">41</tspan></text>
+    <text class="st3" transform="translate(905.1233 1020.3693)"><tspan x="0" y="0">42</tspan></text>
+    <text class="st3" transform="translate(877.912 1028.5094)"><tspan x="0" y="0">31</tspan></text>
+    <text class="st3" transform="translate(801.2 965.6)"><tspan x="0" y="0">80</tspan></text>
+    <text class="st3" transform="translate(776.3 958.3)"><tspan x="0" y="0">81</tspan></text>
+    <text class="st3" transform="translate(786 889.2)"><tspan x="0" y="0">95</tspan></text>
+    <text class="st3" transform="translate(734.7 892.7)"><tspan x="0" y="0">94</tspan></text>
+    <text class="st3" transform="translate(734.3 849.1)"><tspan x="0" y="0">93</tspan></text>
+    <text class="st3" transform="translate(706 862.3)"><tspan x="0" y="0">90</tspan></text>
+    <text class="st3" transform="translate(700.4 816.1)"><tspan x="0" y="0">90bis</tspan></text>
+    <text class="st3" transform="translate(654.4 832.3)"><tspan x="0" y="0">87</tspan></text>
+    <text class="st3" transform="translate(653.2 770.9)"><tspan x="0" y="0">88</tspan></text>
+    <text class="st3" transform="translate(553 736.8)"><tspan x="0" y="0">142</tspan></text>
+    <text class="st3" transform="translate(585.9 700.7)"><tspan x="0" y="0">138</tspan></text>
+    <text class="st3" transform="translate(541.4 691.8)"><tspan x="0" y="0">139</tspan></text>
+    <text class="st3" transform="translate(516 695.9)"><tspan x="0" y="0">163</tspan></text>
+    <text class="st3" transform="translate(531.9 657.1)"><tspan x="0" y="0">140</tspan></text>
+    <text class="st3" transform="translate(507.2 663.7)"><tspan x="0" y="0">164</tspan></text>
+    <text class="st3" transform="translate(1114.1953 1191.3194)"><tspan x="0" y="0">78</tspan></text>
+    <text class="st3" transform="translate(1113.47 1142.6693)"><tspan x="0" y="0">77</tspan></text>
+    <text class="st3" transform="translate(1112.9897 1111.8693)"><tspan x="0" y="0">76</tspan></text>
+    <text class="st3" transform="translate(1060.6295 1115.4494)"><tspan x="0" y="0">69</tspan></text>
+    <text class="st3" transform="translate(1032.6924 1120.9793)"><tspan x="0" y="0">62</tspan></text>
+    <text class="st3" transform="translate(1060.0332 1074.3994)"><tspan x="0" y="0">70</tspan></text>
+    <text class="st3" transform="translate(1032.5458 1069.6494)"><tspan x="0" y="0">61</tspan></text>
+    <text class="st3" transform="translate(982.0303 1021.7194)"><tspan x="0" y="0">57</tspan></text>
+    <text class="st3" transform="translate(953.6771 1022.8394)"><tspan x="0" y="0">45</tspan></text>
+    <text class="st3" transform="translate(952.6 971.6)"><tspan x="0" y="0">44</tspan></text>
+    <text class="st3" transform="translate(904.3 971.7)"><tspan x="0" y="0">43</tspan></text>
+    <text class="st3" transform="translate(876 969.6)"><tspan x="0" y="0">30</tspan></text>
+    <text class="st3" transform="translate(892.5 895.2)"><tspan x="0" y="0">105</tspan></text>
+    <text class="st3" transform="translate(864.9 895.7)"><tspan x="0" y="0">101</tspan></text>
+    <text class="st3" transform="translate(812.7 891.3)"><tspan x="0" y="0">100</tspan></text>
+    <text class="st3" transform="translate(808.5 847.8)"><tspan x="0" y="0">99bis</tspan></text>
+    <text class="st3" transform="translate(785.2 840.4)"><tspan x="0" y="0">96</tspan></text>
+    <text class="st3" transform="translate(728.6 805.4)"><tspan x="0" y="0">93bis</tspan></text>
+    <text class="st3" transform="translate(732.8 761.8)"><tspan x="0" y="0">92</tspan></text>
+    <text class="st3" transform="translate(705.4 765)"><tspan x="0" y="0">91</tspan></text>
+    <text class="st3" transform="translate(619.3 669.1)"><tspan x="0" y="0">141</tspan></text>
+    <text class="st3" transform="translate(608.8 631.8)"><tspan x="0" y="0">166</tspan></text>
+    <text class="st3" transform="translate(573.8 654.2)"><tspan x="0" y="0">165</tspan></text>
+    <text class="st3" transform="translate(1316.6796 1245.5294)"><tspan x="0" y="0">149</tspan></text>
+    <text class="st3" transform="translate(1263.0155 1241.2794)"><tspan x="0" y="0">143</tspan></text>
+    <text class="st3" transform="translate(1261.8876 1192.6394)"><tspan x="0" y="0">144</tspan></text>
+    <text class="st3" transform="translate(1112.4866 1075.9994)"><tspan x="0" y="0">75</tspan></text>
+    <text class="st3" transform="translate(1111.4771 1022.2094)"><tspan x="0" y="0">74</tspan></text>
+    <text class="st3" transform="translate(1060.0686 1023.1394)"><tspan x="0" y="0">71</tspan></text>
+    <text class="st3" transform="translate(1030.743 1018.4694)"><tspan x="0" y="0">60</tspan></text>
+    <text class="st3" transform="translate(1058.5375 966.8194)"><tspan x="0" y="0">72</tspan></text>
+    <text class="st3" transform="translate(1030.2261 967.2094)"><tspan x="0" y="0">59</tspan></text>
+    <text class="st3" transform="translate(981 967.9)"><tspan x="0" y="0">58</tspan></text>
+    <text class="st3" transform="translate(950 889.2)"><tspan x="0" y="0">109</tspan></text>
+    <text class="st3" transform="translate(891.8 856.7)"><tspan x="0" y="0">106</tspan></text>
+    <text class="st3" transform="translate(863.6 852.1)"><tspan x="0" y="0">102</tspan></text>
+    <text class="st3" transform="translate(891.1 815.8)"><tspan x="0" y="0">107</tspan></text>
+    <text class="st3" transform="translate(862.8 803.4)"><tspan x="0" y="0">103</tspan></text>
+    <text class="st3" transform="translate(812.8 804.2)"><tspan x="0" y="0">99</tspan></text>
+    <text class="st3" transform="translate(812.1 760.6)"><tspan x="0" y="0">98</tspan></text>
+    <text class="st3" transform="translate(784.2 779)"><tspan x="0" y="0">97</tspan></text>
+    <text class="st3" transform="translate(758.9 694.8)"><tspan x="0" y="0">130</tspan></text>
+    <text class="st3" transform="translate(1316.0756 1196.7694)"><tspan x="0" y="0">150</tspan></text>
+    <text class="st3" transform="translate(1316.2883 1148.0493)"><tspan x="0" y="0">151</tspan></text>
+    <text class="st3" transform="translate(1261.3231 1143.9093)"><tspan x="0" y="0">145</tspan></text>
+    <text class="st3" transform="translate(1260.4565 1097.7993)"><tspan x="0" y="0">146</tspan></text>
+    <text class="st3" transform="translate(1260.1283 1064.4994)"><tspan x="0" y="0">147</tspan></text>
+    <text class="st3" transform="translate(1110.7438 965.8194)"><tspan x="0" y="0">73</tspan></text>
+    <text class="st3" transform="translate(1056.3618 887.4394)"><tspan x="0" y="0">120</tspan></text>
+    <text class="st3" transform="translate(1028.637 882.8794)"><tspan x="0" y="0">117</tspan></text>
+    <text class="st3" transform="translate(979.4 886.2)"><tspan x="0" y="0">113</tspan></text>
+    <text class="st3" transform="translate(978.4 842.6)"><tspan x="0" y="0">114</tspan></text>
+    <text class="st3" transform="translate(950.3 845.5)"><tspan x="0" y="0">110</tspan></text>
+    <text class="st3" transform="translate(978 801.6)"><tspan x="0" y="0">115</tspan></text>
+    <text class="st3" transform="translate(950.5 802)"><tspan x="0" y="0">111</tspan></text>
+    <text class="st3" transform="translate(949.1 758.5)"><tspan x="0" y="0">112</tspan></text>
+    <text class="st3" transform="translate(885.6 779.9)"><tspan x="0" y="0">107bis</tspan></text>
+    <text class="st3" transform="translate(890 749.1)"><tspan x="0" y="0">108</tspan></text>
+    <text class="st3" transform="translate(861.8 759.8)"><tspan x="0" y="0">104</tspan></text>
+    <text class="st3" transform="translate(879.5 693)"><tspan x="0" y="0">127</tspan></text>
+    <text class="st3" transform="translate(835.8 693.6)"><tspan x="0" y="0">128</tspan></text>
+    <text class="st3" transform="translate(797.4 694.2)"><tspan x="0" y="0">129</tspan></text>
+    <text class="st3" transform="translate(1314.731 1094.3394)"><tspan x="0" y="0">152</tspan></text>
+    <text class="st3" transform="translate(1313.9346 1040.4694)"><tspan x="0" y="0">153</tspan></text>
+    <text class="st3" transform="translate(1259.3694 1031.1294)"><tspan x="0" y="0">148</tspan></text>
+    <text class="st3" transform="translate(1110.4818 881.4793)"><tspan x="0" y="0">124</tspan></text>
+    <text class="st3" transform="translate(1109.8247 827.7694)"><tspan x="0" y="0">125</tspan></text>
+    <text class="st3" transform="translate(1056.4945 843.7194)"><tspan x="0" y="0">121</tspan></text>
+    <text class="st3" transform="translate(1027.907 828.9793)"><tspan x="0" y="0">118</tspan></text>
+    <text class="st3" transform="translate(1054.9346 797.6394)"><tspan x="0" y="0">123</tspan></text>
+    <text class="st3" transform="translate(1022.1307 782.8993)"><tspan x="0" y="0">118bis</tspan></text>
+    <text class="st3" transform="translate(977.2 758.1)"><tspan x="0" y="0">116</tspan></text>
+    <text class="st3" transform="translate(928.2 692.3)"><tspan x="0" y="0">126</tspan></text>
+    <text class="st3" transform="translate(887.6 600.6)"><tspan x="0" y="0">154</tspan></text>
+    <text class="st3" transform="translate(861 600.9)"><tspan x="0" y="0">155</tspan></text>
+    <text class="st3" transform="translate(830.2 601.5)"><tspan x="0" y="0">156</tspan></text>
+    <text class="st3" transform="translate(799.5 601.9)"><tspan x="0" y="0">157</tspan></text>
+    <text class="st3" transform="translate(1420.105 1238.8394)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st3" transform="translate(1399.6362 1234.0294)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st3" transform="translate(1354.146 1234.7194)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(1352.6125 1180.8994)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(1499.6493 1238.8894)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st3" transform="translate(1456.6498 1187.0993)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st3" transform="translate(1419.255 1190.1193)"><tspan x="0" y="0">8</tspan></text>
+    <text class="st3" transform="translate(1398.6498 1177.6394)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st3" transform="translate(1351.7461 1127.1093)"><tspan x="0" y="0">3</tspan></text>
+    <text class="st3" transform="translate(1350.4707 1064.3093)"><tspan x="0" y="0">4</tspan></text>
+    <text class="st3" transform="translate(1504.446 1411.3694)"><tspan x="0" y="0">3</tspan></text>
+    <text class="st3" transform="translate(1482.906 1417.2394)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(1571.7693 1391.4994)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st3" transform="translate(1545.905 1395.4694)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st3" transform="translate(1545.115 1353.1894)"><tspan x="0" y="0">8</tspan></text>
+    <text class="st3" transform="translate(1503.9463 1376.5193)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st3" transform="translate(1481.6625 1379.8093)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(1503.1798 1340.6393)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st3" transform="translate(1480.6808 1338.8294)"><tspan x="0" y="0">4</tspan></text>
+    <text class="st3" transform="translate(1572.142 1352.4394)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st3" transform="translate(1570.8784 1311.3593)"><tspan x="0" y="0">12</tspan></text>
+    <text class="st3" transform="translate(1544.5198 1312.2194)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st3" transform="translate(718.725 1606.6693)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st3" transform="translate(668.146 1623.3494)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(666.5425 1568.0794)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(795.5158 1588.7294)"><tspan x="0" y="0">20</tspan></text>
+    <text class="st3" transform="translate(742.5973 1601.6894)"><tspan x="0" y="0">13/14</tspan></text>
+    <text class="st3" transform="translate(746.5723 1551.4794)"><tspan x="0" y="0">15</tspan></text>
+    <text class="st3" transform="translate(717.735 1550.8594)"><tspan x="0" y="0">8</tspan></text>
+    <text class="st3" transform="translate(716.9897 1499.5694)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st3" transform="translate(665.756 1514.2194)"><tspan x="0" y="0">3</tspan></text>
+    <text class="st3" transform="translate(664.5807 1460.4293)"><tspan x="0" y="0">4</tspan></text>
+    <text class="st3" transform="translate(879.5648 1565.4394)"><tspan x="0" y="0">32</tspan></text>
+    <text class="st3" transform="translate(825.2723 1577.9894)"><tspan x="0" y="0">26</tspan></text>
+    <text class="st3" transform="translate(819.1678 1517.1393)"><tspan x="0" y="0">27/28</tspan></text>
+    <text class="st3" transform="translate(795.5585 1530.7094)"><tspan x="0" y="0">21</tspan></text>
+    <text class="st3" transform="translate(793.985 1474.3893)"><tspan x="0" y="0">22</tspan></text>
+    <text class="st3" transform="translate(745.7158 1502.7593)"><tspan x="0" y="0">16</tspan></text>
+    <text class="st3" transform="translate(744.951 1448.9394)"><tspan x="0" y="0">17</tspan></text>
+    <text class="st3" transform="translate(714.7193 1445.6994)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st3" transform="translate(663.9563 1401.4994)"><tspan x="0" y="0">5</tspan></text>
+    <text class="st3" transform="translate(662.8997 1339.9694)"><tspan x="0" y="0">6</tspan></text>
+    <text class="st3" transform="translate(912.4733 1557.8893)"><tspan x="0" y="0">42</tspan></text>
+    <text class="st3" transform="translate(912.578 1518.0393)"><tspan x="0" y="0">41</tspan></text>
+    <text class="st3" transform="translate(878.6683 1511.4694)"><tspan x="0" y="0">33</tspan></text>
+    <text class="st3" transform="translate(877.5168 1457.5794)"><tspan x="0" y="0">34</tspan></text>
+    <text class="st3" transform="translate(823.3622 1458.1793)"><tspan x="0" y="0">29</tspan></text>
+    <text class="st3" transform="translate(793.1885 1425.7394)"><tspan x="0" y="0">23</tspan></text>
+    <text class="st3" transform="translate(792.2457 1382.1593)"><tspan x="0" y="0">24</tspan></text>
+    <text class="st3" transform="translate(743.8611 1390.0393)"><tspan x="0" y="0">18</tspan></text>
+    <text class="st3" transform="translate(714.842 1386.7394)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st3" transform="translate(743.0157 1331.1194)"><tspan x="0" y="0">19</tspan></text>
+    <text class="st3" transform="translate(713.4085 1330.2693)"><tspan x="0" y="0">12</tspan></text>
+    <text class="st3" transform="translate(962.8695 1539.0393)"><tspan x="0" y="0">43</tspan></text>
+    <text class="st3" transform="translate(961.6415 1480.9394)"><tspan x="0" y="0">44</tspan></text>
+    <text class="st3" transform="translate(911.0041 1480.1393)"><tspan x="0" y="0">40</tspan></text>
+    <text class="st3" transform="translate(910.4558 1426.3494)"><tspan x="0" y="0">39</tspan></text>
+    <text class="st3" transform="translate(876.9248 1401.2494)"><tspan x="0" y="0">35</tspan></text>
+    <text class="st3" transform="translate(822.2593 1399.2094)"><tspan x="0" y="0">30</tspan></text>
+    <text class="st3" transform="translate(822.202 1337.7494)"><tspan x="0" y="0">31</tspan></text>
+    <text class="st3" transform="translate(791.7988 1336.0393)"><tspan x="0" y="0">25</tspan></text>
+    <text class="st3" transform="translate(961.2271 1434.8294)"><tspan x="0" y="0">45</tspan></text>
+    <text class="st3" transform="translate(960.2905 1386.1793)"><tspan x="0" y="0">46</tspan></text>
+    <text class="st3" transform="translate(909.3911 1362.2793)"><tspan x="0" y="0">38</tspan></text>
+    <text class="st3" transform="translate(875.9658 1349.9994)"><tspan x="0" y="0">36</tspan></text>
+    <text class="st3" transform="translate(891.5303 1311.2893)"><tspan x="0" y="0">37</tspan></text>
+    <text class="st3" transform="translate(959.6923 1334.9293)"><tspan x="0" y="0">47</tspan></text>
+    <text class="st3" transform="translate(1305.4907 1456.9594)"><tspan x="0" y="0">4</tspan></text>
+    <text class="st3" transform="translate(1279.0959 1461.0493)"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(1301.827 1412.3993)"><tspan x="0" y="0">5/6</tspan></text>
+    <text class="st3" transform="translate(1277.8225 1420.9794)"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(1272.3461 1387.6793)"><tspan x="0" y="0">2bis</tspan></text>
+    <text class="st3" transform="translate(1414.1157 1426.3594)"><tspan x="0" y="0">16</tspan></text>
+    <text class="st3" transform="translate(1373.0485 1444.9794)"><tspan x="0" y="0">12</tspan></text>
+    <text class="st3" transform="translate(1372.472 1411.7893)"><tspan x="0" y="0">13</tspan></text>
+    <text class="st3" transform="translate(1346.5999 1436.0293)"><tspan x="0" y="0">9</tspan></text>
+    <text class="st3" transform="translate(1371.4968 1370.8093)"><tspan x="0" y="0">14</tspan></text>
+    <text class="st3" transform="translate(1344.2393 1373.7394)"><tspan x="0" y="0">10</tspan></text>
+    <text class="st3" transform="translate(1304.3049 1368.8993)"><tspan x="0" y="0">7</tspan></text>
+    <text class="st3" transform="translate(1303.375 1320.2494)"><tspan x="0" y="0">8</tspan></text>
+    <text class="st3" transform="translate(1440.785 1414.8194)"><tspan x="0" y="0">22</tspan></text>
+    <text class="st3" transform="translate(1439.6058 1359.4093)"><tspan x="0" y="0">20</tspan></text>
+    <text class="st3" transform="translate(1413.4811 1380.3594)"><tspan x="0" y="0">17</tspan></text>
+    <text class="st3" transform="translate(1412.681 1341.8494)"><tspan x="0" y="0">18</tspan></text>
+    <text class="st3" transform="translate(1412.2257 1308.5493)"><tspan x="0" y="0">19</tspan></text>
+    <text class="st3" transform="translate(1371.0123 1319.5493)"><tspan x="0" y="0">15</tspan></text>
+    <text class="st3" transform="translate(1344.312 1319.9494)"><tspan x="0" y="0">11</tspan></text>
+    <text class="st3" transform="translate(1439.8085 1313.2893)"><tspan x="0" y="0">21</tspan></text>
+    <text class="st3" transform="translate(1276.3561 1331.3494)"><tspan x="0" y="0">3</tspan></text>
+      <text class="st3" transform="translate(596.86 1244.81)" text-anchor="middle"><tspan x="0" y="0">1</tspan></text>
+    <text class="st3" transform="translate(595.52 1218.09)" text-anchor="middle"><tspan x="0" y="0">2</tspan></text>
+    <text class="st3" transform="translate(575.01 1093.69)" text-anchor="middle"><tspan x="0" y="0">3</tspan></text>
+    <text class="st3" transform="translate(482.62 937.8599999999999)" text-anchor="middle"><tspan x="0" y="0">U</tspan></text>
   </g>
 </svg>
