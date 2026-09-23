@@ -125,7 +125,7 @@ export function useAperture(mercati = MERCATI, cal = []) {
 }
 
 // ---------------------------------------------------------------- presenze del giorno
-/** { [espositoreId]: {posteggioId, ora, metodo, da, tipo, ritardo, mercato} } — vuoto dopo l'ora di azzeramento. */
+/** { [espositoreId]: {posteggioId, ora, metodo, da, tipo, mercato} } — vuoto dopo l'ora di azzeramento. */
 export function usePresenze(impostazioni = IMPOSTAZIONI_DEFAULT) {
   const [raw, setRaw] = useState({});
   const [online, setOnline] = useState(false);
@@ -185,7 +185,7 @@ export async function lookupQr(token) {
 
 /** Registra (o annulla) una presenza certificata. Solo staff: le regole Firestore lo impongono.
  *  Scrive la vista del giorno stato/{mercato} e il record presenze/{data}_{mercato}_{esp}. */
-export async function setPresenza({ mercatoId, espositoreId, posteggioId, presente, operatore, metodo = "elenco", posizione = null, tipo = "fisso", ritardo = false }) {
+export async function setPresenza({ mercatoId, espositoreId, posteggioId, presente, operatore, metodo = "elenco", posizione = null, tipo = "fisso" }) {
   if (!firebaseReady) throw new Error("Firebase non configurato");
   const giorno = oggi();
   const op = operatore ? { uid: operatore.uid || null, nome: operatore.nome || "", cognome: operatore.cognome || "", email: operatore.email || null } : null;
@@ -196,13 +196,13 @@ export async function setPresenza({ mercatoId, espositoreId, posteggioId, presen
     const presenti = { ...cur };
     if (presente) {
       for (const [k, v] of Object.entries(presenti)) if (v.tipo === "spuntista" && v.posteggioId === posteggioId && k !== espositoreId && tipo === "spuntista") throw new Error("Posteggio già occupato oggi da un altro spuntista");
-      presenti[espositoreId] = { posteggioId: posteggioId || null, ora: oraLocale(), metodo, da: op, tipo, ritardo: !!ritardo };
+      presenti[espositoreId] = { posteggioId: posteggioId || null, ora: oraLocale(), metodo, da: op, tipo };
     } else delete presenti[espositoreId];
     tx.set(ref, { data: giorno, presenti, aggiornato: serverTimestamp() });
   });
   const pref = doc(db, "presenze", `${giorno}_${mercatoId}_${docId(espositoreId)}`);
   if (presente) {
-    await setDoc(pref, { data: giorno, mercato: mercatoId, espositoreId, tipoEspositore: tipo, posteggioId: posteggioId || null, metodo, operatore: op, posizione, oraLocale: oraLocale(), ora: serverTimestamp(), ritardo: !!ritardo, annullata: false });
+    await setDoc(pref, { data: giorno, mercato: mercatoId, espositoreId, tipoEspositore: tipo, posteggioId: posteggioId || null, metodo, operatore: op, posizione, oraLocale: oraLocale(), ora: serverTimestamp(), annullata: false });
   } else {
     await setDoc(pref, { data: giorno, mercato: mercatoId, espositoreId, annullata: true, annullataDa: op, annullataOra: serverTimestamp(), annullataOraLocale: oraLocale() }, { merge: true });
   }
@@ -268,7 +268,7 @@ export function buildPostazioni(presenze, live) {
       nome: e ? e.nome : "", titolare: e ? e.titolare : "", riservato: !!(e && e.riservato), tipo: e ? e.tipo : null,
       categoria: spId ? (e.categoria || "Spuntista") : (SETTORI[g.settore] || g.settore),
       whatsapp: e ? e.whatsapp : "", telegram: e ? e.telegram : "", descrizione: e ? e.descrizione : "", foto: e ? e.foto : null, denominazione: e ? e.denominazione : "",
-      presente, oraPresenza: pres ? pres.ora : null, ritardo: !!(pres && pres.ritardo),
+      presente, oraPresenza: pres ? pres.ora : null,
       inElenco: g.inElenco, note: live && live.posteggi[g.id] ? live.posteggi[g.id].note || "" : "",
     };
   });
@@ -307,7 +307,7 @@ export function buildSpuntisti(presenze, live) {
   return out.sort((a, b) => a.nome.localeCompare(b.nome));
 }
 
-/** Posteggi dell'area mercatale assegnabili a uno spuntista adesso: vacanti, oppure di un fisso assente dopo l'ora limite. */
+/** Posteggi dell'area mercatale assegnabili a uno spuntista adesso: vacanti, oppure di un fisso non presentato entro l'ora limite. */
 export function posteggiPerSpuntisti(postazioni, impostazioni, now = new Date()) {
   const imp = impostazioni["area-mercatale"] || IMPOSTAZIONI_DEFAULT["area-mercatale"];
   const dopoLimite = adesso(now) >= minuti(imp.oraLimiteSpunta || "10:00");
@@ -317,6 +317,7 @@ export function posteggiPerSpuntisti(postazioni, impostazioni, now = new Date())
     return dopoLimite && !p.presente;                    // fisso assente dopo l'ora limite
   }).map((p) => ({ id: p.id, etichetta: p.etichetta, postazione: p.postazione, settore: p.settore, motivo: p.fissoId ? `assente: ${p.nome || "titolare"}` : "libero" }));
 }
+/** Dopo l'ora limite di spunta il fisso che non si è presentato risulta assente: non è più registrabile. */
 export const dopoOraLimite = (impostazioni, mercatoId = "area-mercatale", now = new Date()) => {
   const imp = impostazioni[mercatoId] || IMPOSTAZIONI_DEFAULT[mercatoId] || {};
   return adesso(now) >= minuti(imp.oraLimiteSpunta || "10:00");

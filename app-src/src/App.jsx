@@ -538,7 +538,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                 <div style={S.divider}/>
                 <div style={{display:"flex",flexDirection:"column",gap:9,marginBottom:16}}>
                   {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.titolare}</span></div>}
-                  <div style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.etichetta}{esp.spuntista?" · spuntista, oggi":""}{esp.ritardo?" · arrivato in ritardo":""}</span></div>
+                  <div style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.etichetta}{esp.spuntista?" · spuntista, oggi":""}</span></div>
                   {esp.riservato&&<div style={{fontSize:11,color:C.terraChiaro,lineHeight:1.45}}>L'espositore ha chiesto di non pubblicare i propri dati.</div>}
                   {esp.descrizione&&<div>
                     <button style={S.descBtn} onClick={()=>setDescAperta(v=>!v)}><Icon name="chevron" size={13} color={C.ocra} sw={2.5}/><span style={{display:"inline-block",transform:descAperta?"none":"none"}}>{descAperta?"Nascondi descrizione":"Cosa espone"}</span></button>
@@ -720,14 +720,15 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
   const filtra=arr=>q?arr.filter(e=>norm(e.nome).includes(norm(q))||norm(e.titolare).includes(norm(q))||norm(e.etichetta).includes(norm(q))||norm(e.numero).includes(norm(q))):arr;
   const presentiOggi=lista.filter(e=>e.presente).length;
   const imp=impostazioni[mercato]||{};
-  const ritardo=dopoOraLimite(impostazioni,mercato);
+  const oltreLimite=dopoOraLimite(impostazioni,mercato);
   const liberi=posteggiPerSpuntisti(postazioni,impostazioni);
   const mercatoAttivo=aperture[mercato];
 
   async function segna(e,presente,extra={}){
     if(pending[e.id]) return;
     setPending(p=>({...p,[e.id]:true}));
-    try{ await onPresenza({mercatoId:extra.mercatoId||mercato,espositoreId:e.espositoreId||e.id,posteggioId:extra.posteggioId!==undefined?extra.posteggioId:e.id,presente,metodo:"elenco",tipo:extra.tipo||"fisso",ritardo:presente&&ritardo}); }
+    if(presente&&(extra.tipo||"fisso")==="fisso"&&oltreLimite){ alert(`Ora limite di spunta (${imp.oraLimiteSpunta||"10:00"}) superata: l'espositore fisso non presentato risulta assente per oggi.`); return; }
+    try{ await onPresenza({mercatoId:extra.mercatoId||mercato,espositoreId:e.espositoreId||e.id,posteggioId:extra.posteggioId!==undefined?extra.posteggioId:e.id,presente,metodo:"elenco",tipo:extra.tipo||"fisso"}); }
     catch(err){ alert("Salvataggio non riuscito: "+(err.message||err)); }
     setPending(p=>{const n={...p};delete n[e.id];return n;});
   }
@@ -776,15 +777,17 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
             <div style={{fontSize:12,color:C.terraChiaro,padding:"12px 0"}}>Per questo mercato il registro presenze non è attivo.</div>
           ):(<>
             <div style={S.secLbl}>Presenze di oggi · {presentiOggi} su {lista.length}{!mercatoAttivo?" · mercato chiuso":""}</div>
-            <div style={{fontSize:10,color:ritardo?C.rossoAssenza:C.terraChiaro,marginBottom:8}}>{ritardo?`Ora limite di spunta (${imp.oraLimiteSpunta||"10:00"}) superata: le nuove presenze vengono segnate in ritardo e i posteggi degli assenti sono assegnabili agli spuntisti.`:`Entro le ${imp.oraLimiteSpunta||"10:00"} le presenze sono regolari. Azzeramento alle ${imp.oraAzzeramento||"14:00"}.`}</div>
+            <div style={{fontSize:10,color:oltreLimite?C.rossoAssenza:C.terraChiaro,marginBottom:8}}>{oltreLimite?`Ora limite di spunta (${imp.oraLimiteSpunta||"10:00"}) superata: i fissi non presentati risultano assenti per oggi e i loro posteggi sono assegnabili agli spuntisti.`:`Le presenze dei fissi si registrano entro le ${imp.oraLimiteSpunta||"10:00"}. Azzeramento alle ${imp.oraAzzeramento||"14:00"}.`}</div>
             <div style={S.col}>
               {filtra(lista).map(e=>(
                 <div key={e.id} style={S.presRow}>
                   <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,flexShrink:0,display:"inline-block"}}/>
-                  <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}{e.presente&&e.oraPresenza?` · alle ${e.oraPresenza}`:""}{e.ritardo?" · in ritardo":""}</div></div>
-                  <button style={{...S.togBtn,background:e.presente?C.rossoAssenzaTint:C.verdePresenzaTint,color:e.presente?C.rossoAssenza:C.verdePresenza,opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>segna(e,!e.presente)}>
+                  <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}{e.presente&&e.oraPresenza?` · alle ${e.oraPresenza}`:""}</div></div>
+                  {!e.presente&&oltreLimite
+                    ?<span style={{...S.togBtn,background:C.sabbiaScura,color:C.terraChiaro,cursor:"default"}}>Assente</span>
+                    :<button style={{...S.togBtn,background:e.presente?C.rossoAssenzaTint:C.verdePresenzaTint,color:e.presente?C.rossoAssenza:C.verdePresenza,opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>segna(e,!e.presente)}>
                     {e.presente?"Annulla":"Presente"}
-                  </button>
+                  </button>}
                 </div>
               ))}
             </div>
@@ -797,7 +800,7 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
         <div>
           <input style={{...S.input,marginBottom:10}} placeholder="Cerca spuntista…" value={q} onChange={e=>setQ(e.target.value)}/>
           <div style={S.secLbl}>Spuntisti · {spuntisti.filter(s=>s.presente).length} presenti su {spuntisti.length} in elenco</div>
-          <div style={{fontSize:10,color:C.terraChiaro,marginBottom:8}}>Posteggi assegnabili adesso: {liberi.length} ({ritardo?"vacanti e fissi assenti":`solo vacanti fino alle ${imp.oraLimiteSpunta||"10:00"}`}).</div>
+          <div style={{fontSize:10,color:C.terraChiaro,marginBottom:8}}>Posteggi assegnabili adesso: {liberi.length} ({oltreLimite?"vacanti e fissi non presentati":`solo vacanti fino alle ${imp.oraLimiteSpunta||"10:00"}`}).</div>
           {assegnaSp&&(
             <div style={S.formCard}>
               <div style={S.formH}>{assegnaSp.nome}</div>
@@ -1165,10 +1168,10 @@ export default function App(){
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 
-  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione,tipo,ritardo})=>{
+  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione,tipo})=>{
     if(!espositoreId) return;
     if(!firebaseReady){ setPresenzeLocal(p=>{const n={...p}; if(presente) n[espositoreId]={posteggioId,mercato:mercatoId,tipo:tipo||"fisso",ora:"--:--"}; else delete n[espositoreId]; return n;}); return; }
-    await setPresenza({mercatoId,espositoreId,posteggioId,presente,operatore:auth.operatore,metodo:metodo||"elenco",posizione:posizione||null,tipo:tipo||"fisso",ritardo:!!ritardo});
+    await setPresenza({mercatoId,espositoreId,posteggioId,presente,operatore:auth.operatore,metodo:metodo||"elenco",posizione:posizione||null,tipo:tipo||"fisso"});
   };
 
   const [splashReady,setSplashReady]=useState(false);

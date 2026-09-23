@@ -26,7 +26,7 @@ export function giornateMercato(mercato, cal, da, a) {
   return { giornate: out, soppresse };
 }
 
-/** Riepilogo per espositore: presenze valide, assenze (giornate svolte meno presenze), ritardi, ultimo operatore. */
+/** Riepilogo per espositore: presenze valide, assenze (giornate svolte meno presenze), ultima presenza. */
 export function riepilogoEspositori({ presenze, espositori, giornate, mercatoId, assenzeMassime }) {
   const valide = presenze.filter((p) => p.mercato === mercatoId && !p.annullata && giornate.some((g) => g.data === p.data));
   const perEsp = {};
@@ -39,7 +39,7 @@ export function riepilogoEspositori({ presenze, espositori, giornate, mercatoId,
     const assenze = fisso ? Math.max(0, giornate.length - presenzeN) : null;
     return {
       id: e.id, nome: (e.alias && e.alias.trim()) || e.denominazione || e.id, tipo: fisso ? "fisso" : "spuntista", posteggi: (e.posteggi || []).join(", "),
-      presenze: presenzeN, assenze, ritardi: ps.filter((p) => p.ritardo).length, qr: ps.filter((p) => p.metodo === "qr").length,
+      presenze: presenzeN, assenze, qr: ps.filter((p) => p.metodo === "qr").length,
       oltreSoglia: fisso && assenzeMassime > 0 && assenze > assenzeMassime, ultima: ps.length ? ps[ps.length - 1].data : "",
       dettaglio: ps,
     };
@@ -51,21 +51,21 @@ const nomeOp = (p) => (p.operatore ? [p.operatore.nome, p.operatore.cognome].fil
 /** Righe piatte del registro (una per presenza), per tabella ed export. */
 export const righeRegistro = (presenze, espById) => presenze.slice().sort((a, b) => a.data.localeCompare(b.data) || (a.oraLocale || "").localeCompare(b.oraLocale || "")).map((p) => {
   const e = espById[p.espositoreId];
-  return { data: p.data, ora: p.oraLocale || "", espositore: e ? (e.alias && e.alias.trim()) || e.denominazione : p.espositoreId, tipo: p.tipoEspositore || (e && e.tipo) || "", posteggio: p.posteggioId || "", metodo: p.metodo || "", ritardo: p.ritardo ? "sì" : "", operatore: nomeOp(p), gps: p.posizione ? `${p.posizione.lat.toFixed(5)}, ${p.posizione.lon.toFixed(5)}` : "", annullata: p.annullata ? "sì" : "", _id: p._id };
+  return { data: p.data, ora: p.oraLocale || "", espositore: e ? (e.alias && e.alias.trim()) || e.denominazione : p.espositoreId, tipo: p.tipoEspositore || (e && e.tipo) || "", posteggio: p.posteggioId || "", metodo: p.metodo || "", operatore: nomeOp(p), gps: p.posizione ? `${p.posizione.lat.toFixed(5)}, ${p.posizione.lon.toFixed(5)}` : "", annullata: p.annullata ? "sì" : "", _id: p._id };
 });
 
 /** Export Excel: un foglio di riepilogo e uno con il registro. */
 export function esportaExcel({ titolo, riepilogo, registro, giornate, soppresse, periodo }) {
   const wb = XLSX.utils.book_new();
-  const r1 = riepilogo.map((r) => ({ Espositore: r.nome, Tipo: r.tipo, Posteggi: r.posteggi, Presenze: r.presenze, Assenze: r.assenze ?? "", "In ritardo": r.ritardi, "Via QR": r.qr, "Oltre soglia": r.oltreSoglia ? "SÌ" : "", "Ultima presenza": dataIt(r.ultima) }));
+  const r1 = riepilogo.map((r) => ({ Espositore: r.nome, Tipo: r.tipo, Posteggi: r.posteggi, Presenze: r.presenze, Assenze: r.assenze ?? "", "Via QR": r.qr, "Oltre soglia": r.oltreSoglia ? "SÌ" : "", "Ultima presenza": dataIt(r.ultima) }));
   const ws1 = XLSX.utils.json_to_sheet(r1);
   XLSX.utils.sheet_add_aoa(ws1, [[titolo], [`Periodo ${dataIt(periodo.da)} – ${dataIt(periodo.a)} · giornate di mercato svolte: ${giornate.length} · soppresse: ${soppresse.length}`], []], { origin: "A1" });
   XLSX.utils.sheet_add_json(ws1, r1, { origin: "A4" });
-  ws1["!cols"] = [{ wch: 34 }, { wch: 10 }, { wch: 18 }, { wch: 9 }, { wch: 9 }, { wch: 10 }, { wch: 8 }, { wch: 11 }, { wch: 15 }];
+  ws1["!cols"] = [{ wch: 34 }, { wch: 10 }, { wch: 18 }, { wch: 9 }, { wch: 9 }, { wch: 8 }, { wch: 11 }, { wch: 15 }];
   XLSX.utils.book_append_sheet(wb, ws1, "Riepilogo");
-  const r2 = registro.map((r) => ({ Data: dataIt(r.data), Ora: r.ora, Espositore: r.espositore, Tipo: r.tipo, Posteggio: r.posteggio, Metodo: r.metodo, Ritardo: r.ritardo, Operatore: r.operatore, GPS: r.gps, Annullata: r.annullata }));
+  const r2 = registro.map((r) => ({ Data: dataIt(r.data), Ora: r.ora, Espositore: r.espositore, Tipo: r.tipo, Posteggio: r.posteggio, Metodo: r.metodo, Operatore: r.operatore, GPS: r.gps, Annullata: r.annullata }));
   const ws2 = XLSX.utils.json_to_sheet(r2);
-  ws2["!cols"] = [{ wch: 11 }, { wch: 6 }, { wch: 34 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 8 }, { wch: 24 }, { wch: 20 }, { wch: 9 }];
+  ws2["!cols"] = [{ wch: 11 }, { wch: 6 }, { wch: 34 }, { wch: 10 }, { wch: 10 }, { wch: 8 }, { wch: 24 }, { wch: 20 }, { wch: 9 }];
   XLSX.utils.book_append_sheet(wb, ws2, "Registro");
   const ws3 = XLSX.utils.json_to_sheet([...giornate.map((g) => ({ Data: dataIt(g.data), Tipo: g.tipo, Note: g.motivo })), ...soppresse.map((g) => ({ Data: dataIt(g.data), Tipo: "soppresso", Note: g.motivo }))]);
   XLSX.utils.book_append_sheet(wb, ws3, "Giornate");
@@ -76,8 +76,8 @@ const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;");
 /** Export PDF: finestra di stampa (il browser salva in PDF). */
 export function stampaReport({ titolo, sottotitolo, riepilogo, registro, giornate, soppresse, periodo, assenzeMassime }) {
   const th = (cols) => `<tr>${cols.map((c) => `<th>${esc(c)}</th>`).join("")}</tr>`;
-  const r1 = riepilogo.map((r) => `<tr class="${r.oltreSoglia ? "alert" : ""}"><td>${esc(r.nome)}</td><td>${r.tipo}</td><td>${esc(r.posteggi)}</td><td class="n">${r.presenze}</td><td class="n">${r.assenze ?? ""}</td><td class="n">${r.ritardi}</td><td>${dataIt(r.ultima)}</td></tr>`).join("");
-  const r2 = registro.map((r) => `<tr class="${r.annullata ? "ann" : ""}"><td>${dataIt(r.data)}</td><td>${r.ora}</td><td>${esc(r.espositore)}</td><td>${r.tipo}</td><td>${esc(r.posteggio)}</td><td>${r.metodo}${r.ritardo ? " · ritardo" : ""}</td><td>${esc(r.operatore)}</td><td>${r.annullata ? "annullata" : ""}</td></tr>`).join("");
+  const r1 = riepilogo.map((r) => `<tr class="${r.oltreSoglia ? "alert" : ""}"><td>${esc(r.nome)}</td><td>${r.tipo}</td><td>${esc(r.posteggi)}</td><td class="n">${r.presenze}</td><td class="n">${r.assenze ?? ""}</td><td>${dataIt(r.ultima)}</td></tr>`).join("");
+  const r2 = registro.map((r) => `<tr class="${r.annullata ? "ann" : ""}"><td>${dataIt(r.data)}</td><td>${r.ora}</td><td>${esc(r.espositore)}</td><td>${r.tipo}</td><td>${esc(r.posteggio)}</td><td>${r.metodo}</td><td>${esc(r.operatore)}</td><td>${r.annullata ? "annullata" : ""}</td></tr>`).join("");
   const gg = [...giornate.map((g) => `${dataIt(g.data)}${g.tipo !== "ordinaria" ? ` (${g.tipo}${g.motivo ? ": " + esc(g.motivo) : ""})` : ""}`), ...soppresse.map((g) => `<s>${dataIt(g.data)}</s> soppressa${g.motivo ? ` (${esc(g.motivo)})` : ""}`)].join(" · ");
   const html = `<!doctype html><html lang="it"><head><meta charset="utf-8"><title>${esc(titolo)}</title><style>
     @page{size:A4;margin:12mm} body{font-family:Helvetica,Arial,sans-serif;color:#222;font-size:9.5pt;margin:0}
@@ -89,7 +89,7 @@ export function stampaReport({ titolo, sottotitolo, riepilogo, registro, giornat
     <h1>${esc(titolo)}</h1><div class="sub">${esc(sottotitolo)}<br>Periodo ${dataIt(periodo.da)} – ${dataIt(periodo.a)} · giornate di mercato svolte: ${giornate.length} · soppresse: ${soppresse.length}${assenzeMassime ? ` · soglia assenze annue: ${assenzeMassime}` : ""}</div>
     <div class="sub"><b>Giornate:</b> ${gg || "nessuna"}</div>
     <h2>Riepilogo per espositore</h2>
-    <table>${th(["Espositore", "Tipo", "Posteggi", "Presenze", "Assenze", "Ritardi", "Ultima presenza"])}${r1}</table>
+    <table>${th(["Espositore", "Tipo", "Posteggi", "Presenze", "Assenze", "Ultima presenza"])}${r1}</table>
     <h2>Registro delle presenze certificate</h2>
     <table>${th(["Data", "Ora", "Espositore", "Tipo", "Posteggio", "Metodo", "Operatore", ""])}${r2}</table>
     <div class="foot">Comune di Maglie · Area Mercatale · generato il ${new Date().toLocaleString("it-IT")} dal pannello di gestione. Le presenze sono certificate dagli operatori di controllo indicati.</div>

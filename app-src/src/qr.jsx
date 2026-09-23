@@ -43,7 +43,7 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
   const mercatoDi = (p) => (postazioni.includes(p) ? "area-mercatale" : (elenchi.coperto || []).includes(p) ? "coperto" : "ortofrutticolo");
   const mercatoId = p0 ? mercatoDi(p0) : "area-mercatale";
   const registro = (impostazioni[mercatoId] || {}).registroPresenze !== false;
-  const ritardo = dopoOraLimite(impostazioni, mercatoId);
+  const oltreLimite = tipo === "fisso" && dopoOraLimite(impostazioni, mercatoId);
   const liberi = tipo === "spuntista" ? posteggiPerSpuntisti(postazioni, impostazioni) : [];
   const colore = tipo === "spuntista" ? C.gialloOccasionale : C.verdePresenza;
 
@@ -61,8 +61,8 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
         if (!navigator.geolocation) return res(null);
         navigator.geolocation.getCurrentPosition((pos) => res({ lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy }), () => res(null), { enableHighAccuracy: true, timeout: 6000 });
       });
-      await onPresenza({ mercatoId, espositoreId: q.espositoreId, posteggioId: tipo === "spuntista" ? (presente ? pres.posteggioId : postScelto) : (p0 ? p0.id : null), presente: !presente, metodo: "qr", posizione, tipo, ritardo: !presente && ritardo });
-      setEsito({ ok: true, t: !presente ? `Presenza registrata${!presente && ritardo ? " (in ritardo)" : ""}` : "Presenza annullata" });
+      await onPresenza({ mercatoId, espositoreId: q.espositoreId, posteggioId: tipo === "spuntista" ? (presente ? pres.posteggioId : postScelto) : (p0 ? p0.id : null), presente: !presente, metodo: "qr", posizione, tipo });
+      setEsito({ ok: true, t: !presente ? "Presenza registrata" : "Presenza annullata" });
     } catch (e) { setEsito({ ok: false, t: e.message || String(e) }); }
     setBusy(false);
   }
@@ -111,7 +111,7 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
         {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5} /><span>{p.etichetta}</span></div>)}
         {tipo === "spuntista" && <div style={{ ...S.infoRow, color: C.gialloOccasionaleTesto }}><Icon name="pin" size={15} color={C.gialloOccasionale} sw={1.5} /><span>{presente ? `Oggi sul posteggio ${pres.posteggioId || "—"} dalle ${pres.ora || ""}` : "Spuntista: da collocare in un posteggio libero."}</span></div>}
         {tipo === "fisso" && !p0 && <div style={{ ...S.infoRow, color: C.rossoAssenza }}><Icon name="pin" size={15} color={C.rossoAssenza} sw={1.5} /><span>Nessun posteggio assegnato: verificare con il SUAP.</span></div>}
-        {presente && pres.ora && tipo === "fisso" && <div style={{ fontSize: 11, color: C.terraChiaro }}>Presenza registrata alle {pres.ora}{pres.ritardo ? " (in ritardo)" : ""}{pres.da && (pres.da.nome || pres.da.email) ? ` da ${[pres.da.nome, pres.da.cognome].filter(Boolean).join(" ") || pres.da.email}` : ""}</div>}
+        {presente && pres.ora && tipo === "fisso" && <div style={{ fontSize: 11, color: C.terraChiaro }}>Presenza registrata alle {pres.ora}{pres.da && (pres.da.nome || pres.da.email) ? ` da ${[pres.da.nome, pres.da.cognome].filter(Boolean).join(" ") || pres.da.email}` : ""}</div>}
       </div>
       {!registro ? (
         <div style={{ ...S.formCard, textAlign: "center", fontSize: 12, color: C.terraChiaro }}>Per questo mercato il registro presenze non è attivo.</div>
@@ -124,11 +124,13 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
               {liberi.map((p) => <option key={p.id} value={p.id}>{p.postazione} · {p.etichetta.replace(/^Settore \w+ · /, "")} · {p.motivo}</option>)}
             </select>
           )}
-          {ritardo && !presente && <div style={{ fontSize: 11, color: C.rossoAssenza, marginBottom: 8 }}>Ora limite di spunta superata: la presenza verrà segnata in ritardo.</div>}
           {esito && <div style={{ ...S.errMsg, color: esito.ok ? C.verdePresenzaTesto : C.rossoAssenza }}>{esito.t}</div>}
+          {oltreLimite && !presente ? (
+            <div style={{ fontSize: 12, color: C.rossoAssenza, fontWeight: 700, padding: "8px 0" }}>Ora limite di spunta ({(impostazioni[mercatoId] || {}).oraLimiteSpunta || "10:00"}) superata: l'espositore non si è presentato in tempo e per oggi risulta assente. Il posteggio è assegnabile a uno spuntista.</div>
+          ) : (
           <button style={{ ...S.loginBtn, background: presente ? C.rossoAssenza : C.verdePresenza, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={conferma}>
             <Icon name={presente ? "xCircle" : "checkCircle"} size={16} color={C.bianco} sw={2} /> {busy ? "Registrazione…" : presente ? "Annulla presenza" : "Conferma presenza"}
-          </button>
+          </button>)}
           <div style={S.loginHint}>La presenza viene certificata a tuo nome, con ora e posizione GPS del telefono.</div>
         </div>
       )}

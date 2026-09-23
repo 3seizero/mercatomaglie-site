@@ -81,9 +81,9 @@ git add . && git commit -m "descrizione" && git push
   sovrascrive le correzioni manuali a posteggi/mercati/fissi: NON usarlo).
 - Presenze del giorno: `stato/{mercatoId}` ({data, presenti:{espId:{posteggioId, ora, metodo, da:{uid,nome,cognome},
   tipo, ritardo}}}), letto dall'app (1 lettura per mercato). Record certificato: `presenze/{data}_{mercato}_{espId}`
-  (operatore, GPS, metodo qr|elenco, ritardo; annullamento = `annullata:true`, la riga resta). Scrittura via
+  (operatore, GPS, metodo qr|elenco; annullamento = `annullata:true`, la riga resta). Scrittura via
   `setPresenza` (solo staff). `impostazioni/{mercato}`: registroPresenze (coperto e ortofrutticolo: false),
-  oraLimiteSpunta 10:00 (dopo: presenze "in ritardo" e posteggi dei fissi assenti assegnabili agli spuntisti),
+  oraLimiteSpunta 10:00 (dopo: i fissi non presentati sono assenti e NON più registrabili; i loro posteggi vanno agli spuntisti),
   oraAzzeramento 14:00 (dopo: l'app mostra tutti assenti), assenzeMassime 20. `calendario/{mercato}_{data}`:
   giornate soppresse/spostate/straordinarie (avviso nell'app; il report conta le assenze solo sulle giornate svolte).
 - Login staff con Firebase Auth email+password; ruolo e anagrafica (nome, cognome, telefono, attivo) in `staff/{uid}`.

@@ -457,7 +457,7 @@ function SchedaImpostazioni({ mercatoId, imp, auth }) {
       <h3 style={{ margin: "0 0 10px" }}>Regole del mercato</h3>
       <div className="field"><label><input type="checkbox" checked={!!f.registroPresenze} onChange={set("registroPresenze")} /> Registro presenze attivo (l'app mostra presente/assente e l'operatore registra le presenze)</label></div>
       <div className="row2">
-        <div className="field"><label>Ora limite di spunta</label><input type="time" value={f.oraLimiteSpunta} onChange={set("oraLimiteSpunta")} /><div className="muted">Dopo quest'ora il posteggio di un fisso assente può essere dato a uno spuntista; una presenza registrata dopo viene segnata "in ritardo".</div></div>
+        <div className="field"><label>Ora limite di spunta</label><input type="time" value={f.oraLimiteSpunta} onChange={set("oraLimiteSpunta")} /><div className="muted">Entro quest'ora i fissi devono presentarsi: dopo, chi non si è presentato risulta assente per la giornata e il suo posteggio può essere dato a uno spuntista.</div></div>
         <div className="field"><label>Ora di azzeramento</label><input type="time" value={f.oraAzzeramento} onChange={set("oraAzzeramento")} /><div className="muted">Dopo quest'ora nell'app tutti risultano assenti, pronti per la giornata successiva.</div></div>
       </div>
       <div className="field"><label>Assenze massime nell'anno (fissi)</label><input type="number" min="0" value={f.assenzeMassime} onChange={set("assenzeMassime")} style={{ width: 120 }} /><div className="muted">Oltre questa soglia la concessione è revocabile: il report evidenzia chi la supera. 0 = nessuna soglia.</div></div>
@@ -549,16 +549,16 @@ function Report({ auth }) {
         <p className="muted">Periodo {dataIt(da)} – {dataIt(a)}: <b>{giornate.length}</b> giornate di mercato svolte{soppresse.length ? <>, <b>{soppresse.length}</b> soppresse ({soppresse.map((s) => dataIt(s.data)).join(", ")})</> : ""} · {filtrate.filter((p) => !p.annullata).length} presenze certificate{imp?.assenzeMassime ? ` · soglia assenze ${imp.assenzeMassime}` : ""}. Le assenze dei fissi sono calcolate sulle giornate svolte.</p>
         <Msg m={msg} />
         {vista === "riepilogo" && (
-          <table className="grid"><thead><tr><th>Espositore</th><th>Tipo</th><th>Posteggi</th><th>Presenze</th><th>Assenze</th><th>Ritardi</th><th>Via QR</th><th>Ultima</th></tr></thead><tbody>
+          <table className="grid"><thead><tr><th>Espositore</th><th>Tipo</th><th>Posteggi</th><th>Presenze</th><th>Assenze</th><th>Via QR</th><th>Ultima</th></tr></thead><tbody>
             {riepilogo.map((r) => <tr key={r.id} style={r.oltreSoglia ? { background: "var(--rosso-assenza-tint)" } : undefined}>
-              <td><b>{r.nome}</b>{r.oltreSoglia && <span className="tag red">oltre soglia</span>}</td><td className="muted">{r.tipo}</td><td className="muted">{r.posteggi}</td><td>{r.presenze}</td><td>{r.assenze ?? "—"}</td><td>{r.ritardi}</td><td>{r.qr}</td><td className="muted">{dataIt(r.ultima)}</td>
+              <td><b>{r.nome}</b>{r.oltreSoglia && <span className="tag red">oltre soglia</span>}</td><td className="muted">{r.tipo}</td><td className="muted">{r.posteggi}</td><td>{r.presenze}</td><td>{r.assenze ?? "—"}</td><td>{r.qr}</td><td className="muted">{dataIt(r.ultima)}</td>
             </tr>)}
           </tbody></table>
         )}
         {vista === "registro" && (
           <table className="grid"><thead><tr><th>Data</th><th>Ora</th><th>Espositore</th><th>Posteggio</th><th>Metodo</th><th>Operatore</th><th>GPS</th><th></th></tr></thead><tbody>
             {registro.map((r) => <tr key={r._id} style={r.annullata ? { opacity: 0.5, textDecoration: "line-through" } : undefined}>
-              <td>{dataIt(r.data)}</td><td>{r.ora}</td><td><b>{r.espositore}</b> <span className="muted">{r.tipo}</span></td><td>{r.posteggio}</td><td>{r.metodo}{r.ritardo && <span className="tag red">ritardo</span>}</td><td>{r.operatore}</td><td className="muted">{r.gps}</td>
+              <td>{dataIt(r.data)}</td><td>{r.ora}</td><td><b>{r.espositore}</b> <span className="muted">{r.tipo}</span></td><td>{r.posteggio}</td><td>{r.metodo}</td><td>{r.operatore}</td><td className="muted">{r.gps}</td>
               <td>{auth.isAdmin && !r.annullata && <button className="btn sm danger" disabled={busy} onClick={() => { const mot = prompt("Motivo dell'annullamento:"); if (mot !== null) run(async () => { await annullaPresenza(r._id, { uid: auth.user.uid, email: auth.user.email, nome: auth.profilo?.nome || "", cognome: auth.profilo?.cognome || "" }, mot); setPresenze((p) => p.map((x) => (x._id === r._id ? { ...x, annullata: true } : x))); }, "Presenza annullata"); }}>Annulla</button>}</td>
             </tr>)}
             {registro.length === 0 && <tr><td colSpan={8} className="muted">Nessuna presenza nel periodo con questi filtri.</td></tr>}
