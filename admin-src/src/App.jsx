@@ -87,6 +87,8 @@ function Espositori({ auth }) {
   const { rows: posteggi } = useCollection("posteggi");
   const { rows: riservati } = useCollection("espositori_riservati", auth.isSuap);
   const [q, setQ] = useState(""); const [filtro, setFiltro] = useState("fisso"); const [mercato, setMercato] = useState("tutti"); const [sel, setSel] = useState(null); const [nuovo, setNuovo] = useState(false);
+  const [avviso, setAvviso] = useState(null);
+  useEffect(() => { if (!avviso) return; const t = setTimeout(() => setAvviso(null), 6000); return () => clearTimeout(t); }, [avviso]);
   const { byEsp } = usaAssegnazioni(espositori);
   const postById = useMemo(() => Object.fromEntries(posteggi.map((p) => [p.id, p])), [posteggi]);
   const postEsp = (e) => (byEsp[e.id] || []).map((pid) => postById[pid] || { id: pid, etichetta: pid, mercato: "?" }).sort(ordinaPosteggi);
@@ -95,7 +97,9 @@ function Espositori({ auth }) {
     const t = q.trim().toLowerCase();
     return espositori.filter((e) => {
       const tipo = e.tipo === "spuntista" ? "spuntista" : "fisso";
-      if (filtro === "archiviati") { if (e.attivo !== false) return false; } else { if (e.attivo === false) return false; if (filtro !== "tutti" && tipo !== filtro) return false; }
+      if (filtro === "archiviati") { if (e.attivo !== false) return false; }
+      else if (filtro === "scaduti") { if (e.attivo === false || !scaduto(e)) return false; }
+      else { if (e.attivo === false) return false; if (filtro !== "tutti" && tipo !== filtro) return false; }
       if (mercato !== "tutti" && !(tipo === "fisso" ? postEsp(e).some((p) => p.mercato === mercato) : (e.mercati || ["area-mercatale"]).includes(mercato))) return false;
       if (!t) return true;
       const r = risById[e.id] || {};
@@ -104,12 +108,13 @@ function Espositori({ auth }) {
   }, [espositori, q, filtro, mercato, byEsp, risById]); // eslint-disable-line react-hooks/exhaustive-deps
   const selEsp = sel ? espositori.find((e) => e.id === sel) : null;
   const nFissi = espositori.filter((e) => e.tipo !== "spuntista" && e.attivo !== false).length, nSp = espositori.filter((e) => e.tipo === "spuntista" && e.attivo !== false).length;
+  const nScad = espositori.filter((e) => e.attivo !== false && scaduto(e)).length;
   return (
     <div className="split">
       <div>
         <h2>Espositori <span className="count">{lista.length} in elenco · {nFissi} fissi · {nSp} spuntisti</span></h2>
         <div className="toolbar">
-          <div className="tabs">{[["fisso", "Fissi"], ["spuntista", "Spuntisti"], ["tutti", "Tutti"], ["archiviati", "Archiviati"]].map(([v, l]) => <button key={v} className={filtro === v ? "active" : ""} onClick={() => setFiltro(v)}>{l}</button>)}</div>
+          <div className="tabs">{[["fisso", "Fissi"], ["spuntista", "Spuntisti"], ["tutti", "Tutti"], ["scaduti", `Scaduti${nScad ? ` (${nScad})` : ""}`], ["archiviati", "Archiviati"]].map(([v, l]) => <button key={v} className={filtro === v ? "active" : ""} onClick={() => setFiltro(v)}>{l}</button>)}</div>
           <input type="search" placeholder="Cerca per denominazione, referente, P.IVA, C.F., posteggio…" value={q} onChange={(e) => setQ(e.target.value)} />
           <select value={mercato} onChange={(e) => setMercato(e.target.value)} style={{ width: "auto" }}>
             <option value="tutti">Tutti i mercati</option>{MERCATI.map((m) => <option key={m.id} value={m.id}>{m.nome}</option>)}
@@ -118,6 +123,7 @@ function Espositori({ auth }) {
           {auth.isSuap && <StampaBlocco lista={lista} risById={risById} postEsp={postEsp} />}
         </div>
         {e1 && <div className="msg err">{e1}</div>}
+        {avviso && <div className="msg ok">{avviso}</div>}
         <table className="grid"><thead><tr><th>Espositore</th><th>Referente</th><th>Posteggi</th><th>Contatti</th><th>Stato</th></tr></thead><tbody>
           {lista.map((e) => (
             <tr key={e.id} className={"click" + (sel === e.id ? " sel" : "")} onClick={() => { setSel(e.id); setNuovo(false); }}>
@@ -125,14 +131,14 @@ function Espositori({ auth }) {
               <td>{e.referente || <span className="muted">—</span>}</td>
               <td>{e.tipo === "spuntista" ? <span className="muted">spuntista{e.scadenza ? ` · fino al ${dataIt(e.scadenza)}` : ""}</span> : <>{(byEsp[e.id] || []).map((pid) => <span key={pid} className="tag grey">{pid}</span>)}{!(byEsp[e.id] || []).length && <span className="muted">nessuno</span>}</>}</td>
               <td className="muted">{[e.whatsapp && "WhatsApp", e.telegram && "Telegram", e.email && "email"].filter(Boolean).join(", ") || "—"}</td>
-              <td>{e.attivo === false ? <span className="tag red">archiviato</span> : scaduto(e) ? <span className="tag red">scaduto</span> : <span className="tag green">attivo</span>}{risById[e.id]?.qrToken && <span className="tag">QR</span>}</td>
+              <td>{e.attivo === false ? <span className="tag red">archiviato</span> : scaduto(e) ? <span className="tag red" title="Validità terminata: rinnova dalla scheda">scaduto il {dataIt(e.scadenza)}</span> : <span className="tag green">attivo</span>}{risById[e.id]?.qrToken && <span className="tag">QR</span>}</td>
             </tr>
           ))}
         </tbody></table>
       </div>
       {(selEsp || nuovo) && (
         <SchedaEspositore key={selEsp ? selEsp.id : "nuovo"} esp={selEsp} ris={selEsp ? risById[selEsp.id] : null} posteggiEsp={selEsp ? postEsp(selEsp) : []}
-          tutti={{ espositori, posteggi }} auth={auth} onClose={() => { setSel(null); setNuovo(false); }} onCreated={(id) => { setNuovo(false); setSel(id); }} />
+          tutti={{ espositori, posteggi }} auth={auth} onClose={() => { setSel(null); setNuovo(false); }} onCreated={(id, nome) => { setNuovo(false); setSel(id); setQ(""); setFiltro("tutti"); setAvviso(`Espositore "${nome}" creato e pubblicato: la scheda è aperta qui a destra, ora puoi assegnare i posteggi e generare il QR.`); }} />
       )}
     </div>
   );
@@ -164,7 +170,7 @@ function SezioneQr({ esp, ris, sotto, auth, run, busy }) {
             <div className="muted" style={{ overflowWrap: "anywhere", fontSize: 11 }}>{urlQr(token)}</div>
             <div className="actions">
               <button className="btn sm" disabled={busy} onClick={() => run(() => stampaQr([{ nome: nomePub(esp), sotto, token }]), "Stampa avviata")}>Stampa</button>
-              <button className="btn sm" disabled={busy} onClick={() => navigator.clipboard?.writeText(urlQr(token))}>Copia link</button>
+              <button className="btn sm" disabled={busy} onClick={() => navigator.clipboard?.writeText(urlQr(token)).then(() => run(async () => {}, "Link copiato")).catch(() => run(async () => { throw new Error("Copia non riuscita: seleziona e copia il link a mano"); }, ""))}>Copia link</button>
               {auth.isSuap && <button className="btn sm" disabled={busy} onClick={() => confirm("Rigenerare il QR? Quello stampato finora smetterà di funzionare.") && run(() => generaToken(esp.id, token), "Nuovo QR generato")}>Rigenera</button>}
               {auth.isSuap && <button className="btn sm danger" disabled={busy} onClick={() => confirm("Revocare il QR? L'espositore non potrà più essere registrato con questo codice.") && run(() => revocaToken(esp.id, token), "QR revocato")}>Revoca</button>}
             </div>
@@ -202,16 +208,29 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
         await rebuildPubblico([...tutti.espositori, { id: nid, ...dati }], tutti.posteggi);
         return nid;
       }, "Espositore creato");
-      if (id) onCreated(id);
+      if (id) onCreated(id, dati.alias || dati.denominazione);
     }
   }
   const cambia = (fn, okMsg) => run(async () => { const agg = await fn(); await rebuildPubblico(agg, tutti.posteggi); setAssegna(""); }, okMsg);
+  const annoRinnovo = () => { const y = new Date().getFullYear(); return oggi() > `${y}-12-31` ? y + 1 : y; };
+  const rinnova = () => run(async () => {
+    const scad = `${annoRinnovo()}-12-31`;
+    await salvaEspositore(esp.id, { scadenza: scad }, null, false);
+    setPub((p) => ({ ...p, scadenza: scad }));
+    await rebuildPubblico(tutti.espositori.map((e) => (e.id === esp.id ? { ...e, scadenza: scad } : e)), tutti.posteggi);
+  }, `Validità rinnovata fino al 31/12/${annoRinnovo()}`);
   const archivia = () => confirm(esp.attivo === false ? "Riattivare l'espositore?" : "Archiviare l'espositore? Sparisce dall'app e dagli elenchi, i posteggi restano assegnati finché non li liberi.") &&
     run(async () => { await archiviaEspositore(esp.id, esp.attivo === false); await rebuildPubblico(tutti.espositori.map((e) => (e.id === esp.id ? { ...e, attivo: esp.attivo === false } : e)), tutti.posteggi); }, esp.attivo === false ? "Riattivato" : "Archiviato");
   return (
     <div className="panel">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><h3 style={{ margin: 0 }}>{esp ? nomePub(esp) : "Nuovo espositore"}</h3><button className="btn sm" onClick={onClose}>Chiudi</button></div>
       {esp && <div className="muted" style={{ marginBottom: 10 }}>id {esp.id}{esp.attivo === false && " · archiviato"}</div>}
+      {esp && scaduto(esp) && esp.attivo !== false && (
+        <div className="msg err" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <span><b>Scaduto il {dataIt(esp.scadenza)}.</b> {spuntista ? "Non compare più tra gli spuntisti nell'app finché non viene rinnovato." : "La concessione risulta scaduta."} L'anagrafica resta: per riattivarlo basta rinnovare la validità.</span>
+          {auth.isSuap && <button className="btn sm ocra" disabled={busy} onClick={() => rinnova()}>Rinnova al 31/12/{annoRinnovo()}</button>}
+        </div>
+      )}
       <div className="sec" style={{ borderTop: "none", paddingTop: 0 }}>Anagrafica</div>
       <div className="row2">
         <div className="field"><label>Tipo</label><select value={pub.tipo} onChange={set("tipo")}>{TIPI.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></div>
