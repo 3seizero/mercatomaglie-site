@@ -1,15 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { firebaseReady, FOTO_ABILITATE } from "./firebase.js";
+import { C } from "./brand/tokens.js";
 import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
 import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useMercati, useAperture, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
 
-// ============================================================
-// GOOGLE FONT INJECTION
-// ============================================================
-const fl = document.createElement("link");
-fl.rel = "stylesheet";
-fl.href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap";
-document.head.appendChild(fl);
+// Font: Montserrat locale via brand/tokens.css (importato in main.jsx)
 
 // ============================================================
 // SVG ICON SYSTEM — monochromatic, stroke-based
@@ -325,13 +320,13 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
             const dimmed = !inFilter && catFilter!=="Tutte";
             // 3 stati: PRESENTE=verde, ASSENTE=rosso 50%, LIBERA=grigio
             const fillCol = dimmed ? "rgba(200,195,188,0.18)"
-              : act ? "#c8862a"
-              : occ ? (e.presente ? "#3daa70" : aperto ? "rgba(210,40,40,0.50)" : "#d9c9ad")
-              : "#e8e2d8";
+              : act ? C.ocra
+              : occ ? (e.presente ? C.verdePresenza : aperto ? C.rossoAssenzaMappa : C.mappaPostazioneFuoriOrario)
+              : C.mappaPostazioneLibera;
             const strokeCol = dimmed ? "rgba(180,175,168,0.4)"
-              : act ? "#c8862a"
-              : occ ? (e.presente ? "#2a9060" : aperto ? "rgba(180,20,20,0.75)" : "#b8a888")
-              : "#c8c0b4";
+              : act ? C.ocra
+              : occ ? (e.presente ? C.verdePresenza : aperto ? "rgba(180,20,20,0.75)" : C.bordo)
+              : C.mappaPostazioneLiberaBordo;
             const strokeW = act ? 2 : occ && !dimmed ? 1.2 : 0.4;
             const isPoly = e.shape === "poly";
             const tcx = isPoly ? e.cx : e.svgX + e.svgW/2;
@@ -351,10 +346,10 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                       fill={fillCol} stroke={strokeCol} strokeWidth={strokeW} rx="1.5"/>
                 }
                 {occ&&!dimmed&&(aperto||e.presente)&&<circle cx={dotX} cy={dotY} r="3"
-                  fill={e.presente?"#27ae60":"rgba(200,30,30,0.85)"} stroke="#fff" strokeWidth="1"/>}
+                  fill={e.presente?C.verdePresenza:"rgba(200,30,30,0.85)"} stroke={C.bianco} strokeWidth="1"/>}
                 {!dimmed&&<text x={tcx} y={tcy+2.5}
                   textAnchor="middle" fontSize="6.5"
-                  fill={occ?"#2c1d0e":"#9a8878"}
+                  fill={occ?C.terraTesto:C.terraChiaro}
                   fontFamily="Montserrat,sans-serif" fontWeight="700">
                   {e.numero}
                 </text>}
@@ -369,10 +364,10 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                 fill="rgba(37,149,255,0.15)" stroke="rgba(37,149,255,0.3)" strokeWidth="1"/>
               {/* Punto posizione */}
               <circle cx={userPos.svgX} cy={userPos.svgY} r="8"
-                fill="#2595ff" stroke="#fff" strokeWidth="2.5"/>
+                fill={C.bluNavigazione} stroke={C.bianco} strokeWidth="2.5"/>
               {/* Pulsante interno */}
               <circle cx={userPos.svgX} cy={userPos.svgY} r="3.5"
-                fill="#fff"/>
+                fill={C.bianco}/>
             </g>
           )}
         </svg>
@@ -381,11 +376,11 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
       {/* BOTTONE FILTRO CATEGORIA — floating */}
       <button style={{
         ...S.catFloatBtn,
-        background: catFilter!=="Tutte" ? "#3d2b1a" : "rgba(255,255,255,0.95)",
-        color: catFilter!=="Tutte" ? "#e8a045" : "#3d2b1a",
-        borderColor: catFilter!=="Tutte" ? "#3d2b1a" : "rgba(200,190,180,0.7)",
+        background: catFilter!=="Tutte" ? C.terra : "rgba(255,255,255,0.95)",
+        color: catFilter!=="Tutte" ? C.ocraChiaro : C.terra,
+        borderColor: catFilter!=="Tutte" ? C.terra : "rgba(200,190,180,0.7)",
       }} onClick={()=>setShowCatSheet(true)}>
-        <Icon name="filter" size={15} color={catFilter!=="Tutte"?"#e8a045":"#3d2b1a"} sw={2}/>
+        <Icon name="filter" size={15} color={catFilter!=="Tutte"?C.ocraChiaro:C.terra} sw={2}/>
         <span>{catFilter==="Tutte" ? "Categoria" : catFilter}</span>
         {catFilter!=="Tutte" && (
           <span style={{
@@ -404,14 +399,14 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
             <div style={S.handle}/>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"0 4px 14px"}}>
               <div>
-                <div style={{fontSize:15,fontWeight:800,color:"#2c1d0e"}}>Filtra per categoria</div>
+                <div style={{fontSize:15,fontWeight:800,color:C.terraTesto}}>Filtra per categoria</div>
                 {catFilter!=="Tutte"&&(
-                  <div style={{fontSize:11,color:"#c8862a",fontWeight:600,marginTop:2}}>
+                  <div style={{fontSize:11,color:C.ocra,fontWeight:600,marginTop:2}}>
                     {espositori.filter(e=>e.categoria===catFilter).length} postazioni trovate
                   </div>
                 )}
               </div>
-              <button style={{background:"none",border:"none",cursor:"pointer",fontSize:18,color:"#9a8070"}}
+              <button style={{background:"none",border:"none",cursor:"pointer",fontSize:18,color:C.terraChiaro}}
                 onClick={()=>setShowCatSheet(false)}>✕</button>
             </div>
             <div style={{overflowY:"auto",flex:1}}>
@@ -428,7 +423,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                       justifyContent:"space-between", padding:"13px 4px",
                       background: active?"rgba(61,43,26,0.04)":"none",
                       border:"none", cursor:"pointer",
-                      borderBottom: i<arr.length-1 ? "1px solid #f0ece4" : "none",
+                      borderBottom: i<arr.length-1 ? `1px solid ${C.sabbia}` : "none",
                       fontFamily:"'Montserrat',sans-serif",
                       borderRadius: active?8:0,
                     }}
@@ -436,19 +431,19 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                     <div style={{display:"flex",alignItems:"center",gap:10}}>
                       <div style={{
                         width:10,height:10,borderRadius:"50%",flexShrink:0,
-                        background: active ? "#3d2b1a" : "#d8d0c4",
+                        background: active ? C.terra : C.bordo,
                         boxShadow: active ? "0 0 0 3px rgba(61,43,26,0.15)" : "none",
                         transition:"all 0.15s",
                       }}/>
                       <span style={{
                         fontSize:14, fontWeight: active?700:500,
-                        color: active?"#2c1d0e":"#6b5040",
+                        color: active?C.terraTesto:C.terraMedio,
                       }}>{cat==="Tutte"?"✦ Tutte le categorie":cat}</span>
                     </div>
                     <span style={{
                       fontSize:11,fontWeight:700,
-                      background: active?"#3d2b1a":"#f0ece4",
-                      color: active?"#e8a045":"#9a8070",
+                      background: active?C.terra:C.sabbia,
+                      color: active?C.ocraChiaro:C.terraChiaro,
                       padding:"3px 9px",borderRadius:12,
                       transition:"all 0.15s",
                     }}>{count}</span>
@@ -463,13 +458,13 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
       {/* STATUS PILL */}
       <div style={S.statusPill}>
         {aperto?(<>
-          <span style={S.sDot("#3daa70")}/><span style={S.sTxt}>{presenti} presenti</span>
+          <span style={S.sDot(C.verdePresenza)}/><span style={S.sTxt}>{presenti} presenti</span>
           <span style={S.sSep}/>
           <span style={S.sDot("rgba(210,40,40,0.85)")}/><span style={S.sTxt}>{assegnate-presenti} assenti</span>
           <span style={S.sSep}/>
-          <span style={S.sDot("#c8c0b4")}/><span style={S.sTxt}>{libere} libere</span>
+          <span style={S.sDot(C.mappaPostazioneLiberaBordo)}/><span style={S.sTxt}>{libere} libere</span>
         </>):(<>
-          <span style={S.sDot("#c8c0b4")}/><span style={S.sTxt}>Mercato chiuso · apre {prossimaApertura(mercato)}</span>
+          <span style={S.sDot(C.mappaPostazioneLiberaBordo)}/><span style={S.sTxt}>Mercato chiuso · apre {prossimaApertura(mercato)}</span>
           <span style={S.sSep}/>
           <span style={S.sTxt}>{assegnate} espositori</span>
         </>)}
@@ -477,21 +472,21 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
 
       {/* ZOOM CONTROLS */}
       <div style={S.mapControls}>
-        <button style={S.zBtn} onClick={()=>zoomStep(1.4)}><Icon name="zoomIn" size={18} color="#3d2b1a" sw={1.8}/></button>
+        <button style={S.zBtn} onClick={()=>zoomStep(1.4)}><Icon name="zoomIn" size={18} color={C.terra} sw={1.8}/></button>
         <div style={S.zDivider}/>
-        <button style={S.zBtn} onClick={()=>zoomStep(0.71)}><Icon name="zoomOut" size={18} color="#3d2b1a" sw={1.8}/></button>
+        <button style={S.zBtn} onClick={()=>zoomStep(0.71)}><Icon name="zoomOut" size={18} color={C.terra} sw={1.8}/></button>
         <div style={S.zDivider}/>
-        <button style={{...S.zBtn, background: userPos?"#e8f4ff":"white"}}
+        <button style={{...S.zBtn, background: userPos?"rgba(37,149,255,0.12)":"white"}}
           onClick={locateUser} title="La mia posizione">
           {geoLoading
-            ? <div style={{width:16,height:16,border:"2px solid #2595ff",borderTopColor:"transparent",borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/>
-            : <Icon name="locate" size={18} color={userPos?"#2595ff":"#3d2b1a"} sw={1.8}/>
+            ? <div style={{width:16,height:16,border:`2px solid ${C.bluNavigazione}`,borderTopColor:"transparent",borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/>
+            : <Icon name="locate" size={18} color={userPos?C.bluNavigazione:C.terra} sw={1.8}/>
           }
         </button>
         <div style={{height:6}}/>
-        <button style={S.zBtn} onClick={()=>{initView();setUserPos(null);}}><Icon name="home" size={18} color="#3d2b1a" sw={1.8}/></button>
+        <button style={S.zBtn} onClick={()=>{initView();setUserPos(null);}}><Icon name="home" size={18} color={C.terra} sw={1.8}/></button>
       </div>
-      {geoError&&<div style={{position:"absolute",bottom:70,right:12,zIndex:25,background:"rgba(200,50,50,0.9)",color:"#fff",fontSize:10,fontWeight:700,padding:"6px 10px",borderRadius:8,maxWidth:140,textAlign:"center"}}>{geoError}</div>}
+      {geoError&&<div style={{position:"absolute",bottom:70,right:12,zIndex:25,background:"rgba(200,50,50,0.9)",color:C.bianco,fontSize:10,fontWeight:700,padding:"6px 10px",borderRadius:8,maxWidth:140,textAlign:"center"}}>{geoError}</div>}
 
       {/* POPUP BOTTOM SHEET */}
       {esp&&(
@@ -501,37 +496,37 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
             {esp.nome?(
               <>
                 <div style={S.sheetHead}>
-                  <div style={{...S.postBadge,borderColor:esp.presente?"#3daa70":"#c0b0a0",background:esp.presente?"#f0faf5":"#f5f2ec"}}>
-                    <span style={{fontSize:10,fontWeight:900,color:esp.presente?"#3daa70":"#9a8878"}}>{esp.postazione}</span>
+                  <div style={{...S.postBadge,borderColor:esp.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,background:esp.presente?C.verdePresenzaTint:C.sabbia}}>
+                    <span style={{fontSize:10,fontWeight:900,color:esp.presente?C.verdePresenza:C.terraChiaro}}>{esp.postazione}</span>
                   </div>
                   <div style={{flex:1}}>
                     <div style={{...S.sheetNome,overflowWrap:"anywhere"}}>{esp.nome}</div>
                     <div style={S.sheetCat}>{esp.categoria}</div>
                   </div>
-                  {(aperto||esp.presente)&&<div style={{...S.presBadge,background:esp.presente?"#eaf7f0":"#fdecea",color:esp.presente?"#3daa70":"#c0392b",borderColor:esp.presente?"#3daa70":"#e07070"}}>
-                    <Icon name={esp.presente?"checkCircle":"xCircle"} size={13} color={esp.presente?"#3daa70":"#c0392b"} sw={2}/>
+                  {(aperto||esp.presente)&&<div style={{...S.presBadge,background:esp.presente?C.verdePresenzaTint:C.rossoAssenzaTint,color:esp.presente?C.verdePresenza:C.rossoAssenza,borderColor:esp.presente?C.verdePresenza:C.rossoAssenza}}>
+                    <Icon name={esp.presente?"checkCircle":"xCircle"} size={13} color={esp.presente?C.verdePresenza:C.rossoAssenza} sw={2}/>
                     {esp.presente?"Presente":"Assente"}
                   </div>}
                 </div>
                 <div style={S.divider}/>
                 <div style={{display:"flex",flexDirection:"column",gap:9,marginBottom:16}}>
-                  {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color="#9a8070" sw={1.5}/><span>{esp.titolare}</span></div>}
-                  <div style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5}/><span>{esp.etichetta}{esp.superficie?` · ${esp.superficie} m`:""}</span></div>
-                  {esp.descrizione&&<div style={{...S.infoRow,alignItems:"flex-start"}}><span style={{fontSize:12,color:"#6b5040",lineHeight:1.45}}>{esp.descrizione}</span></div>}
+                  {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.titolare}</span></div>}
+                  <div style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.etichetta}{esp.superficie?` · ${esp.superficie} m`:""}</span></div>
+                  {esp.descrizione&&<div style={{...S.infoRow,alignItems:"flex-start"}}><span style={{fontSize:12,color:C.terraMedio,lineHeight:1.45}}>{esp.descrizione}</span></div>}
                   {FOTO_ABILITATE&&esp.foto&&esp.foto.length>0&&<div style={{display:"flex",gap:8,overflowX:"auto",paddingBottom:4}}>{esp.foto.map((u,i)=><img key={i} src={u} alt="" style={{height:110,borderRadius:10,flexShrink:0}}/>)}</div>}
                 </div>
                 <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
                   {esp.whatsapp&&<a href={`https://wa.me/${esp.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}>
-                    <Icon name="wa" size={20} color="#fff" sw={1.8}/>
+                    <Icon name="wa" size={20} color={C.bianco} sw={1.8}/>
                     <span>WhatsApp</span>
                   </a>}
-                  {esp.telegram&&<a href={`https://t.me/${esp.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnPopup,background:"#2aabee"}}>
-                    <Icon name="navigate" size={20} color="#fff" sw={1.8}/>
+                  {esp.telegram&&<a href={`https://t.me/${esp.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnPopup,background:C.azzurroTelegram}}>
+                    <Icon name="navigate" size={20} color={C.bianco} sw={1.8}/>
                     <span>Telegram</span>
                   </a>}
                   <a href={`https://www.google.com/maps/dir/?api=1&destination=${esp.lat.toFixed(6)},${esp.lon.toFixed(6)}&travelmode=walking`}
                     target="_blank" rel="noreferrer" style={S.naviBtn}>
-                    <Icon name="navigate" size={20} color="#fff" sw={1.8}/>
+                    <Icon name="navigate" size={20} color={C.bianco} sw={1.8}/>
                     <span>A piedi</span>
                   </a>
                 </div>
@@ -539,8 +534,8 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
             ):(
               <div style={{textAlign:"center",padding:"24px 0"}}>
                 <div style={{fontSize:32,marginBottom:8}}>🏪</div>
-                <div style={{fontSize:15,fontWeight:700,color:"#3d2b1a",marginBottom:4}}>{esp.etichetta}</div>
-                <div style={{fontSize:12,color:"#9a8070"}}>{esp.inElenco?"Posteggio libero":"Posteggio non in elenco SUAP"}{esp.superficie?` · ${esp.superficie} m`:""}</div>
+                <div style={{fontSize:15,fontWeight:700,color:C.terra,marginBottom:4}}>{esp.etichetta}</div>
+                <div style={{fontSize:12,color:C.terraChiaro}}>{esp.inElenco?"Posteggio libero":"Posteggio non in elenco SUAP"}{esp.superficie?` · ${esp.superficie} m`:""}</div>
               </div>
             )}
           </div>
@@ -559,9 +554,9 @@ function PageMercato({negozi,mercato,aperto}){
   const occupati=negozi.filter(n=>n.nome).length;
   return(
     <div style={S.page}>
-      {mercato&&<div style={{fontSize:11,color:"#9a8070",fontWeight:600,marginBottom:10,lineHeight:1.6}}>
-        <Icon name="pin" size={11} color="#9a8070" sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""}{mercato.orari?` · ${mercato.orari}`:""}<br/>
-        <span style={{color:aperto?"#3daa70":"#9a8070"}}>{aperto?"● Aperto ora":`○ Chiuso · apre ${prossimaApertura(mercato)}`}</span> · {occupati} espositori, {negozi.length-occupati} posti liberi
+      {mercato&&<div style={{fontSize:11,color:C.terraChiaro,fontWeight:600,marginBottom:10,lineHeight:1.6}}>
+        <Icon name="pin" size={11} color={C.terraChiaro} sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""}{mercato.orari?` · ${mercato.orari}`:""}<br/>
+        <span style={{color:aperto?C.verdePresenza:C.terraChiaro}}>{aperto?"● Aperto ora":`○ Chiuso · apre ${prossimaApertura(mercato)}`}</span> · {occupati} espositori, {negozi.length-occupati} posti liberi
       </div>}
       <div style={S.filterBar}>
         {["Tutte",...cats].map(c=>(
@@ -572,7 +567,7 @@ function PageMercato({negozi,mercato,aperto}){
         {fil.map(n=>(
           <div key={n.id} style={{...S.nCard,opacity:n.nome?1:0.65}}>
             <div style={S.nTop}>
-              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?"#eaf7f0":undefined,color:n.presente?"#3daa70":undefined}} title={n.presente?"Presente oggi":""}>{n.numero||"—"}</div>
+              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?C.verdePresenzaTint:undefined,color:n.presente?C.verdePresenza:undefined}} title={n.presente?"Presente oggi":""}>{n.numero||"—"}</div>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{...S.nNome,overflowWrap:"anywhere"}}>{n.nome||"Posto libero"}</div>
                 <div style={S.nTit}>{n.nome?(n.titolare||n.etichetta):n.etichetta}{n.note?` · ${n.note}`:""}</div>
@@ -584,10 +579,10 @@ function PageMercato({negozi,mercato,aperto}){
               <div style={S.divider}/>
               <div style={{display:"flex",gap:8}}>
                 {n.whatsapp&&<a href={`https://wa.me/${n.whatsapp.replace(/\D/g,"")}`} target="_blank" rel="noreferrer" style={S.waBtnCard}>
-                  <Icon name="wa" size={16} color="#fff" sw={1.8}/> WhatsApp
+                  <Icon name="wa" size={16} color={C.bianco} sw={1.8}/> WhatsApp
                 </a>}
-                {n.telegram&&<a href={`https://t.me/${n.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnCard,background:"#2aabee"}}>
-                  <Icon name="navigate" size={16} color="#fff" sw={1.8}/> Telegram
+                {n.telegram&&<a href={`https://t.me/${n.telegram.replace(/^@/,"")}`} target="_blank" rel="noreferrer" style={{...S.waBtnCard,background:C.azzurroTelegram}}>
+                  <Icon name="navigate" size={16} color={C.bianco} sw={1.8}/> Telegram
                 </a>}
               </div>
             </>}
@@ -615,7 +610,7 @@ function PageEventi({eventi}){
       <div style={S.col}>
         {fil.map(ev=>{
           const d=new Date(ev.data);
-          const col=EV_COL[ev.categoria]||"#888";
+          const col=EV_COL[ev.categoria]||C.terraChiaro;
           return(
             <div key={ev.id} style={{...S.evCard,borderLeftColor:col}}>
               <div style={{...S.evDate,background:col}}>
@@ -625,7 +620,7 @@ function PageEventi({eventi}){
               <div style={{padding:"12px 14px",flex:1}}>
                 <div style={S.evTit}>{ev.titolo}</div>
                 <div style={S.evMeta}>
-                  <Icon name="pin" size={11} color="#9a8070" sw={1.5}/> {ev.ora} &nbsp;·&nbsp; {ev.luogo}
+                  <Icon name="pin" size={11} color={C.terraChiaro} sw={1.5}/> {ev.ora} &nbsp;·&nbsp; {ev.luogo}
                 </div>
                 <div style={S.evDesc}>{ev.descrizione}</div>
                 <span style={{...S.evCat,background:col+"18",color:col,border:`1px solid ${col}44`}}>{ev.categoria}</span>
@@ -663,7 +658,7 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
   if(!auth.user||!auth.isStaff) return(
     <div style={S.loginWrap}>
       <div style={S.loginBox}>
-        <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color="#c8862a" sw={1.5}/></div>
+        <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color={C.ocra} sw={1.5}/></div>
         <div style={S.loginH}>Area Riservata</div>
         <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo assegnato. Contatta l'amministratore.":"Accesso per amministratori e operatori"}</div>
         {auth.user&&!auth.isStaff?(
@@ -671,10 +666,10 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
         ):(<>
           <input style={S.input} type="email" placeholder="Email" value={email} autoComplete="username"
             onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doLogin()}/>
-          <input style={{...S.input,...(err?{borderColor:"#c0392b"}:{})}} type="password" placeholder="Password" value={pwd} autoComplete="current-password"
+          <input style={{...S.input,...(err?{borderColor:C.rossoAssenza}:{})}} type="password" placeholder="Password" value={pwd} autoComplete="current-password"
             onChange={e=>setPwd(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doLogin()}/>
           {err&&<div style={S.errMsg}>{err}</div>}
-          <button style={{...S.loginBtn,opacity:busy?0.6:1}} disabled={busy} onClick={doLogin}><Icon name="lock" size={16} color="#fff" sw={2}/> {busy?"Accesso…":"Accedi"}</button>
+          <button style={{...S.loginBtn,opacity:busy?0.6:1}} disabled={busy} onClick={doLogin}><Icon name="lock" size={16} color={C.bianco} sw={2}/> {busy?"Accesso…":"Accedi"}</button>
           {!firebaseReady&&<div style={S.loginHint}>Backend non configurato (manca .env.local)</div>}
         </>)}
       </div>
@@ -701,25 +696,25 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
     <div style={S.page}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
         <div>
-          <span style={{fontSize:16,fontWeight:800,color:"#2c1d0e"}}>Gestione</span>
-          <div style={{fontSize:10,color:"#9a8070",marginTop:2}}>{auth.user.email} · {auth.role}{firebaseReady?(online?" · online":" · connessione…"):" · offline"}</div>
+          <span style={{fontSize:16,fontWeight:800,color:C.terraTesto}}>Gestione</span>
+          <div style={{fontSize:10,color:C.terraChiaro,marginTop:2}}>{auth.user.email} · {auth.role}{firebaseReady?(online?" · online":" · connessione…"):" · offline"}</div>
         </div>
         <button style={S.logoutBtn} onClick={auth.logout}>
-          <Icon name="logout" size={15} color="#3d2b1a" sw={1.8}/> Esci
+          <Icon name="logout" size={15} color={C.terra} sw={1.8}/> Esci
         </button>
       </div>
 
       <div style={{display:"flex",gap:6,marginBottom:12}}>
         {TABS.map(t=>(
           <button key={t.id} style={{...S.aTab,...(tab===t.id?S.aTabAct:{})}} onClick={()=>setTab(t.id)}>
-            <Icon name={t.icon} size={16} color={tab===t.id?"#fff":"#6b5040"} sw={tab===t.id?2:1.5}/>
+            <Icon name={t.icon} size={16} color={tab===t.id?C.bianco:C.terraMedio} sw={tab===t.id?2:1.5}/>
             <span style={{fontSize:10,marginTop:2}}>{t.l}</span>
           </button>
         ))}
       </div>
 
       {tab==="presenze"&&(
-        <button style={{...S.loginBtn,marginBottom:12,background:"#c8862a"}} onClick={onScan}><Icon name="locate" size={16} color="#fff" sw={2}/> Scansiona QR espositore</button>
+        <button style={{...S.loginBtn,marginBottom:12,background:C.ocra}} onClick={onScan}><Icon name="locate" size={16} color={C.bianco} sw={2}/> Scansiona QR espositore</button>
       )}
       {tab!=="eventi"&&(
         <>
@@ -739,9 +734,9 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
           <div style={S.col}>
             {filtra(lista).map(e=>(
               <div key={e.id} style={S.presRow}>
-                <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?"#3daa70":"#c0b0a0",flexShrink:0,display:"inline-block"}}/>
-                <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:"#2c1d0e",overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}</div></div>
-                <button style={{...S.togBtn,background:e.presente?"#fdecea":"#eaf7f0",color:e.presente?"#c0392b":"#3daa70",opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>toggle(e)}>
+                <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,flexShrink:0,display:"inline-block"}}/>
+                <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}</div></div>
+                <button style={{...S.togBtn,background:e.presente?C.rossoAssenzaTint:C.verdePresenzaTint,color:e.presente?C.rossoAssenza:C.verdePresenza,opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>toggle(e)}>
                   {e.presente?"Segna assente":"Presente"}
                 </button>
               </div>
@@ -757,12 +752,12 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
           <div style={S.col}>
             {filtra(lista).map(e=>(
               <div key={e.id} style={S.aRow}>
-                <span style={{fontSize:11,fontWeight:800,color:e.presente?"#3daa70":"#9a8070",minWidth:36}}>{e.numero}</span>
-                <div style={{flex:1,minWidth:0}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e",overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:"#9a8070"}}>{[e.titolare,e.categoria,e.whatsapp?"WhatsApp":null].filter(Boolean).join(" · ")}</div></div>
+                <span style={{fontSize:11,fontWeight:800,color:e.presente?C.verdePresenza:C.terraChiaro,minWidth:36}}>{e.numero}</span>
+                <div style={{flex:1,minWidth:0}}><div style={{fontSize:13,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{[e.titolare,e.categoria,e.whatsapp?"WhatsApp":null].filter(Boolean).join(" · ")}</div></div>
               </div>
             ))}
           </div>
-          <div style={{fontSize:10,color:"#9a8070",marginTop:12,lineHeight:1.5}}>Le anagrafiche vengono dagli elenchi SUAP del 07/09/2026. La modifica (alias, contatti, foto) arriva con il pannello completo.</div>
+          <div style={{fontSize:10,color:C.terraChiaro,marginTop:12,lineHeight:1.5}}>Le anagrafiche vengono dagli elenchi SUAP del 07/09/2026. La modifica (alias, contatti, foto) arriva con il pannello completo.</div>
         </div>
       )}
 
@@ -771,7 +766,7 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
         <div>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
             <div style={S.secLbl}>Eventi</div>
-            <button style={S.addBtn} onClick={()=>setAddEv(true)}><Icon name="plus" size={15} color="#fff" sw={2}/> Aggiungi</button>
+            <button style={S.addBtn} onClick={()=>setAddEv(true)}><Icon name="plus" size={15} color={C.bianco} sw={2}/> Aggiungi</button>
           </div>
           {addEv&&(
             <div style={S.formCard}>
@@ -789,13 +784,13 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
             </div>
           )}
           <div style={S.col}>
-            {eventi.map(ev=>{const col=EV_COL[ev.categoria]||"#888";return(
+            {eventi.map(ev=>{const col=EV_COL[ev.categoria]||C.terraChiaro;return(
               <div key={ev.id} style={{...S.aRow,borderLeft:`3px solid ${col}`}}>
                 <div style={{fontSize:10,fontWeight:800,color:col,minWidth:38,lineHeight:1.3,textAlign:"center"}}>
                   {new Date(ev.data).toLocaleDateString("it-IT",{day:"2-digit",month:"short"}).toUpperCase()}
                 </div>
-                <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:"#2c1d0e"}}>{ev.titolo}</div><div style={{fontSize:10,color:"#9a8070"}}>{ev.ora} · {ev.luogo}</div></div>
-                <button style={S.delBtn} onClick={()=>setEventi(p=>p.filter(x=>x.id!==ev.id))}><Icon name="trash" size={15} color="#c0392b" sw={1.5}/></button>
+                <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.terraTesto}}>{ev.titolo}</div><div style={{fontSize:10,color:C.terraChiaro}}>{ev.ora} · {ev.luogo}</div></div>
+                <button style={S.delBtn} onClick={()=>setEventi(p=>p.filter(x=>x.id!==ev.id))}><Icon name="trash" size={15} color={C.rossoAssenza} sw={1.5}/></button>
               </div>
             );})}
           </div>
@@ -808,7 +803,7 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
 // ============================================================
 // DESIGN SYSTEM
 // ============================================================
-const T=["#3d2b1a","#c8862a","#e8a045","#f5f0e8","#e8dfc8","#fff","#3daa70","#2c1d0e","#6b5040","#9a8070","#d8c8b0"];
+const T=[C.terra,C.ocra,C.ocraChiaro,C.sabbia,C.sabbiaScura,C.bianco,C.verdePresenza,C.terraTesto,C.terraMedio,C.terraChiaro,C.bordo];
 const [terra,ocra,ocraL,sand,sandD,white,green,text,textM,textL,border]=T;
 
 const S={
@@ -824,7 +819,7 @@ const S={
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
   navAct:{background:"rgba(232,160,69,0.07)"},
   navLbl:{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700},
-  mapCont:{position:"relative",height:"calc(100dvh - 52px - 72px)",overflow:"hidden",background:"#f0ece4",touchAction:"none",cursor:"grab"},
+  mapCont:{position:"relative",height:"calc(100dvh - 52px - 72px)",overflow:"hidden",background:C.sabbia,touchAction:"none",cursor:"grab"},
   statusPill:{position:"absolute",top:12,left:"50%",transform:"translateX(-50%)",zIndex:20,background:"rgba(20,10,4,0.75)",backdropFilter:"blur(10px)",WebkitBackdropFilter:"blur(10px)",borderRadius:20,padding:"6px 16px",display:"flex",alignItems:"center",gap:9,boxShadow:"0 2px 16px rgba(0,0,0,0.3)",border:"1px solid rgba(255,255,255,0.1)",whiteSpace:"nowrap"},
   sDot:(c)=>({width:7,height:7,borderRadius:"50%",background:c,display:"inline-block",flexShrink:0}),
   sTxt:{fontSize:10,color:"rgba(255,255,255,0.92)",fontWeight:700,letterSpacing:0.3},
@@ -834,9 +829,9 @@ const S={
   zBtn:{width:42,height:42,background:"none",border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"},
   zDivider:{height:1,background:border,margin:"0 8px"},
   // WA button — solo icona, circolare
-  waBtnPopup:{display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"#22c55e",color:white,padding:"13px 18px",borderRadius:14,textDecoration:"none",fontSize:14,fontWeight:700,flex:1,boxShadow:"0 4px 16px rgba(34,197,94,0.3)"},
-  naviBtn:{display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"#2595ff",color:white,padding:"13px 18px",borderRadius:14,textDecoration:"none",fontSize:14,fontWeight:700,flex:1,boxShadow:"0 4px 16px rgba(37,149,255,0.3)"},
-  waBtnCard:{display:"flex",alignItems:"center",justifyContent:"center",gap:6,background:"#22c55e",color:white,padding:"10px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700,flex:1},
+  waBtnPopup:{display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:C.verdeWhatsapp,color:white,padding:"13px 18px",borderRadius:14,textDecoration:"none",fontSize:14,fontWeight:700,flex:1,boxShadow:"0 4px 16px rgba(34,197,94,0.3)"},
+  naviBtn:{display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:C.bluNavigazione,color:white,padding:"13px 18px",borderRadius:14,textDecoration:"none",fontSize:14,fontWeight:700,flex:1,boxShadow:"0 4px 16px rgba(37,149,255,0.3)"},
+  waBtnCard:{display:"flex",alignItems:"center",justifyContent:"center",gap:6,background:C.verdeWhatsapp,color:white,padding:"10px 14px",borderRadius:10,textDecoration:"none",fontSize:13,fontWeight:700,flex:1},
   overlay:{position:"fixed",inset:0,background:"rgba(20,10,4,0.55)",zIndex:300,display:"flex",alignItems:"flex-end"},
   sheet:{background:white,borderRadius:"20px 20px 0 0",padding:"8px 20px 28px",width:"100%",margin:"0 auto",boxShadow:"0 -8px 40px rgba(0,0,0,0.22)",position:"relative"},
   handle:{width:36,height:4,background:border,borderRadius:2,margin:"0 auto 14px"},
@@ -860,7 +855,7 @@ const S={
   nNum:{width:36,height:36,background:sandD,borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:800,color:ocra,flexShrink:0},
   nNome:{fontSize:15,fontWeight:700,color:terra},
   nTit:{fontSize:11,color:textL,marginTop:2},
-  nCat:{fontSize:9,fontWeight:700,color:ocra,textTransform:"uppercase",letterSpacing:1,background:"#fdf0e0",padding:"4px 8px",borderRadius:8,whiteSpace:"nowrap",flexShrink:0},
+  nCat:{fontSize:9,fontWeight:700,color:ocra,textTransform:"uppercase",letterSpacing:1,background:C.ocraTint,padding:"4px 8px",borderRadius:8,whiteSpace:"nowrap",flexShrink:0},
   nDesc:{fontSize:12,color:textM,lineHeight:1.5,marginTop:8,marginBottom:4},
   nOrari:{fontSize:10,color:textL,fontWeight:600,marginBottom:6},
   evCard:{background:white,borderRadius:14,overflow:"hidden",display:"flex",border:`1px solid ${border}`,borderLeft:"4px solid",boxShadow:"0 1px 6px rgba(0,0,0,0.05)"},
@@ -876,7 +871,7 @@ const S={
   loginH:{fontSize:20,fontWeight:800,color:terra,marginBottom:6},
   loginSub:{fontSize:12,color:textL,marginBottom:22,lineHeight:1.5},
   input:{width:"100%",padding:"11px 13px",borderRadius:10,borderWidth:"1.5px",borderStyle:"solid",borderColor:border,fontSize:13,marginBottom:10,background:sand,color:terra,outline:"none",boxSizing:"border-box",fontFamily:"'Montserrat',sans-serif",fontWeight:500},
-  errMsg:{color:"#c0392b",fontSize:11,marginBottom:10,fontWeight:600},
+  errMsg:{color:C.rossoAssenza,fontSize:11,marginBottom:10,fontWeight:600},
   loginBtn:{width:"100%",padding:"13px 0",background:terra,color:white,border:"none",borderRadius:10,fontSize:14,cursor:"pointer",fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center",gap:8,fontFamily:"'Montserrat',sans-serif"},
   loginHint:{fontSize:10,color:textL,marginTop:14},
   logoutBtn:{display:"flex",alignItems:"center",gap:5,background:sandD,border:"none",borderRadius:8,padding:"6px 12px",fontSize:11,cursor:"pointer",color:terra,fontWeight:600,fontFamily:"'Montserrat',sans-serif"},
@@ -892,14 +887,14 @@ const S={
   saveBtn:{flex:1,padding:"11px 0",background:terra,color:white,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontWeight:700,fontFamily:"'Montserrat',sans-serif"},
   cancelBtn:{flex:1,padding:"11px 0",background:sandD,color:terra,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontFamily:"'Montserrat',sans-serif",fontWeight:600},
   aRow:{background:white,borderRadius:12,padding:"11px 12px",display:"flex",alignItems:"center",gap:10,border:`1px solid ${border}`},
-  delBtn:{background:"#fdecea",border:"none",borderRadius:8,padding:"7px",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"},
+  delBtn:{background:C.rossoAssenzaTint,border:"none",borderRadius:8,padding:"7px",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"},
 };
 
 const GCss=`
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:#3d2b1a;-webkit-font-smoothing:antialiased;}
+  body{background:${C.terra};-webkit-font-smoothing:antialiased;}
   ::-webkit-scrollbar{width:0;height:0;}
-  input:focus,select:focus{border-color:#c8862a!important;box-shadow:0 0 0 3px rgba(200,134,42,0.1);}
+  input:focus,select:focus{border-color:${C.ocra}!important;box-shadow:0 0 0 3px rgba(200,134,42,0.1);}
   .pb{transition:opacity 0.1s;}
   .pb:active{opacity:0.7;}
   button,a{-webkit-tap-highlight-color:transparent;}
@@ -949,12 +944,12 @@ function LandscapeOverlay(){
   },[]);
   if(!landscape) return null;
   return(
-    <div style={{position:"fixed",inset:0,zIndex:9999,background:"#3d2b1a",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'Montserrat',sans-serif",gap:20}}>
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e8a045" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <div style={{position:"fixed",inset:0,zIndex:9999,background:C.terra,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",fontFamily:"'Montserrat',sans-serif",gap:20}}>
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke={C.ocraChiaro} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="2" width="16" height="20" rx="2"/>
         <path d="M12 18h.01"/>
       </svg>
-      <div style={{color:"#fff",fontSize:16,fontWeight:700,textAlign:"center",letterSpacing:1}}>Ruota il telefono</div>
+      <div style={{color:C.bianco,fontSize:16,fontWeight:700,textAlign:"center",letterSpacing:1}}>Ruota il telefono</div>
       <div style={{color:"rgba(255,255,255,0.5)",fontSize:12,textAlign:"center",maxWidth:240,lineHeight:1.6}}>Questa app funziona solo in modalità verticale</div>
     </div>
   );
@@ -984,16 +979,16 @@ function InstallBanner(){
 
   if(!show||isStandalone) return null;
   const s={
-    wrap:{position:"fixed",bottom:80,left:12,right:12,zIndex:300,background:"#3d2b1a",border:"1.5px solid rgba(200,134,42,0.4)",borderRadius:16,padding:"16px 18px",display:"flex",alignItems:"center",gap:14,boxShadow:"0 8px 32px rgba(0,0,0,0.4)",fontFamily:"'Montserrat',sans-serif"},
+    wrap:{position:"fixed",bottom:80,left:12,right:12,zIndex:300,background:C.terra,border:"1.5px solid rgba(200,134,42,0.4)",borderRadius:16,padding:"16px 18px",display:"flex",alignItems:"center",gap:14,boxShadow:"0 8px 32px rgba(0,0,0,0.4)",fontFamily:"'Montserrat',sans-serif"},
     icon:{width:40,height:40,borderRadius:10,background:"rgba(200,134,42,0.15)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
-    txt:{flex:1,color:"#fff",fontSize:12,lineHeight:1.5},
-    bold:{fontWeight:700,color:"#e8a045"},
-    btn:{background:"#c8862a",color:"#fff",border:"none",borderRadius:10,padding:"10px 18px",fontSize:11,fontWeight:800,cursor:"pointer",letterSpacing:0.5,whiteSpace:"nowrap"},
+    txt:{flex:1,color:C.bianco,fontSize:12,lineHeight:1.5},
+    bold:{fontWeight:700,color:C.ocraChiaro},
+    btn:{background:C.ocra,color:C.bianco,border:"none",borderRadius:10,padding:"10px 18px",fontSize:11,fontWeight:800,cursor:"pointer",letterSpacing:0.5,whiteSpace:"nowrap"},
     close:{position:"absolute",top:8,right:10,background:"none",border:"none",color:"rgba(255,255,255,0.5)",fontSize:18,cursor:"pointer",lineHeight:1},
   };
   return(
     <div style={s.wrap}>
-      <div style={s.icon}><Icon name="home" size={22} color="#e8a045"/></div>
+      <div style={s.icon}><Icon name="home" size={22} color={C.ocraChiaro}/></div>
       <div style={s.txt}>
         {isIos?(
           <>Tocca <span style={s.bold}>Condividi</span> poi <span style={s.bold}>Aggiungi a schermata Home</span></>
@@ -1014,18 +1009,18 @@ function Splash({onEnter}){
   const [on,setOn]=useState(false);
   useEffect(()=>{setTimeout(()=>setOn(true),60);},[]);
   const ss={
-    wrap:{position:"fixed",inset:0,background:"#3d2b1a",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",zIndex:1000,fontFamily:"'Montserrat',sans-serif",overflow:"hidden"},
+    wrap:{position:"fixed",inset:0,background:C.terra,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",zIndex:1000,fontFamily:"'Montserrat',sans-serif",overflow:"hidden"},
     radial:{position:"absolute",inset:0,background:"radial-gradient(ellipse at 25% 15%,rgba(232,160,69,0.2) 0%,transparent 55%)"},
     content:{position:"relative",zIndex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"28px",maxWidth:400,width:"100%"},
     sub:{color:"rgba(255,255,255,0.5)",fontSize:10,letterSpacing:7,textTransform:"uppercase",fontWeight:600,marginBottom:4,textAlign:"center"},
-    city:{color:"#fff",fontSize:44,fontWeight:900,letterSpacing:8,textTransform:"uppercase",lineHeight:1,textAlign:"center"},
+    city:{color:C.bianco,fontSize:44,fontWeight:900,letterSpacing:8,textTransform:"uppercase",lineHeight:1,textAlign:"center"},
     orn:{display:"flex",alignItems:"center",gap:10,marginTop:18,marginBottom:22,width:"55%"},
     line:{flex:1,height:1,background:"rgba(232,160,69,0.4)"},
-    gem:{width:6,height:6,background:"#e8a045",transform:"rotate(45deg)",flexShrink:0},
+    gem:{width:6,height:6,background:C.ocraChiaro,transform:"rotate(45deg)",flexShrink:0},
     desc:{color:"rgba(255,255,255,0.65)",fontSize:13,lineHeight:1.8,textAlign:"center",fontWeight:300,marginBottom:22,maxWidth:320},
     pills:{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center",marginBottom:34},
-    pill:{background:"rgba(232,160,69,0.14)",border:"1px solid rgba(232,160,69,0.32)",color:"#e8a045",fontSize:9,padding:"5px 13px",borderRadius:20,fontWeight:700,letterSpacing:1,textTransform:"uppercase"},
-    cta:{padding:"16px 32px",background:"#e8a045",color:"#3d2b1a",border:"none",borderRadius:14,fontSize:14,fontWeight:800,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 8px 28px rgba(232,160,69,0.38)"},
+    pill:{background:"rgba(232,160,69,0.14)",border:"1px solid rgba(232,160,69,0.32)",color:C.ocraChiaro,fontSize:9,padding:"5px 13px",borderRadius:20,fontWeight:700,letterSpacing:1,textTransform:"uppercase"},
+    cta:{padding:"16px 32px",background:C.ocraChiaro,color:C.terra,border:"none",borderRadius:14,fontSize:14,fontWeight:800,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 8px 28px rgba(232,160,69,0.38)"},
     footer:{color:"rgba(255,255,255,0.25)",fontSize:9,letterSpacing:2.5,textTransform:"uppercase",marginTop:26},
   };
   return(
@@ -1050,7 +1045,7 @@ function Splash({onEnter}){
         <div style={{animation:on?"fadeUp 0.5s 0.82s both":"none",textAlign:"center"}}>
           <button style={ss.cta} onClick={onEnter}>
             Entra nell'Area Mercatale
-            <Icon name="chevron" size={20} color="#3d2b1a" sw={2.5}/>
+            <Icon name="chevron" size={20} color={C.terra} sw={2.5}/>
           </button>
         </div>
         <div style={{animation:on?"fadeUp 0.5s 1s both":"none",...ss.footer}}>
@@ -1153,8 +1148,8 @@ export default function App(){
           return(
             <button key={n.id} style={{...S.navBtn,...(act?{background:"rgba(232,160,69,0.07)"}:{})}}
               onClick={()=>{setPage(n.id);setPopup(null);chiudiScheda();}}>
-              <Icon name={n.icon} size={22} color={act?"#e8a045":"#786050"} sw={act?2:1.5}/>
-              <span style={{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700,color:act?"#e8a045":"#786050"}}>{n.label}</span>
+              <Icon name={n.icon} size={22} color={act?C.ocraChiaro:C.terraChiaro} sw={act?2:1.5}/>
+              <span style={{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700,color:act?C.ocraChiaro:C.terraChiaro}}>{n.label}</span>
             </button>
           );
         })}

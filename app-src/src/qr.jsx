@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
 import { lookupQr, inviaRichiesta, SETTORI, MERCATI } from "./dati.js";
 import { FOTO_ABILITATE } from "./firebase.js";
+import { C } from "./brand/tokens.js";
 
 export const tokenDaTesto = (t) => { const m = String(t || "").match(/#\/v\/([A-Za-z0-9_-]{8,})/) || String(t || "").match(/^([A-Za-z0-9_-]{16,})$/); return m ? m[1] : null; };
 
@@ -17,11 +18,11 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
     lookupQr(token).then((q) => { if (alive) setStato({ loading: false, q }); }).catch((e) => { if (alive) setStato({ loading: false, err: e.message }); });
     return () => { alive = false; };
   }, [token]);
-  if (stato.loading) return <div style={S.page}><div style={{ textAlign: "center", padding: 40, color: "#9a8070" }}>Verifica del codice…</div></div>;
+  if (stato.loading) return <div style={S.page}><div style={{ textAlign: "center", padding: 40, color: C.terraChiaro }}>Verifica del codice…</div></div>;
   const q = stato.q;
   if (!q || q.attivo === false) return (
     <div style={S.page}><div style={S.loginBox}>
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}><Icon name="xCircle" size={44} color="#c0392b" sw={1.5} /></div>
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}><Icon name="xCircle" size={44} color={C.rossoAssenza} sw={1.5} /></div>
       <div style={S.loginH}>Codice non valido</div>
       <div style={S.loginSub}>{q && q.attivo === false ? "Questo QR è stato revocato." : "QR sconosciuto o non più attivo."}{stato.err ? ` (${stato.err})` : ""}</div>
       <button style={S.loginBtn} onClick={onBack}>Torna alla mappa</button>
@@ -33,7 +34,7 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
   const p0 = posteggiEsp[0] || null;
   const presente = !!presenze[q.espositoreId];
   const nome = p0 ? p0.nome : (q.denominazione || q.espositoreId);
-  const colore = !p0 ? "#e0a800" : "#3daa70";
+  const colore = !p0 ? C.gialloOccasionale : C.verdePresenza;
   const mercatoDi = (p) => (postazioni.includes(p) ? "area-mercatale" : (elenchi.coperto || []).includes(p) ? "coperto" : "ortofrutticolo");
   async function conferma() {
     setBusy(true); setEsito(null);
@@ -51,45 +52,45 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
   return (
     <div style={S.page}>
       <div style={{ ...S.sheetHead, marginBottom: 12 }}>
-        <div style={{ ...S.postBadge, borderColor: colore, background: "#fff" }}><span style={{ fontSize: 10, fontWeight: 900, color: colore }}>{p0 ? (p0.postazione || p0.numero) : "—"}</span></div>
+        <div style={{ ...S.postBadge, borderColor: colore, background: C.bianco }}><span style={{ fontSize: 10, fontWeight: 900, color: colore }}>{p0 ? (p0.postazione || p0.numero) : "—"}</span></div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ ...S.sheetNome, overflowWrap: "anywhere" }}>{nome}</div>
           <div style={S.sheetCat}>{p0 ? p0.categoria : "Espositore registrato"}</div>
         </div>
-        {p0 && <div style={{ ...S.presBadge, background: presente ? "#eaf7f0" : "#fdecea", color: presente ? "#3daa70" : "#c0392b", borderColor: presente ? "#3daa70" : "#e07070" }}>
-          <Icon name={presente ? "checkCircle" : "xCircle"} size={13} color={presente ? "#3daa70" : "#c0392b"} sw={2} />{presente ? "Presente" : "Assente"}</div>}
+        {p0 && <div style={{ ...S.presBadge, background: presente ? C.verdePresenzaTint : C.rossoAssenzaTint, color: presente ? C.verdePresenza : C.rossoAssenza, borderColor: presente ? C.verdePresenza : C.rossoAssenza }}>
+          <Icon name={presente ? "checkCircle" : "xCircle"} size={13} color={presente ? C.verdePresenza : C.rossoAssenza} sw={2} />{presente ? "Presente" : "Assente"}</div>}
       </div>
       <div style={S.divider} />
       <div style={{ display: "flex", flexDirection: "column", gap: 9, margin: "12px 0 16px" }}>
-        {p0 && p0.titolare && <div style={S.infoRow}><Icon name="users" size={15} color="#9a8070" sw={1.5} /><span>{p0.titolare}</span></div>}
-        {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color="#9a8070" sw={1.5} /><span>{p.etichetta}{p.superficie ? ` · ${p.superficie} m` : ""}</span></div>)}
-        {!p0 && <div style={{ ...S.infoRow, color: "#a07000" }}><Icon name="pin" size={15} color="#e0a800" sw={1.5} /><span>Nessun posteggio assegnato: espositore occasionale, da collocare in un posteggio libero.</span></div>}
-        {p0 && p0.descrizione && <div style={{ fontSize: 12, color: "#6b5040", lineHeight: 1.45 }}>{p0.descrizione}</div>}
+        {p0 && p0.titolare && <div style={S.infoRow}><Icon name="users" size={15} color={C.terraChiaro} sw={1.5} /><span>{p0.titolare}</span></div>}
+        {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5} /><span>{p.etichetta}{p.superficie ? ` · ${p.superficie} m` : ""}</span></div>)}
+        {!p0 && <div style={{ ...S.infoRow, color: C.gialloOccasionaleTesto }}><Icon name="pin" size={15} color={C.gialloOccasionale} sw={1.5} /><span>Nessun posteggio assegnato: espositore occasionale, da collocare in un posteggio libero.</span></div>}
+        {p0 && p0.descrizione && <div style={{ fontSize: 12, color: C.terraMedio, lineHeight: 1.45 }}>{p0.descrizione}</div>}
         {FOTO_ABILITATE && p0 && p0.foto && p0.foto.length > 0 && <div style={{ display: "flex", gap: 8, overflowX: "auto" }}>{p0.foto.map((u, i) => <img key={i} src={u} alt="" style={{ height: 120, borderRadius: 10 }} />)}</div>}
       </div>
       {p0 && (
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
-          {p0.whatsapp && <a href={`https://wa.me/${p0.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}><Icon name="wa" size={20} color="#fff" sw={1.8} /><span>WhatsApp</span></a>}
-          {p0.telegram && <a href={`https://t.me/${p0.telegram.replace(/^@/, "")}`} target="_blank" rel="noreferrer" style={{ ...S.waBtnPopup, background: "#2aabee" }}><Icon name="navigate" size={20} color="#fff" sw={1.8} /><span>Telegram</span></a>}
-          {p0.lat && <a href={`https://www.google.com/maps/dir/?api=1&destination=${p0.lat.toFixed(6)},${p0.lon.toFixed(6)}&travelmode=walking`} target="_blank" rel="noreferrer" style={S.naviBtn}><Icon name="navigate" size={20} color="#fff" sw={1.8} /><span>A piedi</span></a>}
+          {p0.whatsapp && <a href={`https://wa.me/${p0.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}><Icon name="wa" size={20} color={C.bianco} sw={1.8} /><span>WhatsApp</span></a>}
+          {p0.telegram && <a href={`https://t.me/${p0.telegram.replace(/^@/, "")}`} target="_blank" rel="noreferrer" style={{ ...S.waBtnPopup, background: C.azzurroTelegram }}><Icon name="navigate" size={20} color={C.bianco} sw={1.8} /><span>Telegram</span></a>}
+          {p0.lat && <a href={`https://www.google.com/maps/dir/?api=1&destination=${p0.lat.toFixed(6)},${p0.lon.toFixed(6)}&travelmode=walking`} target="_blank" rel="noreferrer" style={S.naviBtn}><Icon name="navigate" size={20} color={C.bianco} sw={1.8} /><span>A piedi</span></a>}
         </div>
       )}
       {auth.isStaff ? (
         <div style={{ ...S.formCard, textAlign: "center" }}>
           <div style={S.secLbl}>Operatore · {auth.user.email}</div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 12px", borderRadius: 10, background: !p0 ? "#fff6d6" : "#eaf7f0", color: !p0 ? "#a07000" : "#2e7d52", fontWeight: 700, fontSize: 12, marginBottom: 12 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 12px", borderRadius: 10, background: !p0 ? "rgba(224,168,0,0.15)" : C.verdePresenzaTint, color: !p0 ? C.gialloOccasionaleTesto : C.verdePresenzaTesto, fontWeight: 700, fontSize: 12, marginBottom: 12 }}>
             <span style={{ width: 10, height: 10, borderRadius: "50%", background: colore, display: "inline-block" }} />{!p0 ? "Occasionale registrato" : "Concessionario in regola"}
           </div>
-          {esito && <div style={{ ...S.errMsg, color: esito.ok ? "#2e7d52" : "#c0392b" }}>{esito.t}</div>}
-          <button style={{ ...S.loginBtn, background: presente ? "#c0392b" : "#3daa70", opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={conferma}>
-            <Icon name={presente ? "xCircle" : "checkCircle"} size={16} color="#fff" sw={2} /> {busy ? "Registrazione…" : presente ? "Annulla presenza" : "Conferma presenza"}
+          {esito && <div style={{ ...S.errMsg, color: esito.ok ? C.verdePresenzaTesto : C.rossoAssenza }}>{esito.t}</div>}
+          <button style={{ ...S.loginBtn, background: presente ? C.rossoAssenza : C.verdePresenza, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={conferma}>
+            <Icon name={presente ? "xCircle" : "checkCircle"} size={16} color={C.bianco} sw={2} /> {busy ? "Registrazione…" : presente ? "Annulla presenza" : "Conferma presenza"}
           </button>
           <div style={S.loginHint}>Viene salvata anche la posizione GPS del telefono per la verifica delle postazioni.</div>
         </div>
       ) : (
         <>
           <SelfService token={token} q={q} p0={p0} S={S} />
-          <div style={{ textAlign: "center", fontSize: 11, color: "#9a8070", marginTop: 12 }}>Sei un operatore? Accedi da "Gestione" per registrare la presenza.</div>
+          <div style={{ textAlign: "center", fontSize: 11, color: C.terraChiaro, marginTop: 12 }}>Sei un operatore? Accedi da "Gestione" per registrare la presenza.</div>
         </>
       )}
       <div style={{ textAlign: "center", marginTop: 14 }}><button style={S.cancelBtn} onClick={onBack}>Torna alla mappa</button></div>
@@ -103,8 +104,8 @@ function SelfService({ token, q, p0, S }) {
   const [f, setF] = useState({ alias: p0?.nome && p0.nome !== p0.denominazione ? "" : "", referente: p0?.titolare || "", whatsapp: p0?.whatsapp || "", telegram: p0?.telegram || "", descrizione: p0?.descrizione || "", consenso: false });
   const [stato, setStato] = useState(null); const [busy, setBusy] = useState(false);
   const set = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.type === "checkbox" ? e.target.checked : e.target.value }));
-  if (!open) return <div style={{ textAlign: "center" }}><button style={{ ...S.cancelBtn, background: "#fdf0e0", color: "#8a5a10" }} onClick={() => setOpen(true)}>Sei tu l'espositore? Aggiorna la tua scheda</button></div>;
-  if (stato?.ok) return <div style={{ ...S.formCard, textAlign: "center" }}><div style={{ fontSize: 13, fontWeight: 700, color: "#2e7d52" }}>Richiesta inviata</div><div style={{ fontSize: 12, color: "#6b5040", marginTop: 6 }}>Il SUAP la verificherà e la pubblicherà nell'app. Grazie.</div></div>;
+  if (!open) return <div style={{ textAlign: "center" }}><button style={{ ...S.cancelBtn, background: C.ocraTint, color: C.gialloOccasionaleTesto }} onClick={() => setOpen(true)}>Sei tu l'espositore? Aggiorna la tua scheda</button></div>;
+  if (stato?.ok) return <div style={{ ...S.formCard, textAlign: "center" }}><div style={{ fontSize: 13, fontWeight: 700, color: C.verdePresenzaTesto }}>Richiesta inviata</div><div style={{ fontSize: 12, color: C.terraMedio, marginTop: 6 }}>Il SUAP la verificherà e la pubblicherà nell'app. Grazie.</div></div>;
   async function invia() {
     if (!f.consenso) { setStato({ ok: false, t: "Serve il consenso alla pubblicazione dei contatti" }); return; }
     setBusy(true); setStato(null);
@@ -114,12 +115,12 @@ function SelfService({ token, q, p0, S }) {
   return (
     <div style={S.formCard}>
       <div style={S.formH}>La tua scheda pubblica</div>
-      <div style={{ fontSize: 11, color: "#9a8070", marginBottom: 10, lineHeight: 1.5 }}>Compila quello che vuoi far vedere ai clienti nell'app. Le modifiche vengono pubblicate dopo la verifica del SUAP.</div>
+      <div style={{ fontSize: 11, color: C.terraChiaro, marginBottom: 10, lineHeight: 1.5 }}>Compila quello che vuoi far vedere ai clienti nell'app. Le modifiche vengono pubblicate dopo la verifica del SUAP.</div>
       {[["alias", "Nome da mostrare (es. insegna)"], ["referente", "Referente"], ["whatsapp", "WhatsApp (es. 393331234567)"], ["telegram", "Telegram (@utente)"]].map(([k, pl]) => (
         <input key={k} style={S.input} placeholder={pl} value={f[k]} onChange={set(k)} />
       ))}
       <textarea style={{ ...S.input, minHeight: 70 }} placeholder="Descrizione breve (cosa vendi, specialità…)" value={f.descrizione} onChange={set("descrizione")} />
-      <label style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 11, color: "#6b5040", lineHeight: 1.45, marginBottom: 10 }}>
+      <label style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 11, color: C.terraMedio, lineHeight: 1.45, marginBottom: 10 }}>
         <input type="checkbox" checked={f.consenso} onChange={set("consenso")} style={{ marginTop: 2 }} />
         <span>Acconsento alla pubblicazione di questi dati nell'app dei mercati di Maglie. Potrò chiederne la modifica o la rimozione al SUAP.</span>
       </label>
@@ -169,10 +170,10 @@ export function Scanner({ onToken, onClose, S }) {
         <video ref={videoRef} playsInline muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         <canvas ref={canvasRef} style={{ display: "none" }} />
         <div style={{ position: "absolute", top: "50%", left: "50%", width: 230, height: 230, transform: "translate(-50%,-50%)", border: "3px solid rgba(232,160,69,0.9)", borderRadius: 18, boxShadow: "0 0 0 2000px rgba(0,0,0,0.35)" }} />
-        <div style={{ position: "absolute", top: "calc(50% + 135px)", left: 0, right: 0, textAlign: "center", color: "#fff", fontSize: 13, fontWeight: 600, textShadow: "0 1px 3px #000" }}>Inquadra il QR dell'espositore</div>
-        {err && <div style={{ position: "absolute", top: 20, left: 20, right: 20, background: "rgba(200,50,50,0.92)", color: "#fff", padding: 12, borderRadius: 10, fontSize: 13 }}>{err}</div>}
+        <div style={{ position: "absolute", top: "calc(50% + 135px)", left: 0, right: 0, textAlign: "center", color: C.bianco, fontSize: 13, fontWeight: 600, textShadow: "0 1px 3px #000" }}>Inquadra il QR dell'espositore</div>
+        {err && <div style={{ position: "absolute", top: 20, left: 20, right: 20, background: "rgba(200,50,50,0.92)", color: C.bianco, padding: 12, borderRadius: 10, fontSize: 13 }}>{err}</div>}
       </div>
-      <div style={{ background: "#1a120a", padding: "12px 14px calc(14px + env(safe-area-inset-bottom))", display: "flex", gap: 8, alignItems: "center" }}>
+      <div style={{ background: C.terra, padding: "12px 14px calc(14px + env(safe-area-inset-bottom))", display: "flex", gap: 8, alignItems: "center" }}>
         <input style={{ ...S.input, marginBottom: 0, flex: 1 }} placeholder="…o digita il codice" value={manuale} onChange={(e) => setManuale(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { const t = tokenDaTesto(manuale.trim()); if (t) onToken(t); } }} />
         <button style={{ ...S.cancelBtn, whiteSpace: "nowrap" }} onClick={onClose}>Chiudi</button>
       </div>

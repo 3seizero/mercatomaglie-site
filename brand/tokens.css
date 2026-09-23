@@ -1,0 +1,248 @@
+/* Mercati di Maglie — generated from tokens.json */
+:root, [data-theme="light"] {
+  --terra: #3d2b1a; /* Fondi scuri: header, barra di navigazione, bottone primario. Anche testo su fondi chiari (11.9:1 su `sabbia`). */
+  --terra-testo: #2c1d0e; /* Testo principale su `bianco` e `sabbia` (16:1 su bianco). */
+  --terra-medio: #6b5040; /* Testo secondario su `bianco` (7.4:1) e `sabbia` (6.5:1). */
+  --terra-chiaro: #9a8070; /* Didascalie, etichette in maiuscoletto, placeholder. Solo 3.7:1 su `bianco` e 3.2:1 su `sabbia`: sotto la soglia 4.5:1 per testo piccolo, valore della fonte mantenuto; non usarlo per testo corrente. */
+  --ocra: #c8862a; /* Accento principale: bottoni CTA, linee, badge, tag categoria. Testo `bianco` sopra fa 3.0:1 (ok solo per testo grande o bold ≥19px); come testo su `sabbia` 2.7:1: solo titoli grandi. */
+  --ocra-chiaro: #e8a045; /* Accento su fondo `terra`: parole in corsivo dei titoli, icone attive, sole del logo (6.1:1 su `terra`). Non usarlo come testo su fondi chiari. */
+  --sabbia: #f5f0e8; /* Fondo pagina chiaro. */
+  --sabbia-scura: #e8dfc8; /* Riquadri secondari, bottoni neutri, riquadro del numero nella card espositore. `terra` sopra fa 10.2:1. */
+  --bordo: #d8c8b0; /* Bordi di card e input (1-1,5 px). Decorativo: 1.6:1 su `bianco`, non basta da solo a delimitare un controllo. */
+  --bianco: #ffffff; /* Fondo delle card. */
+  --ocra-tint: #fdf0e0; /* Fondo del tag categoria dietro testo `ocra` (2.7:1: il tag è bold maiuscolo, contrasto della fonte mantenuto). */
+  --verde-presenza: #3daa70; /* Stato "presente": pallini, bordo del badge posteggio. Come testo 2.9:1 su bianco: usarlo per segni, non per testo piccolo. */
+  --verde-presenza-tint: #eaf7f0; /* Fondo chiaro dello stato presente. */
+  --rosso-assenza: #c0392b; /* Testo "assente" ed errori, su `rosso-assenza-tint` (4.8:1). */
+  --rosso-assenza-tint: #fdecea; /* Fondo chiaro dello stato assente / errore. */
+  --rosso-assenza-mappa: rgba(210,40,40,0.5); /* Riempimento dei posteggi assenti sulla mappa. */
+  --blu-navigazione: #2595ff; /* Pulsante "A piedi" e posizione dell'utente sulla mappa. Testo `bianco` sopra 3.1:1: etichetta bold. */
+  --verde-whatsapp: #22c55e; /* Pulsante contatto WhatsApp (colore del marchio; testo bianco 2.3:1). */
+  --azzurro-telegram: #2aabee; /* Pulsante contatto Telegram (colore del marchio; testo bianco 2.6:1). */
+  --mappa-strade: #706f6f; /* Mappa app: strade. */
+  --mappa-area: #ffffff; /* Mappa app: area del mercato. */
+  --mappa-parcheggi: #e6d867; /* Mappa app: parcheggi. */
+  --mappa-aiuole: #9ec583; /* Mappa app: aiuole. */
+  --mappa-piazza-eventi: #d38267; /* Mappa app: piazza eventi. */
+  --mappa-postazione-libera: #e8e2d8; /* Mappa app: postazione libera (bordo `mappa-postazione-libera-bordo`). */
+  --mappa-postazione-libera-bordo: #c8c0b4; /* Bordo della postazione libera. */
+  --mappa-postazione-fuori-orario: #d9c9ad; /* Mappa app: postazione assegnata, fuori orario. */
+  --shadow-card: 0 1px 6px rgba(0,0,0,0.05); /* Ombra morbida sulle card. */
+}
+:root {
+  --space-4: 4px; /* Unità base: tutto è multiplo di 4. */
+  --space-8: 8px; /* Gap stretto; gap liste (8-10 px). */
+  --space-10: 10px; /* Gap liste ampio. */
+  --space-14: 14px; /* Padding card (14-16 px). */
+  --space-16: 16px; /* Padding card ampio, margini laterali. */
+  --space-24: 24px; /* Stacco fra sezioni. */
+  --radius-button: 10px; /* Bottoni e input. */
+  --radius-card: 14px; /* Card. */
+  --radius-sheet: 20px; /* Fogli inferiori (bottom sheet), angoli superiori. */
+  --radius-round: 50%; /* Pallini di stato. */
+  --border-thin: 1px; /* Bordi di card e input, colore `bordo`. */
+  --border-strong: 1.5px; /* Bordo del badge posteggio e input attivi. */
+  --button-height-min: 40px; /* Altezza minima bottoni. */
+  --button-height-max: 48px; /* Altezza bottoni principali. */
+  --stall-badge: 46px; /* Lato del badge posteggio (46×46). */
+  --font-sans: Montserrat, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --text-page-title: 800 20px/26px var(--font-sans); /* Titolo pagina (16-20 px), `terra-testo` o `bianco` su `terra`. */
+  --text-card-name: 700 15px/20px var(--font-sans); /* Nome scheda / espositore (15-16 px), `terra`. */
+  --text-body: 400 13px/19px var(--font-sans); /* Testo (12-13 px), `terra-testo` o `terra-medio`. */
+  --text-body-light: 300 13px/19px var(--font-sans); /* Testi lunghi, peso 300. */
+  --text-caption: 500 11px/15px var(--font-sans); /* Didascalie (10-11 px). */
+  --text-label: 700 10px/14px var(--font-sans); /* Etichette in maiuscoletto (9-10 px, spaziatura 2-5 px), `terra-chiaro` o `ocra`. Scrivere il testo in maiuscolo. */
+  --text-button: 700 14px/18px var(--font-sans); /* Etichetta dei bottoni. */
+  --text-stall-code: 900 10px/12px var(--font-sans); /* Codice nel badge posteggio. */
+  --text-editorial-title: 700 34px/40px var(--font-serif); /* Titoli editoriali del microsito. Solo la parola chiave in `editorial-accent`. */
+  --text-editorial-accent: italic 700 34px/40px var(--font-serif); /* Parola chiave del titolo, corsivo, `ocra-chiaro` su `terra` (su fondo chiaro: `ocra`, solo a corpo grande). */
+  --text-print-title: 700 120px/128px var(--font-serif); /* Titolo pannello: minimo 90 pt (120 px); parola chiave in corsivo `ocra`. */
+  --text-print-subtitle: 400 40px/50px var(--font-sans); /* Sottotitolo 30 pt. */
+  --text-print-body: 400 35px/44px var(--font-sans); /* Testo corrente: mai sotto 26 pt (35 px) sui pannelli 70×100, letto a 1-2 m. */
+  --text-print-code: 800 40px/48px var(--font-sans); /* Codice posteggio 30 pt in riquadro `sabbia-scura`. */
+  --text-print-label: 700 35px/44px var(--font-sans); /* Etichette in maiuscoletto spaziato (3-5 pt). */
+}
+.page-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+.card-name {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.body-light {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+.caption {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.button {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.stall-code {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.editorial-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.editorial-accent {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-style: italic;
+}
+.print-title {
+  font-family: var(--font-serif);
+  font-size: 120px;
+  line-height: 128px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.print-subtitle {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.print-body {
+  font-family: var(--font-sans);
+  font-size: 35px;
+  line-height: 44px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.print-code {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+.print-label {
+  font-family: var(--font-sans);
+  font-size: 35px;
+  line-height: 44px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-700-italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}

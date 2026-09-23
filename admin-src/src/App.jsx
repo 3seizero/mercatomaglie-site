@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { stampaQr, qrDataUrl } from "./stampa.js";
+import { C } from "./brand/tokens.js";
 import {
   firebaseReady, MERCATI, SETTORI, TIPI, RUOLI, useAdminAuth, useCollection, rebuildPubblico,
   salvaEspositore, nuovoEspositore, assegnaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr, FOTO_ABILITATE, CAMPI_RICHIESTA, approvaRichiesta, rifiutaRichiesta, caricaFoto, eliminaFoto, salvaFotoEspositore, salvaMercato, GIORNI, testoGiorni, testoOrario,
