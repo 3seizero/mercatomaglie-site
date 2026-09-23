@@ -1,17 +1,33 @@
-// Carica i dati seed in Firestore: mercati, posteggi (con geometria mappa), espositori (pubblici)
-// e espositori_riservati (CF, P.IVA, indirizzi). Idempotente: sovrascrive i documenti con lo stesso id.
-// Uso:  cd scripts/firebase && npm install && node seed.mjs [--solo-pubblici]
+// Carica i dati seed in Firestore (modello v3, espositore-centrico): mercati, posteggi (geometria mappa,
+// SENZA assegnatario), espositori (fissi con posteggi[] ricavati da posteggi.json, spuntisti), espositori_riservati,
+// impostazioni. Idempotente: sovrascrive i documenti con lo stesso id. NON tocca staff, presenze, stato, qr.
+// Uso:  cd scripts/firebase && npm install && node seed.mjs [--solo-pubblici] [--solo-espositori]
 import { db, readJson, FieldValue } from './lib.mjs';
+import { costruisciPubblico } from './pubblico.mjs';
 
-const soloPubblici = process.argv.includes('--solo-pubblici');
+const args = process.argv.slice(2);
+const soloPubblici = args.includes('--solo-pubblici');
+const soloEspositori = args.includes('--solo-espositori');
 const mercati = readJson('data/seed/mercati.json').mercati;
 const posteggi = readJson('data/seed/posteggi.json').posteggi;
 const mappa = Object.fromEntries(readJson('data/seed/posteggi-mappa.json').posteggi.map(p => [p.id, p]));
-const espositori = readJson('data/seed/espositori.json').espositori;
+const espositoriSeed = readJson('data/seed/espositori.json').espositori;
 
 const docId = (id) => id.replace(/\//g, '_');   // "A-55/56" → "A-55_56"
-// Firestore non accetta array annidati: i vertici vanno come stringa SVG "x,y x,y …"
 const svgPts = (pts) => pts ? pts.map(([x, y]) => `${x},${y}`).join(' ') : null;
+
+// v3: assegnazioni sul documento espositore
+const assegn = {};
+for (const p of posteggi) if (p.espositoreId) (assegn[p.espositoreId] ||= []).push(p.id);
+export const normalizzaEspositore = (e) => {
+  const spuntista = e.tipo === 'spuntista';
+  const { tipo, ...rest } = e;
+  return { ...rest, id: docId(e.id), tipo: spuntista ? 'spuntista' : 'fisso',
+    qualifica: spuntista ? (e.qualifica || null) : (tipo && tipo !== 'fisso' ? tipo : e.qualifica || 'concessionario'),
+    posteggi: spuntista ? [] : (assegn[e.id] || []), visibile: e.visibile !== false, attivo: e.attivo !== false,
+    scadenza: e.scadenza || null, email: e.email || null };
+};
+const espositori = espositoriSeed.map(normalizzaEspositore);
 
 async function batchWrite(coll, items, mapFn) {
   let batch = db.batch(); let n = 0; let tot = 0;
@@ -24,21 +40,26 @@ async function batchWrite(coll, items, mapFn) {
   console.log(`${coll}: ${tot} documenti`);
 }
 
-await batchWrite('mercati', mercati, m => ({ id: m.id, data: m }));
-await batchWrite('posteggi', posteggi, p => {
-  const g = mappa[p.id];
-  return { id: p.id, data: { ...p, espositoreId: p.espositoreId ? docId(p.espositoreId) : null,
-    mappa: g ? { pts: svgPts(g.pts), cx: g.cx, cy: g.cy, lat: g.lat, lon: g.lon, shape: g.shape || 'poly', r: g.r || null } : null } };
-});
-// posteggi presenti solo in piantina (PV-1..3, UOVA-1, A-47)
-const extra = Object.values(mappa).filter(g => !posteggi.some(p => p.id === g.id));
-await batchWrite('posteggi', extra, g => ({ id: g.id, data: { id: g.id, mercato: 'area-mercatale', settore: g.settore, numero: g.numero,
-  etichetta: `Settore ${g.settore} · n. ${g.numero}`, tipo: 'posteggio', stato: 'da-verificare', espositoreId: null, inElenco: false,
-  mappa: { pts: svgPts(g.pts), cx: g.cx, cy: g.cy, lat: g.lat, lon: g.lon, shape: g.shape || 'poly', r: g.r || null } } }));
-await batchWrite('espositori', espositori, e => ({ id: e.id, data: { ...e, id: docId(e.id) } }));
+if (!soloEspositori) {
+  await batchWrite('mercati', mercati, m => ({ id: m.id, data: m }));
+  const geom = (g) => g ? { pts: svgPts(g.pts), cx: g.cx, cy: g.cy, lat: g.lat, lon: g.lon, shape: g.shape || 'poly', r: g.r || null } : null;
+  await batchWrite('posteggi', posteggi, p => {
+    const { espositoreId, stato, ...rest } = p;   // v3: niente assegnatario sul posteggio
+    return { id: p.id, data: { ...rest, mappa: geom(mappa[p.id]) } };
+  });
+  const extra = Object.values(mappa).filter(g => !posteggi.some(p => p.id === g.id));
+  await batchWrite('posteggi', extra, g => ({ id: g.id, data: { id: g.id, mercato: 'area-mercatale', settore: g.settore, numero: g.numero,
+    etichetta: `Settore ${g.settore} · n. ${g.numero}`, tipo: 'posteggio', inElenco: false, mappa: geom(g) } }));
+  const IMP = { 'area-mercatale': { registroPresenze: true }, coperto: { registroPresenze: false }, ortofrutticolo: { registroPresenze: false } };
+  for (const m of mercati) await db.collection('impostazioni').doc(m.id).set({ id: m.id, oraLimiteSpunta: '10:00', oraAzzeramento: '14:00', assenzeMassime: 20, ...IMP[m.id] }, { merge: true });
+  console.log('impostazioni: 3 documenti (merge)');
+}
+await batchWrite('espositori', espositori, e => ({ id: e.id, data: e }));
 if (!soloPubblici) {
   const riservati = readJson('data/seed/espositori_riservati.json').espositori;
   await batchWrite('espositori_riservati', riservati, r => ({ id: r.id, data: r }));
 }
-console.log('seed completato');
+const post = (await db.collection('posteggi').get()).docs.map(d => d.data());
+for (const [m, d] of Object.entries(costruisciPubblico(espositori, post))) await db.collection('pubblico').doc(m).set({ ...d, aggiornato: FieldValue.serverTimestamp() });
+console.log('pubblico: 3 documenti · seed completato');
 process.exit(0);

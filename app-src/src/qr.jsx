@@ -1,17 +1,19 @@
 // QR: scheda espositore raggiunta dal codice (#/v/<token>) e scanner per l'operatore.
 import { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
-import { lookupQr, inviaRichiesta, SETTORI, MERCATI } from "./dati.js";
-import { FOTO_ABILITATE } from "./firebase.js";
+import { lookupQr, inviaRichiesta, espositoreById, nomePubblico, posteggiPerSpuntisti, dopoOraLimite, SETTORI, MERCATI } from "./dati.js";
 import { C } from "./brand/tokens.js";
 
 export const tokenDaTesto = (t) => { const m = String(t || "").match(/#\/v\/([A-Za-z0-9_-]{8,})/) || String(t || "").match(/^([A-Za-z0-9_-]{16,})$/); return m ? m[1] : null; };
 
-/** Scheda pubblica + conferma presenza (staff). */
-export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPresenza, onBack, S, Icon }) {
+/** Scheda raggiunta dal QR. Senza login: solo "codice valido" + accesso operatore + self-service.
+ *  Con login staff: conferma della presenza (fisso: sul suo posteggio; spuntista: scelta del posteggio libero). */
+export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], presenze, impostazioni = {}, onPresenza, onBack, S, Icon }) {
   const [stato, setStato] = useState({ loading: true });
   const [busy, setBusy] = useState(false);
   const [esito, setEsito] = useState(null);
+  const [postScelto, setPostScelto] = useState("");
+  const [email, setEmail] = useState(""); const [pwd, setPwd] = useState(""); const [err, setErr] = useState("");
   useEffect(() => {
     let alive = true;
     setStato({ loading: true });
@@ -28,15 +30,30 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
       <button style={S.loginBtn} onClick={onBack}>Torna alla mappa</button>
     </div></div>
   );
-  // espositore: cerco tra postazioni (area mercatale) ed elenchi
+  // espositore: fisso (tra postazioni ed elenchi) oppure spuntista
   const tutti = [...postazioni, ...(elenchi.coperto || []), ...(elenchi.ortofrutticolo || [])];
-  const posteggiEsp = tutti.filter((p) => p.espositoreId === q.espositoreId);
+  const posteggiEsp = tutti.filter((p) => p.espositoreId === q.espositoreId && !p.spuntista);
+  const sp = spuntisti.find((x) => x.id === q.espositoreId) || null;
+  const bundle = espositoreById(q.espositoreId);
   const p0 = posteggiEsp[0] || null;
-  const presente = !!presenze[q.espositoreId];
-  const nome = p0 ? p0.nome : (q.denominazione || q.espositoreId);
-  const colore = !p0 ? C.gialloOccasionale : C.verdePresenza;
+  const nome = p0 ? p0.nome : sp ? sp.nome : nomePubblico(bundle) || "Espositore";
+  const tipo = sp || (bundle && bundle.tipo === "spuntista") ? "spuntista" : "fisso";
+  const pres = presenze[q.espositoreId] || null;
+  const presente = !!pres;
   const mercatoDi = (p) => (postazioni.includes(p) ? "area-mercatale" : (elenchi.coperto || []).includes(p) ? "coperto" : "ortofrutticolo");
+  const mercatoId = p0 ? mercatoDi(p0) : "area-mercatale";
+  const registro = (impostazioni[mercatoId] || {}).registroPresenze !== false;
+  const ritardo = dopoOraLimite(impostazioni, mercatoId);
+  const liberi = tipo === "spuntista" ? posteggiPerSpuntisti(postazioni, impostazioni) : [];
+  const colore = tipo === "spuntista" ? C.gialloOccasionale : C.verdePresenza;
+
+  async function doLogin() {
+    setErr(""); setBusy(true);
+    try { await auth.login(email, pwd); } catch (e) { setErr(e.code === "auth/invalid-credential" || e.code === "auth/wrong-password" || e.code === "auth/user-not-found" ? "Email o password non validi" : (e.message || "Errore di accesso")); }
+    setBusy(false);
+  }
   async function conferma() {
+    if (tipo === "spuntista" && !presente && !postScelto) { setEsito({ ok: false, t: "Scegli il posteggio da assegnare" }); return; }
     setBusy(true); setEsito(null);
     let posizione = null;
     try {
@@ -44,54 +61,76 @@ export function PageScheda({ token, auth, postazioni, elenchi, presenze, onPrese
         if (!navigator.geolocation) return res(null);
         navigator.geolocation.getCurrentPosition((pos) => res({ lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy }), () => res(null), { enableHighAccuracy: true, timeout: 6000 });
       });
-      await onPresenza({ mercatoId: p0 ? mercatoDi(p0) : "area-mercatale", espositoreId: q.espositoreId, posteggioId: p0 ? p0.id : null, presente: !presente, metodo: "qr", posizione });
-      setEsito({ ok: true, t: !presente ? "Presenza registrata" : "Presenza annullata" });
+      await onPresenza({ mercatoId, espositoreId: q.espositoreId, posteggioId: tipo === "spuntista" ? (presente ? pres.posteggioId : postScelto) : (p0 ? p0.id : null), presente: !presente, metodo: "qr", posizione, tipo, ritardo: !presente && ritardo });
+      setEsito({ ok: true, t: !presente ? `Presenza registrata${!presente && ritardo ? " (in ritardo)" : ""}` : "Presenza annullata" });
     } catch (e) { setEsito({ ok: false, t: e.message || String(e) }); }
     setBusy(false);
   }
+  const testata = (
+    <div style={{ ...S.sheetHead, marginBottom: 12 }}>
+      <div style={{ ...S.postBadge, borderColor: colore, background: C.bianco }}><span style={{ fontSize: 10, fontWeight: 900, color: colore }}>{p0 ? (p0.postazione || p0.numero) : tipo === "spuntista" ? "SP" : "—"}</span></div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ ...S.sheetNome, overflowWrap: "anywhere" }}>{nome}</div>
+        <div style={S.sheetCat}>{tipo === "spuntista" ? `Spuntista${sp && sp.categoria && sp.categoria !== "Spuntista" ? ` · ${sp.categoria}` : ""}` : p0 ? p0.categoria : "Espositore registrato"}</div>
+      </div>
+      {registro && auth.isStaff && <div style={{ ...S.presBadge, background: presente ? C.verdePresenzaTint : C.rossoAssenzaTint, color: presente ? C.verdePresenza : C.rossoAssenza, borderColor: presente ? C.verdePresenza : C.rossoAssenza }}>
+        <Icon name={presente ? "checkCircle" : "xCircle"} size={13} color={presente ? C.verdePresenza : C.rossoAssenza} sw={2} />{presente ? "Presente" : "Assente"}</div>}
+    </div>
+  );
+
+  // ---- non loggato: codice valido, accesso operatore, self-service
+  if (!auth.isStaff) return (
+    <div style={S.page}>
+      {testata}
+      <div style={S.divider} />
+      <div style={{ ...S.formCard, textAlign: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}><Icon name="checkCircle" size={34} color={C.verdePresenza} sw={1.5} /></div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: C.terraTesto, marginBottom: 4 }}>Codice espositore valido</div>
+        <div style={{ fontSize: 11, color: C.terraChiaro, lineHeight: 1.5, marginBottom: 12 }}>La presenza può essere registrata solo da un operatore di controllo che ha effettuato l'accesso.</div>
+        {auth.user ? (
+          <div style={S.errMsg}>L'utente {auth.user.email} non ha un ruolo attivo.</div>
+        ) : (<>
+          <input style={S.input} type="email" placeholder="Email operatore" value={email} autoComplete="username" onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && doLogin()} />
+          <input style={{ ...S.input, ...(err ? { borderColor: C.rossoAssenza } : {}) }} type="password" placeholder="Password" value={pwd} autoComplete="current-password" onChange={(e) => setPwd(e.target.value)} onKeyDown={(e) => e.key === "Enter" && doLogin()} />
+          {err && <div style={S.errMsg}>{err}</div>}
+          <button style={{ ...S.loginBtn, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={doLogin}><Icon name="lock" size={16} color={C.bianco} sw={2} /> {busy ? "Accesso…" : "Accedi e registra"}</button>
+        </>)}
+      </div>
+      <SelfService token={token} q={q} p0={p0 || (sp ? { nome: sp.nome, denominazione: sp.nome, titolare: sp.titolare, whatsapp: sp.whatsapp, telegram: sp.telegram, descrizione: sp.descrizione } : null)} S={S} />
+      <div style={{ textAlign: "center", marginTop: 14 }}><button style={S.cancelBtn} onClick={onBack}>Torna alla mappa</button></div>
+    </div>
+  );
+
+  // ---- operatore loggato
   return (
     <div style={S.page}>
-      <div style={{ ...S.sheetHead, marginBottom: 12 }}>
-        <div style={{ ...S.postBadge, borderColor: colore, background: C.bianco }}><span style={{ fontSize: 10, fontWeight: 900, color: colore }}>{p0 ? (p0.postazione || p0.numero) : "—"}</span></div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ ...S.sheetNome, overflowWrap: "anywhere" }}>{nome}</div>
-          <div style={S.sheetCat}>{p0 ? p0.categoria : "Espositore registrato"}</div>
-        </div>
-        {p0 && <div style={{ ...S.presBadge, background: presente ? C.verdePresenzaTint : C.rossoAssenzaTint, color: presente ? C.verdePresenza : C.rossoAssenza, borderColor: presente ? C.verdePresenza : C.rossoAssenza }}>
-          <Icon name={presente ? "checkCircle" : "xCircle"} size={13} color={presente ? C.verdePresenza : C.rossoAssenza} sw={2} />{presente ? "Presente" : "Assente"}</div>}
-      </div>
+      {testata}
       <div style={S.divider} />
       <div style={{ display: "flex", flexDirection: "column", gap: 9, margin: "12px 0 16px" }}>
         {p0 && p0.titolare && <div style={S.infoRow}><Icon name="users" size={15} color={C.terraChiaro} sw={1.5} /><span>{p0.titolare}</span></div>}
-        {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5} /><span>{p.etichetta}{p.superficie ? ` · ${p.superficie} m` : ""}</span></div>)}
-        {!p0 && <div style={{ ...S.infoRow, color: C.gialloOccasionaleTesto }}><Icon name="pin" size={15} color={C.gialloOccasionale} sw={1.5} /><span>Nessun posteggio assegnato: espositore occasionale, da collocare in un posteggio libero.</span></div>}
-        {p0 && p0.descrizione && <div style={{ fontSize: 12, color: C.terraMedio, lineHeight: 1.45 }}>{p0.descrizione}</div>}
-        {FOTO_ABILITATE && p0 && p0.foto && p0.foto.length > 0 && <div style={{ display: "flex", gap: 8, overflowX: "auto" }}>{p0.foto.map((u, i) => <img key={i} src={u} alt="" style={{ height: 120, borderRadius: 10 }} />)}</div>}
+        {posteggiEsp.map((p) => <div key={p.id} style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5} /><span>{p.etichetta}</span></div>)}
+        {tipo === "spuntista" && <div style={{ ...S.infoRow, color: C.gialloOccasionaleTesto }}><Icon name="pin" size={15} color={C.gialloOccasionale} sw={1.5} /><span>{presente ? `Oggi sul posteggio ${pres.posteggioId || "—"} dalle ${pres.ora || ""}` : "Spuntista: da collocare in un posteggio libero."}</span></div>}
+        {tipo === "fisso" && !p0 && <div style={{ ...S.infoRow, color: C.rossoAssenza }}><Icon name="pin" size={15} color={C.rossoAssenza} sw={1.5} /><span>Nessun posteggio assegnato: verificare con il SUAP.</span></div>}
+        {presente && pres.ora && tipo === "fisso" && <div style={{ fontSize: 11, color: C.terraChiaro }}>Presenza registrata alle {pres.ora}{pres.ritardo ? " (in ritardo)" : ""}{pres.da && (pres.da.nome || pres.da.email) ? ` da ${[pres.da.nome, pres.da.cognome].filter(Boolean).join(" ") || pres.da.email}` : ""}</div>}
       </div>
-      {p0 && (
-        <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
-          {p0.whatsapp && <a href={`https://wa.me/${p0.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" style={S.waBtnPopup}><Icon name="wa" size={20} color={C.bianco} sw={1.8} /><span>WhatsApp</span></a>}
-          {p0.telegram && <a href={`https://t.me/${p0.telegram.replace(/^@/, "")}`} target="_blank" rel="noreferrer" style={{ ...S.waBtnPopup, background: C.azzurroTelegram }}><Icon name="navigate" size={20} color={C.bianco} sw={1.8} /><span>Telegram</span></a>}
-          {p0.lat && <a href={`https://www.google.com/maps/dir/?api=1&destination=${p0.lat.toFixed(6)},${p0.lon.toFixed(6)}&travelmode=walking`} target="_blank" rel="noreferrer" style={S.naviBtn}><Icon name="navigate" size={20} color={C.bianco} sw={1.8} /><span>A piedi</span></a>}
-        </div>
-      )}
-      {auth.isStaff ? (
+      {!registro ? (
+        <div style={{ ...S.formCard, textAlign: "center", fontSize: 12, color: C.terraChiaro }}>Per questo mercato il registro presenze non è attivo.</div>
+      ) : (
         <div style={{ ...S.formCard, textAlign: "center" }}>
-          <div style={S.secLbl}>Operatore · {auth.user.email}</div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 12px", borderRadius: 10, background: !p0 ? "rgba(224,168,0,0.15)" : C.verdePresenzaTint, color: !p0 ? C.gialloOccasionaleTesto : C.verdePresenzaTesto, fontWeight: 700, fontSize: 12, marginBottom: 12 }}>
-            <span style={{ width: 10, height: 10, borderRadius: "50%", background: colore, display: "inline-block" }} />{!p0 ? "Occasionale registrato" : "Concessionario in regola"}
-          </div>
+          <div style={S.secLbl}>Operatore · {auth.nomeOperatore}</div>
+          {tipo === "spuntista" && !presente && (
+            <select style={S.select} value={postScelto} onChange={(e) => setPostScelto(e.target.value)}>
+              <option value="">— scegli il posteggio libero —</option>
+              {liberi.map((p) => <option key={p.id} value={p.id}>{p.postazione} · {p.etichetta.replace(/^Settore \w+ · /, "")} · {p.motivo}</option>)}
+            </select>
+          )}
+          {ritardo && !presente && <div style={{ fontSize: 11, color: C.rossoAssenza, marginBottom: 8 }}>Ora limite di spunta superata: la presenza verrà segnata in ritardo.</div>}
           {esito && <div style={{ ...S.errMsg, color: esito.ok ? C.verdePresenzaTesto : C.rossoAssenza }}>{esito.t}</div>}
           <button style={{ ...S.loginBtn, background: presente ? C.rossoAssenza : C.verdePresenza, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={conferma}>
             <Icon name={presente ? "xCircle" : "checkCircle"} size={16} color={C.bianco} sw={2} /> {busy ? "Registrazione…" : presente ? "Annulla presenza" : "Conferma presenza"}
           </button>
-          <div style={S.loginHint}>Viene salvata anche la posizione GPS del telefono per la verifica delle postazioni.</div>
+          <div style={S.loginHint}>La presenza viene certificata a tuo nome, con ora e posizione GPS del telefono.</div>
         </div>
-      ) : (
-        <>
-          <SelfService token={token} q={q} p0={p0} S={S} />
-          <div style={{ textAlign: "center", fontSize: 11, color: C.terraChiaro, marginTop: 12 }}>Sei un operatore? Accedi da "Gestione" per registrare la presenza.</div>
-        </>
       )}
       <div style={{ textAlign: "center", marginTop: 14 }}><button style={S.cancelBtn} onClick={onBack}>Torna alla mappa</button></div>
     </div>

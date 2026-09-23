@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { firebaseReady, FOTO_ABILITATE } from "./firebase.js";
 import { C } from "./brand/tokens.js";
 import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
-import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useMercati, useAperture, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco } from "./dati.js";
+import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useMercati, useAperture, useImpostazioni, useCalendario, avvisiCalendario, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco, buildSpuntisti, posteggiPerSpuntisti, dopoOraLimite } from "./dati.js";
 
 // Font: Montserrat locale via brand/tokens.css (importato in main.jsx)
 
@@ -60,8 +60,10 @@ function gpsToSvg(lat, lon) {
   return { svgX, svgY };
 }
 
-function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,mercato}){
+function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,mercato,registro=true,avvisi=[],spuntisti=[],calendario=[]}){
   const wrapRef = useRef(null);
+  const [showSpuntisti,setShowSpuntisti]=useState(false);
+  const [descAperta,setDescAperta]=useState(false);
   const layerRef = useRef(null);
   const [showCatSheet, setShowCatSheet] = useState(false);
   const [userPos, setUserPos] = useState(null); // {svgX, svgY, accuracy}
@@ -334,7 +336,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
             const dotX = isPoly ? e.cx + 8 : e.svgX + e.svgW - 3.5;
             const dotY = isPoly ? e.cy - 6 : e.svgY + 3.5;
             return(
-              <g key={e.id} style={{cursor: dimmed?"default":"pointer"}}
+              <g key={e.id} data-id={e.id} style={{cursor: dimmed?"default":"pointer"}}
                 onClick={ev=>{
                   ev.stopPropagation();
                   if(!stateRef.current.didDrag && !dimmed) setPopup(popup===e.id?null:e.id);
@@ -464,11 +466,36 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
           <span style={S.sSep}/>
           <span style={S.sDot(C.mappaPostazioneLiberaBordo)}/><span style={S.sTxt}>{libere} libere</span>
         </>):(<>
-          <span style={S.sDot(C.mappaPostazioneLiberaBordo)}/><span style={S.sTxt}>Mercato chiuso · apre {prossimaApertura(mercato)}</span>
+          <span style={S.sDot(C.mappaPostazioneLiberaBordo)}/><span style={S.sTxt}>Mercato chiuso · apre {prossimaApertura(mercato,new Date(),calendario)}</span>
           <span style={S.sSep}/>
           <span style={S.sTxt}>{assegnate} espositori</span>
         </>)}
       </div>
+
+      {avvisi.length>0&&<div style={S.avviso}>{avvisi.map((a,i)=><div key={i}>{a}</div>)}</div>}
+      {spuntisti.length>0&&<button style={S.spFloatBtn} onClick={()=>setShowSpuntisti(true)}>
+        <Icon name="users" size={14} color={C.terra} sw={2}/><span>Spuntisti{aperto?` · ${spuntisti.filter(s=>s.presente).length} presenti`:""}</span>
+      </button>}
+      {showSpuntisti&&(
+        <div style={S.overlay} onClick={()=>setShowSpuntisti(false)}>
+          <div style={{...S.sheet,maxHeight:"75vh",display:"flex",flexDirection:"column"}} onClick={e=>e.stopPropagation()}>
+            <div style={S.handle}/>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+              <div><div style={{fontSize:15,fontWeight:800,color:C.terraTesto}}>Spuntisti {new Date().getFullYear()}</div><div style={{fontSize:11,color:C.terraChiaro}}>{spuntisti.length} in elenco · occupano i posteggi liberi del giorno</div></div>
+              <button style={{background:"none",border:"none",cursor:"pointer",fontSize:18,color:C.terraChiaro}} onClick={()=>setShowSpuntisti(false)}>✕</button>
+            </div>
+            <div style={{overflowY:"auto",flex:1}}>
+              {spuntisti.map(sp=>(
+                <div key={sp.id} style={{display:"flex",alignItems:"center",gap:10,padding:"9px 2px",borderBottom:`1px solid ${C.sabbia}`}}>
+                  <span style={{width:9,height:9,borderRadius:"50%",background:sp.presente?C.verdePresenza:C.bordo,flexShrink:0}}/>
+                  <div style={{flex:1,minWidth:0}}><div style={{fontSize:13,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{sp.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{sp.categoria}</div></div>
+                  {aperto&&<span style={{fontSize:10,fontWeight:700,color:sp.presente?C.verdePresenza:C.terraChiaro}}>{sp.presente?`Presente · ${sp.posteggioId||""}`:"Assente"}</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ZOOM CONTROLS */}
       <div style={S.mapControls}>
@@ -503,7 +530,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                     <div style={{...S.sheetNome,overflowWrap:"anywhere"}}>{esp.nome}</div>
                     <div style={S.sheetCat}>{esp.categoria}</div>
                   </div>
-                  {(aperto||esp.presente)&&<div style={{...S.presBadge,background:esp.presente?C.verdePresenzaTint:C.rossoAssenzaTint,color:esp.presente?C.verdePresenza:C.rossoAssenza,borderColor:esp.presente?C.verdePresenza:C.rossoAssenza}}>
+                  {registro&&(aperto||esp.presente)&&<div style={{...S.presBadge,background:esp.presente?C.verdePresenzaTint:C.rossoAssenzaTint,color:esp.presente?C.verdePresenza:C.rossoAssenza,borderColor:esp.presente?C.verdePresenza:C.rossoAssenza}}>
                     <Icon name={esp.presente?"checkCircle":"xCircle"} size={13} color={esp.presente?C.verdePresenza:C.rossoAssenza} sw={2}/>
                     {esp.presente?"Presente":"Assente"}
                   </div>}
@@ -511,8 +538,12 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                 <div style={S.divider}/>
                 <div style={{display:"flex",flexDirection:"column",gap:9,marginBottom:16}}>
                   {esp.titolare&&<div style={S.infoRow}><Icon name="users" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.titolare}</span></div>}
-                  <div style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.etichetta}{esp.superficie?` · ${esp.superficie} m`:""}</span></div>
-                  {esp.descrizione&&<div style={{...S.infoRow,alignItems:"flex-start"}}><span style={{fontSize:12,color:C.terraMedio,lineHeight:1.45}}>{esp.descrizione}</span></div>}
+                  <div style={S.infoRow}><Icon name="pin" size={15} color={C.terraChiaro} sw={1.5}/><span>{esp.etichetta}{esp.spuntista?" · spuntista, oggi":""}{esp.ritardo?" · arrivato in ritardo":""}</span></div>
+                  {esp.riservato&&<div style={{fontSize:11,color:C.terraChiaro,lineHeight:1.45}}>L'espositore ha chiesto di non pubblicare i propri dati.</div>}
+                  {esp.descrizione&&<div>
+                    <button style={S.descBtn} onClick={()=>setDescAperta(v=>!v)}><Icon name="chevron" size={13} color={C.ocra} sw={2.5}/><span style={{display:"inline-block",transform:descAperta?"none":"none"}}>{descAperta?"Nascondi descrizione":"Cosa espone"}</span></button>
+                    {descAperta&&<div style={{fontSize:12,color:C.terraMedio,lineHeight:1.5,marginTop:6,paddingLeft:4}}>{esp.descrizione}</div>}
+                  </div>}
                   {FOTO_ABILITATE&&esp.foto&&esp.foto.length>0&&<div style={{display:"flex",gap:8,overflowX:"auto",paddingBottom:4}}>{esp.foto.map((u,i)=><img key={i} src={u} alt="" style={{height:110,borderRadius:10,flexShrink:0}}/>)}</div>}
                 </div>
                 <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
@@ -524,18 +555,19 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
                     <Icon name="navigate" size={20} color={C.bianco} sw={1.8}/>
                     <span>Telegram</span>
                   </a>}
-                  <a href={`https://www.google.com/maps/dir/?api=1&destination=${esp.lat.toFixed(6)},${esp.lon.toFixed(6)}&travelmode=walking`}
+                  {(esp.presente||!registro)&&<a href={`https://www.google.com/maps/dir/?api=1&destination=${esp.lat.toFixed(6)},${esp.lon.toFixed(6)}&travelmode=walking`}
                     target="_blank" rel="noreferrer" style={S.naviBtn}>
                     <Icon name="navigate" size={20} color={C.bianco} sw={1.8}/>
                     <span>A piedi</span>
-                  </a>
+                  </a>}
                 </div>
+                {registro&&!esp.presente&&!esp.whatsapp&&!esp.telegram&&<div style={{textAlign:"center",fontSize:11,color:C.terraChiaro,marginTop:4}}>{aperto?"Oggi l'espositore non è presente.":"La navigazione a piedi si attiva quando l'espositore è presente."}</div>}
               </>
             ):(
               <div style={{textAlign:"center",padding:"24px 0"}}>
                 <div style={{fontSize:32,marginBottom:8}}>🏪</div>
                 <div style={{fontSize:15,fontWeight:700,color:C.terra,marginBottom:4}}>{esp.etichetta}</div>
-                <div style={{fontSize:12,color:C.terraChiaro}}>{esp.inElenco?"Posteggio libero":"Posteggio non in elenco SUAP"}{esp.superficie?` · ${esp.superficie} m`:""}</div>
+                <div style={{fontSize:12,color:C.terraChiaro}}>{esp.inElenco?"Posteggio libero: il sabato può essere assegnato a uno spuntista":"Posteggio non in elenco SUAP"}</div>
               </div>
             )}
           </div>
@@ -547,7 +579,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
 // ============================================================
 // PAGE: MERCATO
 // ============================================================
-function PageMercato({negozi,mercato,aperto}){
+function PageMercato({negozi,mercato,aperto,registro=false,avvisi=[],calendario=[]}){
   const cats=[...new Set(negozi.filter(n=>n.nome).map(n=>n.categoria).filter(Boolean))].sort();
   const [cat,setCat]=useState("Tutte");
   const fil=cat==="Tutte"?negozi:negozi.filter(n=>n.categoria===cat);
@@ -556,8 +588,9 @@ function PageMercato({negozi,mercato,aperto}){
     <div style={S.page}>
       {mercato&&<div style={{fontSize:11,color:C.terraChiaro,fontWeight:600,marginBottom:10,lineHeight:1.6}}>
         <Icon name="pin" size={11} color={C.terraChiaro} sw={1.5}/> {mercato.indirizzo||"Indirizzo da confermare"}{mercato.giorni?` · ${mercato.giorni.join(", ")}`:""}{mercato.orari?` · ${mercato.orari}`:""}<br/>
-        <span style={{color:aperto?C.verdePresenza:C.terraChiaro}}>{aperto?"● Aperto ora":`○ Chiuso · apre ${prossimaApertura(mercato)}`}</span> · {occupati} espositori, {negozi.length-occupati} posti liberi
+        <span style={{color:aperto?C.verdePresenza:C.terraChiaro}}>{aperto?"● Aperto ora":`○ Chiuso · apre ${prossimaApertura(mercato,new Date(),calendario)}`}</span> · {occupati} espositori, {negozi.length-occupati} posti liberi
       </div>}
+      {avvisi.map((a,i)=><div key={i} style={{...S.avviso,position:"static",transform:"none",marginBottom:10}}>{a}</div>)}
       <div style={S.filterBar}>
         {["Tutte",...cats].map(c=>(
           <button key={c} style={{...S.fBtn,...(cat===c?S.fBtnAct:{})}} onClick={()=>setCat(c)}>{c}</button>
@@ -567,14 +600,14 @@ function PageMercato({negozi,mercato,aperto}){
         {fil.map(n=>(
           <div key={n.id} style={{...S.nCard,opacity:n.nome?1:0.65}}>
             <div style={S.nTop}>
-              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:n.presente?C.verdePresenzaTint:undefined,color:n.presente?C.verdePresenza:undefined}} title={n.presente?"Presente oggi":""}>{n.numero||"—"}</div>
+              <div style={{...S.nNum,fontSize:10,padding:"0 4px",width:"auto",minWidth:36,background:registro&&n.presente?C.verdePresenzaTint:undefined,color:registro&&n.presente?C.verdePresenza:undefined}} title={registro&&n.presente?"Presente oggi":""}>{n.numero||"—"}</div>
               <div style={{flex:1,minWidth:0}}>
                 <div style={{...S.nNome,overflowWrap:"anywhere"}}>{n.nome||"Posto libero"}</div>
                 <div style={S.nTit}>{n.nome?(n.titolare||n.etichetta):n.etichetta}{n.note?` · ${n.note}`:""}</div>
               </div>
               {n.categoria&&<span style={S.nCat}>{n.categoria}</span>}
             </div>
-            {n.descrizione && <div style={S.nDesc}>{n.descrizione}</div>}
+            {n.descrizione && <details style={{marginTop:6}}><summary style={{fontSize:11,fontWeight:700,color:C.ocra,cursor:"pointer"}}>Cosa espone</summary><div style={S.nDesc}>{n.descrizione}</div></details>}
             {(n.whatsapp||n.telegram)&&<>
               <div style={S.divider}/>
               <div style={{display:"flex",gap:8}}>
@@ -634,9 +667,9 @@ function PageEventi({eventi}){
 }
 
 // ============================================================
-// PAGE: ADMIN
+// PAGE: ADMIN — operatore di controllo: presenze dei fissi, spuntisti, scansione QR
 // ============================================================
-function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,onScan}){
+function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,aperture,eventi,setEventi,onPresenza,online,onScan}){
   const [email,setEmail]=useState("");
   const [pwd,setPwd]=useState("");
   const [err,setErr]=useState("");
@@ -647,6 +680,8 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
   const [addEv,setAddEv]=useState(false);
   const [nEv,setNEv]=useState({titolo:"",data:"",ora:"",luogo:"",descrizione:"",categoria:"Gastronomia"});
   const [pending,setPending]=useState({});
+  const [assegnaSp,setAssegnaSp]=useState(null);   // spuntista in fase di assegnazione posteggio
+  const [postScelto,setPostScelto]=useState("");
 
   async function doLogin(){
     setErr(""); setBusy(true);
@@ -660,7 +695,7 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
       <div style={S.loginBox}>
         <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color={C.ocra} sw={1.5}/></div>
         <div style={S.loginH}>Area Riservata</div>
-        <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo assegnato. Contatta l'amministratore.":"Accesso per amministratori e operatori"}</div>
+        <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo attivo. Contatta l'amministratore.":"Accesso per operatori di controllo, SUAP e amministratori"}</div>
         {auth.user&&!auth.isStaff?(
           <button style={S.loginBtn} onClick={auth.logout}>Esci</button>
         ):(<>
@@ -676,28 +711,39 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
     </div>
   );
 
-  const TABS=[{id:"presenze",icon:"checkCircle",l:"Presenze"},{id:"espositori",icon:"store",l:"Espositori"},...(auth.isAdmin?[{id:"eventi",icon:"calendar",l:"Eventi"}]:[])];
+  const conRegistro=MERCATI.filter(m=>(impostazioni[m.id]||{}).registroPresenze!==false);
+  const TABS=[{id:"presenze",icon:"checkCircle",l:"Presenze"},{id:"spuntisti",icon:"users",l:"Spuntisti"},...(auth.isAdmin?[{id:"eventi",icon:"calendar",l:"Eventi"}]:[])];
   const numKey=v=>{const m=String(v||"").match(/\d+/);return m?Number(m[0]):9999;};
-  const lista=(mercato==="area-mercatale"?postazioni:elenchi[mercato]||[]).filter(e=>e.nome)
+  const lista=(mercato==="area-mercatale"?postazioni.filter(e=>!e.spuntista):elenchi[mercato]||[]).filter(e=>e.nome)
     .slice().sort((a,b)=>String(a.settore||"").localeCompare(String(b.settore||""))||numKey(a.fila)-numKey(b.fila)||numKey(a.numero)-numKey(b.numero)||String(a.numero).localeCompare(String(b.numero)));
   const norm=t=>(t||"").toLowerCase();
   const filtra=arr=>q?arr.filter(e=>norm(e.nome).includes(norm(q))||norm(e.titolare).includes(norm(q))||norm(e.etichetta).includes(norm(q))||norm(e.numero).includes(norm(q))):arr;
   const presentiOggi=lista.filter(e=>e.presente).length;
+  const imp=impostazioni[mercato]||{};
+  const ritardo=dopoOraLimite(impostazioni,mercato);
+  const liberi=posteggiPerSpuntisti(postazioni,impostazioni);
+  const mercatoAttivo=aperture[mercato];
 
-  async function toggle(e){
+  async function segna(e,presente,extra={}){
     if(pending[e.id]) return;
     setPending(p=>({...p,[e.id]:true}));
-    try{ await onPresenza({mercatoId:mercato,espositoreId:e.espositoreId,posteggioId:e.id,presente:!e.presente}); }
+    try{ await onPresenza({mercatoId:extra.mercatoId||mercato,espositoreId:e.espositoreId||e.id,posteggioId:extra.posteggioId!==undefined?extra.posteggioId:e.id,presente,metodo:"elenco",tipo:extra.tipo||"fisso",ritardo:presente&&ritardo}); }
     catch(err){ alert("Salvataggio non riuscito: "+(err.message||err)); }
     setPending(p=>{const n={...p};delete n[e.id];return n;});
   }
+  async function assegnaSpuntista(){
+    if(!assegnaSp||!postScelto) return;
+    await segna({id:assegnaSp.id,espositoreId:assegnaSp.id},true,{mercatoId:"area-mercatale",posteggioId:postScelto,tipo:"spuntista"});
+    setAssegnaSp(null); setPostScelto("");
+  }
+  const spFiltrati=q?spuntisti.filter(sp=>norm(sp.nome).includes(norm(q))||norm(sp.categoria).includes(norm(q))):spuntisti;
 
   return(
     <div style={S.page}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
         <div>
-          <span style={{fontSize:16,fontWeight:800,color:C.terraTesto}}>Gestione</span>
-          <div style={{fontSize:10,color:C.terraChiaro,marginTop:2}}>{auth.user.email} · {auth.role}{firebaseReady?(online?" · online":" · connessione…"):" · offline"}</div>
+          <span style={{fontSize:16,fontWeight:800,color:C.terraTesto}}>Controllo presenze</span>
+          <div style={{fontSize:10,color:C.terraChiaro,marginTop:2}}>{auth.nomeOperatore} · {auth.role}{firebaseReady?(online?" · online":" · connessione…"):" · offline"}</div>
         </div>
         <button style={S.logoutBtn} onClick={auth.logout}>
           <Icon name="logout" size={15} color={C.terra} sw={1.8}/> Esci
@@ -706,58 +752,78 @@ function PageAdmin({auth,postazioni,elenchi,eventi,setEventi,onPresenza,online,o
 
       <div style={{display:"flex",gap:6,marginBottom:12}}>
         {TABS.map(t=>(
-          <button key={t.id} style={{...S.aTab,...(tab===t.id?S.aTabAct:{})}} onClick={()=>setTab(t.id)}>
+          <button key={t.id} style={{...S.aTab,...(tab===t.id?S.aTabAct:{})}} onClick={()=>{setTab(t.id);setQ("");}}>
             <Icon name={t.icon} size={16} color={tab===t.id?C.bianco:C.terraMedio} sw={tab===t.id?2:1.5}/>
             <span style={{fontSize:10,marginTop:2}}>{t.l}</span>
           </button>
         ))}
       </div>
 
-      {tab==="presenze"&&(
+      {tab!=="eventi"&&(
         <button style={{...S.loginBtn,marginBottom:12,background:C.ocra}} onClick={onScan}><Icon name="locate" size={16} color={C.bianco} sw={2}/> Scansiona QR espositore</button>
       )}
-      {tab!=="eventi"&&(
-        <>
-          <div style={S.filterBar}>
-            {MERCATI.map(m=>(
-              <button key={m.id} style={{...S.fBtn,...(mercato===m.id?S.fBtnAct:{})}} onClick={()=>{setMercato(m.id);setQ("");}}>{m.nome.replace("Mercato ","")}</button>
-            ))}
-          </div>
-          <input style={{...S.input,marginBottom:10}} placeholder="Cerca espositore o posteggio…" value={q} onChange={e=>setQ(e.target.value)}/>
-        </>
-      )}
 
-      {/* PRESENZE */}
+      {/* PRESENZE FISSI */}
       {tab==="presenze"&&(
         <div>
-          <div style={S.secLbl}>Presenze di oggi · {presentiOggi} su {lista.length}</div>
-          <div style={S.col}>
-            {filtra(lista).map(e=>(
-              <div key={e.id} style={S.presRow}>
-                <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,flexShrink:0,display:"inline-block"}}/>
-                <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}</div></div>
-                <button style={{...S.togBtn,background:e.presente?C.rossoAssenzaTint:C.verdePresenzaTint,color:e.presente?C.rossoAssenza:C.verdePresenza,opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>toggle(e)}>
-                  {e.presente?"Segna assente":"Presente"}
-                </button>
-              </div>
+          {conRegistro.length>1&&<div style={S.filterBar}>
+            {conRegistro.map(m=>(
+              <button key={m.id} style={{...S.fBtn,...(mercato===m.id?S.fBtnAct:{})}} onClick={()=>{setMercato(m.id);setQ("");}}>{m.nome.replace("Mercato ","")}</button>
             ))}
-          </div>
+          </div>}
+          <input style={{...S.input,marginBottom:10}} placeholder="Cerca espositore o posteggio…" value={q} onChange={e=>setQ(e.target.value)}/>
+          {imp.registroPresenze===false?(
+            <div style={{fontSize:12,color:C.terraChiaro,padding:"12px 0"}}>Per questo mercato il registro presenze non è attivo.</div>
+          ):(<>
+            <div style={S.secLbl}>Presenze di oggi · {presentiOggi} su {lista.length}{!mercatoAttivo?" · mercato chiuso":""}</div>
+            <div style={{fontSize:10,color:ritardo?C.rossoAssenza:C.terraChiaro,marginBottom:8}}>{ritardo?`Ora limite di spunta (${imp.oraLimiteSpunta||"10:00"}) superata: le nuove presenze vengono segnate in ritardo e i posteggi degli assenti sono assegnabili agli spuntisti.`:`Entro le ${imp.oraLimiteSpunta||"10:00"} le presenze sono regolari. Azzeramento alle ${imp.oraAzzeramento||"14:00"}.`}</div>
+            <div style={S.col}>
+              {filtra(lista).map(e=>(
+                <div key={e.id} style={S.presRow}>
+                  <span style={{width:8,height:8,borderRadius:"50%",background:e.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,flexShrink:0,display:"inline-block"}}/>
+                  <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{e.etichetta}{e.titolare?` · ${e.titolare}`:""}{e.presente&&e.oraPresenza?` · alle ${e.oraPresenza}`:""}{e.ritardo?" · in ritardo":""}</div></div>
+                  <button style={{...S.togBtn,background:e.presente?C.rossoAssenzaTint:C.verdePresenzaTint,color:e.presente?C.rossoAssenza:C.verdePresenza,opacity:pending[e.id]?0.5:1}} disabled={!!pending[e.id]} onClick={()=>segna(e,!e.presente)}>
+                    {e.presente?"Annulla":"Presente"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </>)}
         </div>
       )}
 
-      {/* ESPOSITORI */}
-      {tab==="espositori"&&(
+      {/* SPUNTISTI */}
+      {tab==="spuntisti"&&(
         <div>
-          <div style={S.secLbl}>Espositori · {lista.length} assegnatari</div>
+          <input style={{...S.input,marginBottom:10}} placeholder="Cerca spuntista…" value={q} onChange={e=>setQ(e.target.value)}/>
+          <div style={S.secLbl}>Spuntisti · {spuntisti.filter(s=>s.presente).length} presenti su {spuntisti.length} in elenco</div>
+          <div style={{fontSize:10,color:C.terraChiaro,marginBottom:8}}>Posteggi assegnabili adesso: {liberi.length} ({ritardo?"vacanti e fissi assenti":`solo vacanti fino alle ${imp.oraLimiteSpunta||"10:00"}`}).</div>
+          {assegnaSp&&(
+            <div style={S.formCard}>
+              <div style={S.formH}>{assegnaSp.nome}</div>
+              <div style={{fontSize:11,color:C.terraChiaro,marginBottom:8}}>Scegli il posteggio libero da assegnare per oggi.</div>
+              <select style={S.select} value={postScelto} onChange={e=>setPostScelto(e.target.value)}>
+                <option value="">— posteggio —</option>
+                {liberi.map(p=><option key={p.id} value={p.id}>{p.postazione} · {p.etichetta.replace(/^Settore \w+ · /,"")} · {p.motivo}</option>)}
+              </select>
+              <div style={{display:"flex",gap:8}}>
+                <button style={{...S.saveBtn,background:C.verdePresenza,opacity:!postScelto||pending[assegnaSp.id]?0.5:1}} disabled={!postScelto||!!pending[assegnaSp.id]} onClick={assegnaSpuntista}>Registra presenza</button>
+                <button style={S.cancelBtn} onClick={()=>{setAssegnaSp(null);setPostScelto("");}}>Annulla</button>
+              </div>
+            </div>
+          )}
           <div style={S.col}>
-            {filtra(lista).map(e=>(
-              <div key={e.id} style={S.aRow}>
-                <span style={{fontSize:11,fontWeight:800,color:e.presente?C.verdePresenza:C.terraChiaro,minWidth:36}}>{e.numero}</span>
-                <div style={{flex:1,minWidth:0}}><div style={{fontSize:13,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{e.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{[e.titolare,e.categoria,e.whatsapp?"WhatsApp":null].filter(Boolean).join(" · ")}</div></div>
+            {spFiltrati.map(sp=>(
+              <div key={sp.id} style={S.presRow}>
+                <span style={{width:8,height:8,borderRadius:"50%",background:sp.presente?C.verdePresenza:C.mappaPostazioneLiberaBordo,flexShrink:0,display:"inline-block"}}/>
+                <div style={{flex:1,minWidth:0}}><div style={{fontSize:12,fontWeight:600,color:C.terraTesto,overflowWrap:"anywhere"}}>{sp.nome}</div><div style={{fontSize:10,color:C.terraChiaro}}>{sp.categoria}{sp.presente?` · posteggio ${sp.posteggioId||"—"} · alle ${sp.oraPresenza||""}`:""}</div></div>
+                {sp.presente
+                  ?<button style={{...S.togBtn,background:C.rossoAssenzaTint,color:C.rossoAssenza,opacity:pending[sp.id]?0.5:1}} disabled={!!pending[sp.id]} onClick={()=>segna({id:sp.id,espositoreId:sp.id},false,{mercatoId:"area-mercatale",posteggioId:null,tipo:"spuntista"})}>Annulla</button>
+                  :<button style={{...S.togBtn,background:C.verdePresenzaTint,color:C.verdePresenza,opacity:pending[sp.id]?0.5:1}} disabled={!!pending[sp.id]} onClick={()=>{setAssegnaSp(sp);setPostScelto("");window.scrollTo({top:0,behavior:"smooth"});}}>Assegna posteggio</button>}
               </div>
             ))}
+            {spFiltrati.length===0&&<div style={{fontSize:12,color:C.terraChiaro}}>Nessuno spuntista in elenco.</div>}
           </div>
-          <div style={{fontSize:10,color:C.terraChiaro,marginTop:12,lineHeight:1.5}}>Le anagrafiche vengono dagli elenchi SUAP del 07/09/2026. La modifica (alias, contatti, foto) arriva con il pannello completo.</div>
         </div>
       )}
 
@@ -826,6 +892,9 @@ const S={
   sSep:{width:1,height:12,background:"rgba(255,255,255,0.22)",margin:"0 2px"},
   mapControls:{position:"absolute",right:12,bottom:16,zIndex:20,display:"flex",flexDirection:"column",background:white,borderRadius:14,boxShadow:"0 4px 20px rgba(0,0,0,0.2)",border:`1px solid ${border}`,overflow:"hidden"},
   catFloatBtn:{position:"absolute",bottom:58,left:12,zIndex:20,display:"flex",alignItems:"center",gap:7,padding:"9px 16px",borderRadius:22,borderWidth:"1.5px",borderStyle:"solid",fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"'Montserrat',sans-serif",boxShadow:"0 4px 16px rgba(0,0,0,0.18)",backdropFilter:"blur(8px)",WebkitBackdropFilter:"blur(8px)",letterSpacing:0.2},
+  avviso:{position:"absolute",top:50,left:"50%",transform:"translateX(-50%)",zIndex:20,background:"rgba(200,134,42,0.96)",color:C.bianco,fontSize:11,fontWeight:600,lineHeight:1.4,padding:"7px 14px",borderRadius:12,maxWidth:"86%",boxShadow:"0 2px 12px rgba(0,0,0,0.25)",textAlign:"center"},
+  spFloatBtn:{position:"absolute",bottom:16,left:12,zIndex:20,display:"flex",alignItems:"center",gap:6,padding:"8px 13px",borderRadius:22,border:"1.5px solid rgba(200,190,180,0.7)",background:"rgba(255,255,255,0.95)",color:C.terra,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'Montserrat',sans-serif",boxShadow:"0 4px 16px rgba(0,0,0,0.18)"},
+  descBtn:{display:"inline-flex",alignItems:"center",gap:4,background:"none",border:"none",padding:0,cursor:"pointer",fontSize:12,fontWeight:700,color:C.ocra,fontFamily:"'Montserrat',sans-serif"},
   zBtn:{width:42,height:42,background:"none",border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"},
   zDivider:{height:1,background:border,margin:"0 8px"},
   // WA button — solo icona, circolare
@@ -1058,7 +1127,7 @@ const store={
 };
 
 // Versione dati — cambia per forzare reset cache
-const DATA_VERSION = "v13-firebase";
+const DATA_VERSION = "v14-espositori";
 
 export default function App(){
   const [qrToken,setQrToken]=useState(()=>tokenDaTesto(window.location.hash));
@@ -1073,16 +1142,21 @@ export default function App(){
   const chiudiScheda=()=>{ setQrToken(null); if(window.location.hash) history.replaceState(null,"",window.location.pathname+window.location.search); };
 
   // Presenze del giorno da Firestore (fallback locale se il backend non è configurato)
-  const {presenze:presenzeRemote,online}=usePresenze();
+  const impostazioni=useImpostazioni();
+  const calendario=useCalendario();
+  const {presenze:presenzeRemote,online}=usePresenze(impostazioni);
   const [presenzeLocal,setPresenzeLocal]=useState({});
   const presenze=firebaseReady?presenzeRemote:presenzeLocal;
   const auth=useAuth();
   const live=usePubblico();
   const mercati=useMercati();
-  const aperture=useAperture(mercati);
+  const aperture=useAperture(mercati,calendario);
   const postazioni=useMemo(()=>buildPostazioni(presenze,live),[presenze,live]);
   const elenchi=useMemo(()=>({coperto:buildElenco("coperto",presenze,live),ortofrutticolo:buildElenco("ortofrutticolo",presenze,live)}),[presenze,live]);
+  const spuntisti=useMemo(()=>buildSpuntisti(presenze,live),[presenze,live]);
   const mercatoById=id=>mercati.find(m=>m.id===id);
+  const registro=id=>(impostazioni[id]||{}).registroPresenze!==false;
+  const avvisi=id=>avvisiCalendario(calendario,id);
 
   const [eventi,setEventi]=useState(()=>store.get("ev",EVENTI_INIT));
   const [popup,setPopup]=useState(null);
@@ -1091,10 +1165,10 @@ export default function App(){
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 
-  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione})=>{
+  const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione,tipo,ritardo})=>{
     if(!espositoreId) return;
-    if(!firebaseReady){ setPresenzeLocal(p=>{const n={...p}; if(presente) n[espositoreId]={posteggioId,mercato:mercatoId}; else delete n[espositoreId]; return n;}); return; }
-    await setPresenza({mercatoId,espositoreId,posteggioId,presente,utente:auth.user?auth.user.email:null,metodo:metodo||"manuale",posizione:posizione||null});
+    if(!firebaseReady){ setPresenzeLocal(p=>{const n={...p}; if(presente) n[espositoreId]={posteggioId,mercato:mercatoId,tipo:tipo||"fisso",ora:"--:--"}; else delete n[espositoreId]; return n;}); return; }
+    await setPresenza({mercatoId,espositoreId,posteggioId,presente,operatore:auth.operatore,metodo:metodo||"elenco",posizione:posizione||null,tipo:tipo||"fisso",ritardo:!!ritardo});
   };
 
   const [splashReady,setSplashReady]=useState(false);
@@ -1127,12 +1201,12 @@ export default function App(){
       {/* MAIN */}
       {scanner&&<Scanner S={S} onClose={()=>setScanner(false)} onToken={(t)=>{setScanner(false);window.location.hash="#/v/"+t;}}/>}
       <main style={S.main}>
-        {qrToken && <PageScheda token={qrToken} auth={auth} postazioni={postazioni} elenchi={elenchi} presenze={presenze} onPresenza={onPresenza} onBack={chiudiScheda} S={S} Icon={Icon}/>}
-        {!qrToken && page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter} aperto={aperture["area-mercatale"]} mercato={mercatoById("area-mercatale")}/>}
-        {!qrToken && page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")} aperto={aperture.coperto}/>}
-        {!qrToken && page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")} aperto={aperture.ortofrutticolo}/>}
+        {qrToken && <PageScheda token={qrToken} auth={auth} postazioni={postazioni} elenchi={elenchi} spuntisti={spuntisti} presenze={presenze} impostazioni={impostazioni} onPresenza={onPresenza} onBack={chiudiScheda} S={S} Icon={Icon}/>}
+        {!qrToken && page==="mappa"   && <PageMappa espositori={postazioni} popup={popup} setPopup={setPopup} catFilter={catFilter} setCatFilter={setCatFilter} aperto={aperture["area-mercatale"]} mercato={mercatoById("area-mercatale")} registro={registro("area-mercatale")} avvisi={avvisi("area-mercatale")} spuntisti={spuntisti} calendario={calendario}/>}
+        {!qrToken && page==="coperto" && <PageMercato negozi={elenchi.coperto} mercato={mercatoById("coperto")} aperto={aperture.coperto} registro={registro("coperto")} avvisi={avvisi("coperto")} calendario={calendario}/>}
+        {!qrToken && page==="orto"    && <PageMercato negozi={elenchi.ortofrutticolo} mercato={mercatoById("ortofrutticolo")} aperto={aperture.ortofrutticolo} registro={registro("ortofrutticolo")} avvisi={avvisi("ortofrutticolo")} calendario={calendario}/>}
         {!qrToken && page==="eventi"  && <PageEventi eventi={eventi}/>}
-        {!qrToken && page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online} onScan={()=>setScanner(true)}/>}
+        {!qrToken && page==="admin"   && <PageAdmin auth={auth} postazioni={postazioni} elenchi={elenchi} spuntisti={spuntisti} impostazioni={impostazioni} mercati={mercati} aperture={aperture} eventi={eventi} setEventi={setEventi} onPresenza={onPresenza} online={online} onScan={()=>setScanner(true)}/>}
       </main>
       {/* BOTTOM NAV */}
       <nav style={S.nav}>

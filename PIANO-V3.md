@@ -1,6 +1,6 @@
 # Mercati di Maglie — Piano v3 (modifiche strutturali)
 
-Stato: bozza del 23/09/2026, dal briefing di Carlo dopo l'incontro col SUAP. Sostituisce le parti di `PIANO-V2.md` su ruoli, presenze e anagrafiche.
+Stato: approvato e REALIZZATO il 23/09/2026 (punti 1–6 dell'ordine dei lavori; resta il punto 7). Dal briefing di Carlo dopo l'incontro col SUAP. Sostituisce le parti di `PIANO-V2.md` su ruoli, presenze e anagrafiche.
 
 ---
 
@@ -109,7 +109,7 @@ Il pannello desktop è per admin e suap. L'app è per il pubblico e per l'operat
 ### Certificazione di fine giornata (fase successiva)
 Chiusura del registro del giorno da parte dell'operatore con sigillo digitale (hash delle presenze del giorno firmato con l'utente e l'orario); dopo la chiusura nessuna modifica. Da valutare insieme in coda a tutto il resto.
 
-## 5. Ordine dei lavori
+## 5. Ordine dei lavori (1–6 completati il 23/09/2026, verificati con test in browser 35/35)
 
 1. Modello dati: espositori con `posteggi[]`, `tipo`, `visibile`, `scadenza`; staff con anagrafica; impostazioni e calendario; migrazione dei dati esistenti su Firestore; regole.
 2. Pannello: scheda espositore ricentrata (più posteggi), spuntisti, impostazioni, calendario, staff con nome e cognome.

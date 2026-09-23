@@ -67,17 +67,34 @@ git add . && git commit -m "descrizione" && git push
 ## Note importanti
 - App.jsx è un file singolo con tutti i componenti (in `app-src/src/App.jsx`)
 - Le postazioni sono 262 con codici ufficiali (es. `A-86`, `D-13/14`, `PV-1`, `UOVA-1`):
-  geometria in `app-src/src/data/mappa.js`, anagrafiche in `data/seed.js`, entrambi
-  generati con `python3 scripts/app/gen-data.py` dai file in `data/` (rieseguire dopo
-  ogni modifica ai seed o alla SVG). Nessun dato demo: espositori reali dagli elenchi SUAP.
-- Presenze del giorno: documento Firestore `stato/{mercatoId}` ({data, presenti:{espId:{…}}}),
-  letto dall'app pubblica (1 lettura per mercato); scrittura via `setPresenza` (solo staff).
-  Login admin/operatore con Firebase Auth email+password e custom claim `role`.
-- Pannello di gestione (`admin-src/`): espositori (pubblici + riservati), posteggi
-  (assegna/libera/note), staff (creazione utenti con app Firebase secondaria, ruoli nel
-  documento `staff/{uid}`), account (cambio password). Ogni salvataggio ricostruisce
-  `pubblico/{mercato}` (riassunto letto dall'app pubblica in tempo reale, 1 doc/mercato).
-  Le regole Firestore leggono il ruolo da `staff/{uid}` (fallback custom claim).
+  geometria in `app-src/src/data/mappa.js`, anagrafiche in `data/seed.js` (v3: espositori con `posteggi[]`),
+  entrambi generati con `python3 scripts/app/gen-data.py` dai file in `data/` (rieseguire dopo
+  ogni modifica ai seed o alla SVG). Nessun dato demo: 175 fissi + 52 spuntisti reali dagli elenchi SUAP.
+  Migrazione Firestore al modello v3 già eseguita il 23/09/2026 (`scripts/firebase/migra-v3.mjs`, idempotente).
+- MODELLO v3 (23/09/2026, vedi PIANO-V3.md): l'indice è l'ESPOSITORE. `espositori/{id}` ha `tipo` fisso|spuntista,
+  `qualifica` (concessionario/produttore/…), `posteggi[]` (id dei posteggi assegnati, anche più di uno), `visibile`
+  (privacy), `attivo`, `scadenza`, `email`. I documenti `posteggi` NON hanno più `espositoreId`/`stato`.
+  `pubblico/{mercato}` (costruito da `costruisciPubblico`, STESSA logica in scripts/firebase/pubblico.mjs e in
+  admin-src/src/api.js) mantiene `posteggi:{id:{espositoreId,stato,note}}` derivati, così l'app resta semplice.
+  Un'unica anagrafica per fissi e spuntisti (stessi campi); gli spuntisti hanno posteggi [] e ricevono il posteggio
+  dall'operatore giorno per giorno. Seed spuntisti: `scripts/import-suap.py --solo-spuntisti` (il re-import completo
+  sovrascrive le correzioni manuali a posteggi/mercati/fissi: NON usarlo).
+- Presenze del giorno: `stato/{mercatoId}` ({data, presenti:{espId:{posteggioId, ora, metodo, da:{uid,nome,cognome},
+  tipo, ritardo}}}), letto dall'app (1 lettura per mercato). Record certificato: `presenze/{data}_{mercato}_{espId}`
+  (operatore, GPS, metodo qr|elenco, ritardo; annullamento = `annullata:true`, la riga resta). Scrittura via
+  `setPresenza` (solo staff). `impostazioni/{mercato}`: registroPresenze (coperto e ortofrutticolo: false),
+  oraLimiteSpunta 10:00 (dopo: presenze "in ritardo" e posteggi dei fissi assenti assegnabili agli spuntisti),
+  oraAzzeramento 14:00 (dopo: l'app mostra tutti assenti), assenzeMassime 20. `calendario/{mercato}_{data}`:
+  giornate soppresse/spostate/straordinarie (avviso nell'app; il report conta le assenze solo sulle giornate svolte).
+- Login staff con Firebase Auth email+password; ruolo e anagrafica (nome, cognome, telefono, attivo) in `staff/{uid}`.
+  Le regole leggono `'role' in request.auth.token` (claim) altrimenti il documento staff: NON usare
+  `request.auth.token.role != null` (errore sui claim assenti → permesso negato).
+- Pannello di gestione (`admin-src/`, admin e suap): espositori fissi/spuntisti (pubblici + riservati, QR, più
+  posteggi), posteggi, richieste, report presenze (filtri periodo/espositore/posteggio/operatore, riepilogo con
+  assenze e soglia, registro; export Excel via `xlsx` e PDF via stampa: `src/report.js`), impostazioni e calendario,
+  mercati e staff (solo admin), account. Ogni salvataggio ricostruisce `pubblico/{mercato}`.
+  App pubblica, pagina Gestione = operatore di controllo: presenze fissi (elenco o QR), spuntisti (assegna
+  posteggio libero), scanner. La scheda QR `#/v/<token>` senza login mostra solo "codice valido" + accesso.
 - Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
   (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano
   le credenziali `gcloud auth application-default login`, niente chiavi service account).
@@ -122,6 +139,8 @@ git add . && git commit -m "descrizione" && git push
   (operatore); password comunicate a Carlo in chat, non salvate nel repo
 - Chiave web Firebase: limitata (API Firebase + referrer 3seizero.com e localhost:5199/5198/5173);
   vedi docs/SICUREZZA-CHIAVE-FIREBASE.md. Nuovi domini o porte dev vanno aggiunti ai referrer.
+- [x] Modello v3 (23/09/2026): espositore-centrico, spuntisti, ruoli con anagrafica, impostazioni, calendario,
+  presenze certificate, report Excel/PDF. Manca: certificazione/sigillo di fine giornata (PIANO-V3 §4).
 - [ ] Firebase Push Notifications
 - [ ] (sospeso) OCR/sbarra targhe — vedi docs/ARCHIVIO-targhe.md
 - [ ] Share API e Contacts API

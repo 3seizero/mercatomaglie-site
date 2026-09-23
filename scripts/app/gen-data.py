@@ -39,9 +39,22 @@ open(f'{ROOT}/app-src/src/data/mappa.js', 'w', encoding='utf-8').write('\n'.join
 mercati = json.load(open(f'{ROOT}/data/seed/mercati.json'))['mercati']
 posteggi = json.load(open(f'{ROOT}/data/seed/posteggi.json'))['posteggi']
 espos = json.load(open(f'{ROOT}/data/seed/espositori.json'))['espositori']
-keep = ['id', 'mercato', 'settore', 'fila', 'numero', 'etichetta', 'tipo', 'espositoreId', 'stato', 'articolo', 'note']
+keep = ['id', 'mercato', 'settore', 'fila', 'numero', 'etichetta', 'tipo', 'articolo', 'note']
 P = [{k: p.get(k) for k in keep} | {'superficie': (p.get('superficie') or {}).get('raw')} for p in posteggi]
-E = [{k: e.get(k) for k in ('id', 'denominazione', 'alias', 'referente', 'tipo', 'categoria', 'mercati', 'settori', 'whatsapp', 'telegram', 'descrizione', 'foto')} for e in espos]
+# v3: l'indice è l'espositore. `tipo` è fisso|spuntista (la qualifica SUAP concessionario/produttore/… va in `qualifica`);
+# i posteggi assegnati ai fissi si ricavano da posteggi.json (espositoreId) e finiscono in `posteggi[]`.
+assegn = {}
+for p in posteggi:
+    if p.get('espositoreId'):
+        assegn.setdefault(p['espositoreId'], []).append(p['id'])
+E = []
+for e in espos:
+    tipo = e.get('tipo')
+    fisso = tipo not in ('spuntista',)
+    E.append({k: e.get(k) for k in ('id', 'denominazione', 'alias', 'referente', 'categoria', 'mercati', 'settori', 'whatsapp', 'telegram', 'descrizione', 'foto')}
+             | {'tipo': 'spuntista' if not fisso else 'fisso', 'qualifica': tipo if fisso and tipo != 'fisso' else e.get('qualifica'),
+                'posteggi': assegn.get(e['id'], []) if fisso else [], 'visibile': e.get('visibile', True) is not False,
+                'attivo': e.get('attivo', True) is not False, 'scadenza': e.get('scadenza')})
 out = ['// GENERATO da scripts/app/gen-data.py dai seed SUAP (07/09/2026) — non modificare a mano',
        'export const MERCATI = ' + json.dumps(mercati, ensure_ascii=False, separators=(',', ':')) + ';',
        'export const POSTEGGI = ' + json.dumps(P, ensure_ascii=False, separators=(',', ':')) + ';',

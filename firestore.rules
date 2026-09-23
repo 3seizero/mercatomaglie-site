@@ -4,10 +4,15 @@ service cloud.firestore {
     function signedIn() { return request.auth != null; }
     // Ruolo: custom claim oppure documento staff/{uid} (gestito dal pannello admin)
     function staffDoc() { return get(/databases/$(database)/documents/staff/$(request.auth.uid)); }
+    // Utente disattivato (attivo == false) o senza ruolo -> null. 'role' in token evita l'errore sui claim assenti.
+    function staffRole() {
+      let d = staffDoc().data;
+      return d.get('attivo', true) == false ? null : d.get('role', null);
+    }
     function role() {
       return !signedIn() ? null
-        : (request.auth.token.role != null ? request.auth.token.role
-        : (exists(/databases/$(database)/documents/staff/$(request.auth.uid)) ? staffDoc().data.role : null));
+        : (('role' in request.auth.token) ? request.auth.token.role
+        : (exists(/databases/$(database)/documents/staff/$(request.auth.uid)) ? staffRole() : null));
     }
     function isAdmin() { return role() == 'admin'; }
     function isSuap() { return role() in ['admin', 'suap']; }
@@ -21,6 +26,9 @@ service cloud.firestore {
     // Riassunti per l'app pubblica (1 lettura per mercato)
     match /pubblico/{mercatoId} { allow read: if true; allow write: if isSuap(); }
     match /stato/{mercatoId}    { allow read: if true; allow write: if isStaff(); }
+    // Impostazioni per mercato (ora limite spunta, azzeramento, assenze massime) e calendario (giornate spostate/soppresse)
+    match /impostazioni/{mercatoId} { allow read: if true; allow write: if isSuap(); }
+    match /calendario/{id}          { allow read: if true; allow write: if isSuap(); }
 
     // QR: token → espositore. Leggibile da chi conosce il token; scritto da admin/suap.
     match /qr/{token} { allow get: if true; allow list: if isSuap(); allow write: if isSuap(); }
@@ -28,9 +36,9 @@ service cloud.firestore {
     // Dati riservati (CF, P.IVA, indirizzi, token QR): solo admin e suap
     match /espositori_riservati/{id} { allow read, write: if isSuap(); }
 
-    // Presenze giornaliere
+    // Presenze certificate: create/annullamento dallo staff (la riga resta), cancellazione solo admin
     match /presenze/{id} {
-      allow read: if true;
+      allow read: if isStaff();
       allow create, update: if isStaff();
       allow delete: if isAdmin();
     }
@@ -43,9 +51,9 @@ service cloud.firestore {
       allow read, update, delete: if isSuap();
     }
 
-    // Staff: uid → ruolo. Lettura: admin o l'interessato. Scrittura: admin.
+    // Staff: uid → ruolo e anagrafica. Lettura: admin/suap (report) o l'interessato. Scrittura: admin.
     match /staff/{uid} {
-      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow read: if isSuap() || (signedIn() && request.auth.uid == uid);
       allow write: if isAdmin();
     }
   }
