@@ -1017,9 +1017,7 @@ function Splash({onEnter}){
     orn:{display:"flex",alignItems:"center",gap:10,marginTop:18,marginBottom:22,width:"55%"},
     line:{flex:1,height:1,background:"rgba(232,160,69,0.4)"},
     gem:{width:6,height:6,background:C.ocraChiaro,transform:"rotate(45deg)",flexShrink:0},
-    desc:{color:"rgba(255,255,255,0.65)",fontSize:13,lineHeight:1.8,textAlign:"center",fontWeight:300,marginBottom:22,maxWidth:320},
-    pills:{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center",marginBottom:34},
-    pill:{background:"rgba(232,160,69,0.14)",border:"1px solid rgba(232,160,69,0.32)",color:C.ocraChiaro,fontSize:9,padding:"5px 13px",borderRadius:20,fontWeight:700,letterSpacing:1,textTransform:"uppercase"},
+    desc:{color:"rgba(255,255,255,0.65)",fontSize:13,lineHeight:1.8,textAlign:"center",fontWeight:300,marginBottom:34,maxWidth:320},
     cta:{padding:"16px 32px",background:C.ocraChiaro,color:C.terra,border:"none",borderRadius:14,fontSize:14,fontWeight:800,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:"0 8px 28px rgba(232,160,69,0.38)"},
     footer:{color:"rgba(255,255,255,0.25)",fontSize:9,letterSpacing:2.5,textTransform:"uppercase",marginTop:26},
   };
@@ -1037,12 +1035,7 @@ function Splash({onEnter}){
         <p style={{animation:on?"fadeUp 0.5s 0.5s both":"none",...ss.desc}}>
           La piattaforma ufficiale dell'area mercatale di Maglie. Esplora la mappa interattiva degli espositori, scopri i mercati e tutti gli eventi in programma.
         </p>
-        <div style={{animation:on?"fadeUp 0.5s 0.65s both":"none",...ss.pills}}>
-          {["Mappa Live","Mercato Coperto","Ortofrutta","Eventi"].map(f=>(
-            <span key={f} style={ss.pill}>{f}</span>
-          ))}
-        </div>
-        <div style={{animation:on?"fadeUp 0.5s 0.82s both":"none",textAlign:"center"}}>
+        <div style={{animation:on?"fadeUp 0.5s 0.65s both":"none",textAlign:"center"}}>
           <button style={ss.cta} onClick={onEnter}>
             Entra nell'Area Mercatale
             <Icon name="chevron" size={20} color={C.terra} sw={2.5}/>
