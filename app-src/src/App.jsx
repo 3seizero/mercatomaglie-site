@@ -45,31 +45,12 @@ const Icon = ({ name, size = 24, color = "currentColor", sw = 1.6 }) => {
 };
 
 // ============================================================
-// LOGOTIPO — portale mercato + tende + sole
+// MARCHIO — file in public/brand/ (vedi data/brand/marchio/README.md)
 // ============================================================
-const LogoMark = ({ size = 44, light = false }) => {
-  const c = light ? "#fff" : "#3d2b1a";
-  const a = "#e8a045";
-  return (
-    <svg width={size} height={size} viewBox="0 0 80 80" fill="none">
-      <path d="M10 62 L10 36 Q10 16 40 16 Q70 16 70 36 L70 62" stroke={c} strokeWidth="3.5" strokeLinecap="round" fill="none"/>
-      <path d="M5 38 L40 20 L75 38" stroke={a} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-      <line x1="10" y1="62" x2="10" y2="52" stroke={c} strokeWidth="3.5" strokeLinecap="round"/>
-      <line x1="70" y1="62" x2="70" y2="52" stroke={c} strokeWidth="3.5" strokeLinecap="round"/>
-      {[[18,62,18,46,30,46,30,62],[34,62,34,46,46,46,46,62],[50,62,50,46,62,46,62,62]].map(([x1,y1,x2,y2,x3,y3,x4,y4],i) => (
-        <g key={i}>
-          <path d={`M${x1} ${y1} L${x1} ${y2} L${x4} ${y3} L${x4} ${y4}`} stroke={c} strokeWidth="2" strokeLinecap="round" fill="none"/>
-          <path d={`M${x1} ${y2} Q${(x1+x4)/2} ${y2-6} ${x4} ${y3}`} stroke={a} strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-        </g>
-      ))}
-      <circle cx="40" cy="11" r="4.5" fill={a}/>
-      {[[40,3.5,40,1.5],[40,18.5,40,20.5],[32,6,30,4.5],[48,6,50,4.5],[32,16,30,17.5],[48,16,50,17.5],[27.5,11,25.5,11],[52.5,11,54.5,11]].map(([x1,y1,x2,y2],i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={a} strokeWidth="2" strokeLinecap="round"/>
-      ))}
-      <line x1="5" y1="65" x2="75" y2="65" stroke={c} strokeWidth="2.5" strokeLinecap="round"/>
-    </svg>
-  );
-};
+const BRAND = import.meta.env.BASE_URL + "brand/";
+const Lockup = ({ variant = "orizzontale-negativo", height = 40, style }) => (
+  <img src={`${BRAND}lockup-${variant}.svg`} alt="Area Mercatale Maglie" draggable={false} style={{ height, width: "auto", display: "block", ...style }} />
+);
 
 // ============================================================
 // DATI — geometria mappa, anagrafiche e calibrazione GPS vengono da ./dati.js
@@ -837,7 +818,7 @@ const S={
   hdrLogo:{display:"flex",alignItems:"center",gap:10},
   hdrTitle:{fontSize:13,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:white},
   hdrSub:{fontSize:9,color:ocraL,letterSpacing:4,textTransform:"uppercase",fontWeight:500},
-  hdrPage:{fontSize:10,color:ocraL,letterSpacing:0.5,fontWeight:500,fontStyle:"italic"},
+  hdrPage:{fontSize:10,color:ocraL,letterSpacing:0.5,fontWeight:500,fontStyle:"italic",whiteSpace:"nowrap"},
   main:{flex:1,overflowY:"auto",paddingBottom:72},
   nav:{position:"fixed",bottom:0,left:0,right:0,width:"100%",background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200,paddingBottom:"calc(20px + env(safe-area-inset-bottom))"},
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
@@ -1052,12 +1033,8 @@ function Splash({onEnter}){
       <style>{`@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}`}</style>
       <div style={ss.radial}/>
       <div style={ss.content}>
-        <div style={{animation:on?"popIn 0.65s cubic-bezier(0.34,1.56,0.64,1) both":"none",marginBottom:28}}>
-          <LogoMark size={96} light/>
-        </div>
-        <div style={{animation:on?"fadeUp 0.5s 0.2s both":"none"}}>
-          <div style={ss.sub}>AREA MERCATALE</div>
-          <div style={ss.city}>MAGLIE</div>
+        <div style={{animation:on?"popIn 0.65s cubic-bezier(0.34,1.56,0.64,1) both":"none",marginBottom:28,display:"flex",justifyContent:"center"}}>
+          <Lockup variant="verticale-negativo" height="auto" style={{width:"min(280px, 72vw)"}}/>
         </div>
         <div style={{animation:on?"fadeUp 0.5s 0.35s both":"none",...ss.orn}}>
           <div style={ss.line}/><div style={ss.gem}/><div style={ss.line}/>
@@ -1143,7 +1120,7 @@ export default function App(){
     {id:"eventi",icon:"calendar",label:"Eventi"},
     {id:"admin",icon:"settings",label:"Gestione"},
   ];
-  const PAGE_TITLES={scheda:"Espositore",mappa:"Area Mercatale",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
+  const PAGE_TITLES={scheda:"Espositore",mappa:"Mappa live",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
 
   return(
     <div style={S.app}>
@@ -1154,11 +1131,7 @@ export default function App(){
       <header style={S.hdr}>
         <div style={S.hdrIn}>
           <div style={S.hdrLogo}>
-            <LogoMark size={36} light/>
-            <div>
-              <div style={S.hdrTitle}>Area Mercatale</div>
-              <div style={S.hdrSub}>Maglie</div>
-            </div>
+            <Lockup variant="orizzontale-negativo" height={34}/>
           </div>
           <div style={S.hdrPage}>{qrToken?PAGE_TITLES.scheda:PAGE_TITLES[page]}</div>
         </div>

@@ -24,7 +24,7 @@ export default function App() {
   return (
     <div className="shell">
       <aside className="side">
-        <div className="brand">Mercati di Maglie<small>Gestione</small></div>
+        <div className="brand"><img src={`${import.meta.env.BASE_URL}brand/lockup-orizzontale-negativo.svg`} alt="Area Mercatale Maglie" style={{ width: "100%", maxWidth: 190, height: "auto", display: "block", marginBottom: 6 }} /><small>Gestione</small></div>
         <div className="who">{auth.user.email}<br /><b>{auth.role}</b></div>
         {[["espositori", "Espositori"], ["posteggi", "Posteggi"], ["richieste", `Richieste${inAttesa ? ` (${inAttesa})` : ""}`], ...(auth.isAdmin ? [["mercati", "Mercati"], ["staff", "Staff"]] : []), ["account", "Account"]].map(([id, l]) => (
           <button key={id} className={page === id ? "active" : ""} onClick={() => setPage(id)}>{l}</button>
