@@ -48,3 +48,25 @@ Espositori distinti: **175** (dedup per C.F. / P.IVA / nome).
 - `mapId` è `null` per tutti i posteggi dell'area mercatale: manca la riconciliazione con P001–P251 della mappa v1 (serve il DWG o la mappatura manuale).
 - Mancano gli elenchi dei settori 'opere del proprio ingegno', 'prodotti vari' e 'vendita uova' presenti in legenda.
 - Giorni/orari/indirizzi ufficiali dei 3 mercati (vedi mercati.json).
+
+## Spuntisti 2026
+
+Elenco SUAP del 23/09/2026: **52** spuntisti (tipo `spuntista`, nessun posteggio assegnato, scadenza 31/12/2026).
+Pubblico: solo denominazione; CF, indirizzo, PEC, data e protocollo della richiesta in `espositori_riservati.json`.
+
+- Spuntista: 45
+- Produttore agricolo: 3
+- Opere del proprio ingegno: 3
+- Coltivatore diretto: 1
+
+Anomalie dell'elenco spuntisti:
+
+- Spuntisti riga 23: data presentazione 12/01/2025 incoerente con l'elenco 2026 e con il protocollo (CAROPPO Salvatore); probabile refuso dell'anno
+- Spuntisti riga 24: data presentazione 13/01/2025 incoerente con l'elenco 2026 e con il protocollo (NEGRO Mirko); probabile refuso dell'anno
+- Spuntisti riga 25: data presentazione scritta '15//01/2025' (PRESICCE Marco)
+- Spuntisti riga 25: data presentazione 15//01/2025 incoerente con l'elenco 2026 e con il protocollo (PRESICCE Marco); probabile refuso dell'anno
+- Spuntisti riga 42: C.F. di 17 caratteri 'MSQMMD963B09Z330A' (MSAQ Mohamed)
+- Spuntisti riga 12: C.F. non valido 'DPIMD067B02Z343O' (DIOP Modou)
+- Spuntisti riga 32: C.F. non valido 'CNCGMR93R02E815D' (CANCELLI Gianmarco)
+- Spuntisti riga 42: C.F. non valido 'MSQMMD963B09Z330A' (MSAQ Mohamed)
+- Spuntisti riga 48: C.F. non valido 'ZNOMMD75D26Z330N' (ZOUINE Mohamed Sghir)

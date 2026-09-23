@@ -2,7 +2,8 @@
  "_meta": {
   "fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026",
   "generato": "scripts/import-suap.py",
-  "nota": "Solo campi pubblici. CF/P.IVA/indirizzi in espositori_riservati.json (non committato)."
+  "nota": "Solo campi pubblici. CF/P.IVA/indirizzi in espositori_riservati.json (non committato).",
+  "spuntisti": "Elenco spuntisti 2026 del SUAP (23/09/2026), tipo 'spuntista', scadenza 31/12/2026"
  },
  "espositori": [
   {
@@ -3154,6 +3155,1046 @@
    "telegram": null,
    "descrizione": null,
    "foto": null
+  },
+  {
+   "id": "sene-ale",
+   "denominazione": "Ale Sene",
+   "alias": null,
+   "referente": "Ale Sene",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "la-penna-gianluigi",
+   "denominazione": "Gianluigi La Penna",
+   "alias": null,
+   "referente": "Gianluigi La Penna",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "di-donfrancesco-augusto",
+   "denominazione": "Augusto Di Donfrancesco",
+   "alias": null,
+   "referente": "Augusto Di Donfrancesco",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "cisotta-antonio-2",
+   "denominazione": "Antonio Cisotta",
+   "alias": null,
+   "referente": "Antonio Cisotta",
+   "tipo": "spuntista",
+   "categoria": "Produttore agricolo",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "lmarhoum-said",
+   "denominazione": "Said Lmarhoum",
+   "alias": null,
+   "referente": "Said Lmarhoum",
+   "tipo": "spuntista",
+   "categoria": "Opere del proprio ingegno",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "tondi-domenico-pantaleo",
+   "denominazione": "Domenico Pantaleo Tondi",
+   "alias": null,
+   "referente": "Domenico Pantaleo Tondi",
+   "tipo": "spuntista",
+   "categoria": "Coltivatore diretto",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "palumbo-serena",
+   "denominazione": "Serena Palumbo",
+   "alias": null,
+   "referente": "Serena Palumbo",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "galati-antonio",
+   "denominazione": "Antonio Galati",
+   "alias": null,
+   "referente": "Antonio Galati",
+   "tipo": "spuntista",
+   "categoria": "Produttore agricolo",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "ettore-maurizio",
+   "denominazione": "Maurizio Ettore",
+   "alias": null,
+   "referente": "Maurizio Ettore",
+   "tipo": "spuntista",
+   "categoria": "Opere del proprio ingegno",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "diaw-papa-ousmane",
+   "denominazione": "Papa Ousmane Diaw",
+   "alias": null,
+   "referente": "Papa Ousmane Diaw",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "epifani-giuseppe",
+   "denominazione": "Giuseppe Epifani",
+   "alias": null,
+   "referente": "Giuseppe Epifani",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "diop-modou",
+   "denominazione": "Modou Diop",
+   "alias": null,
+   "referente": "Modou Diop",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "senghor-tamsir-doudou",
+   "denominazione": "Tamsir Doudou Senghor",
+   "alias": null,
+   "referente": "Tamsir Doudou Senghor",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "perrone-maria-rosaria",
+   "denominazione": "Maria Rosaria Perrone",
+   "alias": null,
+   "referente": "Maria Rosaria Perrone",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "piscopo-alex",
+   "denominazione": "Alex Piscopo",
+   "alias": null,
+   "referente": "Alex Piscopo",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "leone-rosario",
+   "denominazione": "Rosario Leone",
+   "alias": null,
+   "referente": "Rosario Leone",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "santoro-carmelo",
+   "denominazione": "Carmelo Santoro",
+   "alias": null,
+   "referente": "Carmelo Santoro",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "nuzzo-antonio",
+   "denominazione": "Antonio Nuzzo",
+   "alias": null,
+   "referente": "Antonio Nuzzo",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "singh-satnam",
+   "denominazione": "Satnam Singh",
+   "alias": null,
+   "referente": "Satnam Singh",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "perrone-salvatore",
+   "denominazione": "Salvatore Perrone",
+   "alias": null,
+   "referente": "Salvatore Perrone",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "ndiaye-saliou",
+   "denominazione": "Saliou Ndiaye",
+   "alias": null,
+   "referente": "Saliou Ndiaye",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "linciano-anna",
+   "denominazione": "Anna Linciano",
+   "alias": null,
+   "referente": "Anna Linciano",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "caroppo-salvatore",
+   "denominazione": "Salvatore Caroppo",
+   "alias": null,
+   "referente": "Salvatore Caroppo",
+   "tipo": "spuntista",
+   "categoria": "Produttore agricolo",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "negro-mirko",
+   "denominazione": "Mirko Negro",
+   "alias": null,
+   "referente": "Mirko Negro",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "presicce-marco-2",
+   "denominazione": "Marco Presicce",
+   "alias": null,
+   "referente": "Marco Presicce",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "cardone-grazia",
+   "denominazione": "Grazia Cardone",
+   "alias": null,
+   "referente": "Grazia Cardone",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "pandelli-donato",
+   "denominazione": "Donato Pandelli",
+   "alias": null,
+   "referente": "Donato Pandelli",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "stefanizzi-roberto",
+   "denominazione": "Roberto Stefanizzi",
+   "alias": null,
+   "referente": "Roberto Stefanizzi",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "thiam-bathie",
+   "denominazione": "Bathie Thiam",
+   "alias": null,
+   "referente": "Bathie Thiam",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "portaccio-giuseppe",
+   "denominazione": "Giuseppe Portaccio",
+   "alias": null,
+   "referente": "Giuseppe Portaccio",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "pema-suzan",
+   "denominazione": "Suzan Pema",
+   "alias": null,
+   "referente": "Suzan Pema",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "cancelli-gianmarco",
+   "denominazione": "Gianmarco Cancelli",
+   "alias": null,
+   "referente": "Gianmarco Cancelli",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "majdi-abdelfettah",
+   "denominazione": "Abdelfettah Majdi",
+   "alias": null,
+   "referente": "Abdelfettah Majdi",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "longo-silvana",
+   "denominazione": "Silvana Longo",
+   "alias": null,
+   "referente": "Silvana Longo",
+   "tipo": "spuntista",
+   "categoria": "Opere del proprio ingegno",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "radi-abdellah",
+   "denominazione": "Abdellah Radi",
+   "alias": null,
+   "referente": "Abdellah Radi",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "merola-nadia",
+   "denominazione": "Nadia Merola",
+   "alias": null,
+   "referente": "Nadia Merola",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "meleleo-riccardo",
+   "denominazione": "Riccardo Meleleo",
+   "alias": null,
+   "referente": "Riccardo Meleleo",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "ghulam-abbas",
+   "denominazione": "Abbas Ghulam",
+   "alias": null,
+   "referente": "Abbas Ghulam",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "ricci-benio",
+   "denominazione": "Benio Ricci",
+   "alias": null,
+   "referente": "Benio Ricci",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "hassani-omar",
+   "denominazione": "Omar Hassani",
+   "alias": null,
+   "referente": "Omar Hassani",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "guermoumen-marouane",
+   "denominazione": "Marouane Guermoumen",
+   "alias": null,
+   "referente": "Marouane Guermoumen",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "msaq-mohamed",
+   "denominazione": "Mohamed Msaq",
+   "alias": null,
+   "referente": "Mohamed Msaq",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "harbi-khalid",
+   "denominazione": "Khalid Harbi",
+   "alias": null,
+   "referente": "Khalid Harbi",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "manca-damiano",
+   "denominazione": "Damiano Manca",
+   "alias": null,
+   "referente": "Damiano Manca",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "dieng-mbaye",
+   "denominazione": "Mbaye Dieng",
+   "alias": null,
+   "referente": "Mbaye Dieng",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "treglia-daniele",
+   "denominazione": "Daniele Treglia",
+   "alias": null,
+   "referente": "Daniele Treglia",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "kassioui-driss",
+   "denominazione": "Driss Kassioui",
+   "alias": null,
+   "referente": "Driss Kassioui",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "zouine-mohamed-sghir",
+   "denominazione": "Mohamed Sghir Zouine",
+   "alias": null,
+   "referente": "Mohamed Sghir Zouine",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "niang-balla",
+   "denominazione": "Balla Niang",
+   "alias": null,
+   "referente": "Balla Niang",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "diao-magatte",
+   "denominazione": "Magatte Diao",
+   "alias": null,
+   "referente": "Magatte Diao",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "sepi-mel-lambert",
+   "denominazione": "Mel Lambert Sepi",
+   "alias": null,
+   "referente": "Mel Lambert Sepi",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
+  },
+  {
+   "id": "caggia-salvatore-ferdinando",
+   "denominazione": "Salvatore Ferdinando Caggia",
+   "alias": null,
+   "referente": "Salvatore Ferdinando Caggia",
+   "tipo": "spuntista",
+   "categoria": "Spuntista",
+   "mercati": [
+    "area-mercatale"
+   ],
+   "settori": [],
+   "whatsapp": null,
+   "telegram": null,
+   "descrizione": null,
+   "foto": null,
+   "posteggi": [],
+   "scadenza": "2026-12-31",
+   "annoElenco": 2026,
+   "visibile": true
   }
  ]
 }

@@ -5,7 +5,11 @@ Import degli elenchi SUAP (PDF del 07/09/2026) nei file seed JSON.
 Uso:
     python3 scripts/import-suap.py [--library "../Library/Elenchi"] [--out data/seed]
 
-Richiede `pdftotext` (poppler). Legge i 9 PDF, li normalizza e scrive:
+Richiede `pdftotext` (poppler). Legge i 10 PDF (9 elenchi posteggi + elenco spuntisti), li normalizza e scrive:
+
+ATTENZIONE: i seed di posteggi, mercati e fissi sono stati corretti a mano dopo la Fase 0 (A-47 vacante,
+categoria Altre attività, superfici 2026, orari SUAP). Il re-import completo li sovrascrive: per aggiornare
+l'elenco spuntisti usare `--solo-spuntisti`.
     data/seed/mercati.json                 - i 3 mercati
     data/seed/posteggi.json                - tutti i posteggi (257 area + coperto + ortofrutta)
     data/seed/espositori.json              - anagrafica PUBBLICA (denominazione, referente, settore…)
@@ -28,10 +32,12 @@ AREA = [
     ("D", "Calzature",                        "Area Mercatale/ELENCO settore D (CALZATURE).pdf"),
     ("E", "Casalinghi / ferramenta / fiori",  "Area Mercatale/ELENCO settore E (CASALINGHI-FERRAM-FIORI)).pdf"),
 ]
-COPERTO_BOX    = "Mercato Coperrto Centro/ELENCO BOX Mercato Centro.pdf"
-COPERTO_PANCHE = "Mercato Coperrto Centro/ELENCO CONCESSIONI - Panche Mercato Centro.pdf"
-IMM_BOX        = "Mercato Ortofrutticolo Piazza Immacolata/Elenco BOX mercato P.zza Immacolata.pdf"
-IMM_SETT       = "Mercato Ortofrutticolo Piazza Immacolata/Elenco mercato settimanale ortofrutticolo P.ZZA IMMACOLATA.pdf"
+COPERTO_BOX    = "Mercato Coperrto Centro - Via Toma Nuzzichi/ELENCO BOX Mercato Centro.pdf"
+COPERTO_PANCHE = "Mercato Coperrto Centro - Via Toma Nuzzichi/ELENCO CONCESSIONI - Panche Mercato Centro.pdf"
+IMM_BOX        = "Mercato Ortofrutticolo - Piazza Immacolata/Elenco BOX mercato P.zza Immacolata.pdf"
+IMM_SETT       = "Mercato Ortofrutticolo - Piazza Immacolata/Elenco mercato settimanale ortofrutticolo P.ZZA IMMACOLATA.pdf"
+SPUNTISTI      = "Area Mercatale/Elenco Spuntisti Mercato Settimanale Sabato.pdf"
+ANNO_SPUNTISTI = 2026
 
 MERCATI = [
     {"id": "area-mercatale", "nome": "Area Mercatale", "tipo": "settimanale", "hasMappa": True,
@@ -158,10 +164,14 @@ class Registro:
         self.riservati = {}
         self.issues = []
 
-    def add(self, *, cognome_nome, denominazione, cf, piva, indirizzo, mercato, settore, categoria, tipo, source):
+    def add(self, *, cognome_nome, denominazione, cf, piva, indirizzo, mercato, settore, categoria, tipo, source, pub=None, ris=None):
         cognome_nome = " ".join(cognome_nome.split()) if cognome_nome else ""
         denominazione = " ".join(denominazione.split()) if denominazione else ""
         key = cf or piva or ("nome:" + slugify(cognome_nome or denominazione))
+        if tipo == "spuntista":
+            if key in self.by_key:
+                self.issues.append(f"{source}: spuntista con lo stesso C.F. di un espositore fisso ({cognome_nome} / {self.by_key[key]['id']})")
+            key = "spuntista:" + key
         if key in self.by_key:
             e = self.by_key[key]
             if mercato not in e["mercati"]:
@@ -198,6 +208,8 @@ class Registro:
             ("foto", None),
             ("_cognome_nome", cognome_nome),
         ])
+        if pub:
+            e.update(pub)
         self.by_key[key] = e
         self.riservati[eid] = OrderedDict([
             ("id", eid),
@@ -210,6 +222,8 @@ class Registro:
             ("indirizzo", indirizzo),
             ("fonte", source),
         ])
+        if ris:
+            self.riservati[eid].update(ris)
         if cf and not check_cf(cf) and not (cf.isdigit()):
             self.issues.append(f"{source}: C.F. non valido '{cf}' ({cognome_nome})")
         if cf and cf.isdigit() and cf != piva:
@@ -486,12 +500,115 @@ def _emit(src, ordine, rest, reg, posteggi, issues):
 # --------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------
+# --------------------------------------------------------------------------
+# Parser: elenco spuntisti dell'area mercatale (anno corrente)
+# --------------------------------------------------------------------------
+SP_ROW = re.compile(r"^\s*(\d{1,3})\s+(.+?)\s{2,}([A-Z0-9]{15,17})\s+(\d{1,2}/+\d{1,2}/\d{4})\s+(.*)$")
+SP_NOTE = {"PRODUTTORE AGRICOLO": "Produttore agricolo", "COLTIVATORE DIRETTO": "Coltivatore diretto",
+           "OPERE DEL PROPRIO INGEGNO": "Opere del proprio ingegno"}
+
+def parse_spuntisti(text, reg, issues):
+    n = 0
+    for line in text.splitlines():
+        m = SP_ROW.match(line)
+        if not m:
+            continue
+        ordine, cognome_nome, cf, data_raw, rest = int(m.group(1)), m.group(2).strip(), m.group(3), m.group(4), m.group(5)
+        src = f"Spuntisti riga {ordine}"
+        # data dd/mm/yyyy (tollera '15//01/2025')
+        d = re.fullmatch(r"(\d{1,2})/+(\d{1,2})/(\d{4})", data_raw)
+        data = f"{d.group(3)}-{int(d.group(2)):02d}-{int(d.group(1)):02d}" if d else None
+        if "//" in data_raw:
+            issues.append(f"{src}: data presentazione scritta '{data_raw}' ({cognome_nome})")
+        if data and data < f"{ANNO_SPUNTISTI - 1}-11-01":
+            issues.append(f"{src}: data presentazione {data_raw} incoerente con l'elenco {ANNO_SPUNTISTI} e con il protocollo ({cognome_nome}); probabile refuso dell'anno")
+        cols = [c for c in re.split(r"\s{2,}", rest.strip()) if c]
+        prot = None
+        if cols and re.fullmatch(r"[\d.]+", cols[0]):
+            prot = cols.pop(0).replace(".", "")
+        elif cols and re.match(r"^\d[\d.]*\s+\S", cols[0]):   # protocollo attaccato all'indirizzo (es. '4.062 VIA ...')
+            prot, cols[0] = cols[0].split(None, 1)
+            prot = prot.replace(".", "")
+        pec = [c for c in cols if "@" in c]
+        cols = [c for c in cols if "@" not in c]
+        note = [c for c in cols if c.strip().upper() in SP_NOTE]
+        cols = [c for c in cols if c.strip().upper() not in SP_NOTE]
+        indirizzo = cols[0] if cols else None
+        comune = " ".join(cols[1:]) if len(cols) > 1 else None
+        if not comune:
+            issues.append(f"{src}: comune non riconosciuto in '{rest.strip()}'")
+        cat = SP_NOTE[note[0].strip().upper()] if note else "Spuntista"
+        if len(cf) != 16:
+            issues.append(f"{src}: C.F. di {len(cf)} caratteri '{cf}' ({cognome_nome})")
+        reg.add(cognome_nome=cognome_nome, denominazione="", cf=cf, piva=None, indirizzo=indirizzo,
+                mercato="area-mercatale", settore=None, categoria=cat, tipo="spuntista", source=src,
+                pub={"posteggi": [], "scadenza": f"{ANNO_SPUNTISTI}-12-31", "annoElenco": ANNO_SPUNTISTI, "visibile": True},
+                ris={"comune": comune, "pec": " ".join(pec) or None, "dataRichiesta": data, "protocollo": prot, "ordineElenco": ordine})
+        n += 1
+    return n
+
+
+def solo_spuntisti(args):
+    """I seed dei fissi/posteggi/mercati sono stati corretti a mano dopo la Fase 0 (A-47, Altre attività,
+    superfici 2026, orari): non vanno rigenerati. Qui si sostituiscono solo le voci tipo 'spuntista'."""
+    reg, issues = Registro(), []
+    n = parse_spuntisti(pdftotext(os.path.join(args.library, SPUNTISTI)), reg, issues)
+    issues.extend(reg.issues)
+    nuovi_pub = reg.public()
+    nuovi_ris = list(reg.riservati.values())
+    def load(name):
+        with open(os.path.join(args.out, name), encoding="utf-8") as f:
+            return json.load(f)
+    def dump(name, obj):
+        with open(os.path.join(args.out, name), "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, indent=1)
+            f.write("\n")
+    pub, ris = load("espositori.json"), load("espositori_riservati.json")
+    fissi_pub = [e for e in pub["espositori"] if e.get("tipo") != "spuntista"]
+    fissi_ids = {e["id"] for e in fissi_pub}
+    fissi_ris = [r for r in ris["espositori"] if r["id"] in fissi_ids]
+    # id univoci anche rispetto ai fissi già presenti
+    ids = Counter(e["id"] for e in fissi_pub)
+    for e, r in zip(nuovi_pub, nuovi_ris):
+        base = re.sub(r"-\d+$", "", e["id"]) if e["id"] not in fissi_ids else e["id"]
+        if e["id"] in fissi_ids or ids[e["id"]]:
+            k = 2
+            while f"{base}-{k}" in fissi_ids or ids[f"{base}-{k}"]:
+                k += 1
+            e["id"] = r["id"] = f"{base}-{k}"
+        ids[e["id"]] += 1
+    pub["_meta"]["spuntisti"] = f"Elenco spuntisti {ANNO_SPUNTISTI} del SUAP (23/09/2026), tipo 'spuntista', scadenza 31/12/{ANNO_SPUNTISTI}"
+    pub["espositori"] = fissi_pub + nuovi_pub
+    ris["espositori"] = fissi_ris + nuovi_ris
+    dump("espositori.json", pub)
+    dump("espositori_riservati.json", ris)
+    # sezione nel report
+    rp = os.path.join(args.out, "REPORT.md")
+    with open(rp, encoding="utf-8") as f:
+        txt = f.read()
+    txt = re.split(r"\n## Spuntisti", txt)[0].rstrip() + "\n"
+    cats = Counter(e["categoria"] for e in nuovi_pub)
+    sez = [f"\n## Spuntisti {ANNO_SPUNTISTI}", "",
+           f"Elenco SUAP del 23/09/2026: **{n}** spuntisti (tipo `spuntista`, nessun posteggio assegnato, scadenza 31/12/{ANNO_SPUNTISTI}).",
+           "Pubblico: solo denominazione; CF, indirizzo, PEC, data e protocollo della richiesta in `espositori_riservati.json`.", ""]
+    sez += [f"- {c}: {k}" for c, k in cats.most_common()]
+    sez += ["", "Anomalie dell'elenco spuntisti:", ""] + [f"- {i}" for i in issues]
+    with open(rp, "w", encoding="utf-8") as f:
+        f.write(txt + "\n".join(sez) + "\n")
+    print(f"spuntisti: {n}  fissi invariati: {len(fissi_pub)}  anomalie: {len(issues)}")
+    for i in issues:
+        print(" -", i)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--library", default=os.path.join(ROOT, "..", "Library", "Elenchi"))
     ap.add_argument("--out", default=os.path.join(ROOT, "data", "seed"))
+    ap.add_argument("--solo-spuntisti", action="store_true",
+                    help="aggiorna solo gli spuntisti dentro espositori.json / espositori_riservati.json esistenti (non tocca posteggi, mercati e fissi)")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
+    if args.solo_spuntisti:
+        return solo_spuntisti(args)
 
     reg, posteggi, issues = Registro(), [], []
     counts = OrderedDict()
@@ -504,9 +621,11 @@ def main():
     parse_coperto_panche(pdftotext(os.path.join(args.library, COPERTO_PANCHE)), reg, posteggi, issues)
     parse_imm_box(pdftotext(os.path.join(args.library, IMM_BOX)), reg, posteggi, issues)
     parse_imm_sett(pdftotext(os.path.join(args.library, IMM_SETT)), reg, posteggi, issues)
+    n_sp = parse_spuntisti(pdftotext(os.path.join(args.library, SPUNTISTI)), reg, issues)
 
     issues.extend(reg.issues)
     espositori = reg.public()
+    fissi = [e for e in espositori if e["tipo"] != "spuntista"]
 
     # posteggi multipli per espositore
     multi = Counter(p["espositoreId"] for p in posteggi if p["espositoreId"])
@@ -517,7 +636,7 @@ def main():
             json.dump(obj, f, ensure_ascii=False, indent=1)
             f.write("\n")
 
-    meta = {"fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026", "generato": "scripts/import-suap.py"}
+    meta = {"fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026 + elenco spuntisti del 23/09/2026", "generato": "scripts/import-suap.py"}
     dump("mercati.json", {"_meta": meta, "mercati": MERCATI})
     dump("posteggi.json", {"_meta": meta, "posteggi": posteggi})
     dump("espositori.json", {"_meta": {**meta, "nota": "Solo campi pubblici. CF/P.IVA/indirizzi in espositori_riservati.json (non committato)."},
@@ -539,9 +658,9 @@ def main():
     row("Ortofrutticolo — box", [p for p in posteggi if p["mercato"] == "ortofrutticolo" and p["settore"] == "box"])
     row("Ortofrutticolo — settimanale", [p for p in posteggi if p["mercato"] == "ortofrutticolo" and p["settore"] == "settimanale"])
     row("**Totale**", posteggi)
-    lines += ["", f"Espositori distinti: **{len(espositori)}** (dedup per C.F. / P.IVA / nome).", ""]
+    lines += ["", f"Espositori fissi distinti: **{len(fissi)}** (dedup per C.F. / P.IVA / nome); spuntisti {ANNO_SPUNTISTI}: **{n_sp}** (elenco del 23/09/2026, scadenza 31/12/{ANNO_SPUNTISTI}).", ""]
     per_m = Counter()
-    for e in espositori:
+    for e in fissi:
         for m_ in e["mercati"]: per_m[m_] += 1
     lines += [f"- {m_}: {n}" for m_, n in per_m.items()]
     lines += ["", "## Espositori con più posteggi", ""]
@@ -557,7 +676,7 @@ def main():
     with open(os.path.join(args.out, "REPORT.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"posteggi: {len(posteggi)}  espositori: {len(espositori)}  anomalie: {len(issues)}")
+    print(f"posteggi: {len(posteggi)}  espositori fissi: {len(fissi)}  spuntisti: {n_sp}  anomalie: {len(issues)}")
     for i in issues:
         print(" -", i)
 
