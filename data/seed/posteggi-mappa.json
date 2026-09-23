@@ -8,7 +8,8 @@
    "A-47 presente in piantina ma assente negli elenchi SUAP (inElenco=false)",
    "E-3 ricostruito da contorno aperto (3 lati)",
    "PV-1, PV-2, PV-3 (contorno nero dietro la tensostruttura, in legenda \"attività espositiva prodotti vari\") e UOVA-1 (posteggio temporaneo vendita uova, cerchio) aggiunti su richiesta: nessun elenco SUAP",
-   "A-119: presente in piantina accanto al 118bis (poligono irregolare \"mq 42\"); era stato segnalato per errore come mancante"
+   "A-119: presente in piantina accanto al 118bis (poligono irregolare \"mq 42\"); era stato segnalato per errore come mancante",
+   "A-125: sagoma ridotta a trapezio il 23/09/2026 perché il rettangolo CAD sbordava sul muretto della fascia parcheggi"
   ],
   "GEO_app": {
    "p1Lat": 40.116944,
@@ -4425,25 +4426,25 @@
    "inElenco": true,
    "pts": [
     [
-     1128.15,
-     850.89
+     1128.2,
+     850.9
     ],
     [
-     1127.37,
-     799.64
+     1127.79,
+     824.53
     ],
     [
-     1101.74,
-     800.03
+     1101.7,
+     800.0
     ],
     [
-     1102.53,
-     851.29
+     1102.5,
+     851.3
     ]
    ],
-   "cx": 1114.95,
-   "cy": 825.46,
-   "lat": 40.116801,
+   "cx": 1115.05,
+   "cy": 831.68,
+   "lat": 40.11679,
    "lon": 18.310254
   },
   {

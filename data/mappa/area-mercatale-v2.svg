@@ -224,7 +224,7 @@
       <polygon id="A-153" class="st4" data-numero="153" data-settore="A" points="1304 1058.9 1334.7 1058.4 1334.1 1017.4 1303.4 1017.9 1304 1058.9"/>
       <polygon id="A-148" class="st4" data-numero="148" data-settore="A" points="1249.9 1049.6 1280.7 1049.2 1280.2 1008.1 1249.4 1008.5 1249.9 1049.6"/>
       <polygon id="A-124" class="st4" data-numero="124" data-settore="A" points="1129.1 904.6 1128.3 853.3 1102.7 853.7 1103.5 905 1129.1 904.6"/>
-      <polygon id="A-125" class="st4" data-numero="125" data-settore="A" points="1128.2 850.9 1127.4 799.6 1101.7 800 1102.5 851.3 1128.2 850.9"/>
+      <polygon id="A-125" class="st4" data-numero="125" data-settore="A" points="1128.2 850.9 1127.79 824.53 1101.7 800 1102.5 851.3"/>
       <polygon id="A-121" class="st4" data-numero="121" data-settore="A" points="1074.1 861.7 1073.5 820.7 1047.7 821.2 1048.5 862.1 1074.1 861.7"/>
       <polygon id="A-118" class="st4" data-numero="118" data-settore="A" points="1045.8 852.1 1045 800.8 1019.4 801.2 1020.3 852.6 1045.8 852.1"/>
       <polygon id="A-123" class="st4" data-numero="123" data-settore="A" points="1073.3 818.2 1072.4 772 1046.8 772.4 1047.7 818.6 1073.3 818.2"/>
@@ -499,7 +499,7 @@
     <text class="st3" transform="translate(1313.9346 1040.4694)"><tspan x="0" y="0">153</tspan></text>
     <text class="st3" transform="translate(1259.3694 1031.1294)"><tspan x="0" y="0">148</tspan></text>
     <text class="st3" transform="translate(1110.4818 881.4793)"><tspan x="0" y="0">124</tspan></text>
-    <text class="st3" transform="translate(1109.8247 827.7694)"><tspan x="0" y="0">125</tspan></text>
+    <text class="st3" transform="translate(1115.05 833.98)"><tspan x="0" y="0">125</tspan></text>
     <text class="st3" transform="translate(1056.4945 843.7194)"><tspan x="0" y="0">121</tspan></text>
     <text class="st3" transform="translate(1027.907 828.9793)"><tspan x="0" y="0">118</tspan></text>
     <text class="st3" transform="translate(1054.9346 797.6394)"><tspan x="0" y="0">123</tspan></text>
