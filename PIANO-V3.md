@@ -11,6 +11,8 @@ Oggi la relazione sta sul posteggio (`posteggi.{id}.espositoreId`). Diventa l'in
 ## 2. Modello dati Firestore
 
 ### `espositori/{id}` (pubblico in lettura, scrittura suap/admin)
+Un'unica anagrafica per tutti: fissi e spuntisti hanno la stessa scheda e gli stessi campi, indipendentemente dalle colonne degli elenchi SUAP da cui sono stati importati. L'unica differenza è il valore di `tipo`, che decide il comportamento (i fissi hanno posteggi assegnati in modo stabile, gli spuntisti li ricevono di volta in volta dall'operatore). Un campo vuoto resta vuoto, non esistono schede "ridotte".
+
 | campo | note |
 |---|---|
 | `tipo` | `fisso` oppure `spuntista` |
@@ -25,10 +27,10 @@ Oggi la relazione sta sul posteggio (`posteggi.{id}.espositoreId`). Diventa l'in
 | `attivo` | `false` = archiviato, non compare da nessuna parte |
 | `foto` | invariato, funzione ancora nascosta |
 
-Nel frontend NON si mostra più la superficie. Per gli spuntisti si mostrano solo denominazione (o alias) e presenza.
+Nel frontend NON si mostra più la superficie. Per gli spuntisti si mostrano solo denominazione (o alias) e presenza: è una regola di visualizzazione, non una differenza di anagrafica.
 
 ### `espositori_riservati/{id}` (solo suap/admin)
-Invariato: CF, P.IVA, indirizzo, `qrToken`, più i campi dell'elenco spuntisti del SUAP che non vanno resi pubblici.
+Stessi campi per tutti: codice fiscale, P.IVA, indirizzo, comune, PEC, data e protocollo della richiesta, `qrToken`. Per i fissi comune, PEC e protocollo oggi sono vuoti perché gli elenchi dei posteggi non li riportano; il SUAP potrà completarli dal pannello.
 
 ### `posteggi/{id}`
 Geometria e classificazione; via `espositoreId` e `stato`. Lo stato (assegnato/vacante) si deriva da `espositori.posteggi`.
