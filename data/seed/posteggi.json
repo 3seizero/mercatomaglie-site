@@ -5739,6 +5739,101 @@
    "stato": "assegnato",
    "ordineElenco": 19,
    "mapId": null
+  },
+  {
+   "id": "A-47",
+   "mercato": "area-mercatale",
+   "settore": "A",
+   "fila": "8",
+   "numero": "47",
+   "etichetta": "Settore A · fila 8 · n. 47",
+   "tipo": "posteggio",
+   "superficie": {
+    "raw": "5x5",
+    "w": 5.0,
+    "h": 5.0,
+    "mq": 25.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": null,
+   "mapId": "A-47",
+   "note": "Non presente negli elenchi SUAP 2026: confermato vacante dal SUAP il 23/09/2026"
+  },
+  {
+   "id": "PV-1",
+   "mercato": "area-mercatale",
+   "settore": "ALTRE",
+   "fila": null,
+   "numero": "1",
+   "etichetta": "Altre attività · n. 1",
+   "tipo": "altre-attivita",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": null,
+   "mapId": "PV-1",
+   "note": "Dietro la tensostruttura; nessun espositore fisso, assegnazione di volta in volta"
+  },
+  {
+   "id": "PV-2",
+   "mercato": "area-mercatale",
+   "settore": "ALTRE",
+   "fila": null,
+   "numero": "2",
+   "etichetta": "Altre attività · n. 2",
+   "tipo": "altre-attivita",
+   "superficie": {
+    "raw": "6x5",
+    "w": 6.0,
+    "h": 5.0,
+    "mq": 30.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": null,
+   "mapId": "PV-2",
+   "note": "Dietro la tensostruttura; nessun espositore fisso, assegnazione di volta in volta"
+  },
+  {
+   "id": "PV-3",
+   "mercato": "area-mercatale",
+   "settore": "ALTRE",
+   "fila": null,
+   "numero": "3",
+   "etichetta": "Altre attività · n. 3",
+   "tipo": "altre-attivita",
+   "superficie": {
+    "raw": "10x10",
+    "w": 10.0,
+    "h": 10.0,
+    "mq": 100.0
+   },
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": null,
+   "mapId": "PV-3",
+   "note": "Dietro la tensostruttura; nessun espositore fisso, assegnazione di volta in volta"
+  },
+  {
+   "id": "UOVA-1",
+   "mercato": "area-mercatale",
+   "settore": "ALTRE",
+   "fila": null,
+   "numero": "uova",
+   "etichetta": "Altre attività · posteggio uova",
+   "tipo": "altre-attivita",
+   "superficie": null,
+   "espositoreId": null,
+   "stato": "vacante",
+   "ordineElenco": null,
+   "mapId": "UOVA-1",
+   "note": "Posteggio temporaneo vendita uova; nessun espositore fisso"
   }
  ]
 }

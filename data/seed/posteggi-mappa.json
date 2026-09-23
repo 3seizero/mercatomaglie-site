@@ -10,7 +10,8 @@
    "PV-1, PV-2, PV-3 (contorno nero dietro la tensostruttura, in legenda \"attività espositiva prodotti vari\") e UOVA-1 (posteggio temporaneo vendita uova, cerchio) aggiunti su richiesta: nessun elenco SUAP",
    "A-119: presente in piantina accanto al 118bis (poligono irregolare \"mq 42\"); era stato segnalato per errore come mancante",
    "A-125: sagoma ridotta a trapezio il 23/09/2026 perché il rettangolo CAD sbordava sul muretto della fascia parcheggi",
-   "23/09/2026: sagome corrette a mano da Carlo in Illustrator: A-141, A-166, A-153, A-124, A-125, B-10, B-9, B-4"
+   "23/09/2026: sagome corrette a mano da Carlo in Illustrator: A-141, A-166, A-153, A-124, A-125, B-10, B-9, B-4",
+   "23/09/2026, risposte SUAP: A-47 vacante; PV-1/2/3 e UOVA-1 = categoria \"Altre attività\" senza espositori fissi; superfici: fanno fede gli elenchi 2026"
   ],
   "GEO_app": {
    "p1Lat": 40.116944,
@@ -1988,7 +1989,7 @@
    "id": "A-47",
    "settore": "A",
    "numero": "47",
-   "inElenco": false,
+   "inElenco": true,
    "pts": [
     [
      972.38,
@@ -7230,9 +7231,9 @@
   },
   {
    "id": "PV-1",
-   "settore": "PV",
+   "settore": "ALTRE",
    "numero": "1",
-   "inElenco": false,
+   "inElenco": true,
    "pts": [
     [
      605.78,
@@ -7264,9 +7265,9 @@
   },
   {
    "id": "PV-2",
-   "settore": "PV",
+   "settore": "ALTRE",
    "numero": "2",
-   "inElenco": false,
+   "inElenco": true,
    "pts": [
     [
      604.52,
@@ -7298,9 +7299,9 @@
   },
   {
    "id": "PV-3",
-   "settore": "PV",
+   "settore": "ALTRE",
    "numero": "3",
-   "inElenco": false,
+   "inElenco": true,
    "pts": [
     [
      558.77,
@@ -7332,9 +7333,9 @@
   },
   {
    "id": "UOVA-1",
-   "settore": "UOVA",
+   "settore": "ALTRE",
    "numero": "1",
-   "inElenco": false,
+   "inElenco": true,
    "shape": "circle",
    "cx": 482.62,
    "cy": 935.56,

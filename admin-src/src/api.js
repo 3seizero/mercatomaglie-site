@@ -17,7 +17,7 @@ export const MERCATI = [
   { id: "coperto", nome: "Mercato Coperto Centro" },
   { id: "ortofrutticolo", nome: "Mercato Ortofrutticolo" },
 ];
-export const SETTORI = { A: "Abbigliamento", B: "Abbigliamento usato", C: "Alimentare", D: "Calzature", E: "Casalinghi e fiori", PV: "Prodotti vari", UOVA: "Vendita uova", box: "Box", panche: "Panche", settimanale: "Settimanale" };
+export const SETTORI = { A: "Abbigliamento", B: "Abbigliamento usato", C: "Alimentare", D: "Calzature", E: "Casalinghi e fiori", PV: "Altre attività", UOVA: "Altre attività", ALTRE: "Altre attività", box: "Box", panche: "Panche", settimanale: "Settimanale" };
 export const TIPI = ["concessionario", "occasionale", "produttore", "operatori-vari"];
 export const RUOLI = ["admin", "suap", "operatore"];
 const PUB = ["id", "denominazione", "alias", "referente", "tipo", "categoria", "mercati", "settori", "whatsapp", "telegram", "descrizione", "foto", "attivo"];

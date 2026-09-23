@@ -34,6 +34,14 @@ Data: 22/09/2026. Stato: **da revisionare** (Carlo, in Illustrator) prima dell'i
 - Aggiunti i 3 posteggi con contorno nero dietro la tensostruttura (`PV-1`, `PV-2` 6x5 in etichetta ma disegnati 4,5x3,8; `PV-3` "10x10" ma disegnato 6,7x6,7) e il posteggio temporaneo vendita uova (`UOVA-1`, cerchio). In legenda il nero è "attività espositiva prodotti vari": non esiste elenco SUAP per questi, quindi `inElenco=false`.
 - Ipotesi di Carlo: A-47 probabilmente vacante. Il 119 è stato poi trovato in piantina (vedi sopra).
 
+## Risposte del SUAP (23/09/2026)
+
+- A-47: posteggio vacante, aggiunto agli elenchi dell'app.
+- Superfici: fanno fede gli elenchi 2026 (la piantina resta come geometria).
+- PV-1, PV-2, PV-3 e UOVA-1: categoria "Altre attività", nessun espositore fisso, assegnati di volta in volta.
+- Dati anagrafici errati: correzioni in arrivo dal SUAP.
+- Orari ufficiali: Area Mercatale sabato 7-13; Mercato Coperto lunedì-sabato 7-13; Ortofrutticolo sabato 7-13.
+
 ## Anomalie da segnalare al Comune
 
 - **A-47** (fila 8, 5x5) è disegnato in piantina ma non compare negli elenchi SUAP.

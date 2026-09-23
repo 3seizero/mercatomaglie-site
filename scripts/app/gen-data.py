@@ -46,6 +46,6 @@ out = ['// GENERATO da scripts/app/gen-data.py dai seed SUAP (07/09/2026) — no
        'export const MERCATI = ' + json.dumps(mercati, ensure_ascii=False, separators=(',', ':')) + ';',
        'export const POSTEGGI = ' + json.dumps(P, ensure_ascii=False, separators=(',', ':')) + ';',
        'export const ESPOSITORI = ' + json.dumps(E, ensure_ascii=False, separators=(',', ':')) + ';',
-       'export const SETTORI = {A:"Abbigliamento",B:"Abbigliamento usato",C:"Alimentare",D:"Calzature",E:"Casalinghi e fiori",PV:"Prodotti vari",UOVA:"Vendita uova"};']
+       'export const SETTORI = {A:"Abbigliamento",B:"Abbigliamento usato",C:"Alimentare",D:"Calzature",E:"Casalinghi e fiori",PV:"Altre attività",UOVA:"Altre attività",ALTRE:"Altre attività"};']
 open(f'{ROOT}/app-src/src/data/seed.js', 'w', encoding='utf-8').write('\n'.join(out) + '\n')
 print('mappa.js', os.path.getsize(f'{ROOT}/app-src/src/data/mappa.js')//1024, 'KB; seed.js', os.path.getsize(f'{ROOT}/app-src/src/data/seed.js')//1024, 'KB;', len(stalls), 'postazioni,', len(P), 'posteggi,', len(E), 'espositori; GEO', geo)

@@ -35,14 +35,14 @@ IMM_SETT       = "Mercato Ortofrutticolo Piazza Immacolata/Elenco mercato settim
 
 MERCATI = [
     {"id": "area-mercatale", "nome": "Area Mercatale", "tipo": "settimanale", "hasMappa": True,
-     "indirizzo": None, "giorni": ["ogni sabato"], "orari": "6:00 – 13:00", "giorniSettimana": [6], "apertura": "06:00", "chiusura": "13:00",
+     "indirizzo": None, "giorni": ["ogni sabato"], "orari": "7:00 - 13:00", "giorniSettimana": [6], "apertura": "07:00", "chiusura": "13:00",
      "note": "Nuova Area Mercatale, 5 settori merceologici (A–E). Indirizzo da confermare."},
     {"id": "coperto", "nome": "Mercato Coperto Centro", "tipo": "coperto", "hasMappa": False,
-     "indirizzo": "Via Toma Nuzzichi, Maglie", "giorni": ["tutti i giorni"], "orari": "6:00 – 13:00", "giorniSettimana": [1,2,3,4,5,6,0], "apertura": "06:00", "chiusura": "13:00",
+     "indirizzo": "Via Toma Nuzzichi, Maglie", "giorni": ["da lunedì a sabato"], "orari": "7:00 - 13:00", "giorniSettimana": [1,2,3,4,5,6], "apertura": "07:00", "chiusura": "13:00",
      "note": "8 box (prodotti ittici / carni) + 10 panche prodotti agricoli."},
     {"id": "ortofrutticolo", "nome": "Mercato Ortofrutticolo", "tipo": "settimanale", "hasMappa": False,
-     "indirizzo": "Piazza Immacolata, Maglie", "giorni": ["ogni mercoledì"], "orari": "6:00 – 13:00", "giorniSettimana": [3], "apertura": "06:00", "chiusura": "13:00",
-     "note": "Mercato settimanale (gli elenchi SUAP lo indicano come mercato del sabato: confermato mercoledì da Carlo il 22/09/2026)."},
+     "indirizzo": "Piazza Immacolata, Maglie", "giorni": ["ogni sabato"], "orari": "7:00 - 13:00", "giorniSettimana": [6], "apertura": "07:00", "chiusura": "13:00",
+     "note": "Mercato settimanale del sabato (confermato dal SUAP il 23/09/2026)."},
 ]
 
 # --------------------------------------------------------------------------
