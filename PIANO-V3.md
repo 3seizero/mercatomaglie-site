@@ -41,8 +41,8 @@ Geometria e classificazione; via `espositoreId` e `stato`. Lo stato (assegnato/v
 |---|---|---|
 | `registroPresenze` | `true` (coperto e ortofrutticolo: `false`) | se `false` niente presenze né presente/assente nel frontend |
 | `oraLimiteSpunta` | `10:00` | dopo quest'ora il posteggio di un fisso assente è assegnabile a uno spuntista |
-| `oraAzzeramento` | `13:00` | dopo quest'ora tutti risultano assenti (ripristino per la giornata successiva) |
-| `assenzeMassime` | da definire | soglia annua di assenze non giustificate oltre la quale la concessione è revocabile |
+| `oraAzzeramento` | `14:00` | dopo quest'ora tutti risultano assenti (ripristino per la giornata successiva); alle 14 per lasciare a tutti il tempo di andare via |
+| `assenzeMassime` | `20` | soglia annua di assenze non giustificate oltre la quale la concessione è revocabile (confermata da Carlo il 23/09/2026) |
 
 ### `calendario/{mercato}_{data}` (scrittura admin/suap)
 | campo | note |
@@ -94,9 +94,9 @@ Il pannello desktop è per admin e suap. L'app è per il pubblico e per l'operat
 - Avviso del calendario: "Questa settimana il mercato si svolge venerdì 25/09" oppure "Sabato 26/09 il mercato è soppresso (maltempo)".
 
 ### Operatore di controllo (app, solo da loggato)
-- Scansione del QR del fisso oppure selezione dall'elenco → presenza certificata.
+- Scansione del QR dell'espositore (fisso o spuntista: entrambi hanno il proprio QR da portare con sé) oppure selezione dall'elenco → presenza certificata.
 - Il QR inquadrato con la fotocamera del telefono apre l'app: senza login non registra nulla (mostra solo che il codice è valido e il link "Sei l'espositore? Proponi modifiche alla tua scheda"); con login chiede conferma.
-- Spuntisti: seleziona lo spuntista dall'elenco e gli assegna un posteggio libero. Sono liberi i posteggi vacanti e, dopo l'ora limite di spunta, quelli dei fissi assenti.
+- Spuntisti: scansiona il QR dello spuntista o lo seleziona dall'elenco se non lo ha con sé, poi gli assegna un posteggio libero. Sono liberi i posteggi vacanti e, dopo l'ora limite di spunta, quelli dei fissi assenti.
 - Se un fisso arriva dopo che il suo posteggio è stato dato a uno spuntista, la presenza viene comunque registrata con `ritardo: true`; sulla mappa resta lo spuntista. Il SUAP vede entrambi nel report.
 
 ### SUAP (pannello)
@@ -114,12 +114,10 @@ Chiusura del registro del giorno da parte dell'operatore con sigillo digitale (h
 3. App: scheda senza superficie, descrizione a scomparsa, privacy, "Portami lì" solo se presente, coperto/ortofrutticolo senza presenze, elenco spuntisti, avviso calendario.
 4. App operatore: QR solo da loggato, presenza da elenco, assegnazione spuntisti con regola dell'ora limite, azzeramento automatico.
 5. Report nel pannello con export Excel e PDF.
-6. Import dell'elenco spuntisti 2026 fornito dal SUAP.
+6. Import dell'elenco spuntisti 2026 fornito dal SUAP (seed pronti, da caricare con la migrazione del punto 1).
 7. Certificazione di fine giornata.
 
 ## 6. Da confermare con il SUAP
 
-- Numero massimo di assenze annue per i fissi (valore iniziale in impostazioni).
 - Scadenza della concessione dei fissi al 31/12 con rinnovo annuale: sì o no.
-- Elenco spuntisti 2026 (formato e campi).
-- Se gli spuntisti devono avere un QR come i fissi oppure solo la selezione dall'elenco (ipotesi: solo elenco).
+- Elenco spuntisti 2026: ricevuto e importato il 23/09/2026 (52 voci, anomalie in `docs/segnalazioni-suap/Segnalazioni-SUAP-Spuntisti.pdf`).
