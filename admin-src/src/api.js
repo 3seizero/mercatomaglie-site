@@ -21,7 +21,8 @@ export const SETTORI = { A: "Abbigliamento", B: "Abbigliamento usato", C: "Alime
 export const TIPI = [["fisso", "Fisso (concessione di posteggio)"], ["spuntista", "Spuntista (elenco annuale)"]];
 export const QUALIFICHE = ["concessionario", "produttore", "operatori-vari", "produttore-agricolo", "coltivatore-diretto", "opere-ingegno"];
 export const RUOLI = ["admin", "suap", "operatore"];
-export const IMPOSTAZIONI_DEFAULT = { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 20 };
+export const IMPOSTAZIONI_DEFAULT = { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18 };   // assenze CONSECUTIVE massime
+export const SCADENZA_FISSI = "2040-12-31";
 export const TIPI_CALENDARIO = [["soppresso", "Soppresso (non si svolge)"], ["spostato", "Spostato ad altra data"], ["straordinario", "Apertura straordinaria"]];
 // STESSA LOGICA di scripts/firebase/pubblico.mjs
 const PUB = ["id", "tipo", "denominazione", "alias", "referente", "categoria", "mercati", "settori", "whatsapp", "telegram", "descrizione", "foto", "posteggi", "scadenza"];
@@ -65,11 +66,12 @@ export function useAdminAuth() {
 export function useCollection(name, enabled = true) {
   const [rows, setRows] = useState([]);
   const [error, setError] = useState(null);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     if (!firebaseReady || !enabled) return;
-    return onSnapshot(collection(db, name), (snap) => { setRows(snap.docs.map((d) => ({ _id: d.id, ...d.data() }))); setError(null); }, (e) => setError(e.message));
+    return onSnapshot(collection(db, name), (snap) => { setRows(snap.docs.map((d) => ({ _id: d.id, ...d.data() }))); setError(null); setLoaded(true); }, (e) => setError(e.message));
   }, [name, enabled]);
-  return { rows, error };
+  return { rows, error, loaded };
 }
 /** Documento singolo in tempo reale. */
 export function useDocumento(coll, id, enabled = true) {
@@ -128,7 +130,7 @@ export async function nuovoEspositore(pub, ris, canRis, esistenti) {
   let id = base, n = 1;
   const ids = new Set(esistenti.map((e) => e.id));
   while (ids.has(id)) { n += 1; id = `${base}-${n}`; }
-  await salvaEspositore(id, { tipo: "fisso", qualifica: "concessionario", attivo: true, visibile: true, mercati: ["area-mercatale"], settori: [], posteggi: [], ...pub }, ris, canRis);
+  await salvaEspositore(id, { tipo: "fisso", qualifica: "concessionario", attivo: true, visibile: true, mercati: ["area-mercatale"], settori: [], posteggi: [], ...pub, scadenza: pub.scadenza || (pub.tipo === "spuntista" ? null : SCADENZA_FISSI) }, ris, canRis);
   return id;
 }
 export const archiviaEspositore = (id, attivo) => updateDoc(doc(db, "espositori", docId(id)), { attivo, _aggiornato: serverTimestamp() });
@@ -248,6 +250,13 @@ export const eliminaVoceCalendario = (id) => deleteDoc(doc(db, "calendario", id)
 export async function caricaPresenze(da, a) {
   const snap = await getDocs(query(collection(db, "presenze"), where("data", ">=", da), where("data", "<=", a)));
   return snap.docs.map((d) => ({ _id: d.id, ...d.data() }));
+}
+/** Contatori assenze consecutive: scrive `assenze` sui documenti espositori che cambiano (batch). */
+export async function salvaContatoriAssenze(voci) {
+  let b = writeBatch(db); let n = 0;
+  for (const { id, assenze } of voci) { b.set(doc(db, "espositori", docId(id)), { assenze }, { merge: true }); if (++n === 400) { await b.commit(); b = writeBatch(db); n = 0; } }
+  if (n) await b.commit();
+  return voci.length;
 }
 export const annullaPresenza = (id, operatore, motivo) => setDoc(doc(db, "presenze", id), { annullata: true, annullataDa: operatore, annullataOra: serverTimestamp(), motivoAnnullamento: motivo || "" }, { merge: true });
 export { getApp };

@@ -3,7 +3,8 @@
   "fonte": "Elenchi SUAP Comune di Maglie del 07/09/2026",
   "generato": "scripts/import-suap.py",
   "nota": "Solo campi pubblici. CF/P.IVA/indirizzi in espositori_riservati.json (non committato).",
-  "spuntisti": "Elenco spuntisti 2026 del SUAP (23/09/2026), tipo 'spuntista', scadenza 31/12/2026"
+  "spuntisti": "Elenco spuntisti 2026 del SUAP (23/09/2026), tipo 'spuntista', scadenza 31/12/2026",
+  "scadenzaFissi": "31/12/2040 per tutti i fissi (indicazione di Carlo del 24/09/2026)"
  },
  "espositori": [
   {
@@ -22,7 +23,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "laghezza-michele",
@@ -40,7 +42,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fiorentino-salvatore",
@@ -58,7 +61,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fiorentino-claudio",
@@ -76,7 +80,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "notaro-cesario-antonio",
@@ -94,7 +99,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "verardi-massimo",
@@ -112,7 +118,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-pascali-fabrizio",
@@ -130,7 +137,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-matteis-claudio",
@@ -148,7 +156,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "tedesco-vincenzo",
@@ -166,7 +175,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "nico-tonio",
@@ -184,7 +194,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "matricoti-dario",
@@ -202,7 +213,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cavaliere-luca",
@@ -220,7 +232,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "giannone-biagio",
@@ -238,7 +251,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "za-giampaolo",
@@ -256,7 +270,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "micello-massimo",
@@ -274,7 +289,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fitto-francesco",
@@ -292,7 +308,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "spagnolo-sebastiano",
@@ -310,7 +327,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "caputo-pasquale",
@@ -328,7 +346,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "marcuccio-sebastiano",
@@ -346,7 +365,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "blonda-luciano",
@@ -364,7 +384,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cafaro-cesario",
@@ -382,7 +403,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "inglese-gianni",
@@ -400,7 +422,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "poso-roberto",
@@ -418,7 +441,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "papa-roberto",
@@ -436,7 +460,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "ettaqy-m-hamed",
@@ -454,7 +479,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "beccarisi-claudio",
@@ -472,7 +498,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-pascali-antonio",
@@ -490,7 +517,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "ramundo-cosimo",
@@ -508,7 +536,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "venneri-mauro",
@@ -526,7 +555,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "maruccia-ivano",
@@ -544,7 +574,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "levanto-alessandro",
@@ -562,7 +593,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "morrone-salvatore",
@@ -580,7 +612,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "tundo-sergio",
@@ -598,7 +631,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "conte-cosimo",
@@ -616,7 +650,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "maggio-giuseppe",
@@ -634,7 +669,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "perrotta-gianpiero-davide",
@@ -652,7 +688,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "biondino-roberta",
@@ -670,7 +707,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-tommaso-maurizio",
@@ -688,7 +726,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "accogli-raffaele",
@@ -706,7 +745,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "stefanelli-marco",
@@ -724,7 +764,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "terragno-antonio",
@@ -742,7 +783,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "forlano-giuseppe",
@@ -760,7 +802,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "settimo-gianni",
@@ -778,7 +821,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "resta-vincenzo",
@@ -796,7 +840,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "paglialonga-alberto",
@@ -814,7 +859,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "riccardo-vito-giovanni",
@@ -832,7 +878,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "za-giampaolo-2",
@@ -850,7 +897,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "scrascia-adriano",
@@ -868,7 +916,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "antonaci-giovanni",
@@ -886,7 +935,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "macri-emanuele-salvatore",
@@ -904,7 +954,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "monte-alessandro",
@@ -922,7 +973,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "congedo-domenico",
@@ -940,7 +992,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "carlino-antonio",
@@ -958,7 +1011,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "ghazi-abes",
@@ -976,7 +1030,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "scrimieri-giovanni",
@@ -994,7 +1049,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "nuzzo-luigi",
@@ -1012,7 +1068,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "scrascia-antonio",
@@ -1030,7 +1087,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "milanese-piero",
@@ -1048,7 +1106,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "caiulo-marco",
@@ -1066,7 +1125,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "viceconte-francesko",
@@ -1084,7 +1144,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "miccoli-massimiliano",
@@ -1102,7 +1163,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "levanto-nicola",
@@ -1120,7 +1182,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "polimeno-salvatore",
@@ -1138,7 +1201,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fall-moustapha",
@@ -1156,7 +1220,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "luzio-enrico",
@@ -1174,7 +1239,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "sponziello-fernando",
@@ -1192,7 +1258,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "carrozzini-sergio",
@@ -1210,7 +1277,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "presicce-claudio",
@@ -1228,7 +1296,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-pascali-settimio",
@@ -1246,7 +1315,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "paglialonga-walter",
@@ -1264,7 +1334,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "frassante-fernando",
@@ -1282,7 +1353,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-santis-pantaleo",
@@ -1300,7 +1372,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "carcagni-francesco",
@@ -1318,7 +1391,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "antonaci-luigi",
@@ -1336,7 +1410,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "resta-salvatore",
@@ -1354,7 +1429,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "pisanello-luigi",
@@ -1372,7 +1448,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cannazza-adriano",
@@ -1390,7 +1467,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "epifani-massimo-salvatore",
@@ -1408,7 +1486,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-marco-silvia",
@@ -1426,7 +1505,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "doniselli-deborah",
@@ -1444,7 +1524,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "sraidi-mohamed",
@@ -1462,7 +1543,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "duca-massimo",
@@ -1480,7 +1562,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "morrone-vincenzo",
@@ -1498,7 +1581,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "madaghiele-alessandro",
@@ -1516,7 +1600,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "provenzano-giovanni",
@@ -1534,7 +1619,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "benegiamo-oronzo",
@@ -1552,7 +1638,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "greco-gian-marco",
@@ -1570,7 +1657,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "mele-marco",
@@ -1588,7 +1676,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "rizzo-marco",
@@ -1606,7 +1695,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "palumbo-lorenzo",
@@ -1624,7 +1714,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cirfera-daniela",
@@ -1642,7 +1733,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "paglialonga-daniele",
@@ -1660,7 +1752,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "calo-enzo",
@@ -1678,7 +1771,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "spalluto-pasquale",
@@ -1696,7 +1790,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "mazzotta-santo",
@@ -1714,7 +1809,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "greco-gianluca",
@@ -1732,7 +1828,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "madaro-graziano",
@@ -1750,7 +1847,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-nardo-rita",
@@ -1768,7 +1866,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "russo-franco",
@@ -1786,7 +1885,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "trianni-alessandro",
@@ -1804,7 +1904,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "pellegrino-vincenzo",
@@ -1822,7 +1923,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cataldi-simone",
@@ -1840,7 +1942,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "palama-daniele",
@@ -1858,7 +1961,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "petracca-angelo-quintino",
@@ -1876,7 +1980,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "vitale-lucio-james",
@@ -1894,7 +1999,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "dollorenzo-antonio",
@@ -1912,7 +2018,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "russo-pasquale-lillino",
@@ -1930,7 +2037,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "marrocco-raffaele",
@@ -1948,7 +2056,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "maruccia-fernando",
@@ -1966,7 +2075,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-magistri-marco",
@@ -1984,7 +2094,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "luzio-luigi",
@@ -2002,7 +2113,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fari-mino",
@@ -2020,7 +2132,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "bruno-luigi",
@@ -2038,7 +2151,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "tavola-alessandro",
@@ -2056,7 +2170,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "russo-simone",
@@ -2074,7 +2189,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "russo-antonio",
@@ -2092,7 +2208,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "singh-harpreet",
@@ -2110,7 +2227,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "agrimi-rosanna",
@@ -2128,7 +2246,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "gagliardi-cesare",
@@ -2146,7 +2265,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "giannotta-salvatore",
@@ -2164,7 +2284,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "giagnotti-valeria",
@@ -2182,7 +2303,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "luceri-gianpiero",
@@ -2200,7 +2322,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "candido-fabio",
@@ -2218,7 +2341,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fuso-alessandro-antonio",
@@ -2236,7 +2360,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "gabellone-angelo-pasquale",
@@ -2254,7 +2379,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "marrocco-mirco-salvatore",
@@ -2272,7 +2398,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "lorenzo-gianni",
@@ -2290,7 +2417,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "antonucci-vito",
@@ -2308,7 +2436,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "panico-salvatore-antonio",
@@ -2326,7 +2455,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "panico-dario-palmiro",
@@ -2344,7 +2474,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "ahmed-rana-sajjad",
@@ -2362,7 +2493,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "diouf-khadim",
@@ -2380,7 +2512,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "majdi-youness",
@@ -2398,7 +2531,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "nocera-giancarlo",
@@ -2416,7 +2550,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "rana-muhammad-ahmed-shahzad",
@@ -2434,7 +2569,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "raza-rana-ali",
@@ -2452,7 +2588,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "pranzo-antonio",
@@ -2470,7 +2607,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "raza-rana-asif",
@@ -2488,7 +2626,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "petracca-dario",
@@ -2506,7 +2645,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "miccoli-angelo",
@@ -2524,7 +2664,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "miccoli-antonio-giovanni",
@@ -2542,7 +2683,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "duma-antonio",
@@ -2560,7 +2702,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cimino-tommaso",
@@ -2578,7 +2721,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "maniglia-francesco",
@@ -2596,7 +2740,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "miccoli-giusto",
@@ -2614,7 +2759,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "serra-gianluigi",
@@ -2632,7 +2778,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "levanto-giampiero",
@@ -2650,7 +2797,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "falcone-romualdo",
@@ -2668,7 +2816,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "miccoli-damiano-donato",
@@ -2686,7 +2835,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "de-luca-biagio",
@@ -2704,7 +2854,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fersini-luigi",
@@ -2722,7 +2873,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "fersini-cristiana",
@@ -2740,7 +2892,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "operatori-vari-vendita-settimanale-carni",
@@ -2758,7 +2911,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "esposito-alessandro",
@@ -2776,7 +2930,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "vincenti-nicola",
@@ -2794,7 +2949,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "scarpa-raffaele",
@@ -2812,7 +2968,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "vincenti-marco",
@@ -2830,7 +2987,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "lazoi-salvatore",
@@ -2848,7 +3006,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "marra-tommaso",
@@ -2866,7 +3025,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "verardi-valter",
@@ -2884,7 +3044,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "perfetto-antonio",
@@ -2902,7 +3063,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "sticchi-roberto",
@@ -2920,7 +3082,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "sticchi-luigi",
@@ -2938,7 +3101,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "presicce-marco",
@@ -2956,7 +3120,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cisotta-antonio",
@@ -2974,7 +3139,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "rizzo-giuseppe",
@@ -2992,7 +3158,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "misciali-sebastiano",
@@ -3010,7 +3177,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "notaro-marco",
@@ -3028,7 +3196,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "cenere-giovanni",
@@ -3046,7 +3215,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "gatto-giuseppe",
@@ -3064,7 +3234,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "scrimieri-salvatore",
@@ -3082,7 +3253,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "papaleo-pasquale",
@@ -3100,7 +3272,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "calo-francesco",
@@ -3118,7 +3291,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "biasco-rocco",
@@ -3136,7 +3310,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "stefanizzi-donato-lorenzo",
@@ -3154,7 +3329,8 @@
    "whatsapp": null,
    "telegram": null,
    "descrizione": null,
-   "foto": null
+   "foto": null,
+   "scadenza": "2040-12-31"
   },
   {
    "id": "sene-ale",

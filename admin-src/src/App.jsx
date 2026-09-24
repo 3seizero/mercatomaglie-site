@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { stampaQr, qrDataUrl } from "./stampa.js";
 import {
   firebaseReady, MERCATI, SETTORI, TIPI, QUALIFICHE, RUOLI, IMPOSTAZIONI_DEFAULT, TIPI_CALENDARIO, useAdminAuth, useCollection, useDocumento, rebuildPubblico,
   salvaEspositore, nuovoEspositore, archiviaEspositore, assegnaPosteggio, liberaPosteggio, notaPosteggio, creaStaff, aggiornaStaff, inviaReset, generaToken, revocaToken, urlQr,
   FOTO_ABILITATE, CAMPI_RICHIESTA, approvaRichiesta, rifiutaRichiesta, caricaFoto, eliminaFoto, salvaFotoEspositore, salvaMercato, GIORNI, testoGiorni, testoOrario,
-  salvaImpostazioni, salvaVoceCalendario, eliminaVoceCalendario, caricaPresenze, annullaPresenza, nomePub, oggi, scaduto,
+  salvaImpostazioni, salvaVoceCalendario, eliminaVoceCalendario, caricaPresenze, annullaPresenza, salvaContatoriAssenze, nomePub, oggi, scaduto, SCADENZA_FISSI,
 } from "./api.js";
-import { giornateMercato, riepilogoEspositori, righeRegistro, esportaExcel, stampaReport, dataIt } from "./report.js";
+import { giornateMercato, riepilogoEspositori, righeRegistro, esportaExcel, stampaReport, dataIt, assenzeConsecutive } from "./report.js";
 
 const sup = (p) => (p && p.superficie && typeof p.superficie === "object") ? p.superficie.raw : (p ? p.superficie : null);
 const numKey = (v) => { const m = String(v || "").match(/\d+/); return m ? Number(m[0]) : 9999; };
@@ -20,6 +20,50 @@ const useRun = () => {
   return { msg, setMsg, busy, run };
 };
 const Msg = ({ m }) => (m ? <div className={"msg " + (m.ok ? "ok" : "err")}>{m.t}</div> : null);
+
+/** Ultima giornata di mercato conclusa (data < oggi, oppure oggi dopo la chiusura). */
+function ultimaGiornataConclusa(m, calendario) {
+  const g = oggi(); const anno = g.slice(0, 4);
+  const { giornate } = giornateMercato(m, calendario, `${anno}-01-01`, g);
+  const now = new Date(); const hm = now.getHours() * 60 + now.getMinutes();
+  const [ch, cm] = String(m.chiusura || "13:00").split(":").map(Number);
+  return giornate.map((x) => x.data).filter((d) => d < g || hm >= ch * 60 + cm).pop() || null;
+}
+/** Contatori delle assenze consecutive dei fissi (area mercatale), ricalcolati e salvati su Firestore quando non aggiornati
+ *  all'ultima giornata conclusa. Le giornate soppresse dal SUAP non contano. */
+export async function ricalcolaContatori({ espositori, mercato, calendario }) {
+  const fino = ultimaGiornataConclusa(mercato, calendario); if (!fino) return { fino: null, n: 0 };
+  const anno = fino.slice(0, 4); const da = `${anno}-01-01`;
+  const presenze = await caricaPresenze(da, fino);
+  const { giornate } = giornateMercato(mercato, calendario, da, fino);
+  const voci = [];
+  for (const e of espositori) {
+    if (e.tipo === "spuntista" || e.attivo === false || !(e.posteggi || []).length) continue;
+    const date = new Set(presenze.filter((p) => p.espositoreId === e.id && p.mercato === mercato.id && !p.annullata).map((p) => p.data));
+    const s = assenzeConsecutive(giornate, date, fino);
+    const nuovo = { anno: Number(anno), consecutive: s.consecutive, dal: s.dal, massimo: s.massimo, dalMassimo: s.dalMassimo, ultimaPresenza: s.ultimaPresenza, giornate: s.giornate, calcolatoIl: fino };
+    if (JSON.stringify(e.assenze || null) !== JSON.stringify(nuovo)) voci.push({ id: e.id, assenze: nuovo });
+  }
+  if (voci.length) await salvaContatoriAssenze(voci);
+  return { fino, n: voci.length };
+}
+function useContatoriAssenze(auth, espositori, mercati, calendario, pronti) {
+  const fatto = useRef(false);
+  useEffect(() => {
+    if (!auth.isSuap || fatto.current || !pronti || !espositori.length) return;
+    const m = mercati.find((x) => x.id === "area-mercatale"); if (!m) return;
+    const fino = ultimaGiornataConclusa(m, calendario); if (!fino) return;
+    const daAggiornare = espositori.some((e) => e.tipo !== "spuntista" && e.attivo !== false && (e.posteggi || []).length && (!e.assenze || e.assenze.calcolatoIl !== fino));
+    fatto.current = true;
+    if (daAggiornare) ricalcolaContatori({ espositori, mercato: m, calendario }).catch(() => {});
+  }, [auth.isSuap, espositori, mercati, calendario, pronti]);
+}
+const TagAssenze = ({ e, soglia }) => {
+  const a = e.assenze; if (!a || e.tipo === "spuntista") return null;
+  if (soglia > 0 && a.consecutive > soglia) return <span className="tag red" title={`Serie in corso dal ${dataIt(a.dal)} · soglia ${soglia}`}>{a.consecutive} assenze consecutive</span>;
+  if (a.consecutive > 0) return <div className="muted" title={`dal ${dataIt(a.dal)}`}>{a.consecutive} assenz{a.consecutive === 1 ? "a" : "e"} consecutiv{a.consecutive === 1 ? "a" : "e"}</div>;
+  return null;
+};
 
 /** Indice posteggio -> espositore fisso, dal modello v3 (espositori.posteggi[]). */
 const usaAssegnazioni = (espositori) => useMemo(() => {
@@ -86,6 +130,10 @@ function Espositori({ auth }) {
   const { rows: espositori, error: e1 } = useCollection("espositori");
   const { rows: posteggi } = useCollection("posteggi");
   const { rows: riservati } = useCollection("espositori_riservati", auth.isSuap);
+  const { rows: mercatiRows, loaded: l1 } = useCollection("mercati"); const { rows: calendario, loaded: l2 } = useCollection("calendario");
+  const imp = useDocumento("impostazioni", "area-mercatale");
+  useContatoriAssenze(auth, espositori, mercatiRows, calendario, l1 && l2);
+  const soglia = imp?.assenzeMassime ?? IMPOSTAZIONI_DEFAULT.assenzeMassime;
   const [q, setQ] = useState(""); const [filtro, setFiltro] = useState("fisso"); const [mercato, setMercato] = useState("tutti"); const [sel, setSel] = useState(null); const [nuovo, setNuovo] = useState(false);
   const [avviso, setAvviso] = useState(null);
   useEffect(() => { if (!avviso) return; const t = setTimeout(() => setAvviso(null), 6000); return () => clearTimeout(t); }, [avviso]);
@@ -131,7 +179,7 @@ function Espositori({ auth }) {
               <td>{e.referente || <span className="muted">—</span>}</td>
               <td>{e.tipo === "spuntista" ? <span className="muted">spuntista{e.scadenza ? ` · fino al ${dataIt(e.scadenza)}` : ""}</span> : <>{(byEsp[e.id] || []).map((pid) => <span key={pid} className="tag grey">{pid}</span>)}{!(byEsp[e.id] || []).length && <span className="muted">nessuno</span>}</>}</td>
               <td className="muted">{[e.whatsapp && "WhatsApp", e.telegram && "Telegram", e.email && "email"].filter(Boolean).join(", ") || "—"}</td>
-              <td>{e.attivo === false ? <span className="tag red">archiviato</span> : scaduto(e) ? <span className="tag red" title="Validità terminata: rinnova dalla scheda">scaduto il {dataIt(e.scadenza)}</span> : <span className="tag green">attivo</span>}{risById[e.id]?.qrToken && <span className="tag">QR</span>}</td>
+              <td>{e.attivo === false ? <span className="tag red">archiviato</span> : scaduto(e) ? <span className="tag red" title="Validità terminata: rinnova dalla scheda">scaduto il {dataIt(e.scadenza)}</span> : <span className="tag green">attivo</span>}{risById[e.id]?.qrToken && <span className="tag">QR</span>}<TagAssenze e={e} soglia={soglia} /></td>
             </tr>
           ))}
         </tbody></table>
@@ -225,6 +273,11 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
     <div className="panel">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><h3 style={{ margin: 0 }}>{esp ? nomePub(esp) : "Nuovo espositore"}</h3><button className="btn sm" onClick={onClose}>Chiudi</button></div>
       {esp && <div className="muted" style={{ marginBottom: 10 }}>id {esp.id}{esp.attivo === false && " · archiviato"}</div>}
+      {esp && esp.assenze && !spuntista && (
+        <div className={"msg " + (esp.assenze.consecutive > 0 ? "err" : "ok")} style={{ fontSize: 12 }}>
+          <b>Assenze consecutive in corso: {esp.assenze.consecutive}</b>{esp.assenze.dal ? ` (dal ${dataIt(esp.assenze.dal)})` : ""} · serie più lunga del {esp.assenze.anno}: {esp.assenze.massimo}{esp.assenze.dalMassimo ? ` (dal ${dataIt(esp.assenze.dalMassimo)})` : ""} · ultima presenza: {esp.assenze.ultimaPresenza ? dataIt(esp.assenze.ultimaPresenza) : "nessuna"} · su {esp.assenze.giornate} giornate svolte, aggiornato al {dataIt(esp.assenze.calcolatoIl)}
+        </div>
+      )}
       {esp && scaduto(esp) && esp.attivo !== false && (
         <div className="msg err" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <span><b>Scaduto il {dataIt(esp.scadenza)}.</b> {spuntista ? "Non compare più tra gli spuntisti nell'app finché non viene rinnovato." : "La concessione risulta scaduta."} L'anagrafica resta: per riattivarlo basta rinnovare la validità.</span>
@@ -248,7 +301,7 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
       </div>
       <div className="row2">
         <div className="field"><label>Categoria merceologica</label><input type="text" value={pub.categoria} onChange={set("categoria")} placeholder="es. Abbigliamento, Ortofrutta…" /></div>
-        <div className="field"><label>{spuntista ? "Valido fino al (elenco spuntisti)" : "Scadenza concessione"}</label><input type="date" value={pub.scadenza || ""} onChange={set("scadenza")} /></div>
+        <div className="field"><label>{spuntista ? "Valido fino al (elenco spuntisti)" : "Scadenza concessione"}</label><input type="date" value={pub.scadenza || ""} onChange={set("scadenza")} />{!spuntista && !pub.scadenza && <div className="muted">Se vuota: {dataIt(SCADENZA_FISSI)}</div>}</div>
       </div>
       <div className="field"><label>Descrizione (cosa espone, marchi… max 500 caratteri) <span className="muted">{(pub.descrizione || "").length}/500</span></label><textarea value={pub.descrizione} onChange={set("descrizione")} maxLength={500} /></div>
       <div className="field"><label><input type="checkbox" checked={pub.visibile !== false} onChange={set("visibile")} /> Visibile nell'app (privacy: se disattivato non compaiono nome, contatti e descrizione; il posteggio risulta occupato)</label></div>
@@ -460,7 +513,7 @@ function SchedaImpostazioni({ mercatoId, imp, auth }) {
         <div className="field"><label>Ora limite di spunta</label><input type="time" value={f.oraLimiteSpunta} onChange={set("oraLimiteSpunta")} /><div className="muted">Entro quest'ora i fissi devono presentarsi: dopo, chi non si è presentato risulta assente per la giornata e il suo posteggio può essere dato a uno spuntista.</div></div>
         <div className="field"><label>Ora di azzeramento</label><input type="time" value={f.oraAzzeramento} onChange={set("oraAzzeramento")} /><div className="muted">Dopo quest'ora nell'app tutti risultano assenti, pronti per la giornata successiva.</div></div>
       </div>
-      <div className="field"><label>Assenze massime nell'anno (fissi)</label><input type="number" min="0" value={f.assenzeMassime} onChange={set("assenzeMassime")} style={{ width: 120 }} /><div className="muted">Oltre questa soglia la concessione è revocabile: il report evidenzia chi la supera. 0 = nessuna soglia.</div></div>
+      <div className="field"><label>Assenze consecutive massime (fissi)</label><input type="number" min="0" value={f.assenzeMassime} onChange={set("assenzeMassime")} style={{ width: 120 }} /><div className="muted">Serie di giornate di mercato consecutive in cui il fisso è assente: oltre questa soglia la concessione è revocabile. Le giornate soppresse dal SUAP non contano e non interrompono la serie. Il contatore di ogni espositore è aggiornato automaticamente dopo ogni giornata; 0 = nessuna soglia.</div></div>
       <Msg m={msg} />
       {auth.isSuap && <div className="actions"><button className="btn primary" disabled={busy} onClick={() => run(() => salvaImpostazioni(mercatoId, f), "Impostazioni salvate: l'app le applica subito")}>Salva</button></div>}
     </div>
@@ -522,7 +575,8 @@ function Report({ auth }) {
   const { giornate, soppresse } = useMemo(() => (m ? giornateMercato(m, calendario, da, a) : { giornate: [], soppresse: [] }), [m, calendario, da, a]);
   const filtrate = useMemo(() => (presenze || []).filter((p) => p.mercato === mercato)
     .filter((p) => !fEsp || p.espositoreId === fEsp).filter((p) => !fPost || p.posteggioId === fPost).filter((p) => !fOp || (p.operatore && p.operatore.uid === fOp)), [presenze, mercato, fEsp, fPost, fOp]);
-  const riepilogo = useMemo(() => presenze ? riepilogoEspositori({ presenze: filtrate, espositori: espositori.filter((e) => !fEsp || e.id === fEsp), giornate, mercatoId: mercato, assenzeMassime: imp?.assenzeMassime ?? IMPOSTAZIONI_DEFAULT.assenzeMassime }).filter((r) => !soloOltre || r.oltreSoglia) : [], [presenze, filtrate, espositori, giornate, mercato, imp, fEsp, soloOltre]);
+  const riepilogo = useMemo(() => presenze ? riepilogoEspositori({ presenze: filtrate, espositori: espositori.filter((e) => !fEsp || e.id === fEsp), giornate, mercatoId: mercato, assenzeMassime: imp?.assenzeMassime ?? IMPOSTAZIONI_DEFAULT.assenzeMassime, fino: a }).filter((r) => !soloOltre || r.oltreSoglia) : [], [presenze, filtrate, espositori, giornate, mercato, imp, fEsp, soloOltre, a]);
+  const ricalcola = () => run(async () => { const r = await ricalcolaContatori({ espositori, mercato: m, calendario }); return r; }, "Contatori delle assenze consecutive aggiornati");
   const registro = useMemo(() => righeRegistro(filtrate, espById), [filtrate, espById]);
   const posteggiUsati = useMemo(() => [...new Set((presenze || []).map((p) => p.posteggioId).filter(Boolean))].sort(), [presenze]);
   const titolo = `Presenze ${m ? m.nome : mercato}`;
@@ -543,15 +597,16 @@ function Report({ auth }) {
           <select value={fOp} onChange={(e) => setFOp(e.target.value)} style={{ width: "auto" }}><option value="">Tutti gli operatori</option>{staff.map((s) => <option key={s._id} value={s._id}>{[s.nome, s.cognome].filter(Boolean).join(" ") || s.email}</option>)}</select>
           <div className="tabs">{[["riepilogo", "Riepilogo per espositore"], ["registro", "Registro presenze"]].map(([v, l]) => <button key={v} className={vista === v ? "active" : ""} onClick={() => setVista(v)}>{l}</button>)}</div>
           {vista === "riepilogo" && <label className="muted"><input type="checkbox" checked={soloOltre} onChange={(e) => setSoloOltre(e.target.checked)} /> solo oltre soglia</label>}
+          {mercato === "area-mercatale" && <button className="btn" disabled={busy || !m} onClick={ricalcola} title="Ricalcola e salva su ogni espositore fisso la serie di assenze consecutive">Aggiorna contatori</button>}
           <button className="btn" onClick={() => run(async () => esportaExcel(args), "File Excel generato")}>Excel</button>
           <button className="btn" onClick={() => run(async () => stampaReport(args), "Stampa avviata (salva come PDF)")}>PDF</button>
         </div>
-        <p className="muted">Periodo {dataIt(da)} – {dataIt(a)}: <b>{giornate.length}</b> giornate di mercato svolte{soppresse.length ? <>, <b>{soppresse.length}</b> soppresse ({soppresse.map((s) => dataIt(s.data)).join(", ")})</> : ""} · {filtrate.filter((p) => !p.annullata).length} presenze certificate{imp?.assenzeMassime ? ` · soglia assenze ${imp.assenzeMassime}` : ""}. Le assenze dei fissi sono calcolate sulle giornate svolte.</p>
+        <p className="muted">Periodo {dataIt(da)} – {dataIt(a)}: <b>{giornate.length}</b> giornate di mercato svolte{soppresse.length ? <>, <b>{soppresse.length}</b> soppresse ({soppresse.map((s) => dataIt(s.data)).join(", ")})</> : ""} · {filtrate.filter((p) => !p.annullata).length} presenze certificate{imp?.assenzeMassime ? ` · soglia ${imp.assenzeMassime} assenze consecutive` : ""}. Le assenze dei fissi sono calcolate sulle giornate svolte: le soppresse non contano e non interrompono la serie.</p>
         <Msg m={msg} />
         {vista === "riepilogo" && (
-          <table className="grid"><thead><tr><th>Espositore</th><th>Tipo</th><th>Posteggi</th><th>Presenze</th><th>Assenze</th><th>Via QR</th><th>Ultima</th></tr></thead><tbody>
+          <table className="grid"><thead><tr><th>Espositore</th><th>Tipo</th><th>Posteggi</th><th>Presenze</th><th>Assenze totali</th><th>Consecutive in corso</th><th>Serie massima</th><th>Ultima</th></tr></thead><tbody>
             {riepilogo.map((r) => <tr key={r.id} style={r.oltreSoglia ? { background: "var(--rosso-assenza-tint)" } : undefined}>
-              <td><b>{r.nome}</b>{r.oltreSoglia && <span className="tag red">oltre soglia</span>}</td><td className="muted">{r.tipo}</td><td className="muted">{r.posteggi}</td><td>{r.presenze}</td><td>{r.assenze ?? "—"}</td><td>{r.qr}</td><td className="muted">{dataIt(r.ultima)}</td>
+              <td><b>{r.nome}</b>{r.oltreSoglia && <span className="tag red">oltre soglia</span>}</td><td className="muted">{r.tipo}</td><td className="muted">{r.posteggi}</td><td>{r.presenze}</td><td>{r.assenze ?? "—"}</td><td>{r.consecutive ?? "—"}{r.dal ? <div className="muted">dal {dataIt(r.dal)}</div> : null}</td><td>{r.massimoConsecutive ?? "—"}</td><td className="muted">{dataIt(r.ultima)}</td>
             </tr>)}
           </tbody></table>
         )}

@@ -23,7 +23,7 @@ Un'unica anagrafica per tutti: fissi e spuntisti hanno la stessa scheda e gli st
 | `visibile` | privacy: `false` = non compare nel frontend (il posteggio risulta occupato ma senza nome né contatti) |
 | `mercati`, `settori`, `categoria` | come oggi |
 | `posteggi` | array di id posteggio assegnati (solo fissi), es. `["A-30","A-31"]` |
-| `scadenza` | data di fine concessione o di validità nell'elenco spuntisti (31/12 dell'anno); facoltativa per i fissi finché il SUAP non conferma |
+| `scadenza` | fissi: 31/12/2040 (Carlo, 24/09/2026), default per i nuovi; spuntisti: 31/12 dell'anno dell'elenco |
 | `attivo` | `false` = archiviato, non compare da nessuna parte |
 | `foto` | invariato, funzione ancora nascosta |
 
@@ -44,7 +44,7 @@ Geometria e classificazione; via `espositoreId` e `stato`. Lo stato (assegnato/v
 | `registroPresenze` | `true` (coperto e ortofrutticolo: `false`) | se `false` niente presenze né presente/assente nel frontend |
 | `oraLimiteSpunta` | `10:00` | entro quest'ora i fissi devono presentarsi; dopo, i non presentati sono assenti e i loro posteggi assegnabili agli spuntisti |
 | `oraAzzeramento` | `14:00` | dopo quest'ora tutti risultano assenti (ripristino per la giornata successiva); alle 14 per lasciare a tutti il tempo di andare via |
-| `assenzeMassime` | `20` | soglia annua di assenze non giustificate oltre la quale la concessione è revocabile (confermata da Carlo il 23/09/2026) |
+| `assenzeMassime` | `18` | assenze **consecutive** massime (Carlo, 24/09/2026): serie di giornate svolte consecutive in cui il fisso è assente; le giornate soppresse non contano e non interrompono la serie. Contatore per espositore in `espositori.{id}.assenze` {anno, consecutive, dal, massimo, dalMassimo, ultimaPresenza, giornate, calcolatoIl}, ricalcolato dal pannello (all'apertura di Espositori se non aggiornato all'ultima giornata conclusa, o con "Aggiorna contatori" nel report) |
 
 ### `calendario/{mercato}_{data}` (scrittura admin/suap)
 | campo | note |
@@ -103,7 +103,7 @@ Il pannello desktop è per admin e suap. L'app è per il pubblico e per l'operat
 ### SUAP (pannello)
 - Anagrafiche fissi e spuntisti (con scadenza), assegnazione e revoca di uno o più posteggi per espositore, privacy.
 - Impostazioni del mercato e calendario.
-- Report: filtro per periodo, espositore, posteggio, operatore; conteggio presenze, assenze e assenze giustificate; export Excel (xlsx) e PDF.
+- Report: filtro per periodo, espositore, posteggio, operatore; presenze, assenze totali, assenze consecutive in corso e serie massima (soglia 18 consecutive); export Excel (xlsx) e PDF.
 
 ### Certificazione di fine giornata (fase successiva)
 Chiusura del registro del giorno da parte dell'operatore con sigillo digitale (hash delle presenze del giorno firmato con l'utente e l'orario); dopo la chiusura nessuna modifica. Da valutare insieme in coda a tutto il resto.

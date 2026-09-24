@@ -30,9 +30,9 @@ export const nomePubblico = (e) => (e ? (e.riservato ? "Espositore" : (e.alias &
 
 // ---------------------------------------------------------------- impostazioni per mercato
 export const IMPOSTAZIONI_DEFAULT = {
-  "area-mercatale": { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 20 },
-  coperto: { registroPresenze: false, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 20 },
-  ortofrutticolo: { registroPresenze: false, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 20 },
+  "area-mercatale": { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18 },   // assenze consecutive
+  coperto: { registroPresenze: false, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18 },
+  ortofrutticolo: { registroPresenze: false, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18 },
 };
 export function useImpostazioni() {
   const [imp, setImp] = useState(IMPOSTAZIONI_DEFAULT);

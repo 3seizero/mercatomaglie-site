@@ -64,7 +64,7 @@ const IMP = { 'area-mercatale': { registroPresenze: true }, coperto: { registroP
 for (const m of Object.keys(IMP)) {
   const ref = db.collection('impostazioni').doc(m);
   const cur = (await ref.get()).data() || {};
-  const val = { id: m, oraLimiteSpunta: '10:00', oraAzzeramento: '14:00', assenzeMassime: 20, ...IMP[m], ...cur, _aggiornato: FieldValue.serverTimestamp() };
+  const val = { id: m, oraLimiteSpunta: '10:00', oraAzzeramento: '14:00', assenzeMassime: 18, ...IMP[m], ...cur, _aggiornato: FieldValue.serverTimestamp() };
   if (!dry) await ref.set(val, { merge: true });
 }
 log('impostazioni: ok');

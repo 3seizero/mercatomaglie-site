@@ -84,7 +84,9 @@ git add . && git commit -m "descrizione" && git push
   (operatore, GPS, metodo qr|elenco; annullamento = `annullata:true`, la riga resta). Scrittura via
   `setPresenza` (solo staff). `impostazioni/{mercato}`: registroPresenze (coperto e ortofrutticolo: false),
   oraLimiteSpunta 10:00 (dopo: i fissi non presentati sono assenti e NON più registrabili; i loro posteggi vanno agli spuntisti),
-  oraAzzeramento 14:00 (dopo: l'app mostra tutti assenti), assenzeMassime 20. `calendario/{mercato}_{data}`:
+  oraAzzeramento 14:00 (dopo: l'app mostra tutti assenti), assenzeMassime 18 = assenze CONSECUTIVE (contatore
+  `espositori.{id}.assenze` ricalcolato dal pannello, funzione `ricalcolaContatori` in admin-src/src/App.jsx).
+  Scadenza fissi 31/12/2040 (default per i nuovi). `calendario/{mercato}_{data}`:
   giornate soppresse/spostate/straordinarie (avviso nell'app; il report conta le assenze solo sulle giornate svolte).
 - Login staff con Firebase Auth email+password; ruolo e anagrafica (nome, cognome, telefono, attivo) in `staff/{uid}`.
   Le regole leggono `'role' in request.auth.token` (claim) altrimenti il documento staff: NON usare

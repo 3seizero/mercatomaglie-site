@@ -25,7 +25,7 @@ export const normalizzaEspositore = (e) => {
   return { ...rest, id: docId(e.id), tipo: spuntista ? 'spuntista' : 'fisso',
     qualifica: spuntista ? (e.qualifica || null) : (tipo && tipo !== 'fisso' ? tipo : e.qualifica || 'concessionario'),
     posteggi: spuntista ? [] : (assegn[e.id] || []), visibile: e.visibile !== false, attivo: e.attivo !== false,
-    scadenza: e.scadenza || null, email: e.email || null };
+    scadenza: e.scadenza || (spuntista ? null : '2040-12-31'), email: e.email || null };
 };
 const espositori = espositoriSeed.map(normalizzaEspositore);
 
@@ -51,7 +51,7 @@ if (!soloEspositori) {
   await batchWrite('posteggi', extra, g => ({ id: g.id, data: { id: g.id, mercato: 'area-mercatale', settore: g.settore, numero: g.numero,
     etichetta: `Settore ${g.settore} · n. ${g.numero}`, tipo: 'posteggio', inElenco: false, mappa: geom(g) } }));
   const IMP = { 'area-mercatale': { registroPresenze: true }, coperto: { registroPresenze: false }, ortofrutticolo: { registroPresenze: false } };
-  for (const m of mercati) await db.collection('impostazioni').doc(m.id).set({ id: m.id, oraLimiteSpunta: '10:00', oraAzzeramento: '14:00', assenzeMassime: 20, ...IMP[m.id] }, { merge: true });
+  for (const m of mercati) await db.collection('impostazioni').doc(m.id).set({ id: m.id, oraLimiteSpunta: '10:00', oraAzzeramento: '14:00', assenzeMassime: 18, ...IMP[m.id] }, { merge: true });
   console.log('impostazioni: 3 documenti (merge)');
 }
 await batchWrite('espositori', espositori, e => ({ id: e.id, data: e }));
