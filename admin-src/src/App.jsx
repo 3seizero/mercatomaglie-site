@@ -270,8 +270,8 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
   const archivia = () => confirm(esp.attivo === false ? "Riattivare l'espositore?" : "Archiviare l'espositore? Sparisce dall'app e dagli elenchi, i posteggi restano assegnati finché non li liberi.") &&
     run(async () => { await archiviaEspositore(esp.id, esp.attivo === false); await rebuildPubblico(tutti.espositori.map((e) => (e.id === esp.id ? { ...e, attivo: esp.attivo === false } : e)), tutti.posteggi); }, esp.attivo === false ? "Riattivato" : "Archiviato");
   return (
-    <div className="panel">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><h3 style={{ margin: 0 }}>{esp ? nomePub(esp) : "Nuovo espositore"}</h3><button className="btn sm" onClick={onClose}>Chiudi</button></div>
+    <div className="panel scheda">
+      <div className="scheda-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><h3 style={{ margin: 0 }}>{esp ? nomePub(esp) : "Nuovo espositore"}</h3><button className="btn sm" onClick={onClose}>Chiudi</button></div>
       {esp && <div className="muted" style={{ marginBottom: 10 }}>id {esp.id}{esp.attivo === false && " · archiviato"}</div>}
       {esp && esp.assenze && !spuntista && (
         <div className={"msg " + (esp.assenze.consecutive > 0 ? "err" : "ok")} style={{ fontSize: 12 }}>
