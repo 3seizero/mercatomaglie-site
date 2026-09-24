@@ -49,7 +49,7 @@ git add . && git commit -m "descrizione" && git push
 - Font: Montserrat (Google Fonts)
 - Storage: localStorage (migrazione Firebase pianificata)
 - Deploy: GitHub → Plesk webhook automatico
-- Hosting: 3seizero.com/projects/maglie/areamercatale/
+- Hosting: mercati.visitmaglie.com (vedi URL); vecchio 3seizero.com/projects/maglie/areamercatale/
 
 ## Palette colori
 - Terra: #3d2b1a
@@ -60,8 +60,11 @@ git add . && git commit -m "descrizione" && git push
 - Rosso assente: rgba(210,40,40,0.50)
 
 ## URL
-- Microsito: https://3seizero.com/projects/maglie/areamercatale/
-- Web app: https://3seizero.com/projects/maglie/areamercatale/app/
+- PRODUZIONE (dal 24/09/2026): https://mercati.visitmaglie.com/ (sito), /app/ (web app), /admin/ (pannello)
+  Server Plesk 57.128.29.118 (`ssh debian@57.128.29.118`), subscription visitmaglie.com su IP 178.32.137.44,
+  deploy GitHub → webhook Plesk (estensione Git, deployment path `/mercati.visitmaglie.com` relativo alla home).
+- Vecchio indirizzo: https://3seizero.com/projects/maglie/areamercatale/ (+ /app/, /admin/): riceve ancora i deploy;
+  diventerà un redirect 301 verso il nuovo dominio (i QR già stampati puntano lì). Le build usano `base: './'`.
 - GitHub: https://github.com/3seizero/mercatomaglie-site
 
 ## Note importanti

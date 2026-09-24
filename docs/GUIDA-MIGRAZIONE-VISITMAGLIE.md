@@ -1,5 +1,11 @@
 # Migrazione su mercati.visitmaglie.com — verifica del server e guida passo passo
 
+> **Stato al 24/09/2026 (ore 13):** il server di destinazione è `57.128.29.118` (Plesk "objective-elgamal", lo stesso dei
+> progetti Totem/Casa Museo), non quello ipotizzato in prima stesura. Fatti: DNS (A → 178.32.137.44, IP della subscription),
+> sottodominio, certificato Let's Encrypt, deploy Git con webhook GitHub, codice con base relativa, primo deploy verificato
+> (sito, app, pannello, service worker, manifest in HTTPS). Da fare: autorizzazione del dominio su Firebase (serve il rinnovo
+> delle credenziali gcloud), collaudo completo, redirect dal vecchio indirizzo.
+
 Data: 24/09/2026. Origine: `https://3seizero.com/projects/maglie/areamercatale/` (Plesk, deploy GitHub → webhook).
 Destinazione: `https://mercati.visitmaglie.com/` (sito alla radice, app in `/app/`, pannello in `/admin/`).
 
