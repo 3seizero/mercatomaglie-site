@@ -5,7 +5,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/projects/maglie/areamercatale/app/',
+  // base relativa: la stessa build funziona in qualunque cartella (3seizero.com/projects/... e mercati.visitmaglie.com/app/)
+  base: './',
   // Sorgenti in app-src/ (sviluppo), build pubblicata in ../app (produzione, committata)
   build: {
     outDir: '../app',

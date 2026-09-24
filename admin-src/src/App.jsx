@@ -88,7 +88,7 @@ export default function App() {
         <div className="who">{auth.nome || auth.user.email}<br /><b>{auth.role}</b></div>
         {VOCI.map(([id, l]) => <button key={id} className={page === id ? "active" : ""} onClick={() => setPage(id)}>{l}</button>)}
         <div className="spacer" />
-        <a className="pub" href="/projects/maglie/areamercatale/app/" target="_blank" rel="noreferrer">Apri l'app pubblica ↗</a>
+        <a className="pub" href="../app/" target="_blank" rel="noreferrer">Apri l'app pubblica ↗</a>
         <button onClick={auth.logout}>Esci</button>
       </aside>
       <main className="main">

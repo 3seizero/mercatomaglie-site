@@ -7,7 +7,7 @@ export async function stampaQr(voci) {
   const cards = [];
   for (const v of voci) {
     const png = await QRCode.toDataURL(urlQr(v.token), { width: 520, margin: 1, errorCorrectionLevel: "M", color: { dark: "#2c1d0e" } });
-    cards.push(`<div class="card"><div class="head"><img class="lockup" src="https://3seizero.com/projects/maglie/areamercatale/app/brand/lockup-orizzontale-colore.svg" alt="Area Mercatale Maglie"><div class="sub">presenza espositore</div></div>
+    cards.push(`<div class="card"><div class="head"><img class="lockup" src="${new URL("../app/brand/lockup-orizzontale-colore.svg", window.location.href).href}" alt="Area Mercatale Maglie"><div class="sub">presenza espositore</div></div>
       <img src="${png}"><div class="nome">${esc(v.nome)}</div><div class="sotto">${esc(v.sotto || "")}</div></div>`);
   }
   const html = `<!doctype html><html lang="it"><head><meta charset="utf-8"><title>QR espositori</title><style>

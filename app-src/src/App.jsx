@@ -696,7 +696,7 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
         <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color={C.ocra} sw={1.5}/></div>
         <div style={S.loginH}>Ruolo {auth.role}</div>
         <div style={S.loginSub}>Le presenze possono essere registrate solo dagli operatori di controllo. Il SUAP gestisce anagrafiche, impostazioni e report dal pannello di gestione.</div>
-        <a href="/projects/maglie/areamercatale/admin/" style={{...S.loginBtn,textDecoration:"none",marginBottom:10}}>Apri il pannello di gestione</a>
+        <a href="../admin/" style={{...S.loginBtn,textDecoration:"none",marginBottom:10}}>Apri il pannello di gestione</a>
         <button style={S.cancelBtn} onClick={auth.logout}>Esci</button>
       </div>
     </div>

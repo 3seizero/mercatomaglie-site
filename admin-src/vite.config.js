@@ -4,7 +4,7 @@ import legacy from '@vitejs/plugin-legacy'
 // Pannello di gestione: sorgenti in admin-src/, build in ../admin (servito a /areamercatale/admin/).
 // Usa la stessa configurazione Firebase dell'app (app-src/.env.local).
 export default defineConfig({
-  base: '/projects/maglie/areamercatale/admin/',
+  base: './',   // base relativa: funziona in qualunque cartella (vedi app-src/vite.config.js)
   envDir: '../app-src',
   build: { outDir: '../admin', emptyOutDir: true },
   plugins: [

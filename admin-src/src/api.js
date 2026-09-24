@@ -195,7 +195,8 @@ export async function revocaToken(espositoreId, token) {
   b.set(doc(db, "espositori_riservati", docId(espositoreId)), { qrToken: deleteField() }, { merge: true });
   await b.commit();
 }
-export const APP_URL = "https://3seizero.com/projects/maglie/areamercatale/app/";
+// URL pubblico dell'app, ricavato da dove gira il pannello (…/admin/ -> …/app/): i QR escono con il dominio corrente
+export const APP_URL = new URL("../app/", window.location.href).href;
 export const urlQr = (token) => `${APP_URL}#/v/${token}`;
 
 /** Richieste self-service: approva (applica i campi all'espositore) o rifiuta. */
