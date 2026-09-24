@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { firebaseReady, FOTO_ABILITATE } from "./firebase.js";
 import { C } from "./brand/tokens.js";
 import { PageScheda, Scanner, tokenDaTesto } from "./qr.jsx";
+import { FormCambioPassword } from "./password.jsx";
 import { PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H, GEO, MERCATI, SETTORI, usePresenze, usePubblico, useMercati, useAperture, useImpostazioni, useCalendario, avvisiCalendario, prossimaApertura, setPresenza, useAuth, buildPostazioni, buildElenco, buildSpuntisti, posteggiPerSpuntisti, dopoOraLimite } from "./dati.js";
 
 // Font: Montserrat locale via brand/tokens.css (importato in main.jsx)
@@ -690,6 +691,7 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
     setBusy(false);
   }
 
+  if(auth.user&&auth.isStaff&&auth.deveCambiarePassword) return <FormCambioPassword auth={auth} S={S} Icon={Icon}/>;
   if(auth.user&&auth.isStaff&&!auth.puoRegistrare) return(
     <div style={S.loginWrap}>
       <div style={S.loginBox}>

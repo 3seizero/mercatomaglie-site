@@ -83,6 +83,7 @@ export default function App() {
   if (!firebaseReady) return <div className="login"><div className="box"><h1>Backend non configurato</h1><p>Manca app-src/.env.local con la configurazione Firebase.</p></div></div>;
   if (auth.loading) return <div className="login"><p>Caricamento…</p></div>;
   if (!auth.user || !auth.isSuap) return <Login auth={auth} />;
+  if (auth.deveCambiarePassword) return <PrimoAccesso auth={auth} />;
   const VOCI = [["espositori", "Espositori"], ["posteggi", "Posteggi"], ["richieste", `Richieste${inAttesa ? ` (${inAttesa})` : ""}`], ["report", "Report presenze"], ["impostazioni", "Impostazioni e calendario"], ...(auth.isAdmin ? [["mercati", "Mercati"], ["staff", "Staff"]] : []), ["account", "Account"]];
   return (
     <div className="shell">
@@ -121,6 +122,29 @@ function Login({ auth }) {
         {err && <div className="msg err">{err}</div>}
         <button className="btn primary" disabled={busy} onClick={go} style={{ width: "100%", justifyContent: "center" }}>{busy ? "Accesso…" : "Accedi"}</button>
       </>)}
+    </div></div>
+  );
+}
+
+/** Primo accesso (o reset richiesto dall'amministratore): la password va cambiata prima di usare il pannello. */
+function PrimoAccesso({ auth }) {
+  const [a, setA] = useState(""); const [n, setN] = useState(""); const [n2, setN2] = useState(""); const { msg, setMsg, busy, run } = useRun();
+  function go() {
+    if (n.length < 8) { setMsg({ ok: false, t: "La nuova password deve avere almeno 8 caratteri" }); return; }
+    if (n === a) { setMsg({ ok: false, t: "La nuova password deve essere diversa da quella iniziale" }); return; }
+    if (n !== n2) { setMsg({ ok: false, t: "Le due password non coincidono" }); return; }
+    run(() => auth.cambiaPassword(a, n), "Password aggiornata");
+  }
+  return (
+    <div className="login"><div className="box">
+      <h1>Imposta la tua password</h1>
+      <p>Ciao {auth.nome || auth.user.email}. Al primo accesso la password iniziale va sostituita con una personale: minimo 8 caratteri.</p>
+      <div className="field"><label>Password iniziale (quella ricevuta)</label><input type="password" value={a} onChange={(e) => setA(e.target.value)} autoComplete="current-password" /></div>
+      <div className="field"><label>Nuova password</label><input type="password" value={n} onChange={(e) => setN(e.target.value)} autoComplete="new-password" /></div>
+      <div className="field"><label>Ripeti la nuova password</label><input type="password" value={n2} onChange={(e) => setN2(e.target.value)} autoComplete="new-password" onKeyDown={(e) => e.key === "Enter" && go()} /></div>
+      <Msg m={msg} />
+      <button className="btn primary" disabled={busy} onClick={go} style={{ width: "100%", justifyContent: "center" }}>{busy ? "Salvataggio…" : "Salva e continua"}</button>
+      <button className="btn" onClick={auth.logout} style={{ width: "100%", justifyContent: "center", marginTop: 8 }}>Esci</button>
     </div></div>
   );
 }
@@ -687,13 +711,14 @@ function Staff() {
           {lista.map((s) => (
             <tr key={s._id} style={s.attivo === false ? { opacity: 0.55 } : undefined}>
               <td>{edit === s._id ? <StaffInline s={s} onSave={(d) => run(async () => { await aggiornaStaff(s._id, d); setEdit(null); }, "Anagrafica aggiornata")} onCancel={() => setEdit(null)} /> : <><b>{[s.nome, s.cognome].filter(Boolean).join(" ") || s.email}</b><div className="muted">{s.email}</div></>}</td>
-              <td className="muted">{s.telefono || "—"}</td>
+              <td className="muted">{s.telefono || "—"}{s.cambioPassword && <div><span className="tag">password da cambiare</span></div>}</td>
               <td><select value={s.role || ""} onChange={(e) => run(() => aggiornaStaff(s._id, { role: e.target.value || null }), "Ruolo aggiornato")} style={{ width: "auto" }}>
                 <option value="">nessuno</option>{RUOLI.map((r) => <option key={r} value={r}>{r}</option>)}</select></td>
               <td style={{ whiteSpace: "nowrap" }}>
                 {edit !== s._id && <button className="btn sm" disabled={busy} onClick={() => setEdit(s._id)}>Modifica</button>}{" "}
                 <button className="btn sm" disabled={busy} onClick={() => run(() => aggiornaStaff(s._id, { attivo: s.attivo === false }), s.attivo === false ? "Utente riattivato" : "Utente disattivato")}>{s.attivo === false ? "Riattiva" : "Disattiva"}</button>{" "}
-                <button className="btn sm" disabled={busy} onClick={() => run(() => inviaReset(s.email), `Email di reimpostazione inviata a ${s.email}`)}>Reset password</button>
+                <button className="btn sm" disabled={busy} onClick={() => run(() => inviaReset(s.email), `Email di reimpostazione inviata a ${s.email}`)}>Reset password</button>{" "}
+                <button className="btn sm" disabled={busy || s.cambioPassword === true} title="Al prossimo accesso l'utente dovrà cambiare la password" onClick={() => run(() => aggiornaStaff(s._id, { cambioPassword: true }), "Cambio password richiesto al prossimo accesso")}>{s.cambioPassword ? "Cambio richiesto" : "Richiedi cambio"}</button>
               </td>
             </tr>
           ))}

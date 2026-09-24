@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
 import { lookupQr, inviaRichiesta, espositoreById, nomePubblico, posteggiPerSpuntisti, dopoOraLimite, SETTORI, MERCATI } from "./dati.js";
 import { C } from "./brand/tokens.js";
+import { FormCambioPassword } from "./password.jsx";
 
 export const tokenDaTesto = (t) => { const m = String(t || "").match(/#\/v\/([A-Za-z0-9_-]{8,})/) || String(t || "").match(/^([A-Za-z0-9_-]{16,})$/); return m ? m[1] : null; };
 
@@ -101,7 +102,8 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
     </div>
   );
 
-  // ---- operatore loggato
+  // ---- operatore loggato: prima il cambio password obbligatorio, se richiesto
+  if (auth.deveCambiarePassword) return <div style={S.page}>{testata}<FormCambioPassword auth={auth} S={S} Icon={Icon} /></div>;
   return (
     <div style={S.page}>
       {testata}

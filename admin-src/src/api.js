@@ -56,10 +56,12 @@ export function useAdminAuth() {
     const u = auth.currentUser;
     await reauthenticateWithCredential(u, EmailAuthProvider.credential(u.email, attuale));
     await updatePassword(u, nuova);
+    await setDoc(doc(db, "staff", u.uid), { cambioPassword: false, _aggiornato: serverTimestamp() }, { merge: true });
+    setProfilo((p) => (p ? { ...p, cambioPassword: false } : p));
   }, []);
   const role = profilo && profilo.attivo !== false ? profilo.role || null : null;
   const nome = profilo ? [profilo.nome, profilo.cognome].filter(Boolean).join(" ") : "";
-  return { user, role, profilo, nome, loading, login, logout, cambiaPassword, isAdmin: role === "admin", isSuap: role === "admin" || role === "suap" };
+  return { user, role, profilo, nome, loading, login, logout, cambiaPassword, deveCambiarePassword: !!(profilo && profilo.cambioPassword), isAdmin: role === "admin", isSuap: role === "admin" || role === "suap" };
 }
 
 /** Collezione in tempo reale (array di documenti). */
@@ -169,7 +171,7 @@ export async function creaStaff({ email, password, nome, cognome, telefono, role
   const cred = await createUserWithEmailAndPassword(sAuth, email.trim(), password);
   const uid = cred.user.uid;
   await signOut(sAuth);
-  await setDoc(doc(db, "staff", uid), { email: email.trim(), nome: (nome || "").trim(), cognome: (cognome || "").trim(), telefono: (telefono || "").trim(), role, attivo: true, creato: serverTimestamp() });
+  await setDoc(doc(db, "staff", uid), { email: email.trim(), nome: (nome || "").trim(), cognome: (cognome || "").trim(), telefono: (telefono || "").trim(), role, attivo: true, cambioPassword: true, creato: serverTimestamp() });
   return uid;
 }
 export const aggiornaStaff = (uid, data) => updateDoc(doc(db, "staff", uid), { ...data, _aggiornato: serverTimestamp() });

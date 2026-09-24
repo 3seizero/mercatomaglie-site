@@ -3,7 +3,7 @@
 // L'indice è l'espositore: ogni espositore ha `posteggi[]`; il posteggio non conosce l'assegnatario.
 import { useEffect, useState, useCallback } from "react";
 import { doc, getDoc, onSnapshot, runTransaction, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { db, auth, firebaseReady } from "./firebase.js";
 import { POSTAZIONI_MAPPA, GEO, PLANIMETRIA_URI, SVG_VIEWBOX, SVG_W, SVG_H } from "./data/mappa.js";
 import { MERCATI, POSTEGGI, ESPOSITORI, SETTORI } from "./data/seed.js";
@@ -231,12 +231,20 @@ export function useAuth() {
     await signInWithEmailAndPassword(auth, email.trim(), password);
   }, []);
   const logout = useCallback(() => (firebaseReady ? signOut(auth) : Promise.resolve()), []);
+  /** Cambio password (obbligatorio al primo accesso): verifica quella attuale, imposta la nuova, azzera il flag su staff/{uid}. */
+  const cambiaPassword = useCallback(async (attuale, nuova) => {
+    const u = auth.currentUser; if (!u) throw new Error("Non sei collegato");
+    await reauthenticateWithCredential(u, EmailAuthProvider.credential(u.email, attuale));
+    await updatePassword(u, nuova);
+    await setDoc(doc(db, "staff", u.uid), { cambioPassword: false, _aggiornato: serverTimestamp() }, { merge: true });
+    setProfilo((p) => (p ? { ...p, cambioPassword: false } : p));
+  }, []);
   const role = profilo && profilo.attivo !== false ? profilo.role || null : null;
   const isStaff = ["admin", "operatore", "suap"].includes(role);
   const puoRegistrare = role === "admin" || role === "operatore";   // le presenze le certificano solo gli operatori di controllo
   const operatore = user ? { uid: user.uid, email: user.email, nome: profilo?.nome || "", cognome: profilo?.cognome || "" } : null;
   const nomeOperatore = operatore ? [operatore.nome, operatore.cognome].filter(Boolean).join(" ") || operatore.email : "";
-  return { user, role, profilo, operatore, nomeOperatore, isStaff, puoRegistrare, isAdmin: role === "admin", isSuap: role === "admin" || role === "suap", loading, login, logout };
+  return { user, role, profilo, operatore, nomeOperatore, isStaff, puoRegistrare, deveCambiarePassword: !!(profilo && profilo.cambioPassword), cambiaPassword, isAdmin: role === "admin", isSuap: role === "admin" || role === "suap", loading, login, logout };
 }
 
 // ---------------------------------------------------------------- costruzione viste

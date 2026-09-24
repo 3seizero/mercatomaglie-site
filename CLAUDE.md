@@ -92,6 +92,9 @@ git add . && git commit -m "descrizione" && git push
   Scadenza fissi 31/12/2040 (default per i nuovi). `calendario/{mercato}_{data}`:
   giornate soppresse/spostate/straordinarie (avviso nell'app; il report conta le assenze solo sulle giornate svolte).
 - Login staff con Firebase Auth email+password; ruolo e anagrafica (nome, cognome, telefono, attivo) in `staff/{uid}`.
+  `staff/{uid}.cambioPassword: true` = cambio password obbligatorio al prossimo accesso (impostato alla creazione
+  dell'utente e dal pulsante "Richiedi cambio" in Staff; pannello e app bloccano tutto finché non viene cambiata;
+  l'utente può azzerare solo quel campo, regola dedicata).
   Le regole leggono `'role' in request.auth.token` (claim) altrimenti il documento staff: NON usare
   `request.auth.token.role != null` (errore sui claim assenti → permesso negato).
 - Pannello di gestione (`admin-src/`, admin e suap): espositori fissi/spuntisti (pubblici + riservati, QR, più
