@@ -22,18 +22,19 @@ const useRun = () => {
 const Msg = ({ m }) => (m ? <div className={"msg " + (m.ok ? "ok" : "err")}>{m.t}</div> : null);
 
 /** Ultima giornata di mercato conclusa (data < oggi, oppure oggi dopo la chiusura). */
-function ultimaGiornataConclusa(m, calendario) {
+const inizioConteggio = (imp, anno) => { const i = imp?.inizioRegistro || IMPOSTAZIONI_DEFAULT.inizioRegistro; const a = `${anno}-01-01`; return i > a ? i : a; };
+function ultimaGiornataConclusa(m, calendario, imp) {
   const g = oggi(); const anno = g.slice(0, 4);
-  const { giornate } = giornateMercato(m, calendario, `${anno}-01-01`, g);
+  const { giornate } = giornateMercato(m, calendario, inizioConteggio(imp, anno), g);
   const now = new Date(); const hm = now.getHours() * 60 + now.getMinutes();
   const [ch, cm] = String(m.chiusura || "13:00").split(":").map(Number);
   return giornate.map((x) => x.data).filter((d) => d < g || hm >= ch * 60 + cm).pop() || null;
 }
 /** Contatori delle assenze consecutive dei fissi (area mercatale), ricalcolati e salvati su Firestore quando non aggiornati
  *  all'ultima giornata conclusa. Le giornate soppresse dal SUAP non contano. */
-export async function ricalcolaContatori({ espositori, mercato, calendario }) {
-  const fino = ultimaGiornataConclusa(mercato, calendario); if (!fino) return { fino: null, n: 0 };
-  const anno = fino.slice(0, 4); const da = `${anno}-01-01`;
+export async function ricalcolaContatori({ espositori, mercato, calendario, imp }) {
+  const fino = ultimaGiornataConclusa(mercato, calendario, imp); if (!fino) return { fino: null, n: 0 };
+  const anno = fino.slice(0, 4); const da = inizioConteggio(imp, anno);
   const presenze = await caricaPresenze(da, fino);
   const { giornate } = giornateMercato(mercato, calendario, da, fino);
   const voci = [];
@@ -41,22 +42,24 @@ export async function ricalcolaContatori({ espositori, mercato, calendario }) {
     if (e.tipo === "spuntista" || e.attivo === false || !(e.posteggi || []).length) continue;
     const date = new Set(presenze.filter((p) => p.espositoreId === e.id && p.mercato === mercato.id && !p.annullata).map((p) => p.data));
     const s = assenzeConsecutive(giornate, date, fino);
-    const nuovo = { anno: Number(anno), consecutive: s.consecutive, dal: s.dal, massimo: s.massimo, dalMassimo: s.dalMassimo, ultimaPresenza: s.ultimaPresenza, giornate: s.giornate, calcolatoIl: fino };
+    const nuovo = { anno: Number(anno), da, consecutive: s.consecutive, dal: s.dal, massimo: s.massimo, dalMassimo: s.dalMassimo, ultimaPresenza: s.ultimaPresenza, giornate: s.giornate, calcolatoIl: fino };
     if (JSON.stringify(e.assenze || null) !== JSON.stringify(nuovo)) voci.push({ id: e.id, assenze: nuovo });
   }
   if (voci.length) await salvaContatoriAssenze(voci);
   return { fino, n: voci.length };
 }
-function useContatoriAssenze(auth, espositori, mercati, calendario, pronti) {
+function useContatoriAssenze(auth, espositori, mercati, calendario, imp, pronti) {
   const fatto = useRef(false);
   useEffect(() => {
-    if (!auth.isSuap || fatto.current || !pronti || !espositori.length) return;
+    if (!auth.isSuap || fatto.current || !pronti || !espositori.length || imp === undefined) return;
     const m = mercati.find((x) => x.id === "area-mercatale"); if (!m) return;
-    const fino = ultimaGiornataConclusa(m, calendario); if (!fino) return;
-    const daAggiornare = espositori.some((e) => e.tipo !== "spuntista" && e.attivo !== false && (e.posteggi || []).length && (!e.assenze || e.assenze.calcolatoIl !== fino));
+    const fino = ultimaGiornataConclusa(m, calendario, imp);
+    const da = inizioConteggio(imp, oggi().slice(0, 4));
+    // da ricalcolare se manca, se non è aggiornato all'ultima giornata conclusa, o se è cambiata la data di inizio del registro
+    const daAggiornare = espositori.some((e) => e.tipo !== "spuntista" && e.attivo !== false && (e.posteggi || []).length && (!e.assenze || (fino && e.assenze.calcolatoIl !== fino) || e.assenze.da !== da));
     fatto.current = true;
-    if (daAggiornare) ricalcolaContatori({ espositori, mercato: m, calendario }).catch(() => {});
-  }, [auth.isSuap, espositori, mercati, calendario, pronti]);
+    if (daAggiornare) ricalcolaContatori({ espositori, mercato: m, calendario, imp }).catch(() => {});
+  }, [auth.isSuap, espositori, mercati, calendario, imp, pronti]);
 }
 const TagAssenze = ({ e, soglia }) => {
   const a = e.assenze; if (!a || e.tipo === "spuntista") return null;
@@ -132,7 +135,7 @@ function Espositori({ auth }) {
   const { rows: riservati } = useCollection("espositori_riservati", auth.isSuap);
   const { rows: mercatiRows, loaded: l1 } = useCollection("mercati"); const { rows: calendario, loaded: l2 } = useCollection("calendario");
   const imp = useDocumento("impostazioni", "area-mercatale");
-  useContatoriAssenze(auth, espositori, mercatiRows, calendario, l1 && l2);
+  useContatoriAssenze(auth, espositori, mercatiRows, calendario, imp, l1 && l2);
   const soglia = imp?.assenzeMassime ?? IMPOSTAZIONI_DEFAULT.assenzeMassime;
   const [q, setQ] = useState(""); const [filtro, setFiltro] = useState("fisso"); const [mercato, setMercato] = useState("tutti"); const [sel, setSel] = useState(null); const [nuovo, setNuovo] = useState(false);
   const [avviso, setAvviso] = useState(null);
@@ -275,7 +278,7 @@ function SchedaEspositore({ esp, ris, posteggiEsp, tutti, auth, onClose, onCreat
       {esp && <div className="muted" style={{ marginBottom: 10 }}>id {esp.id}{esp.attivo === false && " · archiviato"}</div>}
       {esp && esp.assenze && !spuntista && (
         <div className={"msg " + (esp.assenze.consecutive > 0 ? "err" : "ok")} style={{ fontSize: 12 }}>
-          <b>Assenze consecutive in corso: {esp.assenze.consecutive}</b>{esp.assenze.dal ? ` (dal ${dataIt(esp.assenze.dal)})` : ""} · serie più lunga del {esp.assenze.anno}: {esp.assenze.massimo}{esp.assenze.dalMassimo ? ` (dal ${dataIt(esp.assenze.dalMassimo)})` : ""} · ultima presenza: {esp.assenze.ultimaPresenza ? dataIt(esp.assenze.ultimaPresenza) : "nessuna"} · su {esp.assenze.giornate} giornate svolte, aggiornato al {dataIt(esp.assenze.calcolatoIl)}
+          <b>Assenze consecutive in corso: {esp.assenze.consecutive}</b>{esp.assenze.dal ? ` (dal ${dataIt(esp.assenze.dal)})` : ""} · serie più lunga: {esp.assenze.massimo}{esp.assenze.dalMassimo ? ` (dal ${dataIt(esp.assenze.dalMassimo)})` : ""} · ultima presenza: {esp.assenze.ultimaPresenza ? dataIt(esp.assenze.ultimaPresenza) : "nessuna"} · {esp.assenze.giornate} giornate svolte dal {dataIt(esp.assenze.da || `${esp.assenze.anno}-01-01`)}, aggiornato al {esp.assenze.calcolatoIl ? dataIt(esp.assenze.calcolatoIl) : "—"}
         </div>
       )}
       {esp && scaduto(esp) && esp.attivo !== false && (
@@ -513,6 +516,7 @@ function SchedaImpostazioni({ mercatoId, imp, auth }) {
         <div className="field"><label>Ora limite di spunta</label><input type="time" value={f.oraLimiteSpunta} onChange={set("oraLimiteSpunta")} /><div className="muted">Entro quest'ora i fissi devono presentarsi: dopo, chi non si è presentato risulta assente per la giornata e il suo posteggio può essere dato a uno spuntista.</div></div>
         <div className="field"><label>Ora di azzeramento</label><input type="time" value={f.oraAzzeramento} onChange={set("oraAzzeramento")} /><div className="muted">Dopo quest'ora nell'app tutti risultano assenti, pronti per la giornata successiva.</div></div>
       </div>
+      <div className="field"><label>Inizio del registro presenze</label><input type="date" value={f.inizioRegistro || ""} onChange={set("inizioRegistro")} style={{ width: 180 }} /><div className="muted">Le assenze si contano dalle giornate di mercato a partire da questa data: quelle precedenti all'avvio del sistema non pesano su nessuno.</div></div>
       <div className="field"><label>Assenze consecutive massime (fissi)</label><input type="number" min="0" value={f.assenzeMassime} onChange={set("assenzeMassime")} style={{ width: 120 }} /><div className="muted">Serie di giornate di mercato consecutive in cui il fisso è assente: oltre questa soglia la concessione è revocabile. Le giornate soppresse dal SUAP non contano e non interrompono la serie. Il contatore di ogni espositore è aggiornato automaticamente dopo ogni giornata; 0 = nessuna soglia.</div></div>
       <Msg m={msg} />
       {auth.isSuap && <div className="actions"><button className="btn primary" disabled={busy} onClick={() => run(() => salvaImpostazioni(mercatoId, f), "Impostazioni salvate: l'app le applica subito")}>Salva</button></div>}
@@ -567,6 +571,7 @@ function Report({ auth }) {
   const [mercato, setMercato] = useState("area-mercatale");
   const imp = useDocumento("impostazioni", mercato);
   const [da, setDa] = useState(inizioAnno()); const [a, setA] = useState(oggi());
+  useEffect(() => { if (imp?.inizioRegistro && imp.inizioRegistro > inizioAnno()) setDa(imp.inizioRegistro); }, [imp?.inizioRegistro]);
   const [fEsp, setFEsp] = useState(""); const [fPost, setFPost] = useState(""); const [fOp, setFOp] = useState(""); const [vista, setVista] = useState("riepilogo"); const [soloOltre, setSoloOltre] = useState(false);
   const [presenze, setPresenze] = useState(null); const { msg, busy, run } = useRun();
   const m = mercati.find((x) => x.id === mercato);
@@ -576,7 +581,7 @@ function Report({ auth }) {
   const filtrate = useMemo(() => (presenze || []).filter((p) => p.mercato === mercato)
     .filter((p) => !fEsp || p.espositoreId === fEsp).filter((p) => !fPost || p.posteggioId === fPost).filter((p) => !fOp || (p.operatore && p.operatore.uid === fOp)), [presenze, mercato, fEsp, fPost, fOp]);
   const riepilogo = useMemo(() => presenze ? riepilogoEspositori({ presenze: filtrate, espositori: espositori.filter((e) => !fEsp || e.id === fEsp), giornate, mercatoId: mercato, assenzeMassime: imp?.assenzeMassime ?? IMPOSTAZIONI_DEFAULT.assenzeMassime, fino: a }).filter((r) => !soloOltre || r.oltreSoglia) : [], [presenze, filtrate, espositori, giornate, mercato, imp, fEsp, soloOltre, a]);
-  const ricalcola = () => run(async () => { const r = await ricalcolaContatori({ espositori, mercato: m, calendario }); return r; }, "Contatori delle assenze consecutive aggiornati");
+  const ricalcola = () => run(async () => { const r = await ricalcolaContatori({ espositori, mercato: m, calendario, imp }); return r; }, "Contatori delle assenze consecutive aggiornati");
   const registro = useMemo(() => righeRegistro(filtrate, espById), [filtrate, espById]);
   const posteggiUsati = useMemo(() => [...new Set((presenze || []).map((p) => p.posteggioId).filter(Boolean))].sort(), [presenze]);
   const titolo = `Presenze ${m ? m.nome : mercato}`;

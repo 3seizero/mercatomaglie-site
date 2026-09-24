@@ -21,7 +21,7 @@ export const SETTORI = { A: "Abbigliamento", B: "Abbigliamento usato", C: "Alime
 export const TIPI = [["fisso", "Fisso (concessione di posteggio)"], ["spuntista", "Spuntista (elenco annuale)"]];
 export const QUALIFICHE = ["concessionario", "produttore", "operatori-vari", "produttore-agricolo", "coltivatore-diretto", "opere-ingegno"];
 export const RUOLI = ["admin", "suap", "operatore"];
-export const IMPOSTAZIONI_DEFAULT = { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18 };   // assenze CONSECUTIVE massime
+export const IMPOSTAZIONI_DEFAULT = { registroPresenze: true, oraLimiteSpunta: "10:00", oraAzzeramento: "14:00", assenzeMassime: 18, inizioRegistro: "2026-09-26" };   // assenze CONSECUTIVE massime; le giornate prima di inizioRegistro non contano
 export const SCADENZA_FISSI = "2040-12-31";
 export const TIPI_CALENDARIO = [["soppresso", "Soppresso (non si svolge)"], ["spostato", "Spostato ad altra data"], ["straordinario", "Apertura straordinaria"]];
 // STESSA LOGICA di scripts/firebase/pubblico.mjs

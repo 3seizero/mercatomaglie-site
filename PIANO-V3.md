@@ -44,6 +44,7 @@ Geometria e classificazione; via `espositoreId` e `stato`. Lo stato (assegnato/v
 | `registroPresenze` | `true` (coperto e ortofrutticolo: `false`) | se `false` niente presenze né presente/assente nel frontend |
 | `oraLimiteSpunta` | `10:00` | entro quest'ora i fissi devono presentarsi; dopo, i non presentati sono assenti e i loro posteggi assegnabili agli spuntisti |
 | `oraAzzeramento` | `14:00` | dopo quest'ora tutti risultano assenti (ripristino per la giornata successiva); alle 14 per lasciare a tutti il tempo di andare via |
+| `inizioRegistro` | `2026-09-26` | data da cui si contano presenze e assenze (le giornate precedenti all'avvio non pesano) |
 | `assenzeMassime` | `18` | assenze **consecutive** massime (Carlo, 24/09/2026): serie di giornate svolte consecutive in cui il fisso è assente; le giornate soppresse non contano e non interrompono la serie. Contatore per espositore in `espositori.{id}.assenze` {anno, consecutive, dal, massimo, dalMassimo, ultimaPresenza, giornate, calcolatoIl}, ricalcolato dal pannello (all'apertura di Espositori se non aggiornato all'ultima giornata conclusa, o con "Aggiorna contatori" nel report) |
 
 ### `calendario/{mercato}_{data}` (scrittura admin/suap)
