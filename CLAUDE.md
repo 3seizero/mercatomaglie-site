@@ -98,6 +98,10 @@ git add . && git commit -m "descrizione" && git push
 - Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
   (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano
   le credenziali `gcloud auth application-default login`, niente chiavi service account).
+- Compatibilità browser vecchi (24/09/2026): app e pannello usano `@vitejs/plugin-legacy` con `modernTargets`
+  Chrome 64 / Safari 12 (senza questa opzione il plugin lascia il bundle moderno a Chrome 105 e i tablet Android
+  del 2018 mostrano una pagina bianca) più bundle legacy per Chrome 60-63. Il microsito evita `gap` nel menu,
+  ha fallback per `inset`, `clamp()`, `aspect-ratio` e la classe `no-flexgap` impostata da JS.
 - Dopo ogni modifica ad App.jsx: `cd app-src && npm run build` → git push
   (il build scrive già in app/, niente più cp manuale)
 - NON modificare i file dentro app/ direttamente: vengono rigenerati dal build
