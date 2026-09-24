@@ -415,6 +415,12 @@
     .footer-col h5 { font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--ocra); margin-bottom: 20px; }
     .footer-col a { display: block; font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
     .footer-col a:hover { color: var(--ocraL); }
+    .footer-istituzionale { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-loghi { display: flex; align-items: center; }
+    .footer-loghi img { height: 72px; width: auto; display: block; opacity: 0.92; }
+    .footer-loghi img + img { margin-left: 28px; }
+    .footer-finanziamento { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; text-align: right; }
+    .footer-finanziamento b { color: rgba(255,255,255,0.7); font-weight: 600; }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
     .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.25); }
     .footer-social { display: flex; gap: 16px; }
@@ -482,6 +488,9 @@
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
       footer { padding: 48px 24px 32px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-istituzionale { flex-direction: column; text-align: center; }
+      .footer-loghi { margin-bottom: 16px; } .footer-loghi img { height: 60px; }
+      .footer-finanziamento { text-align: center; }
     }
   </style>
 </head>
@@ -896,6 +905,13 @@
       <a href="#">Instagram</a>
       <a href="#">Facebook</a>
     </div>
+  </div>
+  <div class="footer-istituzionale">
+    <div class="footer-loghi">
+      <img src="img/loghi/comune-di-maglie.png" alt="Comune di Maglie" width="226" height="240">
+      <img src="img/loghi/provincia-di-lecce.png" alt="Provincia di Lecce" width="236" height="240">
+    </div>
+    <p class="footer-finanziamento">Finanziato dalla <b>Provincia di Lecce</b> nell'ambito del Progetto Pilota <b>“SAL.E” – SALento d’amarE</b></p>
   </div>
   <div class="footer-bottom">
     <p>© 2026 | Area Mercatale di Maglie · Tutti i diritti riservati</p>
