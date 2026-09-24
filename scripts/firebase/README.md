@@ -19,6 +19,13 @@ Dati e ruoli (da `scripts/firebase/`):
 In alternativa, se l'organizzazione consente le chiavi di service account, salvare la chiave in
 `scripts/firebase/serviceAccount.json` (ignorata da git): gli script la usano automaticamente.
 
+## Migrazione di progetto (24/09/2026)
+
+- `esporta-progetto.mjs <dir>`: tutte le collezioni + utenti Auth (senza password) in JSON.
+- `importa-progetto.mjs <dir>`: importa nel progetto `FIREBASE_PROJECT_ID`, ricrea gli utenti (password nuove stampate una volta), rimappa gli uid.
+- `configura-progetto.mjs <apiKey>`: domini autorizzati per Auth e restrizioni della chiave web (referrer + API).
+- Serve `gcloud auth application-default set-quota-project <progetto>` per le API Auth.
+
 ## Modello v3 (23/09/2026)
 
 - `pubblico.mjs`: costruzione dei riassunti `pubblico/{mercato}` (stessa logica di `admin-src/src/api.js`).

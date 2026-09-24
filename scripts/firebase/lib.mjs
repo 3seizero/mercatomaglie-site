@@ -5,7 +5,7 @@ import admin from 'firebase-admin';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const ROOT = join(here, '..', '..');
-const PROJECT_ID = process.env.FIREBASE_PROJECT_ID || 'mercati-maglie';
+const PROJECT_ID = process.env.FIREBASE_PROJECT_ID || 'mercati-maglie-app';
 const keyPath = process.env.FIREBASE_SERVICE_ACCOUNT || join(here, 'serviceAccount.json');
 
 // Due modi di autenticarsi, in ordine di preferenza:

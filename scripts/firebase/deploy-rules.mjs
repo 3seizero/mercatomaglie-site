@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { GoogleAuth } from 'google-auth-library';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const PROJECT = process.env.FIREBASE_PROJECT_ID || 'mercati-maglie';
+const PROJECT = process.env.FIREBASE_PROJECT_ID || 'mercati-maglie-app';
 const rules = readFileSync(join(here, '..', '..', 'firestore.rules'), 'utf8');
 const auth = new GoogleAuth({ scopes: ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/firebase'] });
 const client = await auth.getClient();

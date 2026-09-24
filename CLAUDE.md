@@ -100,9 +100,13 @@ git add . && git commit -m "descrizione" && git push
   mercati e staff (solo admin), account. Ogni salvataggio ricostruisce `pubblico/{mercato}`.
   App pubblica, pagina Gestione = operatore di controllo (ruoli operatore e admin; il suap NON registra presenze, regole comprese): presenze fissi (elenco o QR), spuntisti (assegna
   posteggio libero), scanner. La scheda QR `#/v/<token>` senza login mostra solo "codice valido" + accesso.
-- Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
-  (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano
-  le credenziali `gcloud auth application-default login`, niente chiavi service account).
+- Backend Firebase `mercati-maglie-app` (dal 24/09/2026; account dedicato mercatimaglie@gmail.com, fuori
+  dall'organizzazione 3seizero: niente policy di dominio né scadenza giornaliera delle credenziali). Config in
+  `app-src/.env.local` (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` con le
+  credenziali `gcloud auth login mercatimaglie@gmail.com --update-adc` + `set-quota-project mercati-maglie-app`.
+  Il vecchio progetto `mercati-maglie` (org 3seizero) resta come backup congelato: non scriverci.
+  Migrazione: `esporta-progetto.mjs` → `importa-progetto.mjs` (utenti Auth ricreati con password nuove,
+  uid rimappati) → `deploy-rules.mjs` → `configura-progetto.mjs <apiKey>` (domini Auth + referrer chiave).
 - Compatibilità browser vecchi (24/09/2026): app e pannello usano `@vitejs/plugin-legacy` con `modernTargets`
   Chrome 64 / Safari 12 (senza questa opzione il plugin lascia il bundle moderno a Chrome 105 e i tablet Android
   del 2018 mostrano una pagina bianca) più bundle legacy per Chrome 60-63. Il microsito evita `gap` nel menu,

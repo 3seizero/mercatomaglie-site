@@ -5,6 +5,11 @@
 > sottodominio, certificato Let's Encrypt, deploy Git con webhook GitHub, codice con base relativa, primo deploy verificato
 > (sito, app, pannello, service worker, manifest in HTTPS). Da fare: autorizzazione del dominio su Firebase (serve il rinnovo
 > delle credenziali gcloud), collaudo completo, redirect dal vecchio indirizzo.
+>
+> **Ore 14:** il backend Firebase è stato migrato al nuovo progetto `mercati-maglie-app`, intestato all'account dedicato
+> `mercatimaglie@gmail.com` (il vecchio progetto era dentro l'organizzazione 3seizero, con policy che impedivano di aggiungere
+> proprietari esterni e facevano scadere le credenziali ogni giorno). Dati, regole, QR e utenti copiati; domini autorizzati e
+> chiave configurati; build ricompilate con la nuova configurazione; collaudo 35/35 in locale.
 
 Data: 24/09/2026. Origine: `https://3seizero.com/projects/maglie/areamercatale/` (Plesk, deploy GitHub → webhook).
 Destinazione: `https://mercati.visitmaglie.com/` (sito alla radice, app in `/app/`, pannello in `/admin/`).

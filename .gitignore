@@ -7,3 +7,5 @@ data/seed/espositori_riservati.json
 scripts/firebase/serviceAccount*.json
 app-src/.env.local
 node_modules/
+
+scripts/firebase/serviceAccount*.json
