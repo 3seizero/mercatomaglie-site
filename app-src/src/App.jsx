@@ -894,12 +894,12 @@ const S={
   hdrTitle:{fontSize:13,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:white},
   hdrSub:{fontSize:9,color:ocraL,letterSpacing:4,textTransform:"uppercase",fontWeight:500},
   hdrPage:{fontSize:10,color:ocraL,letterSpacing:0.5,fontWeight:500,fontStyle:"italic",whiteSpace:"nowrap"},
-  main:{flex:1,overflowY:"auto",paddingBottom:72},
+  main:{flex:1,overflowY:"auto",paddingBottom:"var(--nav-h, 92px)"},
   nav:{position:"fixed",bottom:0,left:0,right:0,width:"100%",background:terra,display:"flex",borderTop:`1.5px solid ${ocra}33`,zIndex:200,paddingBottom:"calc(20px + env(safe-area-inset-bottom))"},
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
   navAct:{background:"rgba(232,160,69,0.07)"},
   navLbl:{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700},
-  mapCont:{position:"relative",height:"calc(100dvh - 52px - 72px)",overflow:"hidden",background:C.sabbia,touchAction:"none",cursor:"grab"},
+  mapCont:{position:"relative",height:"calc(100dvh - var(--hdr-h, 54px) - var(--nav-h, 92px))",overflow:"hidden",background:C.sabbia,touchAction:"none",cursor:"grab"},
   statusPill:{position:"absolute",top:12,left:"50%",transform:"translateX(-50%)",zIndex:20,background:"rgba(20,10,4,0.75)",backdropFilter:"blur(10px)",WebkitBackdropFilter:"blur(10px)",borderRadius:20,padding:"6px 16px",display:"flex",alignItems:"center",gap:9,boxShadow:"0 2px 16px rgba(0,0,0,0.3)",border:"1px solid rgba(255,255,255,0.1)",whiteSpace:"nowrap"},
   sDot:(c)=>({width:7,height:7,borderRadius:"50%",background:c,display:"inline-block",flexShrink:0}),
   sTxt:{fontSize:10,color:"rgba(255,255,255,0.92)",fontWeight:700,letterSpacing:0.3},
@@ -1177,6 +1177,15 @@ export default function App(){
   const [catFilter,setCatFilter]=useState("Tutte");
 
   useEffect(()=>{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{});},[]);
+  // altezze reali di header e barra di navigazione (cambiano con l'area sicura dell'iPhone e con la tastiera):
+  // la mappa e il padding delle pagine le leggono dalle variabili CSS --hdr-h / --nav-h
+  useEffect(()=>{
+    const misura=()=>{const h=document.querySelector("header"),n=document.querySelector("nav");const r=document.documentElement.style;
+      if(h) r.setProperty("--hdr-h",h.offsetHeight+"px"); if(n) r.setProperty("--nav-h",n.offsetHeight+"px");};
+    misura(); const t=setTimeout(misura,300); window.addEventListener("resize",misura); window.addEventListener("orientationchange",misura);
+    const ro=window.ResizeObserver?new ResizeObserver(misura):null; if(ro){const n=document.querySelector("nav"); if(n) ro.observe(n);}
+    return()=>{clearTimeout(t);window.removeEventListener("resize",misura);window.removeEventListener("orientationchange",misura);if(ro)ro.disconnect();};
+  },[splash]);
   useEffect(()=>{store.set("ev",eventi);},[eventi]);
 
   const onPresenza=async({mercatoId,espositoreId,posteggioId,presente,metodo,posizione,tipo})=>{
