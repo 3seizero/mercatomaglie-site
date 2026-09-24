@@ -17,6 +17,8 @@ service cloud.firestore {
     function isAdmin() { return role() == 'admin'; }
     function isSuap() { return role() in ['admin', 'suap']; }
     function isStaff() { return role() in ['admin', 'operatore', 'suap']; }
+    // Le presenze le certificano solo gli operatori di controllo (admin incluso per assistenza tecnica)
+    function isOperatore() { return role() in ['admin', 'operatore']; }
 
     // Dati pubblici: lettura libera, scrittura admin/suap
     match /mercati/{id}     { allow read: if true; allow write: if isAdmin(); }
@@ -25,7 +27,7 @@ service cloud.firestore {
     match /eventi/{id}      { allow read: if true; allow write: if isAdmin(); }
     // Riassunti per l'app pubblica (1 lettura per mercato)
     match /pubblico/{mercatoId} { allow read: if true; allow write: if isSuap(); }
-    match /stato/{mercatoId}    { allow read: if true; allow write: if isStaff(); }
+    match /stato/{mercatoId}    { allow read: if true; allow write: if isOperatore(); }
     // Impostazioni per mercato (ora limite spunta, azzeramento, assenze massime) e calendario (giornate spostate/soppresse)
     match /impostazioni/{mercatoId} { allow read: if true; allow write: if isSuap(); }
     match /calendario/{id}          { allow read: if true; allow write: if isSuap(); }
@@ -39,7 +41,7 @@ service cloud.firestore {
     // Presenze certificate: create/annullamento dallo staff (la riga resta), cancellazione solo admin
     match /presenze/{id} {
       allow read: if isStaff();
-      allow create, update: if isStaff();
+      allow create, update: if isOperatore();
       allow delete: if isAdmin();
     }
 

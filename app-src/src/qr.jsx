@@ -73,13 +73,13 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
         <div style={{ ...S.sheetNome, overflowWrap: "anywhere" }}>{nome}</div>
         <div style={S.sheetCat}>{tipo === "spuntista" ? `Spuntista${sp && sp.categoria && sp.categoria !== "Spuntista" ? ` · ${sp.categoria}` : ""}` : p0 ? p0.categoria : "Espositore registrato"}</div>
       </div>
-      {registro && auth.isStaff && <div style={{ ...S.presBadge, background: presente ? C.verdePresenzaTint : C.rossoAssenzaTint, color: presente ? C.verdePresenza : C.rossoAssenza, borderColor: presente ? C.verdePresenza : C.rossoAssenza }}>
+      {registro && auth.puoRegistrare && <div style={{ ...S.presBadge, background: presente ? C.verdePresenzaTint : C.rossoAssenzaTint, color: presente ? C.verdePresenza : C.rossoAssenza, borderColor: presente ? C.verdePresenza : C.rossoAssenza }}>
         <Icon name={presente ? "checkCircle" : "xCircle"} size={13} color={presente ? C.verdePresenza : C.rossoAssenza} sw={2} />{presente ? "Presente" : "Assente"}</div>}
     </div>
   );
 
-  // ---- non loggato: codice valido, accesso operatore, self-service
-  if (!auth.isStaff) return (
+  // ---- non loggato (o loggato senza il ruolo operatore): codice valido, accesso operatore, self-service
+  if (!auth.puoRegistrare) return (
     <div style={S.page}>
       {testata}
       <div style={S.divider} />
@@ -88,7 +88,7 @@ export function PageScheda({ token, auth, postazioni, elenchi, spuntisti = [], p
         <div style={{ fontSize: 13, fontWeight: 700, color: C.terraTesto, marginBottom: 4 }}>Codice espositore valido</div>
         <div style={{ fontSize: 11, color: C.terraChiaro, lineHeight: 1.5, marginBottom: 12 }}>La presenza può essere registrata solo da un operatore di controllo che ha effettuato l'accesso.</div>
         {auth.user ? (
-          <div style={S.errMsg}>L'utente {auth.user.email} non ha un ruolo attivo.</div>
+          <div style={S.errMsg}>{auth.isStaff ? `L'utente ${auth.user.email} (${auth.role}) non è un operatore di controllo: solo gli operatori registrano le presenze.` : `L'utente ${auth.user.email} non ha un ruolo attivo.`}</div>
         ) : (<>
           <input style={S.input} type="email" placeholder="Email operatore" value={email} autoComplete="username" onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && doLogin()} />
           <input style={{ ...S.input, ...(err ? { borderColor: C.rossoAssenza } : {}) }} type="password" placeholder="Password" value={pwd} autoComplete="current-password" onChange={(e) => setPwd(e.target.value)} onKeyDown={(e) => e.key === "Enter" && doLogin()} />

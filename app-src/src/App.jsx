@@ -690,12 +690,23 @@ function PageAdmin({auth,postazioni,elenchi,spuntisti,impostazioni,mercati,apert
     setBusy(false);
   }
 
+  if(auth.user&&auth.isStaff&&!auth.puoRegistrare) return(
+    <div style={S.loginWrap}>
+      <div style={S.loginBox}>
+        <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color={C.ocra} sw={1.5}/></div>
+        <div style={S.loginH}>Ruolo {auth.role}</div>
+        <div style={S.loginSub}>Le presenze possono essere registrate solo dagli operatori di controllo. Il SUAP gestisce anagrafiche, impostazioni e report dal pannello di gestione.</div>
+        <a href="/projects/maglie/areamercatale/admin/" style={{...S.loginBtn,textDecoration:"none",marginBottom:10}}>Apri il pannello di gestione</a>
+        <button style={S.cancelBtn} onClick={auth.logout}>Esci</button>
+      </div>
+    </div>
+  );
   if(!auth.user||!auth.isStaff) return(
     <div style={S.loginWrap}>
       <div style={S.loginBox}>
         <div style={{display:"flex",justifyContent:"center",marginBottom:16}}><Icon name="lock" size={42} color={C.ocra} sw={1.5}/></div>
         <div style={S.loginH}>Area Riservata</div>
-        <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo attivo. Contatta l'amministratore.":"Accesso per operatori di controllo, SUAP e amministratori"}</div>
+        <div style={S.loginSub}>{auth.user&&!auth.isStaff?"Questo utente non ha un ruolo attivo. Contatta l'amministratore.":"Accesso riservato agli operatori di controllo"}</div>
         {auth.user&&!auth.isStaff?(
           <button style={S.loginBtn} onClick={auth.logout}>Esci</button>
         ):(<>
@@ -957,7 +968,7 @@ const S={
   formH:{fontSize:13,fontWeight:700,color:terra,marginBottom:10},
   select:{width:"100%",padding:"11px 12px",borderRadius:10,border:`1.5px solid ${border}`,fontSize:13,marginBottom:10,background:sand,color:terra,outline:"none",boxSizing:"border-box",fontFamily:"'Montserrat',sans-serif"},
   saveBtn:{flex:1,padding:"11px 0",background:terra,color:white,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontWeight:700,fontFamily:"'Montserrat',sans-serif"},
-  cancelBtn:{flex:1,padding:"11px 0",background:sandD,color:terra,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontFamily:"'Montserrat',sans-serif",fontWeight:600},
+  cancelBtn:{flex:1,padding:"11px 22px",whiteSpace:"nowrap",background:sandD,color:terra,border:"none",borderRadius:10,fontSize:13,cursor:"pointer",fontFamily:"'Montserrat',sans-serif",fontWeight:600},
   aRow:{background:white,borderRadius:12,padding:"11px 12px",display:"flex",alignItems:"center",gap:10,border:`1px solid ${border}`},
   delBtn:{background:C.rossoAssenzaTint,border:"none",borderRadius:8,padding:"7px",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"},
 };

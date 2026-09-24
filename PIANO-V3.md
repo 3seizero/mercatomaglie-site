@@ -80,7 +80,7 @@ Invariato (proposte self-service dal link QR, approvazione suap).
 | impostazioni, calendario | ✓ | ✓ | – |
 | staff (creazione utenti, ruoli) | ✓ | – | – |
 | report presenze e assenze, export Excel/PDF | ✓ | ✓ | – |
-| presenze dall'app (QR o elenco), assegnazione spuntisti al posteggio | ✓ | ✓ | ✓ |
+| presenze dall'app (QR o elenco), assegnazione spuntisti al posteggio | ✓ (assistenza) | – | ✓ |
 | annullare una presenza | ✓ | – | – |
 
 Il pannello desktop è per admin e suap. L'app è per il pubblico e per l'operatore di controllo (Polizia Municipale), che non inserisce dati anagrafici.

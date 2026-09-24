@@ -93,7 +93,7 @@ git add . && git commit -m "descrizione" && git push
   posteggi), posteggi, richieste, report presenze (filtri periodo/espositore/posteggio/operatore, riepilogo con
   assenze e soglia, registro; export Excel via `xlsx` e PDF via stampa: `src/report.js`), impostazioni e calendario,
   mercati e staff (solo admin), account. Ogni salvataggio ricostruisce `pubblico/{mercato}`.
-  App pubblica, pagina Gestione = operatore di controllo: presenze fissi (elenco o QR), spuntisti (assegna
+  App pubblica, pagina Gestione = operatore di controllo (ruoli operatore e admin; il suap NON registra presenze, regole comprese): presenze fissi (elenco o QR), spuntisti (assegna
   posteggio libero), scanner. La scheda QR `#/v/<token>` senza login mostra solo "codice valido" + accesso.
 - Backend Firebase `mercati-maglie` (account Carlo): config in `app-src/.env.local`
   (non nel repo, copia da `.env.example`); script admin in `scripts/firebase/` (usano

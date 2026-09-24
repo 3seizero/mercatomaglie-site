@@ -233,9 +233,10 @@ export function useAuth() {
   const logout = useCallback(() => (firebaseReady ? signOut(auth) : Promise.resolve()), []);
   const role = profilo && profilo.attivo !== false ? profilo.role || null : null;
   const isStaff = ["admin", "operatore", "suap"].includes(role);
+  const puoRegistrare = role === "admin" || role === "operatore";   // le presenze le certificano solo gli operatori di controllo
   const operatore = user ? { uid: user.uid, email: user.email, nome: profilo?.nome || "", cognome: profilo?.cognome || "" } : null;
   const nomeOperatore = operatore ? [operatore.nome, operatore.cognome].filter(Boolean).join(" ") || operatore.email : "";
-  return { user, role, profilo, operatore, nomeOperatore, isStaff, isAdmin: role === "admin", isSuap: role === "admin" || role === "suap", loading, login, logout };
+  return { user, role, profilo, operatore, nomeOperatore, isStaff, puoRegistrare, isAdmin: role === "admin", isSuap: role === "admin" || role === "suap", loading, login, logout };
 }
 
 // ---------------------------------------------------------------- costruzione viste
