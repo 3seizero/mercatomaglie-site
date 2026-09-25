@@ -14,3 +14,12 @@
   AddType application/manifest+json .webmanifest
   AddType image/svg+xml .svg
 </IfModule>
+
+# Indirizzi scritti a mano: /App, /ADMIN, /app (senza barra) → percorso corretto
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^app/?$ /app/ [R=301,L,NC]
+  RewriteRule ^admin/?$ /admin/ [R=301,L,NC]
+  RewriteRule ^app/(.*)$ /app/$1 [R=301,L,NC]
+  RewriteRule ^admin/(.*)$ /admin/$1 [R=301,L,NC]
+</IfModule>
