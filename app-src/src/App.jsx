@@ -293,7 +293,7 @@ function PageMappa({espositori,popup,setPopup,catFilter,setCatFilter,aperto,merc
 
 
   return(
-    <div ref={wrapRef} style={S.mapCont}>
+    <div ref={wrapRef} className="map-cont" style={S.mapCont}>
 
       {/* LAYER: planimetria + postazioni */}
       <div ref={layerRef} style={{
@@ -889,7 +889,7 @@ const T=[C.terra,C.ocra,C.ocraChiaro,C.sabbia,C.sabbiaScura,C.bianco,C.verdePres
 const [terra,ocra,ocraL,sand,sandD,white,green,text,textM,textL,border]=T;
 
 const S={
-  app:{fontFamily:"'Montserrat',sans-serif",background:sand,minHeight:"100dvh",display:"flex",flexDirection:"column",width:"100%",margin:"0 auto"},
+  app:{fontFamily:"'Montserrat',sans-serif",background:sand,display:"flex",flexDirection:"column",width:"100%",margin:"0 auto"},
   hdr:{background:terra,color:white,padding:"10px 16px",position:"sticky",top:0,zIndex:100,boxShadow:"0 2px 16px rgba(0,0,0,0.28)"},
   hdrIn:{display:"flex",alignItems:"center",justifyContent:"space-between"},
   hdrLogo:{display:"flex",alignItems:"center",gap:10},
@@ -901,7 +901,7 @@ const S={
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",padding:"8px 4px 10px",background:"transparent",border:"none",cursor:"pointer",WebkitAppearance:"none",appearance:"none",outline:"none",textDecoration:"none"},
   navAct:{background:"rgba(232,160,69,0.07)"},
   navLbl:{fontSize:8.5,marginTop:3,letterSpacing:0.5,textTransform:"uppercase",fontWeight:700},
-  mapCont:{position:"relative",height:"calc(100dvh - var(--hdr-h, 54px) - var(--nav-h, 92px))",overflow:"hidden",background:C.sabbia,touchAction:"none",cursor:"grab"},
+  mapCont:{position:"relative",overflow:"hidden",background:C.sabbia,touchAction:"none",cursor:"grab"},
   statusPill:{position:"absolute",top:12,left:"50%",transform:"translateX(-50%)",zIndex:20,background:"rgba(20,10,4,0.75)",backdropFilter:"blur(10px)",WebkitBackdropFilter:"blur(10px)",borderRadius:20,padding:"6px 16px",display:"flex",alignItems:"center",gap:9,boxShadow:"0 2px 16px rgba(0,0,0,0.3)",border:"1px solid rgba(255,255,255,0.1)",whiteSpace:"nowrap"},
   sDot:(c)=>({width:7,height:7,borderRadius:"50%",background:c,display:"inline-block",flexShrink:0}),
   sTxt:{fontSize:10,color:"rgba(255,255,255,0.92)",fontWeight:700,letterSpacing:0.3},
@@ -986,6 +986,8 @@ const GCss=`
   nav button{background:transparent!important;color:inherit;}
   nav a{color:inherit;text-decoration:none;}
   @keyframes spin{to{transform:rotate(360deg);}}
+  .app-root{min-height:100vh;min-height:100dvh;}
+  .map-cont{height:calc(100vh - var(--hdr-h, 54px) - var(--nav-h, 92px));height:calc(100dvh - var(--hdr-h, 54px) - var(--nav-h, 92px));}
 `;
 
 // ============================================================
@@ -1210,7 +1212,7 @@ export default function App(){
   const PAGE_TITLES={scheda:"Espositore",mappa:"Mappa live",coperto:"Mercato Coperto",orto:"Mercato Ortofrutticolo",eventi:"Eventi",admin:"Gestione"};
 
   return(
-    <div style={S.app}>
+    <div className="app-root" style={S.app}>
       <style>{GCss}</style>
       <LandscapeOverlay/>
       <InstallBanner/>
