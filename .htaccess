@@ -18,8 +18,11 @@
 # Indirizzi scritti a mano: /App, /ADMIN, /app (senza barra) → percorso corretto
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteRule ^app/?$ /app/ [R=301,L,NC]
-  RewriteRule ^admin/?$ /admin/ [R=301,L,NC]
+  # solo se il percorso NON è già in minuscolo (altrimenti ciclo di redirect)
+  RewriteCond %{REQUEST_URI} !^/app/
   RewriteRule ^app/(.*)$ /app/$1 [R=301,L,NC]
+  RewriteCond %{REQUEST_URI} !^/admin/
   RewriteRule ^admin/(.*)$ /admin/$1 [R=301,L,NC]
+  RewriteRule ^app$ /app/ [R=301,L,NC]
+  RewriteRule ^admin$ /admin/ [R=301,L,NC]
 </IfModule>
